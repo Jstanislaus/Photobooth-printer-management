@@ -2,18 +2,26 @@ import time
 import datetime
 import os
 import subprocess,shlex
+from subprocess import check_output
 
 ts = time.time()
 CmdLine = "lpinfo -v"
 print(CmdLine)
 args = shlex.split(CmdLine)
 print(args)
-gpout = subprocess.Popen(args)
-print(gpout)
-PrintersConnectedList=gpout.wait()
-print(PrintersConnectedList)
+
+#gpout = subprocess.Popen(args)
+#print(gpout)
+#PrintersConnectedList=gpout.wait()
+#print(PrintersConnectedList)
+
+p = subprocess.Popen(args, stdout=subprocess.PIPE)
+out, err = p.communicate()
+
+print(out)
+
 print("done")
-print(PrintersConnectedList[7])
+
 
 
 numberstr = input("How many pictures would you like?")
