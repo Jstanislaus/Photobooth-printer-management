@@ -22,6 +22,8 @@ out, err = p.communicate()
 print("printer List: ","\n")
 print(out)
 
+print(out.split())
+
 print("done")
 
 
