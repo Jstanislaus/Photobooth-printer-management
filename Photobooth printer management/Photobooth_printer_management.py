@@ -1,6 +1,19 @@
 import time
 import datetime
+import os
+import subprocess,shlex
 
+ts = time.time()
+CmdLine = "lpinfo -v"
+print(CmdLine)
+args = shlex.split(CmdLine)
+print(args)
+gpout = subprocess.Popen(args)
+print(gpout)
+time.sleep(1)
+gpout1=gpout.wait()
+print(gpout1)
+print("done")
 
 numberstr = input("How many pictures would you like?")
 number=int(numberstr)
