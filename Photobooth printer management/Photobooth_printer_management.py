@@ -4,6 +4,8 @@ import os
 import subprocess,shlex
 from subprocess import check_output
 
+universal_newlines=True
+
 ts = time.time()
 CmdLine = "lpinfo -v"
 print(CmdLine)
