@@ -4,7 +4,7 @@ import datetime
 
 
 #starttime = (datetime.datetime.now())
-
+###
 #QRDdata = "Here is some QRCode"
 #QRFilename = "QRCode.jpg"
 #qr = qrcode.QRCode(
