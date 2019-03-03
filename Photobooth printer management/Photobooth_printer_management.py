@@ -22,7 +22,7 @@ out, err = p.communicate()
 print("printer List: ","\n")
 print(out)
 
-print(out.split())
+print(out.split("\n",1))
 
 print("done")
 
