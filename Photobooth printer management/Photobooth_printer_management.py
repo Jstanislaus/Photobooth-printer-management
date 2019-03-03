@@ -22,8 +22,9 @@ out, err = p.communicate()
 print("printer List: ","\n")
 print(out)
 
-print(out.split("\n",1))
-
+PrintersFound = out.split()
+print(PrintersFound)
+print(PrintersFound[7])
 print("done")
 
 
