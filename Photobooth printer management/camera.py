@@ -10,12 +10,14 @@ from pygame.locals import *
 from time import sleep
 from PIL import Image, ImageDraw
 
-import RPi.GPIO as GPIO, time, os, subprocess
+import RPi.GPIO as GPIO, time, os, subprocess,shlex
 
  
 # initialise global variables
 Numeral = ""  # Numeral is the number display
 Message = ""  # Message is a fullscreen message
+Message2 = ""  # Message is a fullscreen message
+Message3 = ""
 BackgroundColor = ""
 CountDownPhoto = ""
 CountPhotoOnCart = "" 
@@ -60,7 +62,7 @@ transfrom_y = infoObject.current_h # how high to scale the jpg when replaying
 
 
 # A function to handle keyboard/mouse/device input events
-print("# A function to handle keyboard/mouse/device input events -- coommented out OK")
+print("# A function to handle keyboard/mouse/device input events -- commented out OK")
 def input(events):
     for event in events:  # Hit the ESC key to quit the slideshow.
         if (event.type == QUIT or
@@ -119,6 +121,8 @@ def InitFolder():
 def DisplayText(fontSize, textToDisplay):
     global Numeral
     global Message
+    global Message2
+    global Message3
     global screen
     global background
     global pygame
@@ -146,6 +150,8 @@ def UpdateDisplay():
     # init global variables from main thread
     global Numeral
     global Message
+    global Message2
+    global Message3
     global screen
     global background
     global pygame
@@ -155,13 +161,11 @@ def UpdateDisplay():
     global CountDownPhoto
    
     background.fill(pygame.Color("white"))  # White background
-    DisplayText(100, Message)
-    DisplayText(800, Numeral)
-    DisplayText(500, CountDownPhoto)
 
     if (BackgroundColor != ""):
             print(BackgroundColor)
             background.fill(pygame.Color("black"))
+
     if (Message != ""):
             #print(Displaytext)
             font = pygame.font.Font(None, 100)
@@ -174,22 +178,47 @@ def UpdateDisplay():
             else:
                     background.blit(text, textpos)
 
-    if (Numeral != ""):
-            #print(displaytext)
-            font = pygame.font.Font(None, 800)
-            text = font.render(Numeral, 1, (227, 157, 200))
+    if (Message2 != ""):
+            #print(Displaytext)
+            font = pygame.font.Font(None, 100)
+            text = font.render(Message2, 1, (227, 157, 200))
             textpos = text.get_rect()
             textpos.centerx = background.get_rect().centerx
-            textpos.centery = background.get_rect().centery
+            textpos.centery = background.get_rect().centery * 1.25
             if(ImageShowed):
                     backgroundPicture.blit(text, textpos)
             else:
                     background.blit(text, textpos)
 
-    if (CountDownPhoto != ""):
+    if (Message3 != ""):
+            #print(Displaytext)
+            font = pygame.font.Font(None, 100)
+            text = font.render(Message3, 1, (227, 157, 200))
+            textpos = text.get_rect()
+            textpos.centerx = background.get_rect().centerx
+            textpos.centery = background.get_rect().centery * 0.5
+            if(ImageShowed):
+                    backgroundPicture.blit(text, textpos)
+            else:
+                    background.blit(text, textpos)
+
+    if (Numeral != ""):
             #print(displaytext)
+            font = pygame.font.Font(None, 800)
+            text1 = font.render(Numeral, 1, (227, 100, 200))#157
+            textposx = text1.get_rect()
+            textposx.centerx = background.get_rect().centerx 
+            textposx.centery = background.get_rect().centery * 1.5 
+            print(textposx.centery)
+            if(ImageShowed):
+                   backgroundPicture.blit(text1, textposx)
+            else:
+                    background.blit(text1, textposx)
+    
+    if (CountDownPhoto != ""):
+
             font = pygame.font.Font(None, 500)
-            text = font.render(CountDownPhoto, 1, (227, 157, 200))
+            text = font.render(CountDownPhoto, 1, (227, 157, 200))#200
             textpos = text.get_rect()
             textpos.centerx = background.get_rect().centerx
             textpos.centery = background.get_rect().centery
@@ -238,6 +267,8 @@ def CapturePicture():
     global imagefolder
     global Numeral
     global Message
+    global Message2
+    global Message3
     global screen
     global background
     global screenPicture
@@ -250,8 +281,9 @@ def CapturePicture():
     BackgroundColor = ""
     Numeral = ""
     Message = ""
+    Message2 = ""
     UpdateDisplay()
-#    time.sleep(1)
+    time.sleep(1)
     CountDownPhoto = ""
     UpdateDisplay()
     background.fill(pygame.Color("black"))
@@ -260,19 +292,19 @@ def CapturePicture():
 #    camera.start_preview()
     BackgroundColor = "black"
 
-    for x in range(3, -1, -1):
-        if x == 0:                        
-                Numeral = ""
-                Message = "Strike Your Pose !!"
-        else:                        
-                Numeral = str(x)
-                Message = ""                
-        UpdateDisplay()
-        time.sleep(1)
+   # for x in range(3, -1, -1):
+    #    if x == 0:                        
+     #           Numeral = ""
+      #          Message = "Strike Your Pose !!"
+       # else:                        
+        #        Numeral = str(x)
+         #       Message = ""                
+        #UpdateDisplay()
+        #time.sleep(0.75)
 
     BackgroundColor = ""
     Numeral = ""
-    Message = "Big Grins Now"
+   # Message = "Big Grins Now"
     UpdateDisplay()
     imagecounter = imagecounter + 1
     ts = time.time()
@@ -280,21 +312,57 @@ def CapturePicture():
     print(filename)
     gphoto2CmdLine = "gphoto2 --capture-image-and-download --filename " + filename
     print(gphoto2CmdLine)
+    args = shlex.split(gphoto2CmdLine)
+    print(args)
+    gpout = subprocess.Popen(args)
+
 #                camera.capture(filename, resize=(IMAGE_WIDTH, IMAGE_HEIGHT))
 #                camera.stop_preview()
 #                 print("SNAP")
+#    gpout = subprocess.check_output(gphoto2CmdLine, stderr=subprocess.STDOUT, shell=True)
 
-    gpout = subprocess.check_output(gphoto2CmdLine, stderr=subprocess.STDOUT, shell=True)
-#    print(gpout)
-#    print("GPHOTO2 is done")
+    print(gpout)
 
-    if "ERROR" not in gpout: 
+    print("Waiting for picture to be taken...")
+    for x in range(3, -1, -1):
+        if x == 0:                        
+                Numeral = ""
+                print(Message)
+                Message = "Great Shot!"
+        else:                        
+                Numeral = str(x)
+                Message3 =  "Photo No." + str(imagecounter) + " Will Be Taken In...l"   
+                
+        UpdateDisplay()
+        time.sleep(0.7)
+
+ #   Message = "Great Shot !"
+  #  print(Message)
+   # UpdateDisplay()
+
+    time.sleep(1)
+    Message3 = ""
+    Message = "Now relax While"
+    Message2 = "I fetch the photo"
+    print(Message + Message2)
+    UpdateDisplay()
+    time.sleep(5)
+    Message = "Nearly there..."
+    Message2 = ""
+    print(Message)
+    UpdateDisplay()
+
+    gpout1=gpout.wait()
+    print(gpout1)
+    print("GPHOTO2 is done")
+
+#    if "ERROR" not in gpout1: 
 #                 snap += 1
 #                 GPIO.output(POSE_LED, False)
 #                 time.sleep(0.5)
 #                 print("please wait while your photos print...")
-        ShowPicture(filename, 2)
-        ImageShowed = False
+    ShowPicture(filename, 2)
+    ImageShowed = False
     return filename
 
 def TakePictures():
@@ -302,6 +370,8 @@ def TakePictures():
     global imagefolder
     global Numeral
     global Message
+    global Message2
+    global Message3
     global screen
     global background
     global pygame
@@ -313,17 +383,27 @@ def TakePictures():
     global TotalImageCount
 
     input(pygame.event.get())
-    CountDownPhoto = "1/3"        
+    
+    CountDownPhoto = ""
+    Message = "Lets get into position"# for 3 photos
+    #UpdateDisplay()
+    Message2 = " for 3 photos"
+    UpdateDisplay()
+    time.sleep (4)
+
+    #CountDownPhoto = "Your 1st Photo"# "Get ready for your \n first photo"        
     filename1 = CapturePicture()
 
-    CountDownPhoto = "2/3"
+    #CountDownPhoto = "2/3"# "Photo 2 coming up!"
     filename2 = CapturePicture()
 
-    CountDownPhoto = "3/3"
+    #Message3 = "This is Your Last Photo,"# "Last photo, lets \n make it a good one!"
+   # Message2 = " Lets Make It The Best One Yet!"
     filename3 = CapturePicture()
 
     CountDownPhoto = ""
-    Message = "Wait Please..."
+    Message = "Creating your masterpiece..."
+    Message2 = ""
     UpdateDisplay()
 
 
@@ -369,9 +449,11 @@ def TakePictures():
     #bgimage2 = bgimage.rotate(90)
     #bgimage2.save('/home/pi/Desktop/tempprint.jpg')
     ImageShowed = False
-    Message = "Press and hold Button to Print"
+    Message = ""
+    Message3 = "Press and hold Button to Print"
     UpdateDisplay()
 #    time.sleep(1)
+    Message3 = ""
     Message = ""
     UpdateDisplay()
     Printing = False
@@ -429,6 +511,8 @@ def WaitForPrintingEvent():
     global BackgroundColor
     global Numeral
     global Message
+    global Message2
+    global Message3
     global Printing
     global pygame
     pf = pifaceio.PiFace()
@@ -458,7 +542,6 @@ def WaitForPrintingEvent():
                     return        
         BackgroundColor = ""
         Numeral = str(countDown)
-        Message = "Press and hold button to print!"
         UpdateDisplay()        
         countDown = countDown - 1
         time.sleep(0.5)
