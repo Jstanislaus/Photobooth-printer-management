@@ -19,7 +19,7 @@ print(args)
 
 p = subprocess.Popen(args, stdout=subprocess.PIPE)
 out, err = p.communicate()
-
+print("printer List: ","\n")
 print(out)
 
 print("done")
