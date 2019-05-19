@@ -476,7 +476,7 @@ def TakePictures():
                             printer_name = printers.keys()[2]
                             print(printer_name)
                             printer_name = "Photos_10cm_x_15cm"
-			    Message = "Let's Print That Masterpiece!"  #Using Printer name  : " + printer_name
+                            Message = "Let's Print That Masterpiece!"  #Using Printer name  : " + printer_name
                             UpdateDisplay()
                             time.sleep(0.1)
                             # print the buffer file
