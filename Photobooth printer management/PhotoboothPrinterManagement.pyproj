@@ -10,7 +10,7 @@
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>Photobooth_printer_anagement</Name>
+    <Name>PhotoboothPrinterManagement</Name>
     <RootNamespace>Photobooth printer management</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
