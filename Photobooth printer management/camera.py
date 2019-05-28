@@ -25,7 +25,7 @@ SmallMessage = ""  # SmallMessage is a lower banner message
 TotalImageCount = 0  # Counter for Display and to monitor paper usage
 PhotosPerCart = 30  # Selphy takes 16 sheets per tray
 imagecounter = 0
-imagefolder = 'Photos'
+imagefolder = '~/Photos'
 templatePath = os.path.join('Photos', 'Template', "template.png") #Path of template image
 ImageShowed = False
 Printing = False
@@ -59,7 +59,6 @@ backgroundPicture = background.convert()  # Convert it to a background
 
 transform_x = infoObject.current_w # how wide to scale the jpg when replaying
 transfrom_y = infoObject.current_h # how high to scale the jpg when replaying
-
 
 # A function to handle keyboard/mouse/device input events
 print("# A function to handle keyboard/mouse/device input events -- commented out OK")
