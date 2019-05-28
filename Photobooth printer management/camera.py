@@ -25,7 +25,7 @@ SmallMessage = ""  # SmallMessage is a lower banner message
 TotalImageCount = 0  # Counter for Display and to monitor paper usage
 PhotosPerCart = 30  # Selphy takes 16 sheets per tray
 imagecounter = 0
-imagefolder = os.path.realpath("../Photos")
+imagefolder = "../Photos"   #os.path.realpath("../Photos")
 templatePath = os.path.join('Photos', 'Template', "template.png") #Path of template image
 ImageShowed = False
 Printing = False
@@ -110,12 +110,12 @@ def InitFolder():
     Message = ''
     print(Message)
     #check image folder existing, create if not exists
-    if not os.path.isdir(imagefolder):	
-        os.makedirs(imagefolder)	
+    if not os.path.isdir(os.path.realpath(imagefolder)):	
+        os.makedirs(os.path.realpath(imagefolder))	
             
-    imagefolder2 = os.path.join(imagefolder, 'images')
-    if not os.path.isdir(imagefolder2):
-        os.makedirs(imagefolder2)
+    imagefolder2 = os.path.join(os.path.realpath(imagefolder), 'images')
+    if not os.path.isdir(os.path.realpath(imagefolder2)):
+        os.makedirs(os.path.realpath(imagefolder2))
 
 def DisplayText(fontSize, textToDisplay):
     global Numeral
@@ -330,7 +330,7 @@ def CapturePicture():
                 Message = "Great Shot!"
         else:                        
                 Numeral = str(x)
-                Message3 =  "Photo No." + str(imagecounter) + " Will Be Taken In... :"   
+                Message3 =  "Photo No." + str(imagecounter) + " Will Be Taken In..."   
                 
         UpdateDisplay()
         time.sleep(0.7)
@@ -438,7 +438,7 @@ def TakePictures():
     bgimage.paste(image3, (30, 400))     #bgimage.paste(image3, (55, 405))
     # Create the final filename
     ts = time.time()
-    Final_Image_Name = os.path.join(imagefolder, "Final_" + str(TotalImageCount)+"_"+str(ts) + ".jpg")
+    Final_Image_Name = os.path.join(os.path.realpath(imagefolder), "Final_" + str(TotalImageCount)+"_"+str(ts) + ".jpg")
     print(Final_Image_Name)
     # Save it to the usb drive
     bgimage.save(Final_Image_Name)
