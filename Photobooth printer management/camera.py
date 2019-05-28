@@ -59,7 +59,7 @@ backgroundPicture = background.convert()  # Convert it to a background
 
 transform_x = infoObject.current_w # how wide to scale the jpg when replaying
 transfrom_y = infoObject.current_h # how high to scale the jpg when replaying
-
+InitFolder()
 
 # A function to handle keyboard/mouse/device input events
 print("# A function to handle keyboard/mouse/device input events -- commented out OK")
