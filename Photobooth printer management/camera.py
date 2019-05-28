@@ -25,7 +25,7 @@ SmallMessage = ""  # SmallMessage is a lower banner message
 TotalImageCount = 0  # Counter for Display and to monitor paper usage
 PhotosPerCart = 30  # Selphy takes 16 sheets per tray
 imagecounter = 0
-imagefolder = '~/Photos'
+imagefolder = os.path.realpath("../Photos")
 templatePath = os.path.join('Photos', 'Template', "template.png") #Path of template image
 ImageShowed = False
 Printing = False
@@ -330,7 +330,7 @@ def CapturePicture():
                 Message = "Great Shot!"
         else:                        
                 Numeral = str(x)
-                Message3 =  "Photo No." + str(imagecounter) + " Will Be Taken In...l"   
+                Message3 =  "Photo No." + str(imagecounter) + " Will Be Taken In... :"   
                 
         UpdateDisplay()
         time.sleep(0.7)
