@@ -21,4 +21,3 @@ stoptime = (datetime.datetime.now())
 
 print(stoptime-starttime)
 print("QRcode Saved to ",QRFilename )
-
