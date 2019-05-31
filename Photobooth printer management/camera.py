@@ -400,6 +400,9 @@ def TakePictures():
    # Message2 = " Lets Make It The Best One Yet!"
     filename3 = CapturePicture()
 
+    QRCode = os.path.join('Temp', "QRCode.jpg") #Path of template image
+)
+
     CountDownPhoto = ""
     Message = "Creating your masterpiece..."
     Message2 = ""
@@ -430,12 +433,20 @@ def TakePictures():
     #img.save(filename)    
     
     
+        #QRCode = PIL.Image.open(QRCode)   
+    QRCode = Image.open(QRCode)
+    wpercent = (basewidth / float(QRCode.size[0]))
+    hsize = int((float(image3.size[1]) * float(wpercent)))
+    QRCode = QRCode.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
+    #img.save(filename)
+
     
     TotalImageCount = TotalImageCount + 1
 
     bgimage.paste(image1, (600, 0))     #bgimage.paste(image1, (625, 30))
     bgimage.paste(image2, (600, 400))   #bgimage.paste(image2, (625, 405))
     bgimage.paste(image3, (30, 400))     #bgimage.paste(image3, (55, 405))
+    bgimage.paste(QRCode, (600,400))
     # Create the final filename
     ts = time.time()
     Final_Image_Name = os.path.join(os.path.realpath(imagefolder), "Final_" + str(TotalImageCount)+"_"+str(ts) + ".jpg")
