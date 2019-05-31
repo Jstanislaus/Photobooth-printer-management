@@ -5,7 +5,7 @@
     <ProjectGuid>a624e214-08b9-416c-9231-cd8812224f0c</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>Photobooth_printer_management.py</StartupFile>
+    <StartupFile>QRTest.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -29,12 +29,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Temp\" />
     <Folder Include="Template\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Template\start_camera.jpg" />
     <Content Include="Template\template.png" />
     <Content Include="Template\templateHarden.png" />
+    <Content Include="Temp\QRCode.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
