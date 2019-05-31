@@ -1,9 +1,9 @@
 import qrcode
-
+import datetime
 
 starttime = (datetime.datetime.now())
 
-QRDdata = "Here is some QRCode"
+QRDdata = "Here is some QRCodeTada!"
 QRFilename = "QRCode.jpg"
 qr = qrcode.QRCode(
     version=1,
