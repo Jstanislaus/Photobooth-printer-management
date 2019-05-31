@@ -32,7 +32,7 @@
     <Folder Include="Template\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="start_camera.jpg" />
+    <Content Include="Template\start_camera.jpg" />
     <Content Include="Template\template.png" />
     <Content Include="Template\templateHarden.png" />
   </ItemGroup>
