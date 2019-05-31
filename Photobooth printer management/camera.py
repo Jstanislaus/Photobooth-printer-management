@@ -26,7 +26,7 @@ TotalImageCount = 0  # Counter for Display and to monitor paper usage
 PhotosPerCart = 30  # Selphy takes 16 sheets per tray
 imagecounter = 0
 imagefolder = "/home/pi/Photos"   #os.path.realpath("../Photos")
-templatePath = os.path.join('Template', "template.png") #Path of template image
+templatePath = os.path.join('Photos', 'Template', "template.png") #Path of template image
 ImageShowed = False
 Printing = False
 BUTTON_PIN = 25
@@ -577,7 +577,7 @@ def main(threadName, *args):
     InitFolder()
     print("InitFolder() -- OK ")
     while True:
-        show_image('Template/start_camera.jpg')
+        show_image('images/start_camera.jpg')
         WaitForEvent()
         time.sleep(1)
         TakePictures()
