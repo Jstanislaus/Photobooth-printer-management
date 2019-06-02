@@ -117,6 +117,46 @@ def InitFolder():
     if not os.path.isdir(os.path.realpath(imagefolder2)):
         os.makedirs(os.path.realpath(imagefolder2))
 
+def InitCamera():
+
+    global Message
+    global Message2
+
+    CameraPresent = False
+    Message = 'Camera Check...'
+    UpdateDisplay()
+
+    import shlex, subprocess
+    gphoto2CmdLine = "gphoto2 --auto-detect"
+    args = shlex.split(gphoto2CmdLine)
+    print(args)
+    gpout = subprocess.Popen(args,stdout=subprocess.PIPE, stdin=subprocess.PIPE)
+
+    
+    Message = "Waiting for camera response "
+    print(Message)
+    UpdateDisplay()
+    
+    gpout1=gpout.wait()
+
+    CameraModel = gpout.stdout.readlines()
+    del CameraModel[0:2]
+     
+    if len(CameraModel):
+        Message = "Camera check is done found:"
+        Message2 = str(CameraModel[0])
+        CameraPresent = True
+    else:
+        Message2 ="Camera check is done and NOT FOUND"
+        CameraPresent = False
+
+    print(Message)
+    print(Message2)
+    UpdateDisplay()
+    Message = ""
+    Message2 = ""
+    time.sleep(0.5)
+
 def DisplayText(fontSize, textToDisplay):
     global Numeral
     global Message
@@ -335,9 +375,6 @@ def CapturePicture():
         UpdateDisplay()
         time.sleep(0.7)
 
- #   Message = "Great Shot !"
-  #  print(Message)
-   # UpdateDisplay()
 
     time.sleep(1)
     Message3 = ""
@@ -384,6 +421,7 @@ def TakePictures():
     input(pygame.event.get())
     
     CountDownPhoto = ""
+    imagecounter = 0
     Message = "Lets get into position"# for 3 photos
     #UpdateDisplay()
     Message2 = " for 3 photos"
@@ -491,15 +529,15 @@ def TakePictures():
                             time.sleep(0.1)
                             # print the buffer file
                             printqueuelength = len(conn.getJobs())
-                            if printqueuelength > 1:
-                                    ShowPicture('/home/pi/Desktop/tempprint.jpg',3)
-                                    conn.enablePrinter(printer_name)
-                                    Message = "Hmm, I've had a problem"                
-                                    UpdateDisplay()
-                                    time.sleep(1)
-                            else:
-                                    conn.printFile(printer_name, '/home/pi/Desktop/tempprint.jpg', "PhotoBooth", {})
-                                    time.sleep(40)            
+#                            if printqueuelength > 1:
+#                                    ShowPicture('/home/pi/Desktop/tempprint.jpg',3)
+#                                    conn.enablePrinter(printer_name)
+#                                    Message = "Hmm, I've had a problem"                
+#                                    UpdateDisplay()
+#                                    time.sleep(1)
+#                            else:
+                            conn.printFile(printer_name, '/home/pi/Desktop/tempprint.jpg', "PhotoBooth", {})
+                            #time.sleep(5)            
             else:
                     Message = "Nous vous enverrons vos photos"
                     Numeral = ""
@@ -536,8 +574,8 @@ def WaitForPrintingEvent():
         input_state = pf.read_pin(0) 
 #        print(input_state) # is True")
         if input_state == True:
- #           print("input_state is True (button has been pressd)")
- #           print(input_state)
+            print("input_state is True (button has been pressd)")
+            print(input_state)
             Printing = True
 #            pygame.quit()
             return
@@ -547,6 +585,7 @@ def WaitForPrintingEvent():
         for event in pygame.event.get():			
             if event.type == pygame.KEYDOWN:				
                 if event.key == pygame.K_DOWN:
+                    print("pygame.K_DOWN is True (Down Key has been pressd)")
  #                   GPIO.remove_event_detect(BUTTON_PIN)
                     Printing = True
                     return        
@@ -569,8 +608,8 @@ def WaitForEvent():
 
 
         if input_state == True:
- #           print("NoEvent is True")
- #           print(input_state)
+            print("NoEvent is True")
+            print(input_state)
             NotEvent = False
             return
 
@@ -587,11 +626,13 @@ def main(threadName, *args):
  #   print("main(threadName, *args) --Starting Mainthread ")
     InitFolder()
     print("InitFolder() -- OK ")
-    while True:
-        show_image('Template/start_camera.jpg')
-        WaitForEvent()
-        time.sleep(1)
-        TakePictures()
+
+while True:
+    show_image('Template/start_camera.jpg')
+    WaitForEvent()
+    InitCamera()
+    time.sleep(1)
+    TakePictures()
 
 
 # launch the main thread

@@ -5,7 +5,7 @@
     <ProjectGuid>a624e214-08b9-416c-9231-cd8812224f0c</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>QRTest.py</StartupFile>
+    <StartupFile>camera.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
