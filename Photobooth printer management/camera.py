@@ -133,9 +133,10 @@ def InitCamera():
 
     gpout1=gpout.wait()
 
-    data = gpout.stdout.readline() #block / wait
-    print(data)
-    time.sleep(.1)    #CameraModel= gpout1.splitlines()[2]
+    while True :
+        data = gpout.stdout.readline() #block / wait
+        print(data)
+        time.sleep(.1)    #CameraModel= gpout1.splitlines()[2]
 
     #Print(CameraModel)
 
