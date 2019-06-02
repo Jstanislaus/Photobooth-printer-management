@@ -439,7 +439,7 @@ def TakePictures():
     filename3 = CapturePicture()
 
     QRCode = os.path.join('Temp', "QRCode.jpg") #Path of template image
-)
+
 
     CountDownPhoto = ""
     Message = "Creating your masterpiece..."
