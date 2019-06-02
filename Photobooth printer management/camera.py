@@ -134,8 +134,6 @@ def InitCamera():
 
     gpout1=gpout.wait()
 
-    #len = len(CameraModel)
-
     CameraModel = gpout.stdout.readlines()
     del CameraModel[0:2]
 
@@ -144,10 +142,7 @@ def InitCamera():
     else:
         print("Camera check is done", "NOT FOUND")
 
-    #print("Length of the array = " + str(len)) # Converting int to string
-
-    print(CameraModel)
-        print("Camera check is done", data)
+    print("Camera check is done", data)
     
 def DisplayText(fontSize, textToDisplay):
     global Numeral
