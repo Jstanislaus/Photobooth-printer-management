@@ -483,7 +483,7 @@ def TakePictures():
         #QRCode = PIL.Image.open(QRCode)   
     QRCode = Image.open(QRCode)
     wpercent = (basewidth / float(QRCode.size[0]))
-    hsize = int((float(image3.size[1]) * float(wpercent)))
+    hsize = int((float(image3.size[1]) * float(wpercent)))/5
     QRCode = QRCode.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
     #img.save(filename)
 
@@ -507,7 +507,7 @@ def TakePictures():
     #bgimage2.save('/home/pi/Desktop/tempprint.jpg')
     ImageShowed = False
     Message = ""
-    Message3 = "Press and hold Button to Print"
+    Message = "Press and hold Button to Print"
     UpdateDisplay()
 #    time.sleep(1)
     Message3 = ""
@@ -541,7 +541,7 @@ def TakePictures():
                             conn.printFile(printer_name, '/home/pi/Desktop/tempprint.jpg', "PhotoBooth", {})
                             
                             time.sleep(5)
-                            Message = "Your Photo is"  + str(printqueuelength) + " in the Print Queue" #Using Printer name  : " + printer_name
+                            Message = "Your Photo is "  + str(printqueuelength) + " in the Print Queue" #Using Printer name  : " + printer_name
                             UpdateDisplay()  
                             time.sleep(5)
             else:
