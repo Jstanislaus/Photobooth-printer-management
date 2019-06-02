@@ -130,20 +130,25 @@ def InitCamera():
     print(args)
     gpout = subprocess.Popen(args,stdout=subprocess.PIPE, stdin=subprocess.PIPE)
 
-    print("Waiting for camera response ")
-
+    
+    Message = "Waiting for camera response "
+    print(Message)
+    UpdateDisplay()
+    
     gpout1=gpout.wait()
 
     CameraModel = gpout.stdout.readlines()
     del CameraModel[0:2]
 
     if len(CameraModel):
-        print("Camera check is done found:" + CameraModel)
+        Message = "Camera check is done found:" + CameraModel
     else:
-        print("Camera check is done and NOT FOUND")
+        Message ="Camera check is done and NOT FOUND"
 
+    print(Message)
+    UpdateDisplay()
+    time.sleep(1)
 
-    
 def DisplayText(fontSize, textToDisplay):
     global Numeral
     global Message
