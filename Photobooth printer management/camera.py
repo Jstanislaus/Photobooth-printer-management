@@ -139,7 +139,9 @@ def InitCamera():
         Message = "Waiting for camera response "
         print(Message)
         UpdateDisplay()
-    
+        Message = ""
+        Message2 = ""   
+
         gpout1=gpout.wait()
 
         CameraModel = gpout.stdout.readlines()
@@ -148,12 +150,13 @@ def InitCamera():
         if len(CameraModel):
             Message = "Camera check is done found:"
             Message2 = str(CameraModel[0])
+            print(Message)
+            print(Message2)
             UpdateDisplay()
             CameraPresent = True
         else:
             Message2 ="Camera check is done and NOT FOUND"
             CameraPresent = False
-            print(Message)
             print(Message2)
             UpdateDisplay()
             WaitForEvent()
@@ -579,7 +582,7 @@ def WaitForPrintingEvent():
         pf.read()
         input_state = pf.read_pin(0) 
 #        print(input_state) # is True")
-        if input_state == FALSE: #was True
+        if input_state == False: #was True
             print("input_state is True (button has been pressed for printing)")
             print(input_state)
             Printing = True
