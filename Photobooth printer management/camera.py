@@ -121,41 +121,44 @@ def InitCamera():
 
     global Message
     global Message2
+    global CameraPresent
 
     CameraPresent = False
-    Message = 'Camera Check...'
-    UpdateDisplay()
 
-    import shlex, subprocess
-    gphoto2CmdLine = "gphoto2 --auto-detect"
-    args = shlex.split(gphoto2CmdLine)
-    print(args)
-    gpout = subprocess.Popen(args,stdout=subprocess.PIPE, stdin=subprocess.PIPE)
+    while CameraPresent = False:
+        Message = 'Camera Check...'
+        UpdateDisplay()
+
+        import shlex, subprocess
+        gphoto2CmdLine = "gphoto2 --auto-detect"
+        args = shlex.split(gphoto2CmdLine)
+        print(args)
+        gpout = subprocess.Popen(args,stdout=subprocess.PIPE, stdin=subprocess.PIPE)
 
     
-    Message = "Waiting for camera response "
-    print(Message)
-    UpdateDisplay()
+        Message = "Waiting for camera response "
+        print(Message)
+        UpdateDisplay()
     
-    gpout1=gpout.wait()
+        gpout1=gpout.wait()
 
-    CameraModel = gpout.stdout.readlines()
-    del CameraModel[0:2]
+        CameraModel = gpout.stdout.readlines()
+        del CameraModel[0:2]
      
-    if len(CameraModel):
-        Message = "Camera check is done found:"
-        Message2 = str(CameraModel[0])
-        CameraPresent = True
-    else:
-        Message2 ="Camera check is done and NOT FOUND"
-        CameraPresent = False
+        if len(CameraModel):
+            Message = "Camera check is done found:"
+            Message2 = str(CameraModel[0])
+            CameraPresent = True
+        else:
+            Message2 ="Camera check is done and NOT FOUND"
+            CameraPresent = False
 
-    print(Message)
-    print(Message2)
-    UpdateDisplay()
-    Message = ""
-    Message2 = ""
-    time.sleep(0.5)
+        print(Message)
+        print(Message2)
+        UpdateDisplay()
+        Message = ""
+        Message2 = ""
+        WaitForEvent()
 
 def DisplayText(fontSize, textToDisplay):
     global Numeral
@@ -632,8 +635,14 @@ def main(threadName, *args):
 
 while True:
     show_image('Template/start_camera.jpg')
-    WaitForEvent()
+
     InitCamera()
+    
+    WaitForEvent()
+
+
+
+
     time.sleep(1)
     TakePictures()
 
