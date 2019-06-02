@@ -141,7 +141,7 @@ def InitCamera():
     del CameraModel[0:2]
 
     if len(CameraModel):
-        Message = "Camera check is done found:" + CameraModel
+        Message = "Camera check is done found:" + "\n" + CameraModel[0]
     else:
         Message ="Camera check is done and NOT FOUND"
 
