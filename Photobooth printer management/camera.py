@@ -124,6 +124,7 @@ def InitCamera():
     Message = 'Camera Check...'
     UpdateDisplay()
 
+    import shlex, subprocess
     gphoto2CmdLine = "gphoto2 --auto-detect"
     args = shlex.split(gphoto2CmdLine)
     print(args)
@@ -133,21 +134,21 @@ def InitCamera():
 
     gpout1=gpout.wait()
 
-    while True :
-        data = gpout.stdout.readline() #block / wait
-        print(data)
-        time.sleep(.1)    #CameraModel= gpout1.splitlines()[2]
+    #len = len(CameraModel)
 
-    #Print(CameraModel)
+    CameraModel = gpout.stdout.readlines()
+    del CameraModel[0:2]
 
-    print("Camera check is done")
-    print()
-    print("args:")
-    print(args)
-    print()
-    print("gpout:")
-    print(gpout)
+    if len(CameraModel):
+        print("Camera check is done", CameraModel)
+    else:
+        print("Camera check is done", "NOT FOUND")
 
+    #print("Length of the array = " + str(len)) # Converting int to string
+
+    print(CameraModel)
+        print("Camera check is done", data)
+    
 def DisplayText(fontSize, textToDisplay):
     global Numeral
     global Message
