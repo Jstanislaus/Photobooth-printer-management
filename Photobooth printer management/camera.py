@@ -137,7 +137,7 @@ def InitCamera():
     
     CameraModel= gpout1.splitlines()[2]
 
-    Print(CameraModel)
+    #Print(CameraModel)
 
     print("Camera check is done")
 
