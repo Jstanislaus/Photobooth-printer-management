@@ -375,9 +375,6 @@ def CapturePicture():
         UpdateDisplay()
         time.sleep(0.7)
 
- #   Message = "Great Shot !"
-  #  print(Message)
-   # UpdateDisplay()
 
     time.sleep(1)
     Message3 = ""
@@ -424,6 +421,7 @@ def TakePictures():
     input(pygame.event.get())
     
     CountDownPhoto = ""
+    imagecounter = 0
     Message = "Lets get into position"# for 3 photos
     #UpdateDisplay()
     Message2 = " for 3 photos"
@@ -520,15 +518,15 @@ def TakePictures():
                             time.sleep(0.1)
                             # print the buffer file
                             printqueuelength = len(conn.getJobs())
-                            if printqueuelength > 1:
-                                    ShowPicture('/home/pi/Desktop/tempprint.jpg',3)
-                                    conn.enablePrinter(printer_name)
-                                    Message = "Hmm, I've had a problem"                
-                                    UpdateDisplay()
-                                    time.sleep(1)
-                            else:
-                                    conn.printFile(printer_name, '/home/pi/Desktop/tempprint.jpg', "PhotoBooth", {})
-                                    time.sleep(40)            
+#                            if printqueuelength > 1:
+#                                    ShowPicture('/home/pi/Desktop/tempprint.jpg',3)
+#                                    conn.enablePrinter(printer_name)
+#                                    Message = "Hmm, I've had a problem"                
+#                                    UpdateDisplay()
+#                                    time.sleep(1)
+#                            else:
+                            conn.printFile(printer_name, '/home/pi/Desktop/tempprint.jpg', "PhotoBooth", {})
+                            time.sleep(40)            
             else:
                     Message = "Nous vous enverrons vos photos"
                     Numeral = ""
