@@ -121,6 +121,8 @@ def InitCamera():
 
     global Message
     global Message2
+
+    CameraPresent = False
     Message = 'Camera Check...'
     UpdateDisplay()
 
@@ -141,17 +143,19 @@ def InitCamera():
     del CameraModel[0:2]
      
     if len(CameraModel):
-        #Message = "Camera check is done found:"
+        Message = "Camera check is done found:"
         Message2 = str(CameraModel[0])
+        CameraPresent = True
     else:
         Message2 ="Camera check is done and NOT FOUND"
+        CameraPresent = False
 
     print(Message)
     print(Message2)
     UpdateDisplay()
     Message = ""
     Message2 = ""
-    time.sleep(1)
+    time.sleep(0.5)
 
 def DisplayText(fontSize, textToDisplay):
     global Numeral
@@ -613,7 +617,8 @@ def main(threadName, *args):
     InitFolder()
     print("InitFolder() -- OK ")
 
-    InitCamera()
+    while True:
+        InitCamera()
 
   #  while True:
   #      show_image('Template/start_camera.jpg')
