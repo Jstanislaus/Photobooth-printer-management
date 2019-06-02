@@ -597,8 +597,8 @@ def WaitForEvent():
 
 
         if input_state == True:
- #           print("NoEvent is True")
- #           print(input_state)
+            print("NoEvent is True")
+            print(input_state)
             NotEvent = False
             return
 
