@@ -465,7 +465,7 @@ def TakePictures():
     wpercent = (basewidth / float(image3.size[0]))
     hsize = int((float(image3.size[1]) * float(wpercent)))
     image3 = image3.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
-    #img.save(filename)    
+    #img.save(filename)    .
     
     
     
