@@ -148,17 +148,20 @@ def InitCamera():
         if len(CameraModel):
             Message = "Camera check is done found:"
             Message2 = str(CameraModel[0])
+            UpdateDisplay()
             CameraPresent = True
         else:
             Message2 ="Camera check is done and NOT FOUND"
             CameraPresent = False
+            print(Message)
+            print(Message2)
+            UpdateDisplay()
+            WaitForEvent()
 
-        print(Message)
-        print(Message2)
-        UpdateDisplay()
+
         Message = ""
         Message2 = ""
-        WaitForEvent()
+        
 
 def DisplayText(fontSize, textToDisplay):
     global Numeral
@@ -278,7 +281,7 @@ def UpdateDisplay():
     return
 
 
-def ShowPicture(file, delay):
+def ShowPicture(file, delay): #
     global pygame
     global screenPicture
     global backgroundPicture
