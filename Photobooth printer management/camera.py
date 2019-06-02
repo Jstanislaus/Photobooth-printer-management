@@ -483,7 +483,7 @@ def TakePictures():
         #QRCode = PIL.Image.open(QRCode)   
     QRCode = Image.open(QRCode)
     wpercent = (basewidth / float(QRCode.size[0]))
-    hsize = int((float(image3.size[1]) * float(wpercent)))/5
+    hsize = int((float(image3.size[1]) * float(wpercent)))/10
     QRCode = QRCode.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
     #img.save(filename)
 
