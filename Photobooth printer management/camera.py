@@ -142,7 +142,7 @@ def InitCamera():
      
     if len(CameraModel):
         #Message = "Camera check is done found:"
-        Message2 = CameraModel[0]
+        Message2 = str(CameraModel[0])
     else:
         Message2 ="Camera check is done and NOT FOUND"
 
