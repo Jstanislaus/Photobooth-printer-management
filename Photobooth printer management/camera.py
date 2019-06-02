@@ -576,7 +576,7 @@ def WaitForPrintingEvent():
         pf.read()
         input_state = pf.read_pin(0) 
 #        print(input_state) # is True")
-        if input_state == True:
+        if input_state == FALSE: #was True
             print("input_state is True (button has been pressed for printing)")
             print(input_state)
             Printing = True
@@ -634,15 +634,9 @@ def main(threadName, *args):
     print("InitFolder() -- OK ")
 
 while True:
-    show_image('Template/start_camera.jpg')
-
     InitCamera()
-    
+    show_image('Template/start_camera.jpg')
     WaitForEvent()
-
-
-
-
     time.sleep(1)
     TakePictures()
 
