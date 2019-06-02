@@ -142,7 +142,7 @@ def InitCamera():
     else:
         print("Camera check is done", "NOT FOUND")
 
-    print("Camera check is done", data)
+
     
 def DisplayText(fontSize, textToDisplay):
     global Numeral
