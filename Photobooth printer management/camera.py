@@ -125,7 +125,7 @@ def InitCamera():
 
     CameraPresent = False
 
-    while CameraPresent = False:
+    while CameraPresent == False:
         Message = 'Camera Check...'
         UpdateDisplay()
 
