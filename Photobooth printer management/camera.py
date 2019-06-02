@@ -574,7 +574,7 @@ def WaitForPrintingEvent():
         input_state = pf.read_pin(0) 
 #        print(input_state) # is True")
         if input_state == True:
-            print("input_state is True (button has been pressd)")
+            print("input_state is True (button has been pressed for printing)")
             print(input_state)
             Printing = True
 #            pygame.quit()
@@ -585,7 +585,7 @@ def WaitForPrintingEvent():
         for event in pygame.event.get():			
             if event.type == pygame.KEYDOWN:				
                 if event.key == pygame.K_DOWN:
-                    print("pygame.K_DOWN is True (Down Key has been pressd)")
+                    print("pygame.K_DOWN is True (Down Key has been pressed for printing)")
  #                   GPIO.remove_event_detect(BUTTON_PIN)
                     Printing = True
                     return        
@@ -602,6 +602,7 @@ def WaitForEvent():
     global pygame
     pf = pifaceio.PiFace()
     NotEvent = True
+   
     while NotEvent:
         pf.read()
         input_state = pf.read_pin(0) #False #windows10 GPIO.input(BUTTON_PIN)
@@ -616,9 +617,11 @@ def WaitForEvent():
         for event in pygame.event.get():   
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
+                    print("escape Key Pressed Exiting..")
                     pygame.quit()
                 if event.key == pygame.K_DOWN:
                     NotEvent = False
+                    print("Down Key Pressed off we go..")
                     return
         time.sleep(0.2)
 
