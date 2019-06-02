@@ -617,14 +617,12 @@ def main(threadName, *args):
     InitFolder()
     print("InitFolder() -- OK ")
 
-    while True:
-        InitCamera()
-
-  #  while True:
-  #      show_image('Template/start_camera.jpg')
-  #      WaitForEvent()
-  #      time.sleep(1)
-  #      TakePictures()
+while True:
+    show_image('Template/start_camera.jpg')
+    WaitForEvent()
+    InitCamera()
+    time.sleep(1)
+    TakePictures()
 
 
 # launch the main thread
