@@ -387,8 +387,8 @@ def CapturePicture():
 
     time.sleep(1)
     Message3 = ""
-    Message = "Now relax while"
-    Message2 = "I fetch the photo"
+    Message = "Now relax "
+    Message2 = "while I fetch the photo"
     print(Message + Message2)
     UpdateDisplay()
     time.sleep(5)
@@ -507,11 +507,11 @@ def TakePictures():
     #bgimage2.save('/home/pi/Desktop/tempprint.jpg')
     ImageShowed = False
     Message = ""
-    Message = "Press and hold Button to Print"
+    
     UpdateDisplay()
 #    time.sleep(1)
     Message3 = ""
-    Message = ""
+    Message = "Press and hold Button to Print"
     UpdateDisplay()
     Printing = False
     WaitForPrintingEvent()
@@ -541,7 +541,7 @@ def TakePictures():
                             conn.printFile(printer_name, '/home/pi/Desktop/tempprint.jpg', "PhotoBooth", {})
                             
                             time.sleep(5)
-                            Message = "Your Photo is "  + str(printqueuelength) + " in the Print Queue" #Using Printer name  : " + printer_name
+                            Message = "Your Photo is number "  + str(printqueuelength) + " in the Print Queue" #Using Printer name  : " + printer_name
                             UpdateDisplay()  
                             time.sleep(5)
             else:
