@@ -120,7 +120,7 @@ def InitFolder():
 def InitCamera():
 
     global Message
- 
+     global Message2
     Message = 'Camera Check...'
     UpdateDisplay()
 
