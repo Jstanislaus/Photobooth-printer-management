@@ -140,8 +140,12 @@ def InitCamera():
     #Print(CameraModel)
 
     print("Camera check is done")
-
+    print()
+    print("args:")
     print(args)
+    print()
+    print("gpout:")
+    print(gpout)
 
 def DisplayText(fontSize, textToDisplay):
     global Numeral
