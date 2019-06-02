@@ -141,7 +141,7 @@ def InitCamera():
 
     print("Camera check is done")
 
-    print(gpout1)
+    print(args)
 
 def DisplayText(fontSize, textToDisplay):
     global Numeral
