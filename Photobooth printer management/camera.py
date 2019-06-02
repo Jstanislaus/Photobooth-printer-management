@@ -139,14 +139,15 @@ def InitCamera():
 
     CameraModel = gpout.stdout.readlines()
     del CameraModel[0:2]
-
+     
     if len(CameraModel):
-        Message = "Camera check is done found:"
+        #Message = "Camera check is done found:"
         Message2 = CameraModel[0]
     else:
-        Message ="Camera check is done and NOT FOUND"
+        Message2 ="Camera check is done and NOT FOUND"
 
     print(Message)
+    print(Message2)
     UpdateDisplay()
     Message = ""
     Message2 = ""
