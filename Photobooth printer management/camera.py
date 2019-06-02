@@ -526,7 +526,7 @@ def TakePictures():
 #                                    time.sleep(1)
 #                            else:
                             conn.printFile(printer_name, '/home/pi/Desktop/tempprint.jpg', "PhotoBooth", {})
-                            time.sleep(40)            
+                            #time.sleep(5)            
             else:
                     Message = "Nous vous enverrons vos photos"
                     Numeral = ""
