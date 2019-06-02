@@ -117,6 +117,26 @@ def InitFolder():
     if not os.path.isdir(os.path.realpath(imagefolder2)):
         os.makedirs(os.path.realpath(imagefolder2))
 
+def InitCamera():
+
+    global Message
+ 
+    Message = 'Camera Check...'
+    UpdateDisplay()
+
+    gphoto2CmdLine = "gphoto2 --auto-detect"
+    args = shlex.split(gphoto2CmdLine)
+    print(args)
+    gpout = subprocess.Popen(args)
+
+    print(gpout)
+
+    print("Waiting for camera response ")
+
+    gpout1=gpout.wait()
+    print(gpout1)
+    print("Camera check is done")
+
 def DisplayText(fontSize, textToDisplay):
     global Numeral
     global Message
@@ -576,11 +596,14 @@ def main(threadName, *args):
  #   print("main(threadName, *args) --Starting Mainthread ")
     InitFolder()
     print("InitFolder() -- OK ")
-    while True:
-        show_image('Template/start_camera.jpg')
-        WaitForEvent()
-        time.sleep(1)
-        TakePictures()
+
+    InitCamera()
+
+  #  while True:
+  #      show_image('Template/start_camera.jpg')
+  #      WaitForEvent()
+  #      time.sleep(1)
+  #      TakePictures()
 
 
 # launch the main thread
