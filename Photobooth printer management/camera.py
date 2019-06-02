@@ -134,7 +134,7 @@ def InitCamera():
     print("Waiting for camera response ")
 
     gpout1=gpout.wait()
-    print(gpout1[0])
+    print gpout1.splitlines()[2]
     print("Camera check is done")
 
 def DisplayText(fontSize, textToDisplay):
