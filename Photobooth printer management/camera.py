@@ -538,15 +538,12 @@ def TakePictures():
                             time.sleep(0.1)
                             # print the buffer file
                             printqueuelength = len(conn.getJobs())
-#                            if printqueuelength > 1:
-#                                    ShowPicture('/home/pi/Desktop/tempprint.jpg',3)
-#                                    conn.enablePrinter(printer_name)
-#                                    Message = "Hmm, I've had a problem"                
-#                                    UpdateDisplay()
-#                                    time.sleep(1)
-#                            else:
+
                             conn.printFile(printer_name, '/home/pi/Desktop/tempprint.jpg', "PhotoBooth", {})
-                            #time.sleep(5)            
+                            time.sleep(5)
+                            Message = "Your Photo is"  + str(printqueuelength) + " in the Print Queue" #Using Printer name  : " + printer_name
+                            UpdateDisplay()  
+                            time.sleep(5)
             else:
                     Message = "Nous vous enverrons vos photos"
                     Numeral = ""
