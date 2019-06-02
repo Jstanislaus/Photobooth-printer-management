@@ -563,8 +563,8 @@ def WaitForPrintingEvent():
         input_state = pf.read_pin(0) 
 #        print(input_state) # is True")
         if input_state == True:
- #           print("input_state is True (button has been pressd)")
- #           print(input_state)
+            print("input_state is True (button has been pressd)")
+            print(input_state)
             Printing = True
 #            pygame.quit()
             return
@@ -574,6 +574,7 @@ def WaitForPrintingEvent():
         for event in pygame.event.get():			
             if event.type == pygame.KEYDOWN:				
                 if event.key == pygame.K_DOWN:
+                    print("pygame.K_DOWN is True (Down Key has been pressd)")
  #                   GPIO.remove_event_detect(BUTTON_PIN)
                     Printing = True
                     return        
