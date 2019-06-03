@@ -155,8 +155,10 @@ def InitCamera():
             UpdateDisplay()
             CameraPresent = True
         else:
-            Message2 ="Camera check is done and NOT FOUND"
+            Message = "Camera NOT found:"
+            Message2 ="Check connection and press button"
             CameraPresent = False
+            print(Message)
             print(Message2)
             UpdateDisplay()
             WaitForEvent()
