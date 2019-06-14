@@ -433,6 +433,7 @@ def TakePictures():
     #img.save(filename)    
     
     basewidth = 300
+
         #QRCode = PIL.Image.open(QRCode)   
     QRCode = Image.open(QRCode)
     wpercent = (basewidth / float(QRCode.size[0]))
