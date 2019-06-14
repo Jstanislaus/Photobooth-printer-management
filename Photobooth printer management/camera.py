@@ -502,7 +502,7 @@ def TakePictures():
     bgimage.paste(image1, (600, 0))     #bgimage.paste(image1, (625, 30))
     bgimage.paste(image2, (0, 400))   #bgimage.paste(image2, (625, 405))
     bgimage.paste(image3, (600, 400))     #bgimage.paste(image3, (55, 405))
-    bgimage.paste(QRCode, (500,300)) 
+    bgimage.paste(QRCode, (530,280)) 
     # Create the final filename
     ts = time.time()
     Final_Image_Name = os.path.join(os.path.realpath(imagefolder), "Final_" + str(TotalImageCount)+"_"+str(ts) + ".jpg")
