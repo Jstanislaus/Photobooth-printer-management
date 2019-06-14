@@ -432,7 +432,7 @@ def TakePictures():
     image3 = image3.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
     #img.save(filename)    
     
-    
+    basewidth = 300
         #QRCode = PIL.Image.open(QRCode)   
     QRCode = Image.open(QRCode)
     wpercent = (basewidth / float(QRCode.size[0]))
@@ -446,7 +446,7 @@ def TakePictures():
     bgimage.paste(image1, (600, 0))     #bgimage.paste(image1, (625, 30))
     bgimage.paste(image2, (600, 400))   #bgimage.paste(image2, (625, 405))
     bgimage.paste(image3, (30, 400))     #bgimage.paste(image3, (55, 405))
-    bgimage.paste(QRCode, (600,400))
+    bgimage.paste(QRCode, (400,600))
     # Create the final filename
     ts = time.time()
     Final_Image_Name = os.path.join(os.path.realpath(imagefolder), "Final_" + str(TotalImageCount)+"_"+str(ts) + ".jpg")
