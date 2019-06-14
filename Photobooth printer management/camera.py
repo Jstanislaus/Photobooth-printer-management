@@ -458,7 +458,7 @@ def TakePictures():
     UpdateDisplay()
 
 
-    basewidth = 575 #570
+    basewidth = 600 #570
 
     #image1 = PIL.Image.open(filename1)
     image1 = Image.open(filename1)
@@ -484,12 +484,12 @@ def TakePictures():
     
         #QRCode = PIL.Image.open(QRCode)   
     QRCode = Image.open(QRCode)
-    wpercent = (basewidth / float(QRCode.size[0]))
+    wpercent = (basewidth / float(QRCode.size[0]))/5
     print("QRCode.size[0] = " + str(QRCode.size[0]))
     print("QRCode.size[1] = " + str(QRCode.size[1]))
     print("wpercent = " + str(wpercent))
-    hsize = int((float(QRCode.size[1]) * float(wpercent)))/10
-    wsize = int((float(QRCode.size[0]) * float(wpercent)))/10
+    hsize = int((float(QRCode.size[1]) * float(wpercent)))
+    wsize = int((float(QRCode.size[0]) * float(wpercent)))
     print("hsize = " + str(hsize))
     print("wsize = " + str(wsize))
     
@@ -502,7 +502,7 @@ def TakePictures():
     bgimage.paste(image1, (600, 0))     #bgimage.paste(image1, (625, 30))
     bgimage.paste(image2, (0, 400))   #bgimage.paste(image2, (625, 405))
     bgimage.paste(image3, (600, 400))     #bgimage.paste(image3, (55, 405))
-    bgimage.paste(QRCode, (572,372)) 
+    bgimage.paste(QRCode, (570,370)) 
     # Create the final filename
     ts = time.time()
     Final_Image_Name = os.path.join(os.path.realpath(imagefolder), "Final_" + str(TotalImageCount)+"_"+str(ts) + ".jpg")
