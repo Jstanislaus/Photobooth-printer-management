@@ -117,6 +117,57 @@ def InitFolder():
     if not os.path.isdir(os.path.realpath(imagefolder2)):
         os.makedirs(os.path.realpath(imagefolder2))
 
+def InitCamera():
+
+    global Message
+    global Message2
+    global CameraPresent
+
+    CameraPresent = False
+
+    while CameraPresent == False:
+        Message = 'Camera Check...'
+        UpdateDisplay()
+
+        import shlex, subprocess
+        gphoto2CmdLine = "gphoto2 --auto-detect"
+        args = shlex.split(gphoto2CmdLine)
+        print(args)
+        gpout = subprocess.Popen(args,stdout=subprocess.PIPE, stdin=subprocess.PIPE)
+
+    
+        Message = "Waiting for camera response "
+        print(Message)
+        UpdateDisplay()
+        Message = ""
+        Message2 = ""   
+
+        gpout1=gpout.wait()
+
+        CameraModel = gpout.stdout.readlines()
+        del CameraModel[0:2]
+     
+        if len(CameraModel):
+            Message = "Camera check is done found:"
+            Message2 = str(CameraModel[0])
+            print(Message)
+            print(Message2)
+            UpdateDisplay()
+            CameraPresent = True
+        else:
+            Message = "Camera NOT found:"
+            Message2 ="Check connection and press button"
+            CameraPresent = False
+            print(Message)
+            print(Message2)
+            UpdateDisplay()
+            WaitForEvent()
+
+
+        Message = ""
+        Message2 = ""
+        
+
 def DisplayText(fontSize, textToDisplay):
     global Numeral
     global Message
@@ -235,7 +286,7 @@ def UpdateDisplay():
     return
 
 
-def ShowPicture(file, delay):
+def ShowPicture(file, delay): #
     global pygame
     global screenPicture
     global backgroundPicture
@@ -335,14 +386,11 @@ def CapturePicture():
         UpdateDisplay()
         time.sleep(0.7)
 
- #   Message = "Great Shot !"
-  #  print(Message)
-   # UpdateDisplay()
 
     time.sleep(1)
     Message3 = ""
-    Message = "Now relax while"
-    Message2 = "I fetch the photo"
+    Message = "Now relax "
+    Message2 = "while I fetch the photo"
     print(Message + Message2)
     UpdateDisplay()
     time.sleep(5)
@@ -384,6 +432,7 @@ def TakePictures():
     input(pygame.event.get())
     
     CountDownPhoto = ""
+    imagecounter = 0
     Message = "Lets get into position"# for 3 photos
     #UpdateDisplay()
     Message2 = " for 3 photos"
@@ -401,7 +450,7 @@ def TakePictures():
     filename3 = CapturePicture()
 
     QRCode = os.path.join('Temp', "QRCode.jpg") #Path of template image
-)
+
 
     CountDownPhoto = ""
     Message = "Creating your masterpiece..."
@@ -409,7 +458,7 @@ def TakePictures():
     UpdateDisplay()
 
 
-    basewidth = 575 #570
+    basewidth = 570 #575
 
     #image1 = PIL.Image.open(filename1)
     image1 = Image.open(filename1)
@@ -430,14 +479,13 @@ def TakePictures():
     wpercent = (basewidth / float(image3.size[0]))
     hsize = int((float(image3.size[1]) * float(wpercent)))
     image3 = image3.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
-    #img.save(filename)    
+    #img.save(filename)    .
     
-
+    
         #QRCode = PIL.Image.open(QRCode)   
     QRCode = Image.open(QRCode)
     wpercent = (basewidth / float(QRCode.size[0]))
-    print ("QRCode.size[0] = " + str(QRCode.size[0]))
-    hsize = int((float(image3.size[1]) * float(wpercent)))
+    hsize = int((float(image3.size[1]) * float(wpercent)))/10
     QRCode = QRCode.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
     #img.save(filename)
 
@@ -447,7 +495,7 @@ def TakePictures():
     bgimage.paste(image1, (600, 0))     #bgimage.paste(image1, (625, 30))
     bgimage.paste(image2, (600, 400))   #bgimage.paste(image2, (625, 405))
     bgimage.paste(image3, (30, 400))     #bgimage.paste(image3, (55, 405))
-    bgimage.paste(QRCode, (400,600))
+    bgimage.paste(QRCode, (600,400))
     # Create the final filename
     ts = time.time()
     Final_Image_Name = os.path.join(os.path.realpath(imagefolder), "Final_" + str(TotalImageCount)+"_"+str(ts) + ".jpg")
@@ -461,11 +509,11 @@ def TakePictures():
     #bgimage2.save('/home/pi/Desktop/tempprint.jpg')
     ImageShowed = False
     Message = ""
-    Message3 = "Press and hold Button to Print"
+    
     UpdateDisplay()
 #    time.sleep(1)
     Message3 = ""
-    Message = ""
+    Message = "Press and hold Button to Print"
     UpdateDisplay()
     Printing = False
     WaitForPrintingEvent()
@@ -489,18 +537,15 @@ def TakePictures():
                             printer_name = "Photos_10cm_x_15cm"
                             Message = "Let's Print That Masterpiece!"  #Using Printer name  : " + printer_name
                             UpdateDisplay()
-                            time.sleep(0.1)
+                            time.sleep(5)
                             # print the buffer file
                             printqueuelength = len(conn.getJobs())
-                            if printqueuelength > 1:
-                                    ShowPicture('/home/pi/Desktop/tempprint.jpg',3)
-                                    conn.enablePrinter(printer_name)
-                                    Message = "Hmm, I've had a problem"                
-                                    UpdateDisplay()
-                                    time.sleep(1)
-                            else:
-                                    conn.printFile(printer_name, '/home/pi/Desktop/tempprint.jpg', "PhotoBooth", {})
-                                    time.sleep(40)            
+                            conn.printFile(printer_name, '/home/pi/Desktop/tempprint.jpg', "PhotoBooth", {})
+                            
+                            time.sleep(5)
+                            Message = "Your Photo is number "  + str(printqueuelength) + " in the Print Queue" #Using Printer name  : " + printer_name
+                            UpdateDisplay()  
+                            time.sleep(5)
             else:
                     Message = "Nous vous enverrons vos photos"
                     Numeral = ""
@@ -536,9 +581,9 @@ def WaitForPrintingEvent():
         pf.read()
         input_state = pf.read_pin(0) 
 #        print(input_state) # is True")
-        if input_state == True:
- #           print("input_state is True (button has been pressd)")
- #           print(input_state)
+        if input_state == False: #was True
+            print("input_state is True (button has been pressed for printing)")
+            print(input_state)
             Printing = True
 #            pygame.quit()
             return
@@ -548,6 +593,7 @@ def WaitForPrintingEvent():
         for event in pygame.event.get():			
             if event.type == pygame.KEYDOWN:				
                 if event.key == pygame.K_DOWN:
+                    print("pygame.K_DOWN is True (Down Key has been pressed for printing)")
  #                   GPIO.remove_event_detect(BUTTON_PIN)
                     Printing = True
                     return        
@@ -564,23 +610,26 @@ def WaitForEvent():
     global pygame
     pf = pifaceio.PiFace()
     NotEvent = True
+   
     while NotEvent:
         pf.read()
         input_state = pf.read_pin(0) #False #windows10 GPIO.input(BUTTON_PIN)
 
 
-        if input_state == True:
- #           print("NoEvent is True")
- #           print(input_state)
+        if input_state == False: #was TRUE
+            print("NoEvent is True")
+            print(input_state)
             NotEvent = False
             return
 
         for event in pygame.event.get():   
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
+                    print("escape Key Pressed Exiting..")
                     pygame.quit()
                 if event.key == pygame.K_DOWN:
                     NotEvent = False
+                    print("Down Key Pressed off we go..")
                     return
         time.sleep(0.2)
 
@@ -588,11 +637,13 @@ def main(threadName, *args):
  #   print("main(threadName, *args) --Starting Mainthread ")
     InitFolder()
     print("InitFolder() -- OK ")
-    while True:
-        show_image('Template/start_camera.jpg')
-        WaitForEvent()
-        time.sleep(1)
-        TakePictures()
+
+while True:
+    InitCamera()
+    show_image('Template/start_camera.jpg')
+    WaitForEvent()
+    time.sleep(1)
+    TakePictures()
 
 
 # launch the main thread
