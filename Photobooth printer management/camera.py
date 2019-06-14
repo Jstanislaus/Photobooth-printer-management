@@ -458,7 +458,7 @@ def TakePictures():
     UpdateDisplay()
 
 
-    basewidth = 570 #575
+    basewidth = 575 #570
 
     #image1 = PIL.Image.open(filename1)
     image1 = Image.open(filename1)
@@ -487,9 +487,12 @@ def TakePictures():
     wpercent = (basewidth / float(QRCode.size[0]))
     print("QRCode.size[0] = " + str(QRCode.size[0]))
     print("QRCode.size[1] = " + str(QRCode.size[1]))
-    print("QRCode.size[2] = " + str(QRCode.size[2]))
     print("wpercent = " + str(wpercent))
     hsize = int((float(QRCode.size[1]) * float(wpercent)))/10
+
+    print("hsize = " + str(hsize))
+    print("basewidth = " + str(basewidth))
+    
     QRCode = QRCode.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
     #img.save(filename)
 
