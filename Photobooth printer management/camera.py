@@ -384,19 +384,20 @@ def CapturePicture():
 #                 print("SNAP")
 #    gpout = subprocess.check_output(gphoto2CmdLine, stderr=subprocess.STDOUT, shell=True)
 
-    print(gpout)
+   
     
     print("Waiting for picture to be taken...")
     for x in range(3, -1, -1):
         if x == 0:                        
+                gpout = subprocess.Popen(args)
+                print(gpout)
+                Numeral = str(x)
                 Numeral = ""
                 UpdateDisplay()
                 time.sleep(2)
                 print(Message)
                 Message = "Great shot!"
-        if x == 1: 
-                gpout = subprocess.Popen(args)
-                Numeral = str(x)
+
         else:                        
                 Numeral = str(x)
                 Message3 =  "Photo No." + str(imagecounter) + " will be taken in..."   
