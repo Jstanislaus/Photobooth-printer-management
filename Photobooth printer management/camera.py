@@ -372,7 +372,7 @@ def CapturePicture():
 #    gpout = subprocess.check_output(gphoto2CmdLine, stderr=subprocess.STDOUT, shell=True)
 
     print(gpout)
-
+    time.sleep(2)   #extra delay for Pi3
     print("Waiting for picture to be taken...")
     for x in range(3, -1, -1):
         if x == 0:                        
@@ -552,13 +552,17 @@ def TakePictures():
                             conn.printFile(printer_name, '/home/pi/Desktop/tempprint.jpg', "PhotoBooth", {})
                             
                             time.sleep(5)
-                            Message = "Your Photo is number "  + str(printqueuelength+1) + " in the Print Queue" #Using Printer name  : " + printer_name
+                            Message = "Your Photo is number "  + str(printqueuelength+1) 
+                            Message2 = " in the Print Queue" #Using Printer name  : " + printer_name
                             UpdateDisplay()  
                             time.sleep(5)
                             Message = "All done," 
-                            Message2 ="  Thankyou for using Photobooth.. !"
+                            Message2 = "Thankyou for using Photobooth.. !"
                             UpdateDisplay()  
                             time.sleep(5)
+                            Message =""
+                            Message2 =""
+                            UpdateDisplay()  
             else:
                     Message = "Nous vous enverrons vos photos"
                     Numeral = ""
