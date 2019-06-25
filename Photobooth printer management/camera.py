@@ -412,7 +412,7 @@ def CapturePicture():
     Message2 = "while I fetch the photo"
     print(Message + Message2)
     UpdateDisplay()
-    time.sleep(8) 
+    time.sleep(5) 
     Message = "Nearly there..."
     Message2 = ""
     print(Message)
