@@ -394,13 +394,13 @@ def CapturePicture():
                 Message = "Great shot!"
         else:                        
                 Numeral = str(x)
-                Message3 =  "Photo No." + str(imagecounter) + " will be taken In..."   
+                Message3 =  "Photo No." + str(imagecounter) + " will be taken in..."   
                 
         UpdateDisplay()
         time.sleep(0.5)
 
 
-    time.sleep(1)
+    time.sleep(3)
     Message3 = ""
     Message = "Now relax "
     Message2 = "while I fetch the photo"
