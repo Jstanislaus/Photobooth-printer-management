@@ -482,7 +482,7 @@ def TakePictures():
     #img.save(filename)    .
     
 
-        # Create the final filename
+    # Create the final filename
     ts = time.time()
     Final_Image_Name = os.path.join(os.path.realpath(imagefolder), "Final_" + str(TotalImageCount)+"_"+str(ts) + ".jpg")
     print(Final_Image_Name)
@@ -555,7 +555,7 @@ def TakePictures():
                             Message = "Your Photo is number "  + str(printqueuelength+1) + " in the Print Queue" #Using Printer name  : " + printer_name
                             UpdateDisplay()  
                             time.sleep(5)
-			                Message = "All done," 
+                            Message = "All done," 
                             Message2 ="  Thankyou for using Photobooth !"
                             UpdateDisplay()  
                             time.sleep(5)
