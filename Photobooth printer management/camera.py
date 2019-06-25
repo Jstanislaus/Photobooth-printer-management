@@ -367,7 +367,7 @@ def CapturePicture():
     
     Message3 = ""
     Message = "Now lets see"
-    Message2 = "Your best pose !!"
+    Message2 = "your best pose !!"
     print(Message + Message2)
     UpdateDisplay()
     time.sleep(3)
@@ -394,7 +394,7 @@ def CapturePicture():
                 Message = "Great shot!"
         else:                        
                 Numeral = str(x)
-                Message3 =  "Photo No." + str(imagecounter) + " Will be taken In..."   
+                Message3 =  "Photo No." + str(imagecounter) + " will be taken In..."   
                 
         UpdateDisplay()
         time.sleep(0.5)
@@ -535,7 +535,7 @@ def TakePictures():
     UpdateDisplay()
 #    time.sleep(1)
     Message3 = ""
-    Message = "Press and hold Button to Print"
+    Message = "Press and hold button to print"
     UpdateDisplay()
     Printing = False
     WaitForPrintingEvent()
@@ -557,7 +557,7 @@ def TakePictures():
                             printer_name = printers.keys()[2]
                             print(printer_name)
                             printer_name = "Photos_10cm_x_15cm"
-                            Message = "Let's Print That Masterpiece!"  #Using Printer name  : " + printer_name
+                            Message = "Let's print that masterpiece!"  #Using Printer name  : " + printer_name
                             UpdateDisplay()
                             time.sleep(5)
                             # print the buffer file
@@ -565,12 +565,12 @@ def TakePictures():
                             conn.printFile(printer_name, '/home/pi/Desktop/tempprint.jpg', "PhotoBooth", {})
                             
                             time.sleep(5)
-                            Message = "Your Photo is number "  + str(printqueuelength+1) 
-                            Message2 = " in the Print Queue" #Using Printer name  : " + printer_name
+                            Message = "Your photo is number "  + str(printqueuelength+1) 
+                            Message2 = " in the print queue" #Using Printer name  : " + printer_name
                             UpdateDisplay()  
                             time.sleep(5)
                             Message = "All done," 
-                            Message2 = "Thankyou for using Photobooth.. !"
+                            Message2 = "thankyou for using Photobooth.. !"
                             UpdateDisplay()  
                             time.sleep(5)
                             Message =""
