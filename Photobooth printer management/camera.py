@@ -556,7 +556,7 @@ def TakePictures():
                             UpdateDisplay()  
                             time.sleep(5)
                             Message = "All done," 
-                            Message2 ="  Thankyou for using Photobooth !"
+                            Message2 ="  Thankyou for using Photobooth.. !"
                             UpdateDisplay()  
                             time.sleep(5)
             else:
