@@ -481,6 +481,11 @@ def TakePictures():
     image3 = image3.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
     #img.save(filename)    .
     
+
+        # Create the final filename
+    ts = time.time()
+    Final_Image_Name = os.path.join(os.path.realpath(imagefolder), "Final_" + str(TotalImageCount)+"_"+str(ts) + ".jpg")
+    print(Final_Image_Name)
     
         #QRCode = PIL.Image.open(QRCode)   
     QRCode = Image.open(QRCode)
@@ -503,10 +508,7 @@ def TakePictures():
     bgimage.paste(image2, (0, 400))   #bgimage.paste(image2, (625, 405))
     bgimage.paste(image3, (600, 400))     #bgimage.paste(image3, (55, 405))
     bgimage.paste(QRCode, (480,280)) 
-    # Create the final filename
-    ts = time.time()
-    Final_Image_Name = os.path.join(os.path.realpath(imagefolder), "Final_" + str(TotalImageCount)+"_"+str(ts) + ".jpg")
-    print(Final_Image_Name)
+
     # Save it to the usb drive
     bgimage.save(Final_Image_Name)
     # Save a temp file, its faster to print from the pi than usb
@@ -553,7 +555,8 @@ def TakePictures():
                             Message = "Your Photo is number "  + str(printqueuelength+1) + " in the Print Queue" #Using Printer name  : " + printer_name
                             UpdateDisplay()  
                             time.sleep(5)
-			    Message = "All done, Thankyou for using Photobooth !" 
+			                Message = "All done," 
+                            Message2 ="  Thankyou for using Photobooth !"
                             UpdateDisplay()  
                             time.sleep(5)
             else:
