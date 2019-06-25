@@ -364,6 +364,13 @@ def CapturePicture():
     print(gphoto2CmdLine)
     args = shlex.split(gphoto2CmdLine)
     print(args)
+    
+    Message3 = ""
+    Message = "Now lets see"
+    Message2 = "You best POSE !!"
+    print(Message + Message2)
+    UpdateDisplay()
+    time.sleep(3) 
     gpout = subprocess.Popen(args)
 
 #                camera.capture(filename, resize=(IMAGE_WIDTH, IMAGE_HEIGHT))
@@ -372,7 +379,7 @@ def CapturePicture():
 #    gpout = subprocess.check_output(gphoto2CmdLine, stderr=subprocess.STDOUT, shell=True)
 
     print(gpout)
-    time.sleep(2)   #extra delay for Pi3
+    
     print("Waiting for picture to be taken...")
     for x in range(3, -1, -1):
         if x == 0:                        
@@ -384,7 +391,7 @@ def CapturePicture():
                 Message3 =  "Photo No." + str(imagecounter) + " Will Be Taken In..."   
                 
         UpdateDisplay()
-        time.sleep(0.7)
+        time.sleep(0.5)
 
 
     time.sleep(1)
