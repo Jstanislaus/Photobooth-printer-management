@@ -550,7 +550,10 @@ def TakePictures():
                             conn.printFile(printer_name, '/home/pi/Desktop/tempprint.jpg', "PhotoBooth", {})
                             
                             time.sleep(5)
-                            Message = "Your Photo is number "  + str(printqueuelength) + " in the Print Queue" #Using Printer name  : " + printer_name
+                            Message = "Your Photo is number "  + str(printqueuelength+1) + " in the Print Queue" #Using Printer name  : " + printer_name
+                            UpdateDisplay()  
+                            time.sleep(5)
+			    Message = "All done, Thankyou for using Photobooth !" 
                             UpdateDisplay()  
                             time.sleep(5)
             else:
