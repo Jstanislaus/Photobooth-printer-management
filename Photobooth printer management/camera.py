@@ -390,6 +390,7 @@ def CapturePicture():
     for x in range(3, -1, -1):
         if x == 0:                        
                 Numeral = ""
+                UpdateDisplay()
                 time.sleep(2)
                 print(Message)
                 Message = "Great shot!"
