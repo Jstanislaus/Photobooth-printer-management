@@ -367,10 +367,16 @@ def CapturePicture():
     
     Message3 = ""
     Message = "Now lets see"
-    Message2 = "You best POSE !!"
+    Message2 = "Your best pose !!"
     print(Message + Message2)
     UpdateDisplay()
-    time.sleep(3) 
+    time.sleep(3)
+
+    Message3 = ""
+    Message = ""
+    Message2 = ""
+    UpdateDisplay()
+
     gpout = subprocess.Popen(args)
 
 #                camera.capture(filename, resize=(IMAGE_WIDTH, IMAGE_HEIGHT))
@@ -385,10 +391,10 @@ def CapturePicture():
         if x == 0:                        
                 Numeral = ""
                 print(Message)
-                Message = "Great Shot!"
+                Message = "Great shot!"
         else:                        
                 Numeral = str(x)
-                Message3 =  "Photo No." + str(imagecounter) + " Will Be Taken In..."   
+                Message3 =  "Photo No." + str(imagecounter) + " Will be taken In..."   
                 
         UpdateDisplay()
         time.sleep(0.5)
