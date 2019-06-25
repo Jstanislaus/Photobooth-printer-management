@@ -390,6 +390,7 @@ def CapturePicture():
     for x in range(3, -1, -1):
         if x == 0:                        
                 Numeral = ""
+                time.sleep(2)
                 print(Message)
                 Message = "Great shot!"
         else:                        
@@ -400,7 +401,7 @@ def CapturePicture():
         time.sleep(0.5)
 
 
-    time.sleep(3)
+    time.sleep(1)
     Message3 = ""
     Message = "Now relax "
     Message2 = "while I fetch the photo"
