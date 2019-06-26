@@ -532,7 +532,8 @@ def TakePictures():
     Final_Image_Name = os.path.join(os.path.realpath(imagefolder), "Final_" + str(TotalImageCount)+"_"+str(ts) + ".jpg")
     print(Final_Image_Name)
 
-    QRCode("Final_" + str(TotalImageCount)+"_"+str(ts))
+    QRData = "Final_" + str(TotalImageCount)+"_"+str(ts)
+    QRCode(QRData)
     
         #QRCode = PIL.Image.open(QRCode)   
     QRCode = Image.open(QRCode)
