@@ -702,11 +702,11 @@ def main(threadName, *args):
 while True:
     InitCamera()
     show_image('Template/start_camera.jpg')
-    WaitForEvent()
+    #WaitForEvent()
     time.sleep(1)
     TakePictures()
-    #print("Success! Exiting..")
-    #pygame.quit()
+    print("Success! Exiting..")
+    pygame.quit()
 
 
 # launch the main thread
