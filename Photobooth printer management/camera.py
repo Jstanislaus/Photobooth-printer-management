@@ -509,7 +509,7 @@ def TakePictures():
     Final_Image_Name = os.path.join(os.path.realpath(imagefolder), "Final_" + str(TotalImageCount)+"_"+str(ts) + ".jpg")
     print(Final_Image_Name)
 
-    QRData = "Final_" + str(TotalImageCount)+"_"+str(ts)
+    QRDdata = "Final_" + str(TotalImageCount)+"_"+str(ts)
     starttime = (datetime.datetime.now())
 
     #QRDdata = "Here is some QRCodeTada!"
