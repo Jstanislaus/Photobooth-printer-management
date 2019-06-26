@@ -4,6 +4,8 @@ import os
 import PIL.Image
 import cups
 import pifaceio
+import qrcode
+import datetime
 
 from threading import Thread
 from pygame.locals import *
@@ -196,6 +198,7 @@ def DisplayText(fontSize, textToDisplay):
             else:
                     background.blit(text, textpos)
 
+
 def UpdateDisplay():
     # init global variables from main thread
     global Numeral
@@ -285,7 +288,6 @@ def UpdateDisplay():
     pygame.display.flip()
     return
 
-
 def ShowPicture(file, delay): #
     global pygame
     global screenPicture
@@ -311,6 +313,30 @@ def show_image(image_path):
 	y = (infoObject.current_h / 2) - (img.get_height() / 2)
 	screen.blit(img,(x,y))
 	pygame.display.flip()
+
+def QRCode(QRData):
+
+    
+    starttime = (datetime.datetime.now())
+
+    #QRDdata = "Here is some QRCodeTada!"
+    QRFilename =  os.path.join('Temp', "QRCode.jpg") #Path of template image
+    qr = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=3,
+        border=1,
+    )
+    qr.add_data(QRDdata)
+    qr.make(fit=True)
+
+    img = qr.make_image(fill_color="black", back_color="white")
+    img.save(QRFilename)
+
+    stoptime = (datetime.datetime.now())
+
+    print(stoptime-starttime)
+    print("QRcode Saved to ",QRFilename )
 
 def CapturePicture():
     global imagecounter
@@ -505,6 +531,8 @@ def TakePictures():
     ts = time.time()
     Final_Image_Name = os.path.join(os.path.realpath(imagefolder), "Final_" + str(TotalImageCount)+"_"+str(ts) + ".jpg")
     print(Final_Image_Name)
+
+    QRCode("Final_" + str(TotalImageCount)+"_"+str(ts))
     
         #QRCode = PIL.Image.open(QRCode)   
     QRCode = Image.open(QRCode)
