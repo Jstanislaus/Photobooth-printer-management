@@ -473,6 +473,7 @@ def TakePictures():
     global Printing
     global PhotosPerCart
     global TotalImageCount
+    global QRData
 
     input(pygame.event.get())
     
