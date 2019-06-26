@@ -513,7 +513,7 @@ def TakePictures():
     starttime = (datetime.datetime.now())
 
     #QRDdata = "Here is some QRCodeTada!"
-    QRFilename =  os.path.join('Temp', "QRCode.jpg") #Path of template image
+    QRFilename =  os.path.join(imagefolder, "QRCode.jpg") #Path of template image
     qr = qrcode.QRCode(
         version=1,
         error_correction=qrcode.constants.ERROR_CORRECT_L,
@@ -532,7 +532,7 @@ def TakePictures():
     print("QRcode Saved to ",QRFilename )
     
         #QRCode = PIL.Image.open(QRCode)   
-    QRCode = Image.open(QRCode)
+    QRCode = Image.open(QRFilename)
     wpercent = (basewidth / float(QRCode.size[0]))/5
     print("QRCode.size[0] = " + str(QRCode.size[0]))
     print("QRCode.size[1] = " + str(QRCode.size[1]))
