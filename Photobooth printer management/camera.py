@@ -729,6 +729,8 @@ while True:
     #WaitForEvent()
     time.sleep(1)
     TakePictures()
+    print("Success! Exiting..")
+    pygame.quit()
 
 
 # launch the main thread
