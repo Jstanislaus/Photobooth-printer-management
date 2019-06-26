@@ -37,7 +37,7 @@ BUTTON_PIN = 25
 IMAGE_WIDTH = 550
 IMAGE_HEIGHT = 360 
 QRData = "Blank QR Data"
-
+QRDdata = "Blank QR Data"
 # Load the background template
 bgimage = PIL.Image.open(templatePath)
 
@@ -313,30 +313,6 @@ def show_image(image_path):
 	y = (infoObject.current_h / 2) - (img.get_height() / 2)
 	screen.blit(img,(x,y))
 	pygame.display.flip()
-
-def QRCode():
-
-    global QRData
-    starttime = (datetime.datetime.now())
-
-    #QRDdata = "Here is some QRCodeTada!"
-    QRFilename =  os.path.join('Temp', "QRCode.jpg") #Path of template image
-    qr = qrcode.QRCode(
-        version=1,
-        error_correction=qrcode.constants.ERROR_CORRECT_L,
-        box_size=3,
-        border=1,
-    )
-    qr.add_data(QRDdata)
-    qr.make(fit=True)
-
-    img = qr.make_image(fill_color="black", back_color="white")
-    img.save(QRFilename)
-
-    stoptime = (datetime.datetime.now())
-
-    print(stoptime-starttime)
-    print("QRcode Saved to ",QRFilename )
 
 def CapturePicture():
     global imagecounter
