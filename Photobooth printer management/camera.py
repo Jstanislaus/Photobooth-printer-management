@@ -36,7 +36,7 @@ BUTTON_PIN = 25
 #IMAGE_HEIGHT = 374
 IMAGE_WIDTH = 550
 IMAGE_HEIGHT = 360 
-
+QRData = "Blank QR Data"
 
 # Load the background template
 bgimage = PIL.Image.open(templatePath)
