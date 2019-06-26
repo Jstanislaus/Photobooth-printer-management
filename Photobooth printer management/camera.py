@@ -314,9 +314,9 @@ def show_image(image_path):
 	screen.blit(img,(x,y))
 	pygame.display.flip()
 
-def QRCode(QRData):
+def QRCode():
 
-    
+    global QRData
     starttime = (datetime.datetime.now())
 
     #QRDdata = "Here is some QRCodeTada!"
@@ -532,8 +532,8 @@ def TakePictures():
     Final_Image_Name = os.path.join(os.path.realpath(imagefolder), "Final_" + str(TotalImageCount)+"_"+str(ts) + ".jpg")
     print(Final_Image_Name)
 
-    QRData = str("Final_" + str(TotalImageCount)+"_"+str(ts))
-    QRCode(QRData)
+    QRData = "Final_" + str(TotalImageCount)+"_"+str(ts)
+    QRCode()
     
         #QRCode = PIL.Image.open(QRCode)   
     QRCode = Image.open(QRCode)
@@ -706,7 +706,7 @@ def main(threadName, *args):
 while True:
     InitCamera()
     show_image('Template/start_camera.jpg')
-    WaitForEvent()
+    #WaitForEvent()
     time.sleep(1)
     TakePictures()
 
