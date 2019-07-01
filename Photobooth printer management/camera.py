@@ -133,8 +133,9 @@ def InitCamera():
 
         CameraModel = pygame.camera.list_cameras()
         if CameraModel:
-        cam = pygame.camera.Camera(CameraModel[0],(640,480))
-        print CameraModel
+            cam = pygame.camera.Camera(CameraModel[0],(640,480))
+            print(CameraModel)
+
 
 #        import shlex, subprocess
 #        gphoto2CmdLine = "gphoto2 --auto-detect"
