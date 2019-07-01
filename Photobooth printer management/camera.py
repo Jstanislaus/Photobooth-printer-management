@@ -6,6 +6,8 @@ import cups
 import pifaceio
 import qrcode
 import datetime
+import pygame.camera
+from pygame.locals import *
 
 from threading import Thread
 from pygame.locals import *
