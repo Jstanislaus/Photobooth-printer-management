@@ -27,9 +27,27 @@ class Capture(object):
         self.display.blit(self.snapshot, (0,0))
         pygame.display.flip()
 
+
+    def image_capture(self):
+import pygame
+import pygame.camera
+from pygame.locals import *
+pygame.init()
+pygame.camera.init()
+cam = pygame.camera.Camera("/dev/video0",(640,480))
+cam.start()
+image = cam.get_image()
+pygame.image.save(image, "imageJacob.jpg")
+
+
+
     def main(self):
+
+ 
         going = True
         while going:
+        self.image_capture()
+
             events = pygame.event.get()
             for e in events:
                 if e.type == QUIT or (e.type == KEYDOWN and e.key == K_ESCAPE):

@@ -131,23 +131,27 @@ def InitCamera():
         Message = 'Camera Check...'
         UpdateDisplay()
 
-        import shlex, subprocess
-        gphoto2CmdLine = "gphoto2 --auto-detect"
-        args = shlex.split(gphoto2CmdLine)
-        print(args)
-        gpout = subprocess.Popen(args,stdout=subprocess.PIPE, stdin=subprocess.PIPE)
+        CameraModel = pygame.camera.list_cameras()
+        if CameraModel:
+        cam = pygame.camera.Camera(CameraModel[0],(640,480))
+        print CameraModel
 
-    
+#        import shlex, subprocess
+#        gphoto2CmdLine = "gphoto2 --auto-detect"
+#        args = shlex.split(gphoto2CmdLine)
+#        print(args)
+#        gpout = subprocess.Popen(args,stdout=subprocess.PIPE, stdin=subprocess.PIPE)
+#
         Message = "Waiting for camera response "
         print(Message)
         UpdateDisplay()
         Message = ""
         Message2 = ""   
 
-        gpout1=gpout.wait()
+#        gpout1=gpout.wait()
 
-        CameraModel = gpout.stdout.readlines()
-        del CameraModel[0:2]
+#        CameraModel = gpout.stdout.readlines()
+#        del CameraModel[0:2]
      
         if len(CameraModel):
             Message = "Camera check is done found:"
@@ -163,6 +167,7 @@ def InitCamera():
             print(Message)
             print(Message2)
             UpdateDisplay()
+            time.sleep(1)
             WaitForEvent()
 
 
