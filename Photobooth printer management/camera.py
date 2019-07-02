@@ -337,6 +337,7 @@ def CapturePicture():
     global ImageShowed
     global CountDownPhoto
     global BackgroundColor
+    global cam
 
     BackgroundColor = ""
     Numeral = ""
