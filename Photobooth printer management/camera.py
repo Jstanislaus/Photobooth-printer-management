@@ -376,7 +376,10 @@ def CapturePicture():
     print(gphoto2CmdLine)
     args = shlex.split(gphoto2CmdLine)
     print(args)
-    
+
+    cam = pygame.camera.Camera("/dev/video0",(640,480))
+    cam.start()
+
     Message3 = ""
     Message = "Now lets see"
     Message2 = "your best pose !!"
@@ -395,6 +398,7 @@ def CapturePicture():
         if x == 0:                        
 #                gpout = subprocess.Popen(args)
 #                print(gpout)
+
                 image = cam.get_image()
                 pygame.image.save(image, filename)
                 Numeral = str(x)
