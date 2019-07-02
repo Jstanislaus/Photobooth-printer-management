@@ -401,6 +401,7 @@ def CapturePicture():
 #                print(gpout)
 
                 image = cam.get_image()
+                cam.stop()
                 pygame.image.save(image, filename)
                 Numeral = str(x)
                 Numeral = ""
@@ -714,8 +715,8 @@ while True:
     WaitForEvent()
     time.sleep(1)
     TakePictures()
-    #print("Success! Exiting..")
-    #pygame.quit()
+    print("Success! Exiting..")
+    pygame.quit()
 
 
 # launch the main thread
