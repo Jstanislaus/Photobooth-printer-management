@@ -399,9 +399,9 @@ def CapturePicture():
 #                gpout = subprocess.Popen(args)
 #                print(gpout)
 
-                image = cam.get_image()
+                img = cam.get_image()
                 
-                pygame.image.save(image, filename)
+                pygame.image.save(img, filename)
                 Numeral = str(x)
                 Numeral = ""
                 UpdateDisplay()
