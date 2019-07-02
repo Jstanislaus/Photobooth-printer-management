@@ -6,8 +6,6 @@ import cups
 import pifaceio
 import qrcode
 import datetime
-import pygame.camera
-from pygame.locals import *
 
 from threading import Thread
 from pygame.locals import *
@@ -126,36 +124,30 @@ def InitCamera():
     global Message
     global Message2
     global CameraPresent
-    global cam
 
     CameraPresent = False
 
     while CameraPresent == False:
         Message = 'Camera Check...'
         UpdateDisplay()
-        pygame.camera.init()
-        CameraModel = pygame.camera.list_cameras()
-        if CameraModel:
-            cam = pygame.camera.Camera(CameraModel[0],(640,480))
-            print(CameraModel)
 
+        import shlex, subprocess
+        gphoto2CmdLine = "gphoto2 --auto-detect"
+        args = shlex.split(gphoto2CmdLine)
+        print(args)
+        gpout = subprocess.Popen(args,stdout=subprocess.PIPE, stdin=subprocess.PIPE)
 
-#        import shlex, subprocess
-#        gphoto2CmdLine = "gphoto2 --auto-detect"
-#        args = shlex.split(gphoto2CmdLine)
-#        print(args)
-#        gpout = subprocess.Popen(args,stdout=subprocess.PIPE, stdin=subprocess.PIPE)
-#
+    
         Message = "Waiting for camera response "
         print(Message)
         UpdateDisplay()
         Message = ""
         Message2 = ""   
 
-#        gpout1=gpout.wait()
+        gpout1=gpout.wait()
 
-#        CameraModel = gpout.stdout.readlines()
-#        del CameraModel[0:2]
+        CameraModel = gpout.stdout.readlines()
+        del CameraModel[0:2]
      
         if len(CameraModel):
             Message = "Camera check is done found:"
@@ -164,8 +156,6 @@ def InitCamera():
             print(Message2)
             UpdateDisplay()
             CameraPresent = True
-            cam = pygame.camera.Camera("/dev/video0",(1200,800))
-            cam.start()
         else:
             Message = "Camera NOT found:"
             Message2 ="Check connection and press button"
@@ -173,7 +163,6 @@ def InitCamera():
             print(Message)
             print(Message2)
             UpdateDisplay()
-            time.sleep(1)
             WaitForEvent()
 
 
@@ -353,7 +342,6 @@ def CapturePicture():
     screen.blit(background, (0, 0))
     pygame.display.flip()
 #    camera.start_preview()
-    img = cam.get_image()
     BackgroundColor = "black"
 
    # for x in range(3, -1, -1):
@@ -374,13 +362,11 @@ def CapturePicture():
     ts = time.time()
     filename = os.path.join(imagefolder, 'images', str(imagecounter)+"_"+str(ts) + '.jpg')
     print(filename)
-
     gphoto2CmdLine = "gphoto2 --capture-image-and-download --filename " + filename
     print(gphoto2CmdLine)
     args = shlex.split(gphoto2CmdLine)
     print(args)
-
-
+    
     Message3 = ""
     Message = "Now lets see"
     Message2 = "your best pose !!"
@@ -394,15 +380,19 @@ def CapturePicture():
     UpdateDisplay()
 
     
+
+#                camera.capture(filename, resize=(IMAGE_WIDTH, IMAGE_HEIGHT))
+#                camera.stop_preview()
+#                 print("SNAP")
+#    gpout = subprocess.check_output(gphoto2CmdLine, stderr=subprocess.STDOUT, shell=True)
+
+   
+    
     print("Waiting for picture to be taken...")
     for x in range(3, -1, -1):
         if x == 0:                        
-#                gpout = subprocess.Popen(args)
-#                print(gpout)
-
-                img = cam.get_image()
-                
-                pygame.image.save(img, filename)
+                gpout = subprocess.Popen(args)
+                print(gpout)
                 Numeral = str(x)
                 Numeral = ""
                 UpdateDisplay()
@@ -430,8 +420,8 @@ def CapturePicture():
     print(Message)
     UpdateDisplay()
 
-#    gpout1=gpout.wait()
-#    print(gpout1)
+    gpout1=gpout.wait()
+    print(gpout1)
     print("GPHOTO2 is done")
 
 #    if "ERROR" not in gpout1: 
@@ -715,7 +705,6 @@ while True:
     WaitForEvent()
     time.sleep(1)
     TakePictures()
-    cam.stop()
     #print("Success! Exiting..")
     #pygame.quit()
 
