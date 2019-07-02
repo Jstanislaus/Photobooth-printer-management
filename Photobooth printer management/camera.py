@@ -163,6 +163,8 @@ def InitCamera():
             print(Message2)
             UpdateDisplay()
             CameraPresent = True
+            cam = pygame.camera.Camera("/dev/video0",(640,480))
+            cam.start()
         else:
             Message = "Camera NOT found:"
             Message2 ="Check connection and press button"
@@ -377,8 +379,6 @@ def CapturePicture():
     args = shlex.split(gphoto2CmdLine)
     print(args)
 
-    cam = pygame.camera.Camera("/dev/video0",(640,480))
-    cam.start()
 
     Message3 = ""
     Message = "Now lets see"
