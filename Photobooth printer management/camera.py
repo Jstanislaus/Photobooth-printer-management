@@ -429,7 +429,7 @@ def CapturePicture():
     UpdateDisplay()
 
 #    gpout1=gpout.wait()
-    print(gpout1)
+#    print(gpout1)
     print("GPHOTO2 is done")
 
 #    if "ERROR" not in gpout1: 
