@@ -370,6 +370,7 @@ def CapturePicture():
     ts = time.time()
     filename = os.path.join(imagefolder, 'images', str(imagecounter)+"_"+str(ts) + '.jpg')
     print(filename)
+
     gphoto2CmdLine = "gphoto2 --capture-image-and-download --filename " + filename
     print(gphoto2CmdLine)
     args = shlex.split(gphoto2CmdLine)
@@ -388,19 +389,13 @@ def CapturePicture():
     UpdateDisplay()
 
     
-
-#                camera.capture(filename, resize=(IMAGE_WIDTH, IMAGE_HEIGHT))
-#                camera.stop_preview()
-#                 print("SNAP")
-#    gpout = subprocess.check_output(gphoto2CmdLine, stderr=subprocess.STDOUT, shell=True)
-
-   
-    
     print("Waiting for picture to be taken...")
     for x in range(3, -1, -1):
         if x == 0:                        
-                gpout = subprocess.Popen(args)
-                print(gpout)
+#                gpout = subprocess.Popen(args)
+#                print(gpout)
+                image = cam.get_image()
+                pygame.image.save(image, filename)
                 Numeral = str(x)
                 Numeral = ""
                 UpdateDisplay()
@@ -428,7 +423,7 @@ def CapturePicture():
     print(Message)
     UpdateDisplay()
 
-    gpout1=gpout.wait()
+#    gpout1=gpout.wait()
     print(gpout1)
     print("GPHOTO2 is done")
 
