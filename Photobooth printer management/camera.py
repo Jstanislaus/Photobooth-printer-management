@@ -126,6 +126,7 @@ def InitCamera():
     global Message
     global Message2
     global CameraPresent
+    global cam
 
     CameraPresent = False
 
@@ -339,7 +340,7 @@ def CapturePicture():
     global ImageShowed
     global CountDownPhoto
     global BackgroundColor
-    global cam
+   # global cam
 
     BackgroundColor = ""
     Numeral = ""
