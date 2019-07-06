@@ -1,3 +1,6 @@
+# edited from :
+# https://www.pygame.org/docs/tut/CameraIntro.html
+
 import pygame
 import pygame.camera
 from pygame.locals import *
