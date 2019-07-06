@@ -25,7 +25,7 @@ CountDownPhoto = ""
 CountPhotoOnCart = "" 
 SmallMessage = ""  # SmallMessage is a lower banner message
 TotalImageCount = 0  # Counter for Display and to monitor paper usage
-PhotosPerCart = 30  # Selphy takes 16 sheets per tray
+PhotosPerCart = 3000  # Selphy takes 16 sheets per tray
 imagecounter = 0
 imagefolder = "/home/pi/Photos"   #os.path.realpath("../Photos")
 templatePath = os.path.join('Template', "template.png") #Path of template image
@@ -601,7 +601,7 @@ def TakePictures():
                             UpdateDisplay()  
                             time.sleep(5)
                             Message = "All done," 
-                            Message2 = "thankyou for using Photobooth.. !"
+                            Message2 = "Thankyou for using Photobooth.. !"
                             UpdateDisplay()  
                             time.sleep(5)
                             Message =""
