@@ -6,7 +6,9 @@ pygame.init()
 pygame.camera.init()
 
 #create fullscreen display 640x480
-screen = pygame.display.set_mode((640,480),0)
+xRes = 640*2
+yRes = 480*2
+screen = pygame.display.set_mode((xRes,yRes),0)
 
 #find, open and start low-res camera
 cam_list = pygame.camera.list_cameras()
