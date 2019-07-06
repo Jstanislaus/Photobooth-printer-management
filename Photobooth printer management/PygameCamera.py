@@ -18,7 +18,7 @@ webcam.start()
 while True:
     #grab image, scale and blit to screen
     imagen = webcam.get_image()
-    imagen = pygame.transform.scale(imagen,(640,480))
+    imagen = pygame.transform.scale(imagen,(xRes,yRes))
     screen.blit(imagen,(0,0))
 
     #draw all updates to display
