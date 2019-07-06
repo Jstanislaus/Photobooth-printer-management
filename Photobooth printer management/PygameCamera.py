@@ -1,60 +1,30 @@
-# edited from :
-# https://www.pygame.org/docs/tut/CameraIntro.html
-
+import sys
 import pygame
 import pygame.camera
-from pygame.locals import *
 
-class Capture(object):
-    def __init__(self):
-        self.size = (640,480)
-        # create a display surface. standard pygame stuff
-        self.display = pygame.display.set_mode(self.size, 0)
+pygame.init()
+pygame.camera.init()
 
-        # this is the same as what we saw before
-        self.clist = pygame.camera.list_cameras()
-        if not self.clist:
-            raise ValueError("Sorry, no cameras detected.")
-        self.cam = pygame.camera.Camera(self.clist[0], self.size)
-        self.cam.start()
+#create fullscreen display 640x480
+screen = pygame.display.set_mode((640,480),0)
 
-        # create a surface to capture to.  for performance purposes
-        # bit depth is the same as that of the display surface.
-        self.snapshot = pygame.surface.Surface(self.size, 0, self.display)
+#find, open and start low-res camera
+cam_list = pygame.camera.list_cameras()
+webcam = pygame.camera.Camera(cam_list[0],(32,24))
+webcam.start()
 
-    def get_and_flip(self):
-        # if you don't want to tie the framerate to the camera, you can check
-        # if the camera has an image ready.  note that while this works
-        # on most cameras, some will never return true.
-        if self.cam.query_image():
-            self.snapshot = self.cam.get_image(self.snapshot)
+while True:
+    #grab image, scale and blit to screen
+    imagen = webcam.get_image()
+    imagen = pygame.transform.scale(imagen,(640,480))
+    screen.blit(imagen,(0,0))
 
-        # blit it to the display surface.  simple!
-        self.display.blit(self.snapshot, (0,0))
-        pygame.display.flip()
+    #draw all updates to display
+    pygame.display.update()
 
-
-    def image_capture(self):
-        pygame.init()
-        pygame.camera.init()
-        cam = pygame.camera.Camera("/dev/video0",(640,480))
-        cam.start()
-        image = cam.get_image()
-        pygame.image.save(image, "imageJacob.jpg")
-
-
-
-    def main(self):
-        
-        going = True
-        while going:
-            self.image_capture()
-
-            events = pygame.event.get()
-            for e in events:
-                if e.type == QUIT or (e.type == KEYDOWN and e.key == K_ESCAPE):
-                    # close the camera safely
-                    self.cam.stop()
-                    going = False
-
-            self.get_and_flip()
+    # check for quit events
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+        webcam.stop()
+        pygame.quit()
+        sys.exit()
