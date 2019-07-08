@@ -717,14 +717,15 @@ while True:
     time.sleep(1)
     #TakePictures()
 
-    xRes = 640
-    yRes = 480
+    xRes = 640/2
+    yRes = 480/2
     #screen = pygame.display.set_mode((xRes,yRes),0)
 
     #find, open and start low-res camera
     #CameraModel = pygame.camera.list_cameras()
-    #webcam = pygame.camera.Camera(CameraModel[0],(xRes,yRes))
-    #webcam.start()
+
+    cam = pygame.camera.Camera(CameraModel[0],(xRes,yRes))
+#    cam.start()
 
     while True:
         #grab image, scale and blit to screen
