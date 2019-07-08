@@ -733,7 +733,7 @@ while True:
         #grab image, scale and blit to screen
         imagen = cam.get_image()
         imagen = pygame.transform.scale(imagen,(xRes,yRes))
-        screen.blit(imagen,(200,100))
+        screen.blit(imagen,(200,50))
 
         #draw all updates to display
         pygame.display.update()
