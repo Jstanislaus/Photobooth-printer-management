@@ -411,16 +411,17 @@ def CapturePicture():
                 Numeral = str(x)
                 Numeral = ""
                 UpdateDisplay()
-                time.sleep(1)
+                time.sleep(5)
                 print(Message)
                 Message = "Great shot!"
+                Message3 =  ""
 
         else:                        
                 Numeral = str(x)
                 Message3 =  "Photo No." + str(imagecounter) + " will be taken in..."   
                 
         UpdateDisplay()
-        time.sleep(5)
+        time.sleep(0.75)
 
 
     print("Photo Capturing is done")
