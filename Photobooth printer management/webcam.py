@@ -719,8 +719,8 @@ while True:
     time.sleep(1)
     #TakePictures()
 
-    xRes = 640/2
-    yRes = 480/2
+    xRes = 640*2
+    yRes = 480*2
     #screen = pygame.display.set_mode((xRes,yRes),0)
 
     #find, open and start low-res camera
