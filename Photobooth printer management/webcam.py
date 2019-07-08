@@ -400,7 +400,7 @@ def CapturePicture():
                     # grab image, scale and blit to screen
                     imagen = cam.get_image()
                     # imagen = pygame.transform.scale(imagen,(xRes,yRes))
-                    screen.blit(imagen,(0,50))
+                    screen.blit(imagen,(0,200))
 
                     #draw all updates to display
                     pygame.display.update()
@@ -420,31 +420,13 @@ def CapturePicture():
                 Message3 =  "Photo No." + str(imagecounter) + " will be taken in..."   
                 
         UpdateDisplay()
-        time.sleep(0.5)
+        time.sleep(5)
 
 
-    time.sleep(1)
-    Message3 = ""
-    Message = "Now relax "
-    Message2 = "while I fetch the photo"
-    print(Message + Message2)
-    UpdateDisplay()
-    time.sleep(5) 
-    Message = "Nearly there..."
-    Message2 = ""
-    print(Message)
-    UpdateDisplay()
+    print("Photo Capturing is done")
 
-#    gpout1=gpout.wait()
-#    print(gpout1)
-    print("GPHOTO2 is done")
-
-#    if "ERROR" not in gpout1: 
-#                 snap += 1
-#                 GPIO.output(POSE_LED, False)
-#                 time.sleep(0.5)
-#                 print("please wait while your photos print...")
-    ShowPicture(filename, 2)
+#    ShowPicture(filename, 2) don't need this function ?
+ 
     ImageShowed = False
     return filename
 
