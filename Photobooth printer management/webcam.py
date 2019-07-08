@@ -128,6 +128,7 @@ def InitCamera():
     global Message2
     global CameraPresent
     global cam
+    global camLive
 
     CameraPresent = False
 
@@ -138,6 +139,7 @@ def InitCamera():
         CameraModel = pygame.camera.list_cameras()
         if CameraModel:
             cam = pygame.camera.Camera(CameraModel[0],(640,480))
+            camLive= pygame.camera.Camera(CameraModel[0],(640,480))
             print(CameraModel)
 
 
@@ -724,8 +726,8 @@ while True:
     #find, open and start low-res camera
     #CameraModel = pygame.camera.list_cameras()
 
-    cam = pygame.camera.Camera(CameraModel[0],(xRes,yRes))
-#    cam.start()
+#    cam = pygame.camera.Camera(CameraModel[0],(xRes,yRes))
+
 
     while True:
         #grab image, scale and blit to screen
