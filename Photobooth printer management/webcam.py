@@ -1,4 +1,3 @@
-
 import pygame
 import time
 import os
@@ -360,26 +359,6 @@ def CapturePicture():
 #    img = cam.get_image()
     BackgroundColor = "black"
 
-    #xRes = 640*2
-    #yRes = 480*2
-    while True:
-        #grab image, scale and blit to screen
-        imagen = cam.get_image()
-     #   imagen = pygame.transform.scale(imagen,(xRes,yRes))
-        screen.blit(imagen,(0,0))
-
-        #draw all updates to display
-        pygame.display.update()
-
-   # for x in range(3, -1, -1):
-    #    if x == 0:                        
-     #           Numeral = ""
-      #          Message = "Strike Your Pose !!"
-       # else:                        
-        #        Numeral = str(x)
-         #       Message = ""                
-        #UpdateDisplay()
-        #time.sleep(0.75)
 
     BackgroundColor = ""
     Numeral = ""
@@ -401,7 +380,7 @@ def CapturePicture():
     Message2 = "your best pose !!"
     print(Message + " " + Message2)
     UpdateDisplay()
-    time.sleep(2)
+    time.sleep(1)
 
     Message3 = ""
     Message = ""
@@ -410,10 +389,21 @@ def CapturePicture():
 
     
     print("Waiting for picture to be taken...")
+
+
     for x in range(3, -1, -1):
         if x == 0:                        
 #                gpout = subprocess.Popen(args)
 #                print(gpout)
+                t_end = time.time() + 5
+                while time.time() < t_end:
+                    # grab image, scale and blit to screen
+                    imagen = cam.get_image()
+                    # imagen = pygame.transform.scale(imagen,(xRes,yRes))
+                    screen.blit(imagen,(0,0))
+
+                    #draw all updates to display
+                    pygame.display.update()
 
                 img = cam.get_image()
                 
@@ -421,7 +411,7 @@ def CapturePicture():
                 Numeral = str(x)
                 Numeral = ""
                 UpdateDisplay()
-                time.sleep(2)
+                time.sleep(1)
                 print(Message)
                 Message = "Great shot!"
 
