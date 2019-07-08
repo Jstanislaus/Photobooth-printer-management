@@ -398,19 +398,18 @@ def CapturePicture():
                 t_end = time.time() + 5
                 while time.time() < t_end:
                     # grab image, scale and blit to screen
-                    imagen = cam.get_image()
+                    img = cam.get_image()
                     # imagen = pygame.transform.scale(imagen,(xRes,yRes))
-                    screen.blit(imagen,(0,200))
+                    screen.blit(img,(0,200))
 
                     #draw all updates to display
                     pygame.display.update()
 
-                img = cam.get_image()
-                
                 pygame.image.save(img, filename)
+
                 Numeral = str(x)
                 Numeral = ""
-               
+                screen.blit(img,(0,200))
                 time.sleep(5)
                 print(Message)
                 Message = "Great shot!"
