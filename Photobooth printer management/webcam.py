@@ -717,6 +717,30 @@ while True:
     time.sleep(1)
     #TakePictures()
 
+    xRes = 640
+    yRes = 480
+    #screen = pygame.display.set_mode((xRes,yRes),0)
+
+    #find, open and start low-res camera
+    #CameraModel = pygame.camera.list_cameras()
+    #webcam = pygame.camera.Camera(CameraModel[0],(xRes,yRes))
+    #webcam.start()
+
+    while True:
+        #grab image, scale and blit to screen
+        imagen = cam.get_image()
+        imagen = pygame.transform.scale(imagen,(xRes,yRes))
+        screen.blit(imagen,(0,0))
+
+        #draw all updates to display
+        pygame.display.update()
+
+        # check for quit events
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                cam.stop()
+                pygame.quit()
+                sys.exit()
 
     cam.stop()
     #print("Success! Exiting..")
