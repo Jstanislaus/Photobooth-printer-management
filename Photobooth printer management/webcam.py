@@ -407,12 +407,15 @@ def CapturePicture():
 
                 pygame.image.save(img, filename)
 
+
+                screen.blit(img,(0,200))
+                #time.sleep(5)
+
                 Numeral = str(x)
                 Numeral = ""
-                screen.blit(img,(0,200))
-                time.sleep(5)
-                print(Message)
+                
                 Message = "Great shot!"
+                print(Message)
                 Message3 =  ""
                 UpdateDisplay()
         else:                        
