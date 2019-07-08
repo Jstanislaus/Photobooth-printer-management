@@ -143,6 +143,7 @@ def InitCamera():
             print(CameraModel)
 
 
+
 #        import shlex, subprocess
 #        gphoto2CmdLine = "gphoto2 --auto-detect"
 #        args = shlex.split(gphoto2CmdLine)
@@ -356,8 +357,19 @@ def CapturePicture():
     screen.blit(background, (0, 0))
     pygame.display.flip()
 #    camera.start_preview()
-    img = cam.get_image()
+#    img = cam.get_image()
     BackgroundColor = "black"
+
+    #xRes = 640*2
+    #yRes = 480*2
+    while True:
+        #grab image, scale and blit to screen
+        imagen = cam.get_image()
+     #   imagen = pygame.transform.scale(imagen,(xRes,yRes))
+        screen.blit(imagen,(0,0))
+
+        #draw all updates to display
+        pygame.display.update()
 
    # for x in range(3, -1, -1):
     #    if x == 0:                        
@@ -717,33 +729,7 @@ while True:
     show_image('Template/start_camera.jpg')
     WaitForEvent()
     time.sleep(1)
-    #TakePictures()
-
-    xRes = 640*2
-    yRes = 480*2
-    #screen = pygame.display.set_mode((xRes,yRes),0)
-
-    #find, open and start low-res camera
-    #CameraModel = pygame.camera.list_cameras()
-
-#    cam = pygame.camera.Camera(CameraModel[0],(xRes,yRes))
-
-
-    while True:
-        #grab image, scale and blit to screen
-        imagen = cam.get_image()
-        imagen = pygame.transform.scale(imagen,(xRes,yRes))
-        screen.blit(imagen,(200,50))
-
-        #draw all updates to display
-        pygame.display.update()
-
-        # check for quit events
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                cam.stop()
-                pygame.quit()
-                sys.exit()
+    TakePictures()
 
     cam.stop()
     #print("Success! Exiting..")
