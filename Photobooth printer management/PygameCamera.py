@@ -1,3 +1,4 @@
+# 2019 07 08 : this works
 import sys
 import pygame
 import pygame.camera
@@ -11,8 +12,8 @@ yRes = 480
 screen = pygame.display.set_mode((xRes,yRes),0)
 
 #find, open and start low-res camera
-cam_list = pygame.camera.list_cameras()
-webcam = pygame.camera.Camera(cam_list[0],(128,96))
+CameraModel = pygame.camera.list_cameras()
+webcam = pygame.camera.Camera(CameraModel[0],(xRes,yRes))
 webcam.start()
 
 while True:

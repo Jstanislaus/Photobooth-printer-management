@@ -715,7 +715,9 @@ while True:
     show_image('Template/start_camera.jpg')
     WaitForEvent()
     time.sleep(1)
-    TakePictures()
+    #TakePictures()
+
+
     cam.stop()
     #print("Success! Exiting..")
     #pygame.quit()
