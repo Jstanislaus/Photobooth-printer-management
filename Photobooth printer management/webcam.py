@@ -410,12 +410,12 @@ def CapturePicture():
                 pygame.image.save(img, filename)
                 Numeral = str(x)
                 Numeral = ""
-                UpdateDisplay()
+               
                 time.sleep(5)
                 print(Message)
                 Message = "Great shot!"
                 Message3 =  ""
-
+                UpdateDisplay()
         else:                        
                 Numeral = str(x)
                 Message3 =  "Photo No." + str(imagecounter) + " will be taken in..."   
