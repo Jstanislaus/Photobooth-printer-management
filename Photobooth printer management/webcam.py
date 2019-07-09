@@ -704,14 +704,14 @@ while True:
     show_image('Template/start_camera.jpg')
     WaitForEvent()
     time.sleep(1)
-
+    Imageshowed = True
     DisplayText(100, "some text")    #DisplayText(fontSize, textToDisplay)
     time.sleep(1)
     pygame.quit()
 
-    TakePictures()
+#    TakePictures()
 
-    cam.stop()
+#    cam.stop()
     #print("Success! Exiting..")
     #pygame.quit()
 
