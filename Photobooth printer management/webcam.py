@@ -711,7 +711,7 @@ while True:
     DisplayText(100, "some text")    #DisplayText(fontSize, textToDisplay)
     print("DisplayText stop")
     time.sleep(1)
-    pygame.quit()
+ #   pygame.quit()
 
 #    TakePictures()
 
