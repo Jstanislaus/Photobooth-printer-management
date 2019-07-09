@@ -208,10 +208,11 @@ def DisplayText(fontSize, textToDisplay):
             textpos.centerx = background.get_rect().centerx
             textpos.centery = background.get_rect().centery
             if(ImageShowed):
+                    print("backgroundPicture.blit(text, textpos)")
                     backgroundPicture.blit(text, textpos)
             else:
                     background.blit(text, textpos)
-
+                    print("background.blit(text, textpos)")
 
 def UpdateDisplay():
     # init global variables from main thread
