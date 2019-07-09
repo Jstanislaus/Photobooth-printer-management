@@ -700,10 +700,15 @@ def main(threadName, *args):
     print("InitFolder() -- OK ")
 
 while True:
-    InitCamera()
+    #InitCamera()
     show_image('Template/start_camera.jpg')
     WaitForEvent()
     time.sleep(1)
+
+    DisplayText(100, "some text")    #DisplayText(fontSize, textToDisplay)
+    time.sleep(1)
+    pygame.quit()
+
     TakePictures()
 
     cam.stop()
