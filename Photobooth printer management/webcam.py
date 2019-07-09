@@ -707,7 +707,7 @@ while True:
     print("show_image stop")
     #WaitForEvent()
     time.sleep(1)
-    Imageshowed = False
+    Imageshowed = true
     print("DisplayText start")
     DisplayText(100, "some text")    #DisplayText(fontSize, textToDisplay)
     print("DisplayText stop")
