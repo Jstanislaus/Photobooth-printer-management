@@ -702,7 +702,7 @@ def main(threadName, *args):
 while True:
     #InitCamera()
     show_image('Template/start_camera.jpg')
-    WaitForEvent()
+    #WaitForEvent()
     time.sleep(1)
     Imageshowed = True
     DisplayText(100, "some text")    #DisplayText(fontSize, textToDisplay)
