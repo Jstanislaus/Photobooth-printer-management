@@ -701,11 +701,15 @@ def main(threadName, *args):
 
 while True:
     #InitCamera()
+    print("show_image start")
     show_image('Template/start_camera.jpg')
+    print("show_image stop")
     #WaitForEvent()
     time.sleep(1)
     Imageshowed = True
+    print("DisplayText start")
     DisplayText(100, "some text")    #DisplayText(fontSize, textToDisplay)
+    print("DisplayText stop")
     time.sleep(1)
     pygame.quit()
 
