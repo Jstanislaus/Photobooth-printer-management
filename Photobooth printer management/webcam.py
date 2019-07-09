@@ -710,6 +710,8 @@ while True:
     Imageshowed = True
     print("DisplayText start")
     DisplayText(100, "some text")    #DisplayText(fontSize, textToDisplay)
+    pygame.display.flip()
+
     print("DisplayText stop")
     time.sleep(1)
  #   pygame.quit()
