@@ -208,11 +208,10 @@ def DisplayText(fontSize, textToDisplay):
             textpos.centerx = background.get_rect().centerx
             textpos.centery = background.get_rect().centery
             if(ImageShowed):
-                    print("backgroundPicture.blit(text, textpos)")
                     backgroundPicture.blit(text, textpos)
             else:
                     background.blit(text, textpos)
-                    print("background.blit(text, textpos)")
+
 
 def UpdateDisplay():
     # init global variables from main thread
@@ -383,11 +382,6 @@ def CapturePicture():
     UpdateDisplay()
     time.sleep(1)
 
-    Message3 = ""
-    Message = ""
-    Message2 = ""
-    UpdateDisplay()
-
     
     print("Waiting for picture to be taken...")
 
@@ -408,12 +402,15 @@ def CapturePicture():
 
                 pygame.image.save(img, filename)
 
+
+                screen.blit(img,(0,200))
+                #time.sleep(5)
+
                 Numeral = str(x)
                 Numeral = ""
-                screen.blit(img,(0,200))
-                time.sleep(5)
-                print(Message)
+                
                 Message = "Great shot!"
+                print(Message)
                 Message3 =  ""
                 UpdateDisplay()
         else:                        
@@ -698,24 +695,13 @@ def main(threadName, *args):
     print("InitFolder() -- OK ")
 
 while True:
-    #InitCamera()
-    print("show_image start")
+    InitCamera()
     show_image('Template/start_camera.jpg')
-    print("show_image stop")
-    #WaitForEvent()
+    WaitForEvent()
     time.sleep(1)
-    Imageshowed = False
-    print("DisplayText start")
-    DisplayText(100, "some text")    #DisplayText(fontSize, textToDisplay)
-    pygame.display.flip()
+    TakePictures()
 
-    print("DisplayText stop")
-    time.sleep(1)
- #   pygame.quit()
-
-#    TakePictures()
-
-#    cam.stop()
+    cam.stop()
     #print("Success! Exiting..")
     #pygame.quit()
 
