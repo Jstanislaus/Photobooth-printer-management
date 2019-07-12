@@ -227,8 +227,11 @@ def UpdateDisplay():
     global backgroundPicture
     global CountDownPhoto
     global textMessage
+    global textposMessage
     global textMessage2
+    global textposMessage2
     global textMessage3
+    global textposMessage3
    
     background.fill(pygame.Color("white"))  # White background
 
@@ -385,12 +388,12 @@ def CapturePicture():
     UpdateDisplay()
     time.sleep(1)
 
-    Message3 = ""
+    Message3 = "test text"
     Message = ""
     Message2 = ""
     
     UpdateDisplay()
-    time.sleep(1)  
+    #time.sleep(1)  
 
     print("Waiting for picture to be taken...")
 
@@ -405,7 +408,7 @@ def CapturePicture():
                     img = cam.get_image()
                     # imagen = pygame.transform.scale(imagen,(xRes,yRes))
                     screen.blit(img,(0,200))
-
+                    screen.blit(textMessage3, textposMessage3)
                     #draw all updates to display
                     pygame.display.update()
 
