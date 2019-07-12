@@ -8,6 +8,7 @@ import qrcode
 import datetime
 import pygame.camera
 from pygame.locals import *
+import math
 
 from threading import Thread
 from pygame.locals import *
@@ -354,6 +355,7 @@ def CapturePicture():
     Numeral = ""
     Message = ""
     Message2 = ""
+
     UpdateDisplay()
     time.sleep(1)
     CountDownPhoto = ""
