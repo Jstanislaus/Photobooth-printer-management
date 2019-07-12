@@ -233,7 +233,7 @@ def UpdateDisplay():
     global textMessage3
     global textposMessage3
    
-    background.fill(pygame.Color("white"))  # White background
+    #background.fill(pygame.Color("white"))  # White background
 
     if (BackgroundColor != ""):
             print(BackgroundColor)
@@ -403,11 +403,13 @@ def CapturePicture():
 #                gpout = subprocess.Popen(args)
 #                print(gpout)
                 t_end = time.time() + 5
+                print(str(int(math.floor(t_end-time.time()))))
                 while time.time() < t_end:
+                    
                     # grab image, scale and blit to screen
                     img = cam.get_image()
-                    # imagen = pygame.transform.scale(imagen,(xRes,yRes))
-                    screen.blit(img,(0,200))
+                    imagen = pygame.transform.scale(imagen,(xRes,yRes))
+                    screen.blit(imagen,(0,200))
                     screen.blit(textMessage3, textposMessage3)
                     #draw all updates to display
                     pygame.display.update()
