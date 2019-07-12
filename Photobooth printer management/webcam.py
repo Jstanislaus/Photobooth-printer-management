@@ -240,7 +240,7 @@ def UpdateDisplay():
             #print(Displaytext)
             font = pygame.font.Font(None, 100)
             textMessage = font.render(Message, 1, (227, 157, 200))
-            textposMessage = text.get_rect()
+            textposMessage = textMessage.get_rect()
             textposMessage.centerx = background.get_rect().centerx
             textposMessage.centery = background.get_rect().centery
             if(ImageShowed):
@@ -252,7 +252,7 @@ def UpdateDisplay():
             #print(Displaytext)
             font = pygame.font.Font(None, 100)
             textMessage2 = font.render(Message2, 1, (227, 157, 200))
-            textposMessage2 = text.get_rect()
+            textposMessage2 = textMessage2.get_rect()
             textposMessage2.centerx = background.get_rect().centerx
             textposMessage2.centery = background.get_rect().centery * 1.25
             if(ImageShowed):
@@ -264,7 +264,7 @@ def UpdateDisplay():
             #print(Displaytext)
             font = pygame.font.Font(None, 100)
             textMessage3 = font.render(Message3, 1, (227, 157, 200))
-            textposMessage3 = text.get_rect()
+            textposMessage3 = textMessage3.get_rect()
             textposMessage3.centerx = background.get_rect().centerx
             textposMessage3.centery = background.get_rect().centery * 0.5
             if(ImageShowed):
