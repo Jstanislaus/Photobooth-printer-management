@@ -226,6 +226,9 @@ def UpdateDisplay():
     global screenPicture
     global backgroundPicture
     global CountDownPhoto
+    global textMessage
+    global textMessage2
+    global textMessage3
    
     background.fill(pygame.Color("white"))  # White background
 
@@ -236,38 +239,38 @@ def UpdateDisplay():
     if (Message != ""):
             #print(Displaytext)
             font = pygame.font.Font(None, 100)
-            text = font.render(Message, 1, (227, 157, 200))
-            textpos = text.get_rect()
-            textpos.centerx = background.get_rect().centerx
-            textpos.centery = background.get_rect().centery
+            textMessage = font.render(Message, 1, (227, 157, 200))
+            textposMessage = text.get_rect()
+            textposMessage.centerx = background.get_rect().centerx
+            textposMessage.centery = background.get_rect().centery
             if(ImageShowed):
-                    backgroundPicture.blit(text, textpos)
+                    backgroundPicture.blit(textMessage, textposMessage)
             else:
-                    background.blit(text, textpos)
+                    background.blit(textMessage, textposMessage)
 
     if (Message2 != ""):
             #print(Displaytext)
             font = pygame.font.Font(None, 100)
-            text = font.render(Message2, 1, (227, 157, 200))
-            textpos = text.get_rect()
-            textpos.centerx = background.get_rect().centerx
-            textpos.centery = background.get_rect().centery * 1.25
+            textMessage2 = font.render(Message2, 1, (227, 157, 200))
+            textposMessage2 = text.get_rect()
+            textposMessage2.centerx = background.get_rect().centerx
+            textposMessage2.centery = background.get_rect().centery * 1.25
             if(ImageShowed):
-                    backgroundPicture.blit(text, textpos)
+                    backgroundPicture.blit(textMessage2, textposMessage2)
             else:
-                    background.blit(text, textpos)
+                    background.blit(textMessage2, textposMessage2)
 
     if (Message3 != ""):
             #print(Displaytext)
             font = pygame.font.Font(None, 100)
-            text = font.render(Message3, 1, (227, 157, 200))
-            textpos = text.get_rect()
-            textpos.centerx = background.get_rect().centerx
-            textpos.centery = background.get_rect().centery * 0.5
+            textMessage3 = font.render(Message3, 1, (227, 157, 200))
+            textposMessage3 = text.get_rect()
+            textposMessage3.centerx = background.get_rect().centerx
+            textposMessage3.centery = background.get_rect().centery * 0.5
             if(ImageShowed):
-                    backgroundPicture.blit(text, textpos)
+                    backgroundPicture.blit(textMessage3, textposMessage3)
             else:
-                    background.blit(text, textpos)
+                    background.blit(textMessage3, textposMessage3)
 
     if (Numeral != ""):
             #print(displaytext)
