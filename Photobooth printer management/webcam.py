@@ -410,7 +410,7 @@ def CapturePicture():
                     
                     # grab image, scale and blit to screen
                     img = cam.get_image()
-                    imagen = pygame.transform.scale(imagen,(xRes,yRes))
+                    imagen = pygame.transform.scale(img,(xRes,yRes))
                     screen.blit(imagen,(0,200))
                     screen.blit(textMessage3, textposMessage3)
                     #draw all updates to display
