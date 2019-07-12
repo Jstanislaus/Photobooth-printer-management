@@ -382,7 +382,13 @@ def CapturePicture():
     UpdateDisplay()
     time.sleep(1)
 
+    Message3 = ""
+    Message = ""
+    Message2 = ""
     
+    UpdateDisplay()
+    time.sleep(1)  
+
     print("Waiting for picture to be taken...")
 
 
