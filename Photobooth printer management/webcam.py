@@ -402,26 +402,29 @@ def CapturePicture():
 
     for x in range(3, -1, -1):
         if x == 0:                        
-#                gpout = subprocess.Popen(args)
-#                print(gpout)
+
                 t_end = time.time() + 5
                 print(str(int(math.floor(t_end-time.time()))))
+
                 while time.time() < t_end:
                     
-                    # grab image, scale and blit to screen
+                    # grab image from Camera
                     img = cam.get_image()
-#                    imagen = pygame.transform.scale(img,(xRes,yRes))
 
-                    img = pygame.transform.scale(img, screenPicture.get_size())  # Make the image full screen
-                    #backgroundPicture.set_alpha(200)
+                    # Make the image full screen
+                    img = pygame.transform.scale(img, screenPicture.get_size())
+                    
+                    #Render Image to Background
                     backgroundPicture.blit(img, (0,0))
+
+                    #Render Countdown Text to Background
+                    Numeral = str(int(math.floor(t_end-time.time())))
+                    Message3 =  "Photo No." + str(imagecounter) + " will be taken in..."   
                     backgroundPicture.blit(textMessage3, textposMessage3)
+
+                    #Render Background to Screen
                     screen.blit(backgroundPicture, (0, 0))
 
-
- #                   screen.blit(imagen,(0,200))
- #                   screen.blit(textMessage3, textposMessage3)
-                    #draw all updates to display
                     pygame.display.update()
 
                 pygame.image.save(img, filename)
