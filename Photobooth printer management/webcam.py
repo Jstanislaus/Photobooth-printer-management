@@ -419,7 +419,7 @@ def CapturePicture():
 
                     #Render Countdown Text to Background
                        
-                    Numeral = str(int(math.floor(t_end-time.time())))
+                    Numeral = str(int(math.floor(t_end-time.time()))+1)
                     Message =  "Photo No." + str(imagecounter) + " will be taken in..." + Numeral
 
                     #print(Displaytext)
@@ -438,19 +438,12 @@ def CapturePicture():
 
                     pygame.display.update()
 
-                pygame.image.save(img, filename)
-
-
-                screen.blit(img,(0,200))
-                #time.sleep(5)
-
-                Numeral = str(x)
-                Numeral = ""
                 
                 Message = "Great shot!"
                 print(Message)
                 Message3 =  ""
                 UpdateDisplay()
+                pygame.image.save(img, filename)
         else:                        
                 Numeral = str(x)
                 Message3 =  "Photo No." + str(imagecounter) + " will be taken in..."   
