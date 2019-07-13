@@ -442,6 +442,7 @@ def CapturePicture():
                 Message = "Great shot!"
                 print(Message)
                 Message3 =  ""
+                Numeral = ""
                 UpdateDisplay()
                 pygame.image.save(img, filename)
         else:                        
