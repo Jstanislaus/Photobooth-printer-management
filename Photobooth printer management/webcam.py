@@ -403,6 +403,15 @@ def CapturePicture():
     t_end = time.time() + 10
     print(str(int(math.floor(t_end-time.time()))))
 
+    Message =  "Photo No." + str(imagecounter) + " will be taken in..."
+
+    #print(Displaytext)
+    font = pygame.font.Font(None, 100)
+    textMessage = font.render(Message, 1, (227, 157, 200))
+    textposMessage = textMessage.get_rect()
+    textposMessage.centerx = background.get_rect().centerx
+    textposMessage.centery = background.get_rect().centery*0.5
+
     while time.time() < t_end:
                     
         # grab image from Camera
@@ -417,14 +426,7 @@ def CapturePicture():
         #Render Countdown Text to Background
                        
         Numeral = str(int(math.floor(t_end-time.time()))+1)
-        Message =  "Photo No." + str(imagecounter) + " will be taken in..." + Numeral
 
-        #print(Displaytext)
-        font = pygame.font.Font(None, 100)
-        textMessage = font.render(Message, 1, (227, 157, 200))
-        textposMessage = textMessage.get_rect()
-        textposMessage.centerx = background.get_rect().centerx
-        textposMessage.centery = background.get_rect().centery*0.5
         backgroundPicture.blit(textMessage, textposMessage)
 
         fontNumeral = pygame.font.Font(None, 800)
