@@ -418,9 +418,20 @@ def CapturePicture():
                     backgroundPicture.blit(img, (0,0))
 
                     #Render Countdown Text to Background
+                       
                     Numeral = str(int(math.floor(t_end-time.time())))
-                    Message3 =  "Photo No." + str(imagecounter) + " will be taken in..."   
-                    backgroundPicture.blit(textMessage3, textposMessage3)
+                    Message =  "Photo No." + str(imagecounter) + " will be taken in..." + Numeral
+
+                    #print(Displaytext)
+                    font = pygame.font.Font(None, 100)
+                    textMessage = font.render(Message, 1, (227, 157, 200))
+                    textposMessage = textMessage.get_rect()
+                    textposMessage.centerx = background.get_rect().centerx
+                    textposMessage.centery = background.get_rect().centery
+                    backgroundPicture.blit(textMessage, textposMessage)
+
+
+#                    backgroundPicture.blit(textMessage3, textposMessage3)
 
                     #Render Background to Screen
                     screen.blit(backgroundPicture, (0, 0))
