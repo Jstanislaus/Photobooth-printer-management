@@ -390,9 +390,9 @@ def CapturePicture():
     UpdateDisplay()
     time.sleep(1)
 
-    Message3 = "test text"
-    Message = ""
-    Message2 = ""
+    #Message3 = "test text"
+    #Message = ""
+    #Message2 = ""
     
     UpdateDisplay()
     #time.sleep(1)  
@@ -402,6 +402,11 @@ def CapturePicture():
 
     t_end = time.time() + 10
     print(str(int(math.floor(t_end-time.time()))))
+
+    #These text position parameters won't change so no need to repeat each time
+    textposMessage = textMessage.get_rect()
+    textposMessage.centerx = background.get_rect().centerx
+    textposMessage.centery = background.get_rect().centery*0.5
 
     while time.time() < t_end:
                     
@@ -422,9 +427,7 @@ def CapturePicture():
         #print(Displaytext)
         font = pygame.font.Font(None, 100)
         textMessage = font.render(Message, 1, (227, 157, 200))
-        textposMessage = textMessage.get_rect()
-        textposMessage.centerx = background.get_rect().centerx
-        textposMessage.centery = background.get_rect().centery*0.5
+
         backgroundPicture.blit(textMessage, textposMessage)
 
 
