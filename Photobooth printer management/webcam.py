@@ -424,7 +424,7 @@ def CapturePicture():
         textMessage = font.render(Message, 1, (227, 157, 200))
         textposMessage = textMessage.get_rect()
         textposMessage.centerx = background.get_rect().centerx
-        textposMessage.centery = background.get_rect().centery*0.25
+        textposMessage.centery = background.get_rect().centery*0.5
         backgroundPicture.blit(textMessage, textposMessage)
 
 
