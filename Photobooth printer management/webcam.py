@@ -398,56 +398,51 @@ def CapturePicture():
     #time.sleep(1)  
 
     print("Waiting for picture to be taken...")
+                      
 
+    t_end = time.time() + 10
+    print(str(int(math.floor(t_end-time.time()))))
 
-    for x in range(3, -1, -1):
-        if x == 0:                        
-
-                t_end = time.time() + 5
-                print(str(int(math.floor(t_end-time.time()))))
-
-                while time.time() < t_end:
+    while time.time() < t_end:
                     
-                    # grab image from Camera
-                    img = cam.get_image()
+        # grab image from Camera
+        img = cam.get_image()
 
-                    # Make the image full screen
-                    img = pygame.transform.scale(img, screenPicture.get_size())
+        # Make the image full screen
+        img = pygame.transform.scale(img, screenPicture.get_size())
                     
-                    #Render Image to Background
-                    backgroundPicture.blit(img, (0,0))
+        #Render Image to Background
+        backgroundPicture.blit(img, (0,0))
 
-                    #Render Countdown Text to Background
+        #Render Countdown Text to Background
                        
-                    Numeral = str(int(math.floor(t_end-time.time()))+1)
-                    Message =  "Photo No." + str(imagecounter) + " will be taken in..." + Numeral
+        Numeral = str(int(math.floor(t_end-time.time()))+1)
+        Message =  "Photo No." + str(imagecounter) + " will be taken in..." + Numeral
 
-                    #print(Displaytext)
-                    font = pygame.font.Font(None, 100)
-                    textMessage = font.render(Message, 1, (227, 157, 200))
-                    textposMessage = textMessage.get_rect()
-                    textposMessage.centerx = background.get_rect().centerx
-                    textposMessage.centery = background.get_rect().centery
-                    backgroundPicture.blit(textMessage, textposMessage)
+        #print(Displaytext)
+        font = pygame.font.Font(None, 100)
+        textMessage = font.render(Message, 1, (227, 157, 200))
+        textposMessage = textMessage.get_rect()
+        textposMessage.centerx = background.get_rect().centerx
+        textposMessage.centery = background.get_rect().centery*0.25
+        backgroundPicture.blit(textMessage, textposMessage)
 
 
 #                    backgroundPicture.blit(textMessage3, textposMessage3)
 
-                    #Render Background to Screen
-                    screen.blit(backgroundPicture, (0, 0))
+        #Render Background to Screen
+        screen.blit(backgroundPicture, (0, 0))
 
-                    pygame.display.update()
+        pygame.display.update()
 
                 
-                Message = "Great shot!"
-                print(Message)
-                Message3 =  ""
-                Numeral = ""
-                UpdateDisplay()
-                pygame.image.save(img, filename)
-        else:                        
-                Numeral = str(x)
-                Message3 =  "Photo No." + str(imagecounter) + " will be taken in..."   
+    Message = "Great shot!"
+    print(Message)
+    Message3 =  ""
+    Numeral = ""
+    UpdateDisplay()
+    pygame.image.save(img, filename)
+
                 
         UpdateDisplay()
         time.sleep(0.75)
