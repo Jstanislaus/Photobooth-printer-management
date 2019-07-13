@@ -403,11 +403,6 @@ def CapturePicture():
     t_end = time.time() + 10
     print(str(int(math.floor(t_end-time.time()))))
 
-    #These text position parameters won't change so no need to repeat each time
-    textposMessage = textMessage.get_rect()
-    textposMessage.centerx = background.get_rect().centerx
-    textposMessage.centery = background.get_rect().centery*0.5
-
     while time.time() < t_end:
                     
         # grab image from Camera
@@ -427,11 +422,19 @@ def CapturePicture():
         #print(Displaytext)
         font = pygame.font.Font(None, 100)
         textMessage = font.render(Message, 1, (227, 157, 200))
-
+        textposMessage = textMessage.get_rect()
+        textposMessage.centerx = background.get_rect().centerx
+        textposMessage.centery = background.get_rect().centery*0.5
         backgroundPicture.blit(textMessage, textposMessage)
 
+        fontNumeral = pygame.font.Font(None, 800)
+        Numeraltext = fontNumeral.render(Numeral, 1, (227, 100, 200))#157
+        NumeralPosText = Numeraltext.get_rect()
+        NumeralPosText.centerx = background.get_rect().centerx 
+        NumeralPosText.centery = background.get_rect().centery * 1.5 
+        print(NumeralPosText.centery)
+        backgroundPicture.blit(Numeraltext, NumeralPosText)
 
-#                    backgroundPicture.blit(textMessage3, textposMessage3)
 
         #Render Background to Screen
         screen.blit(backgroundPicture, (0, 0))
