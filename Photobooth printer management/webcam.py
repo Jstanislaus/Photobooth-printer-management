@@ -444,8 +444,8 @@ def CapturePicture():
     pygame.image.save(img, filename)
 
                 
-        UpdateDisplay()
-        time.sleep(0.75)
+    UpdateDisplay()
+    time.sleep(0.75)
 
 
     print("Photo Capturing is done")
