@@ -132,8 +132,12 @@ def InitFolder():
         print("imagecounter File was found!")
          #imagecounter
         f = open(os.path.join(os.path.realpath(imagefolder), 'imagecounter.txt'), 'r')
-        imagecountertext = f.readline
-        print(imagecountertext)
+
+        line = f.readline()
+        print ("Read Line: %s" % (line))
+
+        #imagecountertext = f.readline
+       # print(imagecountertext)
         #imagecounter = int(imagecountertext,base=10)
  
     else:
