@@ -747,7 +747,7 @@ def main(threadName, *args):
 
 while True:
     InitCamera()
-    show_image('Template/2019 07 14 Redland Y6 Leavers/start_camera.jpg')
+    show_image(templatePath) #'Template/2019 07 14 Redland Y6 Leavers/start_camera.jpg')
     WaitForEvent()
     time.sleep(1)
     TakePictures()
