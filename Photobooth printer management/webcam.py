@@ -135,7 +135,7 @@ def InitFolder():
 
         line = f.readline()
         print ("Read Line: %s" % (line))
-
+        f.close
         #imagecountertext = f.readline
        # print(imagecountertext)
         imagecounter = int(line)
@@ -145,6 +145,8 @@ def InitFolder():
         print(os.path.join(os.path.realpath(imagefolder), 'imagecounter.txt'))
         f = open(os.path.join(os.path.realpath(imagefolder), 'imagecounter.txt'), 'w')
         f.write("0\r\n")
+        f.close
+
 
 def InitCamera():
 
@@ -610,6 +612,11 @@ def TakePictures():
 
     
     TotalImageCount = TotalImageCount + 1
+    f = open(os.path.join(os.path.realpath(imagefolder), 'imagecounter.txt'), 'w')
+
+    #format(imagecounter, '05d')
+    f.write(str(format(TotalImageCount, '03d')))
+    f.close
 
     bgimage.paste(image1, (600, 0))     #bgimage.paste(image1, (625, 30))
     bgimage.paste(image2, (0, 400))   #bgimage.paste(image2, (625, 405))
