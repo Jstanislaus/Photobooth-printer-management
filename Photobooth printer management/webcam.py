@@ -743,19 +743,19 @@ def WaitForEvent():
 
 def main(threadName, *args):
  #   print("main(threadName, *args) --Starting Mainthread ")
-InitFolder()
-print("InitFolder() -- OK ")
+    InitFolder()
+    print("InitFolder() -- OK ")
 
-while True:
-    InitCamera()
-    show_image(start_cameraPath) #'Template/2019 07 14 Redland Y6 Leavers/start_camera.jpg')
-    WaitForEvent()
-    time.sleep(1)
-    TakePictures()
+    while True:
+        InitCamera()
+        show_image(start_cameraPath) #'Template/2019 07 14 Redland Y6 Leavers/start_camera.jpg')
+        WaitForEvent()
+        time.sleep(1)
+        TakePictures()
 
-    cam.stop()
-    #print("Success! Exiting..")
-    #pygame.quit()
+        cam.stop()
+        #print("Success! Exiting..")
+        #pygame.quit()
 
 
 # launch the main thread
