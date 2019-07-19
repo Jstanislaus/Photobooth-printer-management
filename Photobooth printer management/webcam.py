@@ -126,24 +126,23 @@ def InitFolder():
         os.makedirs(os.path.realpath(imagefolder2))
 
     
-    imagecountertxt = "imagefolder/imagecounter.txt"
+    TotalImageCountTxt = "imagefolder/TotalImageCount.txt"
   
-    if os.path.isfile(os.path.join(os.path.realpath(imagefolder), 'imagecounter.txt')):
+    if os.path.isfile(os.path.join(os.path.realpath(imagefolder), 'TotalImageCount.txt')):
         print("imagecounter File was found!")
          #imagecounter
-        f = open(os.path.join(os.path.realpath(imagefolder), 'imagecounter.txt'), 'r')
+        f = open(os.path.join(os.path.realpath(imagefolder), 'TotalImageCount.txt'), 'r')
 
         line = f.readline()
-        print ("Read Line: %s" % (line))
+        print ("TotalImageCount from file : %s" % (line))
         f.close
-        #imagecountertext = f.readline
-       # print(imagecountertext)
-        imagecounter = int(line)
-        print ("Image Count is :", imagecounter)
+
+        TotalImageCount = int(line)
+        print ("Image Count from file  is :", TotalImageCount)
     else:
         print("imagecounter File was not found!")
-        print(os.path.join(os.path.realpath(imagefolder), 'imagecounter.txt'))
-        f = open(os.path.join(os.path.realpath(imagefolder), 'imagecounter.txt'), 'w')
+        print(os.path.join(os.path.realpath(imagefolder), 'TotalImageCount.txt'))
+        f = open(os.path.join(os.path.realpath(imagefolder), 'TotalImageCount.txt'), 'w')
         f.write("0\r\n")
         f.close
 
