@@ -34,6 +34,7 @@ PhotosPerCart = 30  # Selphy takes 16 sheets per tray
 imagecounter = 0
 imagefolder = "/home/pi/Photos/" +  Venueid + " " + VenueDescription  #os.path.realpath("../Photos")
 templatePath = os.path.join('Template', Venueid + " " + VenueDescription,"template.png") #Path of template image
+start_cameraPath = os.path.join('Template', Venueid + " " + VenueDescription,"start_camera.jpg") #Path of template image start_camera.jpg
 ImageShowed = False
 Printing = False
 BUTTON_PIN = 25
@@ -747,7 +748,7 @@ def main(threadName, *args):
 
 while True:
     InitCamera()
-    show_image(templatePath) #'Template/2019 07 14 Redland Y6 Leavers/start_camera.jpg')
+    show_image(start_cameraPath) #'Template/2019 07 14 Redland Y6 Leavers/start_camera.jpg')
     WaitForEvent()
     time.sleep(1)
     TakePictures()
