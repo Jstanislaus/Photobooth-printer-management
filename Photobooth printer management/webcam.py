@@ -607,7 +607,7 @@ def TakePictures():
 
     
     TotalImageCount = TotalImageCount + 1
-    f = open(os.path.join(os.path.realpath(imagefolder), 'imagecounter.txt'), 'w')
+    f = open(os.path.join(os.path.realpath(imagefolder), 'TotalImageCount.txt'), 'w')
 
     #format(imagecounter, '05d')
     f.write(str(format(TotalImageCount, '03d')))
