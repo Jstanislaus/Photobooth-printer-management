@@ -398,7 +398,9 @@ def CapturePicture():
     UpdateDisplay()
     imagecounter = imagecounter + 1
     f = open(os.path.join(os.path.realpath(imagefolder), 'imagecounter.txt'), 'w')
-    f.write(imagecounter)
+
+    #format(imagecounter, '05d')
+    f.write(str(format(imagecounter, '03d')))
 
 
     ts = time.time()
