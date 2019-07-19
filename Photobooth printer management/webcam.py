@@ -129,10 +129,12 @@ def InitFolder():
     imagecountertxt = "imagefolder/imagecounter.txt"
   
     if os.path.isfile(os.path.join(os.path.realpath(imagefolder), 'imagecounter.txt')):
-         print("imagecounter File was found!")
+        print("imagecounter File was found!")
          #imagecounter
-         f = open(os.path.join(os.path.realpath(imagefolder), 'imagecounter.txt'), 'r')
-         imagecounter = int(f.readline)
+        f = open(os.path.join(os.path.realpath(imagefolder), 'imagecounter.txt'), 'r')
+        imagecountertext = f.readline
+        print(imagecountertext)
+        imagecounter = int(imagecountertext,base=10)
  
     else:
         print("imagecounter File was not found!")
