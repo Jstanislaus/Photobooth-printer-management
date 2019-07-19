@@ -399,11 +399,7 @@ def CapturePicture():
    # Message = "Big Grins Now"
     UpdateDisplay()
     imagecounter = imagecounter + 1
-    f = open(os.path.join(os.path.realpath(imagefolder), 'imagecounter.txt'), 'w')
-
-    #format(imagecounter, '05d')
-    f.write(str(format(imagecounter, '03d')))
-
+    
 
     ts = time.time()
     filename = os.path.join(imagefolder, 'images', str(imagecounter)+"_"+str(ts) + '.jpg')
