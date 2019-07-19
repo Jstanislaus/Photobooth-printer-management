@@ -743,8 +743,8 @@ def WaitForEvent():
 
 def main(threadName, *args):
  #   print("main(threadName, *args) --Starting Mainthread ")
-    InitFolder()
-    print("InitFolder() -- OK ")
+InitFolder()
+print("InitFolder() -- OK ")
 
 while True:
     InitCamera()
