@@ -134,7 +134,7 @@ def InitFolder():
  
     else:
         print("imagecounter File was not found!")
-        f = open((os.path.realpath(imagefolder), 'imagecounter.txt'), 'w')
+        f = open(os.path.join(os.path.realpath(imagefolder), 'imagecounter.txt'), 'w')
         f.write("0\r\n")
 
 def InitCamera():
