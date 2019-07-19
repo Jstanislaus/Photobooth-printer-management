@@ -19,6 +19,8 @@ import RPi.GPIO as GPIO, time, os, subprocess,shlex
 
  
 # initialise global variables
+Venueid = "AA"
+VenueDescription = "2019 07 14 Redland Y6 Leavers"
 Numeral = ""  # Numeral is the number display
 Message = ""  # Message is a fullscreen message
 Message2 = ""  # Message is a fullscreen message
@@ -30,8 +32,8 @@ SmallMessage = ""  # SmallMessage is a lower banner message
 TotalImageCount = 0  # Counter for Display and to monitor paper usage
 PhotosPerCart = 30  # Selphy takes 16 sheets per tray
 imagecounter = 0
-imagefolder = "/home/pi/Photos"   #os.path.realpath("../Photos")
-templatePath = os.path.join('Template', "2019 07 14 Redland Y6 Leavers","template.png") #Path of template image
+imagefolder = "/home/pi/Photos/" +  Venueid + " " + VenueDescription  #os.path.realpath("../Photos")
+templatePath = os.path.join('Template', Venueid + " " + VenueDescription,"template.png") #Path of template image
 ImageShowed = False
 Printing = False
 BUTTON_PIN = 25
@@ -121,6 +123,18 @@ def InitFolder():
     imagefolder2 = os.path.join(os.path.realpath(imagefolder), 'images')
     if not os.path.isdir(os.path.realpath(imagefolder2)):
         os.makedirs(os.path.realpath(imagefolder2))
+
+    
+    imagecountertxt = "imagefolder/imagecounter.txt"
+  
+    if os.path.isfile(os.path.join(os.path.realpath(imagefolder), 'imagecounter.txt')):
+ 
+        print("imagecounter File was found!")
+ 
+    else:
+        print("imagecounter File was not found!")
+        f = open((os.path.realpath(imagefolder), 'imagecounter.txt'), 'w')
+        f.write("0\r\n")
 
 def InitCamera():
 
