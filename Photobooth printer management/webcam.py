@@ -195,7 +195,7 @@ def InitCamera():
             UpdateDisplay()
             CameraPresent = True
             cam = pygame.camera.Camera("/dev/video0",(1200,800))
-            cam.start()
+            #cam.start()
         else:
             Message = "Camera NOT found:"
             Message2 ="Check connection and press button"
@@ -378,6 +378,7 @@ def CapturePicture():
     global ImageShowed
     global CountDownPhoto
     global BackgroundColor
+    global cam
 
     BackgroundColor = ""
     Numeral = ""
@@ -418,6 +419,8 @@ def CapturePicture():
     Message2 = "your best pose !!"
     print(Message + " " + Message2)
     UpdateDisplay()
+
+    cam.start()
     time.sleep(1)
 
     #Message3 = "test text"
@@ -473,7 +476,7 @@ def CapturePicture():
 
         #Render Background to Screen
         screen.blit(backgroundPicture, (0, 0))
-
+        cam.stop()
         pygame.display.update()
                
     Message = "Great shot!"
@@ -778,9 +781,10 @@ def main(threadName, *args):
         show_image(start_cameraPath) #'Template/2019 07 14 Redland Y6 Leavers/start_camera.jpg')
         WaitForEvent()
         time.sleep(1)
-        TakePictures()
 
-        cam.stop()
+        #cam.start()
+        TakePictures()
+        #cam.stop()
         #print("Success! Exiting..")
         #pygame.quit()
 
