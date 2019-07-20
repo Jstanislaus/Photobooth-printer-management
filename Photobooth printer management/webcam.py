@@ -475,8 +475,7 @@ def CapturePicture():
         screen.blit(backgroundPicture, (0, 0))
 
         pygame.display.update()
-
-    cam.stop()                
+               
     Message = "Great shot!"
     print(Message)
     Message2 =  ""
