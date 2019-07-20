@@ -442,6 +442,7 @@ def CapturePicture():
     textposMessage.centerx = background.get_rect().centerx
     textposMessage.centery = background.get_rect().centery*0.5
 
+    print("Starting Liveview...")
     while time.time() < t_end:
                     
         # grab image from Camera
