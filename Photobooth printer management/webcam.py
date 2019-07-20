@@ -612,6 +612,8 @@ def TakePictures():
     #format(imagecounter, '05d')
     f.write(str(format(TotalImageCount, '03d')))
     f.close
+    f.flush()
+    print("TotalImageCount flushed")
 
     bgimage.paste(image1, (600, 0))     #bgimage.paste(image1, (625, 30))
     bgimage.paste(image2, (0, 400))   #bgimage.paste(image2, (625, 405))
