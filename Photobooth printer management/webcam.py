@@ -645,7 +645,7 @@ def TakePictures():
     Message3 = ""
     Message = "Press and hold button to print"
     UpdateDisplay()
-    Printing = False
+    Printing = True
     WaitForPrintingEvent()
     Numeral = ""
     Message = ""
@@ -667,20 +667,20 @@ def TakePictures():
                             printer_name = "Photos_10cm_x_15cm_USB"
                             Message = "Let's print that masterpiece!"  #Using Printer name  : " + printer_name
                             UpdateDisplay()
-                            time.sleep(5)
+                            time.sleep(1)
                             # print the buffer file
                             printqueuelength = len(conn.getJobs())
                             conn.printFile(printer_name, '/home/pi/Desktop/tempprint.jpg', "PhotoBooth", {})
                             
-                            time.sleep(5)
+                            #time.sleep(5)
                             Message = "Your photo is number "  + str(printqueuelength+1) 
                             Message2 = " in the print queue" #Using Printer name  : " + printer_name
                             UpdateDisplay()  
-                            time.sleep(5)
+                            time.sleep(0.5)
                             Message = "All done," 
                             Message2 = "thankyou for using Photobooth.. !"
                             UpdateDisplay()  
-                            time.sleep(5)
+                            time.sleep(1)
                             Message =""
                             Message2 =""
                             UpdateDisplay()  
