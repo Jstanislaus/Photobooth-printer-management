@@ -420,7 +420,7 @@ def CapturePicture():
     print(Message + " " + Message2)
     UpdateDisplay()
 
-    cam.start()
+    #cam.start()
     time.sleep(1)
 
     #Message3 = "test text"
@@ -476,7 +476,7 @@ def CapturePicture():
 
         #Render Background to Screen
         screen.blit(backgroundPicture, (0, 0))
-        cam.stop()
+        #cam.stop()
         pygame.display.update()
                
     Message = "Great shot!"
@@ -782,9 +782,9 @@ def main(threadName, *args):
         WaitForEvent()
         time.sleep(1)
 
-        #cam.start()
+        cam.start()
         TakePictures()
-        #cam.stop()
+        cam.stop()
         #print("Success! Exiting..")
         #pygame.quit()
 
