@@ -362,6 +362,8 @@ def show_image(image_path):
 	pygame.display.flip()
 
 def CapturePicture():
+    global Venueid
+    global TotalImageCount
     global imagecounter
     global imagefolder
     global Numeral
@@ -402,7 +404,7 @@ def CapturePicture():
     
 
     ts = time.time()
-    filename = os.path.join(imagefolder, 'images', str(imagecounter)+"_"+str(ts) + '.jpg')
+    filename = os.path.join(imagefolder, 'images', Venueid + str(TotalImageCount) + "_" +  str(imagecounter)+"_"+str(ts) + '.jpg')
     print(filename)
 
     gphoto2CmdLine = "gphoto2 --capture-image-and-download --filename " + filename
@@ -495,6 +497,8 @@ def CapturePicture():
     return filename
 
 def TakePictures():
+    global Venueid 
+    global TotalImageCount
     global imagecounter
     global imagefolder
     global Numeral
@@ -567,10 +571,10 @@ def TakePictures():
 
     # Create the final filename
     ts = time.time()
-    Final_Image_Name = os.path.join(os.path.realpath(imagefolder), "Final_" + str(TotalImageCount)+"_"+str(ts) + ".jpg")
+    Final_Image_Name = os.path.join(os.path.realpath(imagefolder),"Final_" +  Venueid + str(TotalImageCount)+"_"+str(ts) + ".jpg")
     print(Final_Image_Name)
 
-    QRDdata = "Final_" + str(TotalImageCount)+"_"+str(ts)
+    QRDdata = Venueid + str(TotalImageCount) # +"_"+str(ts)
     starttime = (datetime.datetime.now())
 
     #QRDdata = "Here is some QRCodeTada!"
