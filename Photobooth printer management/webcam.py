@@ -576,7 +576,7 @@ def TakePictures():
 
 
     #mailto:booth@stanislaus.co.uk?subject=Reprint%20Subject&body=please%20send%20another%20copy.
-    QRDdata = "mailto:booth@stanislaus.co.uk?subject=Reprint%20Subject&body=please%20send%20another%20copy :" + Venueid + str(TotalImageCount)
+    QRDdata = "mailto:booth@stanislaus.co.uk?subject=Reprint%20Subject&body=Please%20send%20another%20copy of " + Venueid + str(TotalImageCount)
     starttime = (datetime.datetime.now())
 
     #QRDdata = "Here is some QRCodeTada!"
