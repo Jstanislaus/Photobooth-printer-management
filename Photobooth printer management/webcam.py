@@ -112,6 +112,7 @@ def set_demensions(img_w, img_h):
 def InitFolder():
     global imagefolder
     global Message
+    global TotalImageCount
  
     Message = 'Folder Check...'
     UpdateDisplay()
