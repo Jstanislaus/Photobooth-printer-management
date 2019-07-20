@@ -486,7 +486,7 @@ def CapturePicture():
 
                 
     UpdateDisplay()
-    time.sleep(0.75)
+    #time.sleep(0.75)
 
 
     print("Photo Capturing is done")
@@ -574,7 +574,9 @@ def TakePictures():
     Final_Image_Name = os.path.join(os.path.realpath(imagefolder),"Final_" +  Venueid + str(TotalImageCount)+"_"+str(ts) + ".jpg")
     print(Final_Image_Name)
 
-    QRDdata = Venueid + str(TotalImageCount) # +"_"+str(ts)
+
+    #mailto:booth@stanislaus.co.uk?subject=Reprint%20Subject&body=please%20send%20another%20copy.
+    QRDdata = "mailto:booth@stanislaus.co.uk?subject=Reprint%20Subject&body=please%20send%20another%20copy :" + Venueid + str(TotalImageCount)
     starttime = (datetime.datetime.now())
 
     #QRDdata = "Here is some QRCodeTada!"
