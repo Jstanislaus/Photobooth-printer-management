@@ -19,6 +19,8 @@ import RPi.GPIO as GPIO, time, os, subprocess,shlex
 
  
 # initialise global variables
+Venueid = "AB"
+VenueDescription = "2019 07 14 Redland Y6 Leavers"
 Numeral = ""  # Numeral is the number display
 Message = ""  # Message is a fullscreen message
 Message2 = ""  # Message is a fullscreen message
@@ -28,10 +30,11 @@ CountDownPhoto = ""
 CountPhotoOnCart = "" 
 SmallMessage = ""  # SmallMessage is a lower banner message
 TotalImageCount = 0  # Counter for Display and to monitor paper usage
-PhotosPerCart = 30  # Selphy takes 16 sheets per tray
+PhotosPerCart = 3000  # Selphy takes 16 sheets per tray
 imagecounter = 0
-imagefolder = "/home/pi/Photos"   #os.path.realpath("../Photos")
-templatePath = os.path.join('Template', "2019 07 14 Redland Y6 Leavers","template.png") #Path of template image
+imagefolder = "/home/pi/Photos/" +  Venueid + " " + VenueDescription  #os.path.realpath("../Photos")
+templatePath = os.path.join('Template', Venueid + " " + VenueDescription,"template.png") #Path of template image
+start_cameraPath = os.path.join('Template', Venueid + " " + VenueDescription,"start_camera.jpg") #Path of template image start_camera.jpg
 ImageShowed = False
 Printing = False
 BUTTON_PIN = 25
@@ -109,6 +112,7 @@ def set_demensions(img_w, img_h):
 def InitFolder():
     global imagefolder
     global Message
+    global TotalImageCount
  
     Message = 'Folder Check...'
     UpdateDisplay()
@@ -121,6 +125,28 @@ def InitFolder():
     imagefolder2 = os.path.join(os.path.realpath(imagefolder), 'images')
     if not os.path.isdir(os.path.realpath(imagefolder2)):
         os.makedirs(os.path.realpath(imagefolder2))
+
+    
+    TotalImageCountTxt = "imagefolder/TotalImageCount.txt"
+  
+    if os.path.isfile(os.path.join(os.path.realpath(imagefolder), 'TotalImageCount.txt')):
+        print("imagecounter File was found!")
+         #imagecounter
+        f = open(os.path.join(os.path.realpath(imagefolder), 'TotalImageCount.txt'), 'r')
+
+        line = f.readline()
+        print ("TotalImageCount from file : %s" % (line))
+        f.close
+
+        TotalImageCount = int(line)
+        print ("Image Count from file  is :", TotalImageCount)
+    else:
+        print("imagecounter File was not found!")
+        print(os.path.join(os.path.realpath(imagefolder), 'TotalImageCount.txt'))
+        f = open(os.path.join(os.path.realpath(imagefolder), 'TotalImageCount.txt'), 'w')
+        f.write("0\r\n")
+        f.close
+
 
 def InitCamera():
 
@@ -169,7 +195,7 @@ def InitCamera():
             UpdateDisplay()
             CameraPresent = True
             cam = pygame.camera.Camera("/dev/video0",(1200,800))
-            cam.start()
+            #cam.start()
         else:
             Message = "Camera NOT found:"
             Message2 ="Check connection and press button"
@@ -336,6 +362,8 @@ def show_image(image_path):
 	pygame.display.flip()
 
 def CapturePicture():
+    global Venueid
+    global TotalImageCount
     global imagecounter
     global imagefolder
     global Numeral
@@ -350,6 +378,7 @@ def CapturePicture():
     global ImageShowed
     global CountDownPhoto
     global BackgroundColor
+    global cam
 
     BackgroundColor = ""
     Numeral = ""
@@ -373,8 +402,10 @@ def CapturePicture():
    # Message = "Big Grins Now"
     UpdateDisplay()
     imagecounter = imagecounter + 1
+    
+
     ts = time.time()
-    filename = os.path.join(imagefolder, 'images', str(imagecounter)+"_"+str(ts) + '.jpg')
+    filename = os.path.join(imagefolder, 'images', Venueid + str(TotalImageCount) + "_" +  str(imagecounter)+"_"+str(ts) + '.jpg')
     print(filename)
 
     gphoto2CmdLine = "gphoto2 --capture-image-and-download --filename " + filename
@@ -388,6 +419,8 @@ def CapturePicture():
     Message2 = "your best pose !!"
     print(Message + " " + Message2)
     UpdateDisplay()
+
+    #cam.start()
     time.sleep(1)
 
     #Message3 = "test text"
@@ -412,6 +445,7 @@ def CapturePicture():
     textposMessage.centerx = background.get_rect().centerx
     textposMessage.centery = background.get_rect().centery*0.5
 
+    print("Starting Liveview...")
     while time.time() < t_end:
                     
         # grab image from Camera
@@ -442,12 +476,12 @@ def CapturePicture():
 
         #Render Background to Screen
         screen.blit(backgroundPicture, (0, 0))
-
+        #cam.stop()
         pygame.display.update()
-
-                
+               
     Message = "Great shot!"
     print(Message)
+    Message2 =  ""
     Message3 =  ""
     Numeral = ""
     UpdateDisplay()
@@ -455,7 +489,7 @@ def CapturePicture():
 
                 
     UpdateDisplay()
-    time.sleep(0.75)
+    #time.sleep(0.75)
 
 
     print("Photo Capturing is done")
@@ -466,6 +500,8 @@ def CapturePicture():
     return filename
 
 def TakePictures():
+    global Venueid 
+    global TotalImageCount
     global imagecounter
     global imagefolder
     global Numeral
@@ -538,10 +574,12 @@ def TakePictures():
 
     # Create the final filename
     ts = time.time()
-    Final_Image_Name = os.path.join(os.path.realpath(imagefolder), "Final_" + str(TotalImageCount)+"_"+str(ts) + ".jpg")
+    Final_Image_Name = os.path.join(os.path.realpath(imagefolder),"Final_" +  Venueid + str(TotalImageCount)+"_"+str(ts) + ".jpg")
     print(Final_Image_Name)
 
-    QRDdata = "Final_" + str(TotalImageCount)+"_"+str(ts)
+
+    #mailto:booth@stanislaus.co.uk?subject=Reprint%20Subject&body=please%20send%20another%20copy.
+    QRDdata = "mailto:booth@stanislaus.co.uk?subject=Reprint%20Subject&body=Please%20send%20another%20copy of " + Venueid + str(TotalImageCount)
     starttime = (datetime.datetime.now())
 
     #QRDdata = "Here is some QRCodeTada!"
@@ -579,6 +617,13 @@ def TakePictures():
 
     
     TotalImageCount = TotalImageCount + 1
+    f = open(os.path.join(os.path.realpath(imagefolder), 'TotalImageCount.txt'), 'w')
+
+    #format(imagecounter, '05d')
+    f.write(str(format(TotalImageCount, '03d')))
+    f.close
+    f.flush()
+    print("TotalImageCount flushed")
 
     bgimage.paste(image1, (600, 0))     #bgimage.paste(image1, (625, 30))
     bgimage.paste(image2, (0, 400))   #bgimage.paste(image2, (625, 405))
@@ -731,16 +776,17 @@ def main(threadName, *args):
     InitFolder()
     print("InitFolder() -- OK ")
 
-while True:
-    InitCamera()
-    show_image('Template/2019 07 14 Redland Y6 Leavers/start_camera.jpg')
-    WaitForEvent()
-    time.sleep(1)
-    TakePictures()
+    while True:
+        InitCamera()
+        show_image(start_cameraPath) #'Template/2019 07 14 Redland Y6 Leavers/start_camera.jpg')
+        WaitForEvent()
+        time.sleep(1)
 
-    cam.stop()
-    #print("Success! Exiting..")
-    #pygame.quit()
+        cam.start()
+        TakePictures()
+        cam.stop()
+        #print("Success! Exiting..")
+        #pygame.quit()
 
 
 # launch the main thread
