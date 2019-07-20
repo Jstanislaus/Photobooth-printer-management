@@ -269,7 +269,7 @@ def UpdateDisplay():
     if (Message != ""):
             #print(Displaytext)
             font = pygame.font.Font(None, 100)
-            textMessage = font.render(Message, 1, (227, 157, 200))
+            textMessage = font.render(Message, 1, (227, 100, 200))
             textposMessage = textMessage.get_rect()
             textposMessage.centerx = background.get_rect().centerx
             textposMessage.centery = background.get_rect().centery
@@ -281,7 +281,7 @@ def UpdateDisplay():
     if (Message2 != ""):
             #print(Displaytext)
             font = pygame.font.Font(None, 100)
-            textMessage2 = font.render(Message2, 1, (227, 157, 200))
+            textMessage2 = font.render(Message2, 1, (227, 100, 200))
             textposMessage2 = textMessage2.get_rect()
             textposMessage2.centerx = background.get_rect().centerx
             textposMessage2.centery = background.get_rect().centery * 1.25
@@ -293,7 +293,7 @@ def UpdateDisplay():
     if (Message3 != ""):
             #print(Displaytext)
             font = pygame.font.Font(None, 100)
-            textMessage3 = font.render(Message3, 1, (227, 157, 200))
+            textMessage3 = font.render(Message3, 1, (227, 100, 200))
             textposMessage3 = textMessage3.get_rect()
             textposMessage3.centerx = background.get_rect().centerx
             textposMessage3.centery = background.get_rect().centery * 0.5
@@ -318,7 +318,7 @@ def UpdateDisplay():
     if (CountDownPhoto != ""):
 
             font = pygame.font.Font(None, 500)
-            text = font.render(CountDownPhoto, 1, (227, 157, 200))#200
+            text = font.render(CountDownPhoto, 1, (227, 100, 200))#200
             textpos = text.get_rect()
             textpos.centerx = background.get_rect().centerx
             textpos.centery = background.get_rect().centery
