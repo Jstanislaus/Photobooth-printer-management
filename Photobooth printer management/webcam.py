@@ -476,7 +476,7 @@ def CapturePicture():
 
         pygame.display.update()
 
-    cam.close()                
+    cam.stop()                
     Message = "Great shot!"
     print(Message)
     Message2 =  ""
