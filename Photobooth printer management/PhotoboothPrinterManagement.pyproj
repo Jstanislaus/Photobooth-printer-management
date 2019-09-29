@@ -22,10 +22,14 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="webcam.py" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="AD 2019 10 03 Hello Yellow\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="webcam.py" />
+    <Content Include="AD 2019 10 03 Hello Yellow\start_camera.jpg" />
+    <Content Include="AD 2019 10 03 Hello Yellow\template.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
