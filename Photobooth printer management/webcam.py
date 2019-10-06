@@ -20,7 +20,7 @@ import RPi.GPIO as GPIO, time, os, subprocess,shlex
  
 # initialise global variables
 Venueid = "AD"
-VenueDescription = "2019 10 03 Hello Yellow"
+VenueDescription = "2019 10 10 Hello Yellow"
 Numeral = ""  # Numeral is the number display
 Message = ""  # Message is a fullscreen message
 Message2 = ""  # Message is a fullscreen message
