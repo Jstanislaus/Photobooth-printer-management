@@ -24,13 +24,6 @@
   <ItemGroup>
     <Compile Include="webcam.py" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AD 2019 10 10 Hello Yellow\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="AD 2019 10 10 Hello Yellow\start_camera.jpg" />
-    <Content Include="AD 2019 10 10 Hello Yellow\template.png" />
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
        Visual Studio and specify your pre- and post-build commands in
