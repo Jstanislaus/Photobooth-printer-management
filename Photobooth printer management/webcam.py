@@ -664,7 +664,7 @@ def TakePictures():
                             print(printer_name)
                             printer_name = printers.keys()[2]
                             print(printer_name)
-                            printer_name = "Photos_10cm_x_15cm_USB/Booth"
+                            printer_name = "Photos_10cm_x_15cm_USB"
                             Message = "Let's print that masterpiece!"  #Using Printer name  : " + printer_name
                             UpdateDisplay()
                             time.sleep(1)
