@@ -468,7 +468,7 @@ def CapturePicture():
         NumeralPosText = Numeraltext.get_rect()
         NumeralPosText.centerx = background.get_rect().centerx 
         NumeralPosText.centery = background.get_rect().centery * 1.5 
-        print(NumeralPosText.centery)
+        #print(NumeralPosText.centery)
 
         backgroundPicture.blit(Numeraltext, NumeralPosText)
 
@@ -632,9 +632,10 @@ def TakePictures():
 
     # Save it to the usb drive
     bgimage.save(Final_Image_Name)
+    ShowPicture(Final_Image_Name,3)
     # Save a temp file, its faster to print from the pi than usb
-    bgimage.save('/home/pi/Desktop/tempprint.jpg')
-    ShowPicture('/home/pi/Desktop/tempprint.jpg',3)
+        #bgimage.save('/home/pi/Desktop/tempprint.jpg')
+        #ShowPicture('/home/pi/Desktop/tempprint.jpg',3)
     #bgimage2 = bgimage.rotate(90)
     #bgimage2.save('/home/pi/Desktop/tempprint.jpg')
     ImageShowed = False
@@ -652,7 +653,7 @@ def TakePictures():
     print(Printing)
     if Printing:
             if (TotalImageCount <= PhotosPerCart):
-                    if os.path.isfile('/home/pi/Desktop/tempprint.jpg'):
+                    if os.path.isfile(Final_Image_Name):
                             # Open a connection to cups
                             conn = cups.Connection()
                             # get a list of printers
@@ -672,7 +673,7 @@ def TakePictures():
                             printqueuelength = len(conn.getJobs())
                             ##conn.printFile(printer_name, '/home/pi/Desktop/tempprint.jpg', "PhotoBooth", {})
 
-                            CmdLine = 'lp -d  photos_10cm_x_15cm_USB/Booth /home/pi/Desktop/tempprint.jpg'
+                            CmdLine = 'lp -d  photos_10cm_x_15cm_USB/Booth ' + Final_Image_Name     #/home/pi/Desktop/tempprint.jpg'
                             print(CmdLine)
 
                             args = shlex.split(CmdLine )
