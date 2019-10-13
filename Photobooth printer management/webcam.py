@@ -453,7 +453,7 @@ def CapturePicture():
 
         # Make the image full screen
         img = pygame.transform.scale(img, screenPicture.get_size())
-                    
+        img = pygame.transform.flip(img, 1,0)            
         #Render Image to Background
         backgroundPicture.blit(img, (0,0))
 
@@ -630,14 +630,10 @@ def TakePictures():
     bgimage.paste(image3, (600, 400))     #bgimage.paste(image3, (55, 405))
     bgimage.paste(QRCode, (480,280)) 
 
-    # Save it to the usb drive
+    # Save it to the SMB Share directory
     bgimage.save(Final_Image_Name)
     ShowPicture(Final_Image_Name,3)
-    # Save a temp file, its faster to print from the pi than usb
-        #bgimage.save('/home/pi/Desktop/tempprint.jpg')
-        #ShowPicture('/home/pi/Desktop/tempprint.jpg',3)
-    #bgimage2 = bgimage.rotate(90)
-    #bgimage2.save('/home/pi/Desktop/tempprint.jpg')
+
     ImageShowed = False
     Message = ""
     
@@ -657,23 +653,17 @@ def TakePictures():
                             # Open a connection to cups
                             conn = cups.Connection()
                             # get a list of printers
-                            printers = conn.getPrinters()
+                            #printers = conn.getPrinters()
                             # select printer 0
-                            printer_name = printers.keys()[0]
-                            print(printer_name)
-                            printer_name = printers.keys()[1]
-                            print(printer_name)
-                            printer_name = printers.keys()[2]
-                            print(printer_name)
+                            #printer_name = printers.keys()[0]
+                            #print(printer_name)
+                            #printer_name = printers.keys()[1]
+                            #print(printer_name)
+                            #printer_name = printers.keys()[2]
+                            #print(printer_name)
                             printer_name = "Photos_10cm_x_15cm_USB"
-                            Message = "Let's print that masterpiece!"  #Using Printer name  : " + printer_name
-                            UpdateDisplay()
-                            time.sleep(1)
-                            # print the buffer file
-                            printqueuelength = len(conn.getJobs())
-                            ##conn.printFile(printer_name, '/home/pi/Desktop/tempprint.jpg', "PhotoBooth", {})
 
-                            CmdLine = ["lp", "-d", "photos_10cm_x_15cm_USB/Booth", Final_Image_Name]     #/home/pi/Desktop/tempprint.jpg'
+                            CmdLine = ["lp", "-d", printer_name, Final_Image_Name]     #/home/pi/Desktop/tempprint.jpg'
                             print(CmdLine)
 
                            # args = shlex.split(CmdLine )
@@ -685,6 +675,12 @@ def TakePictures():
                             print(gpout1)
                             print("Printing is done")
 
+                            Message = "Let's print that masterpiece!"  #Using Printer name  : " + printer_name
+                            print(Message)
+                            UpdateDisplay()
+                            time.sleep(1)
+                            # print the buffer file
+                            printqueuelength = len(conn.getJobs())
 
                             #time.sleep(5)
                             Message = "Your photo is number "  + str(printqueuelength+1) 
@@ -699,7 +695,7 @@ def TakePictures():
                             Message2 =""
                             UpdateDisplay()  
             else:
-                    Message = "Nous vous enverrons vos photos"
+                    Message = "We will send you your photos"
                     Numeral = ""
                     UpdateDisplay()
                     time.sleep(1)
