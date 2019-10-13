@@ -60,6 +60,7 @@ print(infoObject)
 if pygame.display.get_init():
         screen = pygame.display.get_surface()
         print("Display has been initialised")
+        pygame.display.quit()
 
 pygame.display.init()
 infoObject = pygame.display.Info()
