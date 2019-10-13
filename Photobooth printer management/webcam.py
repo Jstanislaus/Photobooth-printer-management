@@ -61,16 +61,6 @@ infoObject = pygame.display.Info()
 print("pygame.display.Info() -- OK")
 print(infoObject)
 
-if pygame.display.get_init():
-        screen = pygame.display.get_surface()
-        print("Display has been initialised")
-        pygame.display.quit()
-
-pygame.display.init()
-infoObject = pygame.display.Info()
-print("pygame.display.Info() -- OK")
-print(infoObject)
-
 screen = pygame.display.set_mode((infoObject.current_w,infoObject.current_h), pygame.FULLSCREEN)  # Full screen 
 print("# Full screen -- OK")
 background = pygame.Surface(screen.get_size())  # Create the background object
