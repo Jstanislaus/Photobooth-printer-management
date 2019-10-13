@@ -48,10 +48,8 @@ QRDdata = "Blank QR Data"
 bgimage = PIL.Image.open(templatePath)
 
 # initialise pygame
-if pygame.get_init():
-    print("pygame was initialised so quitting now...")
-    pygame.quit() # Initialise pygame
-    print("pygame has been uninitialised...")
+pygame.quit() # Initialise pygame
+print("pygame has been uninitialised...")
 
 pygame.init()
 print("# Initialise pygame -- OK")
