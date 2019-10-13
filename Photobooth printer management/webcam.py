@@ -673,7 +673,7 @@ def TakePictures():
                             printqueuelength = len(conn.getJobs())
                             ##conn.printFile(printer_name, '/home/pi/Desktop/tempprint.jpg', "PhotoBooth", {})
 
-                            CmdLine = [lp, -d, photos_10cm_x_15cm_USB/Booth, Final_Image_Name]     #/home/pi/Desktop/tempprint.jpg'
+                            CmdLine = ["lp", "-d", "photos_10cm_x_15cm_USB/Booth", Final_Image_Name]     #/home/pi/Desktop/tempprint.jpg'
                             print(CmdLine)
 
                            # args = shlex.split(CmdLine )
