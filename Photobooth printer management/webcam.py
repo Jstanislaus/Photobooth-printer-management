@@ -48,8 +48,14 @@ QRDdata = "Blank QR Data"
 bgimage = PIL.Image.open(templatePath)
 
 # initialise pygame
-pygame.init()  # Initialise pygame
+if pygame.get_init():
+    print("pygame was initialised so quitting now...")
+    pygame.quit() # Initialise pygame
+    print("pygame has been uninitialised...")
+
+pygame.init()
 print("# Initialise pygame -- OK")
+
 pygame.mouse.set_visible(False) #hide the mouse cursor
 print("#hide the mouse cursor -- OK")
 pygame.display.init()
