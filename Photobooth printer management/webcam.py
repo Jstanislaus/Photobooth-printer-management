@@ -670,8 +670,21 @@ def TakePictures():
                             time.sleep(1)
                             # print the buffer file
                             printqueuelength = len(conn.getJobs())
-                            conn.printFile(printer_name, '/home/pi/Desktop/tempprint.jpg', "PhotoBooth", {})
-                            
+                            ##conn.printFile(printer_name, '/home/pi/Desktop/tempprint.jpg', "PhotoBooth", {})
+
+                            CmdLine = 'lp -d  photos_10cm_x_15cm_USB/Booth /home/pi/Desktop/tempprint.jpg'
+                            print(CmdLine)
+
+                            args = shlex.split(CmdLine )
+                            print(args)
+
+                            gpout = subprocess.Popen(args)
+
+                            gpout1=gpout.wait()
+                            print(gpout1)
+                            print("Printing is done")
+
+
                             #time.sleep(5)
                             Message = "Your photo is number "  + str(printqueuelength+1) 
                             Message2 = " in the print queue" #Using Printer name  : " + printer_name
