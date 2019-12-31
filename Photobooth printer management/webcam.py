@@ -48,12 +48,19 @@ QRDdata = "Blank QR Data"
 bgimage = PIL.Image.open(templatePath)
 
 # initialise pygame
-pygame.init()  # Initialise pygame
+pygame.quit() # Initialise pygame
+print("pygame has been uninitialised...")
+
+pygame.init()
 print("# Initialise pygame -- OK")
+
 pygame.mouse.set_visible(False) #hide the mouse cursor
 print("#hide the mouse cursor -- OK")
+pygame.display.init()
 infoObject = pygame.display.Info()
 print("pygame.display.Info() -- OK")
+print(infoObject)
+
 screen = pygame.display.set_mode((infoObject.current_w,infoObject.current_h), pygame.FULLSCREEN)  # Full screen 
 print("# Full screen -- OK")
 background = pygame.Surface(screen.get_size())  # Create the background object
@@ -453,7 +460,7 @@ def CapturePicture():
 
         # Make the image full screen
         img = pygame.transform.scale(img, screenPicture.get_size())
-                    
+        img = pygame.transform.flip(img, 1,0)            
         #Render Image to Background
         backgroundPicture.blit(img, (0,0))
 
@@ -468,7 +475,7 @@ def CapturePicture():
         NumeralPosText = Numeraltext.get_rect()
         NumeralPosText.centerx = background.get_rect().centerx 
         NumeralPosText.centery = background.get_rect().centery * 1.5 
-        print(NumeralPosText.centery)
+        #print(NumeralPosText.centery)
 
         backgroundPicture.blit(Numeraltext, NumeralPosText)
 
@@ -630,13 +637,10 @@ def TakePictures():
     bgimage.paste(image3, (600, 400))     #bgimage.paste(image3, (55, 405))
     bgimage.paste(QRCode, (480,280)) 
 
-    # Save it to the usb drive
+    # Save it to the SMB Share directory
     bgimage.save(Final_Image_Name)
-    # Save a temp file, its faster to print from the pi than usb
-    bgimage.save('/home/pi/Desktop/tempprint.jpg')
-    ShowPicture('/home/pi/Desktop/tempprint.jpg',3)
-    #bgimage2 = bgimage.rotate(90)
-    #bgimage2.save('/home/pi/Desktop/tempprint.jpg')
+    ShowPicture(Final_Image_Name,3)
+
     ImageShowed = False
     Message = ""
     
@@ -652,26 +656,39 @@ def TakePictures():
     print(Printing)
     if Printing:
             if (TotalImageCount <= PhotosPerCart):
-                    if os.path.isfile('/home/pi/Desktop/tempprint.jpg'):
+                    if os.path.isfile(Final_Image_Name):
                             # Open a connection to cups
                             conn = cups.Connection()
                             # get a list of printers
-                            printers = conn.getPrinters()
+                            #printers = conn.getPrinters()
                             # select printer 0
-                            printer_name = printers.keys()[0]
-                            print(printer_name)
-                            printer_name = printers.keys()[1]
-                            print(printer_name)
-                            printer_name = printers.keys()[2]
-                            print(printer_name)
+                            #printer_name = printers.keys()[0]
+                            #print(printer_name)
+                            #printer_name = printers.keys()[1]
+                            #print(printer_name)
+                            #printer_name = printers.keys()[2]
+                            #print(printer_name)
                             printer_name = "Photos_10cm_x_15cm_USB"
+
+                            CmdLine = ["lp", "-d", printer_name, Final_Image_Name]     #/home/pi/Desktop/tempprint.jpg'
+                            print(CmdLine)
+
+                           # args = shlex.split(CmdLine )
+                           # print(args)
+
+                            gpout = subprocess.Popen(CmdLine)
+
+                            gpout1=gpout.wait()
+                            print(gpout1)
+                            print("Printing is done")
+
                             Message = "Let's print that masterpiece!"  #Using Printer name  : " + printer_name
+                            print(Message)
                             UpdateDisplay()
                             time.sleep(1)
                             # print the buffer file
                             printqueuelength = len(conn.getJobs())
-                            conn.printFile(printer_name, '/home/pi/Desktop/tempprint.jpg', "PhotoBooth", {})
-                            
+
                             #time.sleep(5)
                             Message = "Your photo is number "  + str(printqueuelength+1) 
                             Message2 = " in the print queue" #Using Printer name  : " + printer_name
@@ -685,7 +702,7 @@ def TakePictures():
                             Message2 =""
                             UpdateDisplay()  
             else:
-                    Message = "Nous vous enverrons vos photos"
+                    Message = "We will send you your photos"
                     Numeral = ""
                     UpdateDisplay()
                     time.sleep(1)
