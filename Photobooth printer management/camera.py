@@ -14,7 +14,7 @@ from PIL import Image, ImageDraw
 
 import RPi.GPIO as GPIO, time, os, subprocess,shlex
 
- 
+#test
 # initialise global variables
 Numeral = ""  # Numeral is the number display
 Message = ""  # Message is a fullscreen message
@@ -280,10 +280,10 @@ def UpdateDisplay():
             else:
                     background.blit(text, textpos)
     
-    if(ImageShowed == True):
-    	screenPicture.blit(backgroundPicture, (0, 0))   	
-    else:
-    	screen.blit(background, (0, 0))
+            if(ImageShowed == True):
+                screenPicture.blit(backgroundPicture, (0, 0))   	
+            else:
+                screen.blit(background, (0, 0))
    
     pygame.display.flip()
     return
