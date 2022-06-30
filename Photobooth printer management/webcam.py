@@ -560,24 +560,33 @@ def TakePictures():
 
     #image1 = PIL.Image.open(filename1)
     image1 = Image.open(filename1)
-    #height,width = image1.size
-   # box = ((width/2)-300,(height/2)-200,600,400)
+    width,height = image1.size
+    if int(width/6)*2>(height/2):
+	step = int(height/4)
+    else:
+	step = int(width/6)
+    left = (width/2)-(3*step)
+    top = (height/2)-(2*step)
+    right = 6*step
+    bottom = 4*step
+    image1 = image1.crop((left,top,right,bottom))
+    width,height = image1.size
     #image1 = image1.crop(box),PIL.Image.ANTIALIAS
     #print("Height is "+str(height)+" Width is "+str(width))
     wpercent = (basewidth / float(image1.size[0]))
     hsize = int((float(image1.size[1]) * float(wpercent)))
-    print(type(image1))
+    #print(type(image1))
     image1 = image1.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
     print(type(image1))
     #img.save(filename)
 
     #image2 = PIL.Image.open(filename2)
     image2 = Image.open(filename2)
-    print(str(image2.size[0]))
+    #print(str(image2.size[0]))
     width,height = image2.size
-    print(str(width))
-    print(str(height))
-    print(type(image2))
+    #print(str(width))
+    #print(str(height))
+    #print(type(image2))
     if int(width/6)*2>(height/2):
 	step = int(height/4)
     else:
@@ -588,13 +597,11 @@ def TakePictures():
     bottom = 4*step
     image2 = image2.crop((left,top,right,bottom))
     width,height = image2.size
-    print("Width and height:")
-    print(str(width))
-    print(str(height))
-    print("Type for image 2 is ")
-    print(type(image2))
-    #wpercent = (basewidth / float(image2.size[0]))
-    #hsize = int((float(image2.size[1]) * float(wpercent)))
+    #print("Width and height:")
+    #print(str(width))
+    #print(str(height))
+    #print("Type for image 2 is ")
+    #rint(type(image2))
     wpercent = (basewidth / float(image2.size[0]))
     hsize = int((float(image2.size[1]) * float(wpercent)))
     print(hsize)
@@ -604,6 +611,17 @@ def TakePictures():
 
     #image3 = PIL.Image.open(filename3)   
     image3 = Image.open(filename3)
+    width,height = image2.size
+    if int(width/6)*2>(height/2):
+	step = int(height/4)
+    else:
+	step = int(width/6)
+    left = (width/2)-(3*step)
+    top = (height/2)-(2*step)
+    right = 6*step
+    bottom = 4*step
+    image3 = image3.crop((left,top,right,bottom))
+    width,height = image3.size
     wpercent = (basewidth / float(image3.size[0]))
     hsize = int((float(image3.size[1]) * float(wpercent)))
     image3 = image3.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
