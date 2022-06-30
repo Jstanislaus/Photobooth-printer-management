@@ -457,8 +457,8 @@ def CapturePicture():
                     
         # grab image from Camera
         img = cam.get_image()
-	print(type(img))
-    	width,height = img.size
+	width = int(img.get_width())
+	height = int(img.get_height())
         if int(width/6)*2>(height/2):
 	    step = int(height/4)
         else:
@@ -467,8 +467,7 @@ def CapturePicture():
         top = (height/2)-(2*step)
         right = 6*step
         bottom = 4*step
-        img = img.crop((left,top,right,bottom))
-        #width,height = img.size
+	img = img.subsurface((left,top,right,bottom))
         # Make the image full screen
         img = pygame.transform.scale(img, screenPicture.get_size())
         img = pygame.transform.flip(img, 1,0)            
