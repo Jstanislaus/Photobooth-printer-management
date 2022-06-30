@@ -573,20 +573,26 @@ def TakePictures():
 
     #image2 = PIL.Image.open(filename2)
     image2 = Image.open(filename2)
+    wpercent = (basewidth / float(image2.size[0]))
+    hsize = int((float(image2.size[1]) * float(wpercent)))
     height,width = image2.size
     print(str(width))
     print(str(height))
     print(type(image2))
-    left = (width/2)-300
-    top = (height/2)-200
-    right = 600
-    bottom = 400
-    image2 = image2.crop((0,0,right,bottom))
+    if int(width/6)*2>(height/2):
+	step = int(height/4)
+    else:
+	step = int(width/6)
+    left = (width/2)-(3*step)
+    top = (height/2)-(2*step)
+    right = 6*step
+    bottom = 4*step
+    image2 = image2.crop((left,top,right,bottom))
     print("Type for image 2 is ")
     print(type(image2))
     #wpercent = (basewidth / float(image2.size[0]))
     #hsize = int((float(image2.size[1]) * float(wpercent)))
-    #image2 = image2.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
+    image2 = image2.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
     #img.save(filename)
 
     #image3 = PIL.Image.open(filename3)   
