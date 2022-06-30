@@ -560,21 +560,25 @@ def TakePictures():
 
     #image1 = PIL.Image.open(filename1)
     image1 = Image.open(filename1)
-    height,width = image1.size
-    box = ((width/2)-300,(height/2)-200,600,400)
-    image1 = image1.crop(box),PIL.Image.ANTIALIAS
+    #height,width = image1.size
+   # box = ((width/2)-300,(height/2)-200,600,400)
+    #image1 = image1.crop(box),PIL.Image.ANTIALIAS
     print("Height is "+str(height)+" Width is "+str(width))
-    #wpercent = (basewidth / float(image1.size[0]))
-    #hsize = int((float(image1.size[1]) * float(wpercent)))
+    wpercent = (basewidth / float(image1.size[0]))
+    hsize = int((float(image1.size[1]) * float(wpercent)))
+    #print(type(image1))
+    image1 = image1.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
     print(type(image1))
-    image1 = image1.resize((600, 400), PIL.Image.ANTIALIAS)
     #img.save(filename)
 
     #image2 = PIL.Image.open(filename2)
     image2 = Image.open(filename2)
-    wpercent = (basewidth / float(image2.size[0]))
-    hsize = int((float(image2.size[1]) * float(wpercent)))
-    image2 = image2.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
+    height,width = image2.size
+    box = ((width/2)-300,(height/2)-200,600,400)
+    image2 = image2.crop(box)
+    #wpercent = (basewidth / float(image2.size[0]))
+    #hsize = int((float(image2.size[1]) * float(wpercent)))
+    #image2 = image2.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
     #img.save(filename)
 
     #image3 = PIL.Image.open(filename3)   
