@@ -470,10 +470,10 @@ def CapturePicture():
         bottom = 4*step
 	cropimg = img.subsurface((left,top,right,bottom))
         # Make the image full screen
-        cropimg = pygame.transform.scale(img, screenPicture.get_size())
-        cropimg = pygame.transform.flip(img, 1,0)            
+        cropimg = pygame.transform.scale(cropimg, screenPicture.get_size())
+        cropimg = pygame.transform.flip(cropimg, 1,0)            
         #Render Image to Background
-        backgroundPicture.blit(img, (0,0))
+        backgroundPicture.blit(cropimg, (0,0))
 
         #Render Countdown Text to Background
                        
