@@ -573,10 +573,7 @@ def TakePictures():
 
     #image2 = PIL.Image.open(filename2)
     image2 = Image.open(filename2)
-    #wpercent = (basewidth / float(image2.size[0]))
     print(str(image2.size[0]))
-    wpercent = float(600/1824)
-    hsize = int((float(image2.size[1]) * float(wpercent)))
     height,width = image2.size
     print(str(width))
     print(str(height))
@@ -594,6 +591,8 @@ def TakePictures():
     print(type(image2))
     #wpercent = (basewidth / float(image2.size[0]))
     #hsize = int((float(image2.size[1]) * float(wpercent)))
+    wpercent = (basewidth / float(image2.size[0]))
+    hsize = int((float(image2.size[1]) * float(wpercent)))
     image2 = image2.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
     #img.save(filename)
 
