@@ -466,10 +466,8 @@ def CapturePicture():
 	    step = int(height/4)
         else:
 	    step = int(width/6)
-        #left = (width/2)-(3*step)
-	left = (x/2)-(width/2)
-	top = (y/2)-(height/2)
-	#top = (height/2)-(2*step)
+        left = (width/2)-(3*step)
+	top = (height/2)-(2*step)
         right = 6*step
         bottom = 4*step
 	cropimg = img.subsurface((left,top,right,bottom))
@@ -486,6 +484,7 @@ def CapturePicture():
         cropimg = pygame.transform.scale(cropimg, (right,bottom))
         cropimg = pygame.transform.flip(cropimg, 1,0)            
         #Render Image to Background
+	cropimg.centre(x/2,y/2)
         backgroundPicture.blit(cropimg, (0,0))
 
         #Render Countdown Text to Background
