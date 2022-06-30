@@ -454,14 +454,14 @@ def CapturePicture():
 
     print("Starting Liveview...")
     screen = pygame.display.set_mode()
-    width, height = screen.get_size()
+    x, y = screen.get_size()
     while time.time() < t_end:
                     
         # grab image from Camera
         img = cam.get_image()
 	print(type(img))
-	#width = int(img.get_width())
-	#height = int(img.get_height())
+	width = int(img.get_width())
+	height = int(img.get_height())
         if int(width/6)*2>(height/2):
 	    step = int(height/4)
         else:
@@ -473,6 +473,14 @@ def CapturePicture():
 	cropimg = img.subsurface((left,top,right,bottom))
         # Make the image full screen
 	#screenPicture.get_size()
+	if int(x/6)*2>(y/2):
+	    step = int(y/4)
+        else:
+	    step = int(x/6)
+        #left = (x/2)-(3*step)
+        #top = (y/2)-(2*step)
+        right = 6*step
+        bottom = 4*step
         cropimg = pygame.transform.scale(cropimg, (right,bottom))
         cropimg = pygame.transform.flip(cropimg, 1,0)            
         #Render Image to Background
