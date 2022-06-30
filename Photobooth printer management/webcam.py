@@ -579,7 +579,7 @@ def TakePictures():
     top = (height/2)-200
     right = 600
     bottom = 400
-    image2 = image2.crop((left,top,right,bottom))
+    image2 = image2.crop((0,0,right,bottom))
     print("Type for image 2 is ")
     print(type(image2))
     #wpercent = (basewidth / float(image2.size[0]))
