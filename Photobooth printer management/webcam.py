@@ -457,6 +457,7 @@ def CapturePicture():
                     
         # grab image from Camera
         img = cam.get_image()
+	print(type(img))
     	width,height = img.size
         if int(width/6)*2>(height/2):
 	    step = int(height/4)
