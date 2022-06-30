@@ -453,13 +453,15 @@ def CapturePicture():
     textposMessage.centery = background.get_rect().centery*0.5
 
     print("Starting Liveview...")
+    screen = pygame.display.set_mode()
+    width, height = screen.get_size()
     while time.time() < t_end:
                     
         # grab image from Camera
         img = cam.get_image()
 	print(type(img))
-	width = int(screenPicture.get_width())
-	height = int(screenPicture.get_height())
+	#width = int(img.get_width())
+	#height = int(img.get_height())
         if int(width/6)*2>(height/2):
 	    step = int(height/4)
         else:
