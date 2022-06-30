@@ -574,7 +574,7 @@ def TakePictures():
     #image2 = PIL.Image.open(filename2)
     image2 = Image.open(filename2)
     print(str(image2.size[0]))
-    height,width = image2.size
+    width,height = image2.size
     print(str(width))
     print(str(height))
     print(type(image2))
@@ -587,7 +587,7 @@ def TakePictures():
     right = 6*step
     bottom = 4*step
     image2 = image2.crop((left,top,right,bottom))
-    height,width = image2.size
+    width,height = image2.size
     print("Width and height:")
     print(str(width))
     print(str(height))
