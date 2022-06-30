@@ -566,7 +566,7 @@ def TakePictures():
     print("Height is "+str(height)+" Width is "+str(width))
     #wpercent = (basewidth / float(image1.size[0]))
     #hsize = int((float(image1.size[1]) * float(wpercent)))
-    #image1 = image1.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
+    image1 = image1.resize((600, 400), PIL.Image.ANTIALIAS)
     #img.save(filename)
 
     #image2 = PIL.Image.open(filename2)
