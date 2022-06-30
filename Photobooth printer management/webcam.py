@@ -611,7 +611,7 @@ def TakePictures():
 
     #image3 = PIL.Image.open(filename3)   
     image3 = Image.open(filename3)
-    width,height = image2.size
+    width,height = image3.size
     if int(width/6)*2>(height/2):
 	step = int(height/4)
     else:
@@ -622,10 +622,14 @@ def TakePictures():
     bottom = 4*step
     image3 = image3.crop((left,top,right,bottom))
     width,height = image3.size
+    #image3 = image3.crop(box),PIL.Image.ANTIALIAS
+    #print("Height is "+str(height)+" Width is "+str(width))
     wpercent = (basewidth / float(image3.size[0]))
     hsize = int((float(image3.size[1]) * float(wpercent)))
+    #print(type(image3))
     image3 = image3.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
-    #img.save(filename)    .
+    print(type(image3))
+    #img.save(filename) .
     
 
     # Create the final filename
