@@ -640,7 +640,7 @@ def WaitForPrintingEvent():
     while Printing == False and countDown > 0:
         
         pf.read()
-        input_state = pf.read_pin(0) 
+        input_state = pf.read_pin(7) 
 #        print(input_state) # is True")
         if input_state == False: #was True
             print("input_state is True (button has been pressed for printing)")
@@ -674,7 +674,7 @@ def WaitForEvent():
    
     while NotEvent:
         pf.read()
-        input_state = pf.read_pin(0) #False #windows10 GPIO.input(BUTTON_PIN)
+        input_state = pf.(7) #False #windows10 GPIO.input(BUTTON_PIN)
 
 
         if input_state == False: #was TRUE
