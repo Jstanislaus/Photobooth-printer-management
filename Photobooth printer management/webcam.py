@@ -481,10 +481,9 @@ def CapturePicture():
         #top = (y/2)-(2*step)
         right = 6*step
         bottom = 4*step
-        cropimg = pygame.transform.scale(cropimg, screenPicture.get_size())
+        cropimg = pygame.transform.scale(cropimg, (left+right),(top+bottom))
         cropimg = pygame.transform.flip(cropimg, 1,0)            
         #Render Image to Background
-	cropimg.centre(x/2,y/2)
         backgroundPicture.blit(cropimg, (0,0))
 
         #Render Countdown Text to Background
