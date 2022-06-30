@@ -468,10 +468,10 @@ def CapturePicture():
         top = (height/2)-(2*step)
         right = 6*step
         bottom = 4*step
-	img = img.subsurface((left,top,right,bottom))
+	cropimg = img.subsurface((left,top,right,bottom))
         # Make the image full screen
-        img = pygame.transform.scale(img, screenPicture.get_size())
-        img = pygame.transform.flip(img, 1,0)            
+        cropimg = pygame.transform.scale(img, screenPicture.get_size())
+        cropimg = pygame.transform.flip(img, 1,0)            
         #Render Image to Background
         backgroundPicture.blit(img, (0,0))
 
