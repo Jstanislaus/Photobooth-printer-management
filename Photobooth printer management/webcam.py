@@ -481,7 +481,7 @@ def CapturePicture():
         #top = (y/2)-(2*step)
         right = 6*step
         bottom = 4*step
-        cropimg = pygame.transform.scale(cropimg, (left+right),(top+bottom))
+        cropimg = pygame.transform.scale(cropimg, ((left+right),(top+bottom)))
         cropimg = pygame.transform.flip(cropimg, 1,0)            
         #Render Image to Background
         backgroundPicture.blit(cropimg, (0,0))
