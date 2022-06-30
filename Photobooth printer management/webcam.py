@@ -560,7 +560,7 @@ def TakePictures():
 
     #image1 = PIL.Image.open(filename1)
     image1 = Image.open(filename1)
-    height,width = image1.size()
+    height,width = image1.size
     box = ((width/2)-300,(height/2)-200,600,400)
     image1 = image1.crop(box)
     print("Height is "+str(height)+" Width is "+str(width))
