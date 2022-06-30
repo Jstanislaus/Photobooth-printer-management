@@ -556,12 +556,17 @@ def TakePictures():
 
 
     basewidth = 600 #570
+    #height == 400 for template
 
     #image1 = PIL.Image.open(filename1)
     image1 = Image.open(filename1)
-    wpercent = (basewidth / float(image1.size[0]))
-    hsize = int((float(image1.size[1]) * float(wpercent)))
-    image1 = image1.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
+    height,width = image1.size()
+    box = ((width/2)-300,(height/2)-200,600,400)
+    image1 = image1.crop(box)
+    print("Height is "+str(height)+" Width is "+str(width))
+    #wpercent = (basewidth / float(image1.size[0]))
+    #hsize = int((float(image1.size[1]) * float(wpercent)))
+    #image1 = image1.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
     #img.save(filename)
 
     #image2 = PIL.Image.open(filename2)
