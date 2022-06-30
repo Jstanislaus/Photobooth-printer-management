@@ -562,7 +562,7 @@ def TakePictures():
     image1 = Image.open(filename1)
     height,width = image1.size
     box = ((width/2)-300,(height/2)-200,600,400)
-    image1 = image1.crop(box)
+    image1 = image1.crop(box),PIL.Image.ANTIALIAS
     print("Height is "+str(height)+" Width is "+str(width))
     #wpercent = (basewidth / float(image1.size[0]))
     #hsize = int((float(image1.size[1]) * float(wpercent)))
