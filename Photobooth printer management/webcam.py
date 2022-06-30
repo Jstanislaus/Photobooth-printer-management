@@ -574,7 +574,7 @@ def TakePictures():
     #image2 = PIL.Image.open(filename2)
     image2 = Image.open(filename2)
     height,width = image2.size
-    image2 = image2.crop(((int(width)/2)-300,(int((height)/2)-200,600,400)),PIL.Image.ANTIALIAS
+    image2 = image2.crop(((int(width)/2)-300,int((height)/2)-200,600,400)),PIL.Image.ANTIALIAS
     print("Type for image 2 is ")
     print(type(image2))
     #wpercent = (basewidth / float(image2.size[0]))
