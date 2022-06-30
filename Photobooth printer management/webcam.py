@@ -470,7 +470,8 @@ def CapturePicture():
         bottom = 4*step
 	cropimg = img.subsurface((left,top,right,bottom))
         # Make the image full screen
-        cropimg = pygame.transform.scale(cropimg, screenPicture.get_size())
+	#screenPicture.get_size()
+        cropimg = pygame.transform.scale(cropimg, (right,bottom))
         cropimg = pygame.transform.flip(cropimg, 1,0)            
         #Render Image to Background
         backgroundPicture.blit(cropimg, (0,0))
