@@ -792,7 +792,8 @@ def TakePictures():
                             UpdateDisplay()  
                             time.sleep(1)
                             Message = "All done," 
-                            Message2 = "thankyou for using Photobooth.. !"
+                            Message2 = "thankyou for using the"
+			    Message3 = "Stanislaus Photobooth!"
                             UpdateDisplay()  
                             time.sleep(1)
                             Message =""
