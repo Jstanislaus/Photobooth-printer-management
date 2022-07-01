@@ -794,7 +794,7 @@ def TakePictures():
                             Message = "All done, thank you for"
                             Message2 = "using the Stanislaus Photobooth!"
                             UpdateDisplay()  
-                            time.sleep(1)
+                            time.sleep(1.3)
                             Message =""
                             Message2 =""
                             UpdateDisplay()  
