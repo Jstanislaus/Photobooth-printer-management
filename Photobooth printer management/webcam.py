@@ -791,9 +791,8 @@ def TakePictures():
                             Message2 = " in the print queue" #Using Printer name  : " + printer_name
                             UpdateDisplay()  
                             time.sleep(1)
-                            Message = "All done," 
-                            Message2 = "thankyou for using the"
-			    Message3 = "Stanislaus Photobooth!"
+                            Message = "All done, thank you for"
+                            Message2 = "using the Stanislaus Photobooth!"
                             UpdateDisplay()  
                             time.sleep(1)
                             Message =""
