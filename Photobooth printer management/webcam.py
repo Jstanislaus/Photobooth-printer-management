@@ -356,8 +356,8 @@ def ShowPicture(file, delay): #
     pygame.display.flip()  # update the display
     ImageShowed = True
     time.sleep(delay)
-    screen.fill(pygame.Color("black"))
-    pygame.display.flip()
+    backgroundPicture.fill(pygame.Color("black"))
+    #pygame.display.flip()
     
 
 # display one image on screen
