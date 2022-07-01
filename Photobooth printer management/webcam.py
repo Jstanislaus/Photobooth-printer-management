@@ -155,7 +155,7 @@ def InitFolder():
         f.close
 
 
-def InitCamera():
+def InitCamera(i):
 
     global Message
     global Message2
@@ -891,7 +891,7 @@ def main(threadName, *args):
     print("InitFolder() -- OK ")
     i = 0
     while True:
-        InitCamera()
+        InitCamera(i)
         show_image(start_cameraPath) #e.g'Template/2019 07 14 Redland Y6 Leavers/start_camera.jpg')
         WaitForEvent()
         time.sleep(1)
