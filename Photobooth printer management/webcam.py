@@ -485,6 +485,7 @@ def CapturePicture():
 	height = int(cropimg.get_height())
         background.fill(pygame.Color("black"))
         screen.blit(background, (0, 0))
+	UpdateDisplay()
         backgroundPicture.blit(cropimg, ((x/2)-(width/2),(y/2)-(height/2)))
 
         #Render Countdown Text to Background
