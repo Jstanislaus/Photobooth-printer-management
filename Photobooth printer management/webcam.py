@@ -356,6 +356,9 @@ def ShowPicture(file, delay): #
     pygame.display.flip()  # update the display
     ImageShowed = True
     time.sleep(delay)
+    screen.fill(pygame.Color("black"))
+    pygame.display.flip()
+    
 
 # display one image on screen
 def show_image(image_path):	
@@ -483,10 +486,10 @@ def CapturePicture():
         #Render Image to Background
 	width = int(cropimg.get_width())
 	height = int(cropimg.get_height())
-        background.fill(pygame.Color("black"))
+        #background.fill(pygame.Color("black"))
         backgroundPicture.blit(cropimg, ((x/2)-(width/2),(y/2)-(height/2)))
-	background.blit(backgroundPicture, ((x/2)-(width/2),(y/2)-(height/2)))
-	backgroundPicture.blit(background,(0,0))
+	#background.blit(backgroundPicture, ((x/2)-(width/2),(y/2)-(height/2)))
+	#backgroundPicture.blit(background,(0,0))
         #Render Countdown Text to Background
                        
         Numeral = str(int(math.floor(t_end-time.time()))+1)
