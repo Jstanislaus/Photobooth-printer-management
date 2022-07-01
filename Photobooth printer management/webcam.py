@@ -347,11 +347,28 @@ def ShowPicture(file, delay): #
     global screenPicture
     global backgroundPicture
     global ImageShowed
+    x,y = screen.get_size()
     backgroundPicture.fill((0, 0, 0))
     img = pygame.image.load(file)
-    img = pygame.transform.scale(img, screenPicture.get_size())  # Make the image full screen
+    width = int(img.get_width())
+    height = int(img.get_height())
+    if int(width/6)*2>(height/2):
+	step = int(height/4)
+    else:
+	step = int(width/6)
+    left = (width/2)-(3*step)
+    top = (height/2)-(2*step)	
+    if int(x/6)*2>(y/2):
+	step = int(y/4)
+    else:
+	step = int(x/6)
+    right = 6*step
+    bottom = 4*step
+    img = pygame.transform.scale(img, ((left+right),(top+bottom)))
+    #img = pygame.transform.scale(img, screenPicture.get_size())  # Make the image full screen
     #backgroundPicture.set_alpha(200)
-    backgroundPicture.blit(img, (0,0))
+    backgroundPicture.blit(img, ((x/2)-(width/2),(y/2)-(height/2)))
+    #backgroundPicture.blit(img, (0,0))
     screen.blit(backgroundPicture, (0, 0))
     pygame.display.flip()  # update the display
     ImageShowed = True
