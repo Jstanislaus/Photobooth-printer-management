@@ -718,7 +718,7 @@ def TakePictures():
 
     # Save it to the SMB Share directory
     bgimage.save(Final_Image_Name)
-    #ShowPicture(Final_Image_Name,3)
+    ShowPicture(Final_Image_Name,3)
 
     ImageShowed = False
     Message = ""
