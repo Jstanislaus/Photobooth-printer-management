@@ -484,7 +484,6 @@ def CapturePicture():
 	width = int(cropimg.get_width())
 	height = int(cropimg.get_height())
         background.fill(pygame.Color("black"))
-	UpdateDisplay()
         backgroundPicture.blit(cropimg, ((x/2)-(width/2),(y/2)-(height/2)))
 	background.blit(backgroundPicture, ((x/2)-(width/2),(y/2)-(height/2)))
 	backgroundPicture.blit(background,(0,0))
