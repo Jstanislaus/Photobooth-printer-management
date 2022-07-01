@@ -535,7 +535,7 @@ def CapturePicture():
     Numeral = ""
     UpdateDisplay()
     pygame.image.save(img, filename)
-    time.sleept(1)
+    time.sleep(1)
                 
     UpdateDisplay()
     #time.sleep(0.75)
