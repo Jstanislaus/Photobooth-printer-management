@@ -788,7 +788,7 @@ def TakePictures():
                             Message = "Your photo is number "  + str(printqueuelength+1) 
                             Message2 = " in the print queue" #Using Printer name  : " + printer_name
                             UpdateDisplay()  
-                            time.sleep(0.5)
+                            time.sleep(0.75)
                             Message = "All done," 
                             Message2 = "thankyou for using Photobooth.. !"
                             UpdateDisplay()  
