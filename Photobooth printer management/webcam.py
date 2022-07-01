@@ -455,12 +455,12 @@ def CapturePicture():
     print("Starting Liveview...")
     screen = pygame.display.set_mode()
     x, y = screen.get_size()
+    background.fill(pygame.Color("black"))
+    background.blit(background,(0,0))
     while time.time() < t_end:
                     
         # grab image from Camera
         img = cam.get_image()
-	background.fill(pygame.Color("black"))
-	background.blit(background,(0,0))
 	width = int(img.get_width())
 	height = int(img.get_height())
         if int(width/6)*2>(height/2):
