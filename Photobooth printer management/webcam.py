@@ -455,8 +455,6 @@ def CapturePicture():
     print("Starting Liveview...")
     screen = pygame.display.set_mode()
     x, y = screen.get_size()
-    background.fill(pygame.Color("black"))
-    background.blit(background,(0,0))
     while time.time() < t_end:
                     
         # grab image from Camera
@@ -717,7 +715,7 @@ def TakePictures():
 
     # Save it to the SMB Share directory
     bgimage.save(Final_Image_Name)
-    ShowPicture(Final_Image_Name,3)
+    #ShowPicture(Final_Image_Name,3)
 
     ImageShowed = False
     Message = ""
