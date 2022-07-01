@@ -166,8 +166,9 @@ def InitCamera():
     CameraPresent = False
 
     while CameraPresent == False:
-        Message = 'Camera Check...'
-        UpdateDisplay()
+	if i == 0:
+        	Message = 'Camera Check...'
+        	UpdateDisplay()
         pygame.camera.init()
         CameraModel = pygame.camera.list_cameras()
         if CameraModel:
@@ -182,10 +183,10 @@ def InitCamera():
 #        args = shlex.split(gphoto2CmdLine)
 #        print(args)
 #        gpout = subprocess.Popen(args,stdout=subprocess.PIPE, stdin=subprocess.PIPE)
-#
-        Message = "Waiting for camera response "
-        print(Message)
-        UpdateDisplay()
+	if i == 0:
+        	Message = "Waiting for camera response "
+        	print(Message)
+        	UpdateDisplay()
         Message = ""
         Message2 = ""   
 
@@ -195,11 +196,12 @@ def InitCamera():
 #        del CameraModel[0:2]
      
         if len(CameraModel):
-            Message = "Camera check is done found:"
-            Message2 = str(CameraModel[0])
-            print(Message)
-            print(Message2)
-            UpdateDisplay()
+	    if i ==0:
+            	Message = "Camera check is done found:"
+            	Message2 = str(CameraModel[0])
+           	print(Message)
+            	print(Message2)
+            	UpdateDisplay()
             CameraPresent = True
             cam = pygame.camera.Camera("/dev/video0",(1200,800))#1200 800
             #cam.start()
@@ -887,7 +889,7 @@ def main(threadName, *args):
  #   print("main(threadName, *args) --Starting Mainthread ")
     InitFolder()
     print("InitFolder() -- OK ")
-
+    i = 0
     while True:
         InitCamera()
         show_image(start_cameraPath) #e.g'Template/2019 07 14 Redland Y6 Leavers/start_camera.jpg')
@@ -899,7 +901,7 @@ def main(threadName, *args):
         cam.stop()
         #print("Success! Exiting..")
         #pygame.quit()
-
+        i+=1
 
 # launch the main thread
 Thread(target=main, args=('Main', 1)).start()
