@@ -413,7 +413,7 @@ def CapturePicture():
     Message2 = ""
 
     UpdateDisplay()
-    time.sleep(1)
+    time.sleep(1.5)
     CountDownPhoto = ""
     UpdateDisplay()
     background.fill(pygame.Color("black"))
@@ -448,7 +448,7 @@ def CapturePicture():
     UpdateDisplay()
 
     #cam.start()
-    time.sleep(1)
+    time.sleep(1.5)
 
     #Message3 = "test text"
     #Message = ""
@@ -535,7 +535,7 @@ def CapturePicture():
     Numeral = ""
     UpdateDisplay()
     pygame.image.save(img, filename)
-
+    time.sleept(1)
                 
     UpdateDisplay()
     #time.sleep(0.75)
