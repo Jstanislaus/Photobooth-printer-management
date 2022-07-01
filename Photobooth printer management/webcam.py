@@ -170,6 +170,8 @@ def InitCamera():
         UpdateDisplay()
         pygame.camera.init()
         CameraModel = pygame.camera.list_cameras()
+	print("###########################")
+	print(CameraModel)
         if CameraModel:
             cam = pygame.camera.Camera(CameraModel[0],(640,480))
             camLive= pygame.camera.Camera(CameraModel[0],(640,480))
