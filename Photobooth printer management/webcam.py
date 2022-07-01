@@ -500,7 +500,7 @@ def CapturePicture():
         Numeraltext = fontNumeral.render(Numeral, 1, (227, 100, 200))#157
         NumeralPosText = Numeraltext.get_rect()
         NumeralPosText.centerx = background.get_rect().centerx 
-        NumeralPosText.centery = background.get_rect().centery * 1.5 
+        NumeralPosText.centery = background.get_rect().centery * 1.3 #change multiplier so that the countdown is where you want it vertically
         #print(NumeralPosText.centery)
 
         backgroundPicture.blit(Numeraltext, NumeralPosText)
@@ -511,7 +511,6 @@ def CapturePicture():
         screen.blit(backgroundPicture, (0, 0))
         #cam.stop()
         pygame.display.update()
-               
     Message = "Great shot!"
     print(Message)
     Message2 =  ""
