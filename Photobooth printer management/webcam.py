@@ -459,7 +459,6 @@ def CapturePicture():
                     
         # grab image from Camera
         img = cam.get_image()
-	print(type(img))
 	width = int(img.get_width())
 	height = int(img.get_height())
         if int(width/6)*2>(height/2):
@@ -477,8 +476,6 @@ def CapturePicture():
 	    step = int(y/4)
         else:
 	    step = int(x/6)
-        #left = (x/2)-(3*step)
-        #top = (y/2)-(2*step)
         right = 6*step
         bottom = 4*step
         cropimg = pygame.transform.scale(cropimg, ((left+right),(top+bottom)))
@@ -486,6 +483,8 @@ def CapturePicture():
         #Render Image to Background
 	width = int(cropimg.get_width())
 	height = int(cropimg.get_height())
+        background.fill(pygame.Color("black"))
+        screen.blit(background, (0, 0))
         backgroundPicture.blit(cropimg, ((x/2)-(width/2),(y/2)-(height/2)))
 
         #Render Countdown Text to Background
