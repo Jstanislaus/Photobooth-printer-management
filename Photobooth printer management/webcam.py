@@ -9,7 +9,6 @@ import datetime
 import pygame.camera
 from pygame.locals import *
 import math
-
 from threading import Thread
 from pygame.locals import *
 from time import sleep
@@ -831,7 +830,7 @@ def WaitForPrintingEvent():
     while Printing == False and countDown > 0:
         
         pf.read()
-        input_state = pf.read_pin(7) 
+        input_state = pf.read_pin(1) 
 #        print(input_state) # is True")
         if input_state == True: #was True
             print("input_state is True (button has been pressed for printing)")
@@ -865,7 +864,7 @@ def WaitForEvent():
    
     while NotEvent:
         pf.read()
-        input_state = pf.read_pin(7) #False #windows10 GPIO.input(BUTTON_PIN)
+        input_state = pf.read_pin(1) #False #windows10 GPIO.input(BUTTON_PIN)
 
 
         if input_state == False: #was TRUE
