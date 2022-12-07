@@ -18,8 +18,8 @@ import RPi.GPIO as GPIO, time, os, subprocess,shlex
 
  
 # initialise global variables
-Venueid = "AF"
-VenueDescription = "2022 07 07 Harden History Open evening"
+Venueid = "AG"
+VenueDescription = "2022 12 09 Harden Christmas Fayre"
 Numeral = ""  # Numeral is the number display
 Message = ""  # Message is a fullscreen message
 Message2 = ""  # Message is a fullscreen message
