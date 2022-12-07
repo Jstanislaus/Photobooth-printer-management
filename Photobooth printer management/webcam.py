@@ -833,7 +833,7 @@ def WaitForPrintingEvent():
         pf.read()
         input_state = pf.read_pin(7) 
 #        print(input_state) # is True")
-        if input_state == False: #was True
+        if input_state == True: #was True
             print("input_state is True (button has been pressed for printing)")
             print(input_state)
             Printing = True
@@ -846,7 +846,7 @@ def WaitForPrintingEvent():
             if event.type == pygame.KEYDOWN:				
                 if event.key == pygame.K_DOWN:
                     print("pygame.K_DOWN is True (Down Key has been pressed for printing)")
-                    GPIO.remove_event_detect(BUTTON_PIN)
+                    #GPIO.remove_event_detect(BUTTON_PIN)
                     Printing = True
                     return        
         BackgroundColor = ""
@@ -855,7 +855,7 @@ def WaitForPrintingEvent():
         countDown = countDown - 1
         time.sleep(0.5)
 
-    GPIO.remove_event_detect(BUTTON_PIN)
+    #GPIO.remove_event_detect(BUTTON_PIN)
 
 
 def WaitForEvent():
