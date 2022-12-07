@@ -634,8 +634,8 @@ def WaitForPrintingEvent():
     global pygame
     pf = pifaceio.PiFace()
     countDown = 10
-#    GPIO.add_event_detect(BUTTON_PIN, GPIO.RISING)
-#    GPIO.add_event_callback(BUTTON_PIN, MyCallback)
+    GPIO.add_event_detect(BUTTON_PIN, GPIO.RISING)
+    GPIO.add_event_callback(BUTTON_PIN, MyCallback)
     
     while Printing == False and countDown > 0:
         
@@ -655,7 +655,7 @@ def WaitForPrintingEvent():
             if event.type == pygame.KEYDOWN:				
                 if event.key == pygame.K_DOWN:
                     print("pygame.K_DOWN is True (Down Key has been pressed for printing)")
- #                   GPIO.remove_event_detect(BUTTON_PIN)
+                    GPIO.remove_event_detect(BUTTON_PIN)
                     Printing = True
                     return        
         BackgroundColor = ""
@@ -664,7 +664,7 @@ def WaitForPrintingEvent():
         countDown = countDown - 1
         time.sleep(0.5)
 
- #   GPIO.remove_event_detect(BUTTON_PIN)
+    GPIO.remove_event_detect(BUTTON_PIN)
 
 
 def WaitForEvent():
