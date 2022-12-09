@@ -786,8 +786,8 @@ def TakePictures():
                             printqueuelength = len(conn.getJobs())
 
                             #time.sleep(5)
-                            Message = "Your photo is number "  + str(printqueuelength+1) 
-                            Message2 = " in the print queue" #Using Printer name  : " + printer_name
+                            #Message = "Your photo is number "  + str(printqueuelength+1) #MAY NEED TO ADD BACK (REMOVED FOR HARDEN CHRISTMAS FAYRE 2022
+                            #Message2 = " in the print queue" #Using Printer name  : " + printer_name #MAY NEED TO ADD BACK (REMOVED FOR HARDEN CHRISTMAS FAYRE 2022
                             UpdateDisplay()  
                             time.sleep(1)
                             Message = "All done, thank you for"
