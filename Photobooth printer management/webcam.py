@@ -764,7 +764,7 @@ def TakePictures():
                             #print(printer_name)
                             #printer_name = printers.keys()[2]
                             #print(printer_name)
-                            printer_name = "Photos_10cm_x_15cm_USB"
+                            printer_name = "Canon_TS7400_series" #"Photos_10cm_x_15cm_USB"
 
                             CmdLine = ["lp", "-d", printer_name, Final_Image_Name]     #/home/pi/Desktop/tempprint.jpg'
                             print(CmdLine)
