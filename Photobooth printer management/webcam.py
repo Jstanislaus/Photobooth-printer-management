@@ -480,7 +480,7 @@ def CapturePicture():
                     
         # grab image from Camera
         img = cam.get_image()
-	img = img.rotate(90)
+	pygame.transform.rotate(img, 90)
 	width = int(img.get_width())
 	height = int(img.get_height())
         if int(width/6)*2>(height/2):
