@@ -600,20 +600,24 @@ def TakePictures():
 
     basewidth = 600 #570
     #height == 400 for template
-
+#required ratio: 600x400
     #image1 = PIL.Image.open(filename1)
     image1 = Image.open(filename1)
-    width,height = image1.size
+    width,height = image1.size #get The dimesions of the picture
+##############################
+#code to scale the image for the template
+#############################
     if int(width/6)*2>(height/2):
 	step = int(height/4)
     else:
 	step = int(width/6)
-    left = (width/2)-(3*step)
-    top = (height/2)-(2*step)
-    right = 6*step
-    bottom = 4*step
+    left = (width/2)-(3*step) # 3 steps to the left of centre
+    top = (height/2)-(2*step)#two steps up from centre
+    right = (width/2)+(3*step)#6*step
+    bottom = (height/2)+(2*step)#4*step
     image1 = image1.crop((left,top,right,bottom))
     width,height = image1.size
+	#now height and width in ratio
     #image1 = image1.crop(box),PIL.Image.ANTIALIAS
     #print("Height is "+str(height)+" Width is "+str(width))
     wpercent = (basewidth / float(image1.size[0]))
@@ -728,9 +732,9 @@ def TakePictures():
     f.flush()
     print("TotalImageCount flushed")
 
-    bgimage.paste(image1, (600, 0))     #bgimage.paste(image1, (625, 30))
-    bgimage.paste(image2, (0, 400))   #bgimage.paste(image2, (625, 405))
-    bgimage.paste(image3, (600, 400))     #bgimage.paste(image3, (55, 405))
+    bgimage.paste(image1, (600, 0))  #1st image pasted top right   #bgimage.paste(image1, (625, 30))
+    bgimage.paste(image2, (0, 400))  #2nd image pasted bottom left #bgimage.paste(image2, (625, 405))
+    bgimage.paste(image3, (600, 400)) #3rd image pasted bottom right    #bgimage.paste(image3, (55, 405))
     bgimage.paste(QRCode, (480,280)) 
 
     # Save it to the SMB Share directory
