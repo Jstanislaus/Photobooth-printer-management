@@ -351,7 +351,6 @@ def ShowPicture(file, delay): #
     x,y = screen.get_size()
     backgroundPicture.fill((0, 0, 0))
     img = pygame.image.load(file)
-    img = img.rotate(90)
     width = int(img.get_width())
     height = int(img.get_height())
     if int(width/6)*2>(height/2):
@@ -481,6 +480,7 @@ def CapturePicture():
                     
         # grab image from Camera
         img = cam.get_image()
+	img = img.rotate(90)
 	width = int(img.get_width())
 	height = int(img.get_height())
         if int(width/6)*2>(height/2):
