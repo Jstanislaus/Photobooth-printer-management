@@ -742,7 +742,8 @@ def TakePictures():
     bgimage.paste(image2, (0, 400))  #2nd image pasted bottom left #bgimage.paste(image2, (625, 405))
     bgimage.paste(image3, (600, 400)) #3rd image pasted bottom right    #bgimage.paste(image3, (55, 405))
     bgimage.paste(QRCode, (480,280)) 
-
+    print("TYPE IS")
+    print(type(bgimage))
     # Save it to the SMB Share directory
     bgimage.save(Final_Image_Name)
     ShowPicture(Final_Image_Name,3)
