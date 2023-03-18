@@ -165,6 +165,7 @@ def InitCamera(i):
     CameraPresent = False
 
     while CameraPresent == False:
+	print("Hello")
 	if i == 0:
             Message = 'Camera Check...'
             UpdateDisplay()
