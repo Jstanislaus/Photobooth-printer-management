@@ -378,8 +378,10 @@ def ShowPicture(file, delay): #
         step = int(y/4)
     else:
         step = int(x/6)
-    right = 6*step
-    bottom = 4*step
+    right = (width/2)+(3*step)
+    left = (height/2)+(2*step)
+    #right = 6*step
+    #bottom = 4*step
     img = pygame.transform.scale(img, ((left+right)-(6*Finalimagereduction),(top+bottom)-(4*Finalimagereduction)))
     #img = pygame.transform.scale(img, screenPicture.get_size())  # Make the image full screen
     #backgroundPicture.set_alpha(200)
@@ -504,21 +506,17 @@ def CapturePicture():
             width = int(img.get_width())
             height = int(img.get_height())###To make the largest 'step' increments to produce the required ratio6:4
             print("Width and height values are "+str(width)+str(height))
-            if int(width/6)*2>(height/2):#This only works if (4*height
+            if int(width/6)*2>(height/2):#This only works if height or width fits in the surface
                 step = int(height/4)
             else:
                 step = int(width/6)
             left = (width/2)-(3*step)
             top = (height/2)-(2*step)
-            right = 6*step
-            bottom = 4*step
-            #right = (width/2)+(3*step)
-            #bottom = (height/2)+(2*step)
-            if int(x/6)*2>(y/2):
-                step = int(y/4)
-            else:
-                step = int(x/6)
-        cropimg = img.subsurface((left,top,right,bottom))
+            #right = 6*step
+            #bottom = 4*step
+            right = (width/2)+(3*step)
+            bottom = (height/2)+(2*step)
+        cropimg = img.subsurface((left,top,right,bottom))#puts it into correct ratio
         # Make the image full screen
 	#screenPicture.get_size()
         cropimg = pygame.transform.scale(cropimg, ((left+right),(top+bottom)))
