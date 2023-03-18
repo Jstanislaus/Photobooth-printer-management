@@ -745,6 +745,8 @@ def TakePictures():
     print("TYPE IS")
     print(type(bgimage))
     # Save it to the SMB Share directory
+    if bgimage.mode in ("RGBA", "P"):
+        bgimage = bgimage.convert("RGB")
     bgimage.save(Final_Image_Name)
     ShowPicture(Final_Image_Name,3)
 
