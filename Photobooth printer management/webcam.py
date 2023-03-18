@@ -513,20 +513,20 @@ def CapturePicture():
                 step = int(y/4)
             else:
                 step = int(x/6)
-            top = (y/2)-(2*step)	
-            left = (x/2)-(3*step)
-            right = (x/2)+(3*step)
-            bottom = (y/2)+(2*step)
+            top2 = (y/2)-(2*step)	
+            left2 = (x/2)-(3*step)
+            right2 = (x/2)+(3*step)
+            bottom2 = (y/2)+(2*step)
         # Make the image full screen
 	#screenPicture.get_size()
-        cropimg = pygame.transform.scale(cropimg, ((left+right-(6*Finalimagereduction)),(top+bottom-(4*Finalimagereduction))))
+        cropimg = pygame.transform.scale(cropimg, ((left2+right2-(6*Finalimagereduction)),(top2+bottom2-(4*Finalimagereduction))))
         cropimg = pygame.transform.flip(cropimg, 1,0) 
         if count ==0:
-            width = int(cropimg.get_width())
-            height = int(cropimg.get_height())
+            width3 = int(cropimg.get_width())
+            height3 = int(cropimg.get_height())
         #Render Image to Background
         #background.fill(pygame.Color("black"))
-        backgroundPicture.blit(cropimg, ((x/2)-(width/2),(y/2)-(height/2)))
+        backgroundPicture.blit(cropimg, ((x/2)-(width3/2),(y/2)-(height3/2)))
 	#background.blit(backgroundPicture, ((x/2)-(width/2),(y/2)-(height/2)))
 	#backgroundPicture.blit(background,(0,0))
         #Render Countdown Text to Background
