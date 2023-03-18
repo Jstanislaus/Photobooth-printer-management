@@ -187,10 +187,10 @@ def InitCamera(i):
 #        args = shlex.split(gphoto2CmdLine)
 #        print(args)
 #        gpout = subprocess.Popen(args,stdout=subprocess.PIPE, stdin=subprocess.PIPE)
-	if i == 0:
-        	Message = "Waiting for camera response "
-        	print(Message)
-        	UpdateDisplay()
+        if i == 0:
+            Message = "Waiting for camera response "
+            print(Message)
+            UpdateDisplay()
         Message = ""
         Message2 = ""   
 
