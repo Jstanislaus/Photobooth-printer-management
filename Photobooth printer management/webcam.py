@@ -354,7 +354,6 @@ def ShowPicture(file, delay): #
     global backgroundPicture
     global ImageShowed
     background.fill(pygame.Color("black"))
-    screenPicture.fill(pygame.Color("black"))
     x,y = screen.get_size()
     backgroundPicture.fill((0, 0, 0))
     img = pygame.image.load(file)
@@ -375,8 +374,8 @@ def ShowPicture(file, delay): #
     img = pygame.transform.scale(img, ((left+right),(top+bottom)))
     #img = pygame.transform.scale(img, screenPicture.get_size())  # Make the image full screen
     #backgroundPicture.set_alpha(200)
-    x = left+right
-    y=top+bottom
+    width = left+right
+    height=top+bottom
     backgroundPicture.blit(img, ((x-width)/2,(y-height)/2))
     #backgroundPicture.blit(img, (0,0))
     screen.blit(backgroundPicture, (0, 0))
