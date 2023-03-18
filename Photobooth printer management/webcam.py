@@ -274,8 +274,7 @@ def UpdateDisplay():
     global textposMessage3
    
     background.fill(pygame.Color("white"))  # White background
-    #time.sleep(3)
-    #pygame.quit()
+    time.sleep(5)
     if (BackgroundColor != ""):
             print(BackgroundColor)
             background.fill(pygame.Color("black"))
