@@ -59,7 +59,7 @@ pygame.display.init()
 pygame.font.init()
 #pygame.key.init()
 #pygame.time.init()
-pygame.transform.init()
+#pygame.transform.init()
 print("# Initialise pygame -- OK")
 
 pygame.mouse.set_visible(False) #hide the mouse cursor
