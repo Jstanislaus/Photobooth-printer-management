@@ -24,7 +24,7 @@ Numeral = ""  # Numeral is the number display
 Message = ""  # Message is a fullscreen message
 Message2 = ""  # Message is a fullscreen message
 Message3 = ""
-BackgroundColor = "black"
+BackgroundColor = ""
 CountDownPhoto = ""
 CountPhotoOnCart = "" 
 SmallMessage = ""  # SmallMessage is a lower banner message
@@ -355,7 +355,7 @@ def ShowPicture(file, delay): #
     global ImageShowed
     background.fill(pygame.Color("black"))
     x,y = screen.get_size()
-    backgroundPicture.fill((0, 0, 0))
+   # backgroundPicture.fill((0, 0, 0))
     img = pygame.image.load(file)
     width = int(img.get_width())
     height = int(img.get_height())
