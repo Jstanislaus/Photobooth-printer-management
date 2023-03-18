@@ -847,7 +847,7 @@ def WaitForPrintingEvent():
     while Printing == False and countDown > 0:
         
         pf.read()
-        input_state = pf.read_pin(1) 
+        input_state = pf.read_pin(0) 
 #        print(input_state) # is True")
         if input_state == True: #was True
             print("input_state is True (button has been pressed for printing)")
