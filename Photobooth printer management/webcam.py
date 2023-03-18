@@ -510,7 +510,7 @@ def CapturePicture():
             right = (width/2)+(3*step)
             bottom = (height/2)+(2*step)
         cropimg = img.subsurface((left,top,right,bottom))#puts it into correct ratio
-	if count ==0:
+        if count ==0:
             if int(x/6)*2>(y/2):
                 step = int(y/4)
             else:
