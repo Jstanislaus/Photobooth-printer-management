@@ -509,7 +509,7 @@ def CapturePicture():
             #bottom = 4*step
             right = (width/2)+(3*step)
             bottom = (height/2)+(2*step)
-        cropimg = img.subsurface((left+1,top+1,right-1,bottom-1))#puts it into correct ratio
+        cropimg = img.subsurface((left,top,right,bottom))#puts it into correct ratio
         if count ==0:
             if int(x/6)*2>(y/2):
                 step = int(y/4)
@@ -519,7 +519,6 @@ def CapturePicture():
             left = (x/2)-(3*step)
             right = (x/2)+(3*step)
             bottom = (y/2)+(2*step)
-        cropimg = img.subsurface((left,top,right,bottom))#puts it into correct ratio
         # Make the image full screen
 	#screenPicture.get_size()
         cropimg = pygame.transform.scale(cropimg, ((left+right-(6*Finalimagereduction)),(top+bottom-(4*Finalimagereduction))))
