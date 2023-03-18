@@ -200,7 +200,7 @@ def InitCamera(i):
 #        del CameraModel[0:2]
      
         if len(CameraModel):
-	    if i ==0:
+            if i ==0:
             	Message = "Camera check is done found:"
             	Message2 = str(CameraModel[0])
            	print(Message)
