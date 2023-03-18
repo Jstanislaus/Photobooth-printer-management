@@ -286,11 +286,11 @@ def UpdateDisplay():
             textposMessage.centerx = background.get_rect().centerx
             textposMessage.centery = background.get_rect().centery
             if(ImageShowed):
-		    time.sleep(10)
+                    time.sleep(10)
                     backgroundPicture.blit(textMessage, textposMessage)
             else:
                     background.blit(textMessage, textposMessage)
-		    time.sleep(10)
+                    time.sleep(10)
 
     if (Message2 != ""):
             #print(Displaytext)
@@ -301,10 +301,10 @@ def UpdateDisplay():
             textposMessage2.centery = background.get_rect().centery * 1.25
             if(ImageShowed):
                     backgroundPicture.blit(textMessage2, textposMessage2)
-		    time.sleep(10)
+                    time.sleep(10)
             else:
                     background.blit(textMessage2, textposMessage2)
-		    time.sleep(10)
+                    time.sleep(10)
 
     if (Message3 != ""):
             #print(Displaytext)
@@ -315,10 +315,10 @@ def UpdateDisplay():
             textposMessage3.centery = background.get_rect().centery * 0.5
             if(ImageShowed):
                     backgroundPicture.blit(textMessage3, textposMessage3)
-		    time.sleep(10)
+                    time.sleep(10)
             else:
                     background.blit(textMessage3, textposMessage3)
-		    time.sleep(10)
+                    time.sleep(10)
 	
 
     if (Numeral != ""):
