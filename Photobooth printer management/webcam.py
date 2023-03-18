@@ -391,7 +391,7 @@ def show_image(image_path):
 	set_demensions(img.get_width(), img.get_height()) # set pixel dimensions based on image	
 	x = (infoObject.current_w / 2) - (img.get_width() / 2)
 	y = (infoObject.current_h / 2) - (img.get_height() / 2)
-	screen.blit(img,(x,y))
+	screen.blit(img,(x/2,y/2))
 	pygame.display.flip()
 
 def CapturePicture():
