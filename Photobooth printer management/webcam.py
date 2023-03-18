@@ -439,12 +439,9 @@ def CapturePicture():
     BackgroundColor = ""
     Numeral = ""
    # Message = "Big Grins Now"
-    time.sleep(10)
-    print("TWO")
+
     UpdateDisplay()
 
-    time.sleep(10)
-    print("THREE")
     imagecounter = imagecounter + 1
     
 
@@ -462,6 +459,8 @@ def CapturePicture():
     Message = "Now lets see"
     Message2 = "your best pose !!"
     print(Message + " " + Message2)
+    time.sleep(10)
+    print("THREE")
     UpdateDisplay()
 
     #cam.start()
@@ -470,7 +469,8 @@ def CapturePicture():
     #Message3 = "test text"
     #Message = ""
     #Message2 = ""
-    
+    time.sleep(10)
+    print("TWO")
     UpdateDisplay()
     #time.sleep(1)  
 
