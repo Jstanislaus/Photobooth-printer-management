@@ -166,8 +166,8 @@ def InitCamera(i):
 
     while CameraPresent == False:
 	if i == 0:
-        	Message = 'Camera Check...'
-        	UpdateDisplay()
+            Message = 'Camera Check...'
+            UpdateDisplay()
         pygame.camera.init()
         CameraModel = pygame.camera.list_cameras()
         if CameraModel:
