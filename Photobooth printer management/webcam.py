@@ -510,10 +510,10 @@ def CapturePicture():
                 step = int(width/6)
             left = (width/2)-(3*step)
             top = (height/2)-(2*step)
-            #right = 6*step
-            #bottom = 4*step
-            right = (width/2)+(3*step)
-            bottom = (height/2)+(2*step)
+            right = 6*step
+            bottom = 4*step
+            #right = (width/2)+(3*step)
+            #bottom = (height/2)+(2*step)
             if int(x/6)*2>(y/2):
                 step = int(y/4)
             else:
