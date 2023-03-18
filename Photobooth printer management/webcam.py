@@ -425,13 +425,9 @@ def CapturePicture():
     Message2 = ""
 
     UpdateDisplay()
-    #time.sleep(1.5)
-    time.sleep(10)
-    print("TWO")
+    time.sleep(1.5)
     CountDownPhoto = ""
     UpdateDisplay()
-    time.sleep(10)
-    print("THREE")
     background.fill(pygame.Color("black"))
     screen.blit(background, (0, 0))
     pygame.display.flip()
@@ -443,7 +439,12 @@ def CapturePicture():
     BackgroundColor = ""
     Numeral = ""
    # Message = "Big Grins Now"
+    time.sleep(10)
+    print("TWO")
     UpdateDisplay()
+
+    time.sleep(10)
+    print("THREE")
     imagecounter = imagecounter + 1
     
 
