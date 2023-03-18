@@ -744,6 +744,7 @@ def TakePictures():
     bgimage.paste(QRCode, (480,280)) 
 
     # Save it to the SMB Share directory
+    bgimage = bgimage.convert("RGB")
     bgimage.save(Final_Image_Name)
     ShowPicture(Final_Image_Name,3)
 
