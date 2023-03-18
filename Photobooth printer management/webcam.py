@@ -495,7 +495,7 @@ def CapturePicture():
                     
         # grab image from Camera
         img = cam.get_image()
-       # img = pygame.transform.rotate(img, 90)
+        img = pygame.transform.rotate(img, 90)
         if count == 0:
             width = int(img.get_width())
             height = int(img.get_height())###To make the largest 'step' increments to produce the required ratio6:4
@@ -508,7 +508,7 @@ def CapturePicture():
             top= (height/2)-(2*step)
             width = (6*step)
             height = (4*step)
-        cropimg = img.subsurface((left,top,width,height))#puts it into correct ratio
+        cropimg1 = img.subsurface((left,top,width,height))#puts it into correct ratio
         if count ==0:
             if int(x/6)*2>(y/2):
                 step = int(y/4)
@@ -520,7 +520,7 @@ def CapturePicture():
             bottom2 = (y/2)+(2*step)
         # Make the image full screen
 	#screenPicture.get_size()
-        cropimg = pygame.transform.scale(cropimg, ((left2+right2-(6*Finalimagereduction)),(top2+bottom2-(4*Finalimagereduction))))
+        cropimg = pygame.transform.scale(cropimg1, ((left2+right2-(6*Finalimagereduction)),(top2+bottom2-(4*Finalimagereduction))))
         cropimg = pygame.transform.flip(cropimg, 1,0) 
         if count ==0:
             width3 = int(cropimg.get_width())
@@ -559,7 +559,7 @@ def CapturePicture():
     Message3 =  ""
     Numeral = ""
     UpdateDisplay()
-    pygame.image.save(img, filename)
+    pygame.image.save(cropimg1, filename)
     time.sleep(0.75)
                 
     UpdateDisplay()
