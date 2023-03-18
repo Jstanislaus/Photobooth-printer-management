@@ -203,9 +203,9 @@ def InitCamera(i):
             if i ==0:
             	Message = "Camera check is done found:"
             	Message2 = str(CameraModel[0])
-           	print(Message)
-            	print(Message2)
-            	UpdateDisplay()
+                print(Message)
+                print(Message2)
+                UpdateDisplay()
             CameraPresent = True
             cam = pygame.camera.Camera("/dev/video0",(1200,800))#1200 800
             #cam.start()
