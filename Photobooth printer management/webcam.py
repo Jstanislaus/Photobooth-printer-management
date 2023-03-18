@@ -163,8 +163,8 @@ def InitCamera(i):
     global camLive
 
     CameraPresent = False
-    print("Hello")
     while CameraPresent == False:
+	print("Hello")
 	if i == 0:
             Message = 'Camera Check...'
             UpdateDisplay()
