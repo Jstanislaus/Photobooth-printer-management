@@ -373,7 +373,7 @@ def ShowPicture(file, delay): #
     img = pygame.transform.scale(img, ((left+right),(top+bottom)))
     #img = pygame.transform.scale(img, screenPicture.get_size())  # Make the image full screen
     #backgroundPicture.set_alpha(200)
-    backgroundPicture.blit(img, ((width/2)-(x/2),(height/2)-(y/2)))
+    backgroundPicture.blit(img, ((x/2)-(width/2),(y/2)-(height/2)))
     #backgroundPicture.blit(img, (0,0))
     screen.blit(backgroundPicture, (0, 0))
     pygame.display.flip()  # update the display
