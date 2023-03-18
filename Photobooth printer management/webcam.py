@@ -378,10 +378,9 @@ def ShowPicture(file, delay): #
     #bottom = 4*step
     width = left+right-(6*Finalimagereduction)
     height=top+bottom-(4*Finalimagereduction)
-    #img = pygame.transform.scale(img, (width,height))#resize
- # Make the image full screen
-    #backgroundPicture.set_alpha(200)
-    backgroundPicture.blit(img, ((x-width)/2,(y-height)/2),(width,height))#determines where its placed
+    img = pygame.transform.scale(img, (width,height))#resize
+ # Make the image full screen, combine top and bottom into one?
+    backgroundPicture.blit(img, ((x-width)/2,(y-height)/2))#determines where its placed
     #backgroundPicture.blit(img, (0,0))
     screen.blit(backgroundPicture, (0, 0))
     pygame.display.flip()  # update the display
@@ -510,14 +509,20 @@ def CapturePicture():
             #bottom = 4*step
             right = (width/2)+(3*step)
             bottom = (height/2)+(2*step)
+        cropimg = img.subsurface((left,top,right,bottom))#puts it into correct ratio
+	if count ==0:
             if int(x/6)*2>(y/2):
                 step = int(y/4)
             else:
                 step = int(x/6)
+            top = (y/2)-(2*step)	
+            left = (x/2)-(3*step)
+            right = (x/2)+(3*step)
+            bottom = (y/2)+(2*step)
         cropimg = img.subsurface((left,top,right,bottom))#puts it into correct ratio
         # Make the image full screen
 	#screenPicture.get_size()
-        cropimg = pygame.transform.scale(cropimg, ((left+right),(top+bottom)))
+        cropimg = pygame.transform.scale(cropimg, ((left+right-(6*Finalimagereduction)),(top+bottom-(4*Finalimagereduction))))
         cropimg = pygame.transform.flip(cropimg, 1,0) 
         if count ==0:
             width = int(cropimg.get_width())
