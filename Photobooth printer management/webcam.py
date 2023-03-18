@@ -286,11 +286,9 @@ def UpdateDisplay():
             textposMessage.centerx = background.get_rect().centerx
             textposMessage.centery = background.get_rect().centery
             if(ImageShowed):
-                    time.sleep(10)
                     backgroundPicture.blit(textMessage, textposMessage)
             else:
                     background.blit(textMessage, textposMessage)
-                    time.sleep(10)
 
     if (Message2 != ""):
             #print(Displaytext)
@@ -301,10 +299,8 @@ def UpdateDisplay():
             textposMessage2.centery = background.get_rect().centery * 1.25
             if(ImageShowed):
                     backgroundPicture.blit(textMessage2, textposMessage2)
-                    time.sleep(10)
             else:
                     background.blit(textMessage2, textposMessage2)
-                    time.sleep(10)
 
     if (Message3 != ""):
             #print(Displaytext)
@@ -315,10 +311,8 @@ def UpdateDisplay():
             textposMessage3.centery = background.get_rect().centery * 0.5
             if(ImageShowed):
                     backgroundPicture.blit(textMessage3, textposMessage3)
-                    time.sleep(10)
             else:
                     background.blit(textMessage3, textposMessage3)
-                    time.sleep(10)
 	
 
     if (Numeral != ""):
@@ -459,8 +453,6 @@ def CapturePicture():
     Message = "Now lets see"
     Message2 = "your best pose !!"
     print(Message + " " + Message2)
-    time.sleep(10)
-    print("THREE")
     UpdateDisplay()
 
     #cam.start()
@@ -469,8 +461,6 @@ def CapturePicture():
     #Message3 = "test text"
     #Message = ""
     #Message2 = ""
-    time.sleep(10)
-    print("TWO")
     UpdateDisplay()
     #time.sleep(1)  
 
@@ -490,7 +480,7 @@ def CapturePicture():
     textposMessage.centery = background.get_rect().centery*0.5
 
     print("Starting Liveview...")
-    screen = pygame.display.set_mode()
+    #screen = pygame.display.set_mode()
     x, y = screen.get_size()
     while time.time() < t_end:
                     
