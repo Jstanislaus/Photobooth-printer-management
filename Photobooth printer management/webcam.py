@@ -354,8 +354,9 @@ def ShowPicture(file, delay): #
     global backgroundPicture
     global ImageShowed
     background.fill(pygame.Color("black"))
+    screen.fill(pygame.Color("black"))
     x,y = screen.get_size()
-   # backgroundPicture.fill((0, 0, 0))
+    backgroundPicture.fill((0, 0, 0))
     img = pygame.image.load(file)
     width = int(img.get_width())
     height = int(img.get_height())
