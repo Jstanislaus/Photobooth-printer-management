@@ -517,15 +517,13 @@ def CapturePicture():
                 step = int(x/6)
             right = 6*step
             bottom = 4*step
-            width = int(cropimg.get_width())
-            height = int(cropimg.get_height())
         cropimg = img.subsurface((left,top,right,bottom))
         # Make the image full screen
 	#screenPicture.get_size()
         cropimg = pygame.transform.scale(cropimg, ((left+right),(top+bottom)))
         cropimg = pygame.transform.flip(cropimg, 1,0) 
         if count ==0:
-	    width = int(cropimg.get_width())
+            width = int(cropimg.get_width())
             height = int(cropimg.get_height())
         #Render Image to Background
         #background.fill(pygame.Color("black"))
