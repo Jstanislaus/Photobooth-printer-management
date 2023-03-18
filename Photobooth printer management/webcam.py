@@ -36,7 +36,7 @@ imagefolder = "/home/pi/Photos/" +  Venueid + " " + VenueDescription  #os.path.r
 templatePath = os.path.join('Template', Venueid + " " + VenueDescription,"template.png") #Path of template image
 start_cameraPath = os.path.join('Template', Venueid + " " + VenueDescription,"start_camera.jpg") #Path of template image start_camera.jpg
 ImageShowed = False
-Printing = False
+NotPrinting = True
 BUTTON_PIN = 25
 #IMAGE_WIDTH = 558
 #IMAGE_HEIGHT = 374
@@ -583,7 +583,7 @@ def TakePictures():
     global ImageShowed
     global CountDownPhoto
     global BackgroundColor
-    global Printing
+    global NotPrinting
     global PhotosPerCart
     global TotalImageCount
     global QRData
@@ -770,12 +770,12 @@ def TakePictures():
     Message3 = ""
     Message = "Press and hold button to print"
     UpdateDisplay()
-    Printing = False
+    NotPrinting = True
     WaitForPrintingEvent()
     Numeral = ""
     Message = ""
-    print(Printing)
-    if Printing:
+    print(NotPrinting)
+    if NotPrinting == False:
             if (TotalImageCount <= PhotosPerCart):
                     if os.path.isfile(Final_Image_Name):
                             # Open a connection to cups
@@ -835,9 +835,9 @@ def TakePictures():
     time.sleep(1)
 
 def MyCallback(channel):
-    global Printing
+    global NotPrinting
     GPIO.remove_event_detect(BUTTON_PIN)
-    Printing=True
+    NotPrinting=False
 
 def WaitForPrintingEvent():
     global BackgroundColor
@@ -845,33 +845,33 @@ def WaitForPrintingEvent():
     global Message
     global Message2
     global Message3
-    global Printing
+    global NotPrinting
     global pygame
     pf = pifaceio.PiFace()
     countDown = 10
     #GPIO.add_event_detect(BUTTON_PIN, GPIO.RISING)
     #GPIO.add_event_callback(BUTTON_PIN, MyCallback)
     
-    while Printing == False and countDown > 0:
+    while NotPrinting == True and countDown > 0:
         
         pf.read()
-        input_state = pf.read_pin(0) 
+        input_state = pf.read_pin(1) 
 #        print(input_state) # is True")
-        if input_state == True: #was True
+        if input_state == False: #was True
             print("input_state is True (button has been pressed for printing)")
             print(input_state)
-            Printing = True
+            NotPrinting = False
 #            pygame.quit()
             return
 
-        if(Printing == True):
+        if(NotPrinting == False):
             return
         for event in pygame.event.get():			
             if event.type == pygame.KEYDOWN:				
                 if event.key == pygame.K_DOWN:
                     print("pygame.K_DOWN is True (Down Key has been pressed for printing)")
                     #GPIO.remove_event_detect(BUTTON_PIN)
-                    Printing = True
+                    NotPrinting = False
                     return        
         BackgroundColor = ""
         Numeral = str(countDown)
