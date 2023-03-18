@@ -430,7 +430,8 @@ def CapturePicture():
     print("TWO")
     CountDownPhoto = ""
     UpdateDisplay()
-    time.sleep("THREE")
+    time.sleep(10)
+    print("THREE")
     background.fill(pygame.Color("black"))
     screen.blit(background, (0, 0))
     pygame.display.flip()
