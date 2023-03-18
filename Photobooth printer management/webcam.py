@@ -425,9 +425,12 @@ def CapturePicture():
     Message2 = ""
 
     UpdateDisplay()
-    time.sleep(1.5)
+    #time.sleep(1.5)
+    time.sleep(10)
+    print("TWO")
     CountDownPhoto = ""
     UpdateDisplay()
+    time.sleep("THREE")
     background.fill(pygame.Color("black"))
     screen.blit(background, (0, 0))
     pygame.display.flip()
