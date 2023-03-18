@@ -549,7 +549,7 @@ def CapturePicture():
         #Render Background to Screen
         screen.blit(backgroundPicture, (0, 0))
         #cam.stop()
-	count+=1
+        count+=1
         pygame.display.update()
     print("THERE WERE "+str(count)+" FRAMES")
     Message = "Great shot!"
