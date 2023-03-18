@@ -485,22 +485,22 @@ def CapturePicture():
                     
         # grab image from Camera
         img = cam.get_image()
-	pygame.transform.rotate(img, 90)
-	width = int(img.get_width())
-	height = int(img.get_height())
+        pygame.transform.rotate(img, 90)
+        width = int(img.get_width())
+        height = int(img.get_height())
         if int(width/6)*2>(height/2):
 	    step = int(height/4)
         else:
 	    step = int(width/6)
         left = (width/2)-(3*step)
-	top = (height/2)-(2*step)
+        top = (height/2)-(2*step)
         right = 6*step
         bottom = 4*step
-	cropimg = img.subsurface((left,top,right,bottom))
+        cropimg = img.subsurface((left,top,right,bottom))
         # Make the image full screen
 	#screenPicture.get_size()
-	if int(x/6)*2>(y/2):
-	    step = int(y/4)
+        if int(x/6)*2>(y/2):
+                step = int(y/4)
         else:
 	    step = int(x/6)
         right = 6*step
@@ -508,8 +508,8 @@ def CapturePicture():
         cropimg = pygame.transform.scale(cropimg, ((left+right),(top+bottom)))
         cropimg = pygame.transform.flip(cropimg, 1,0)            
         #Render Image to Background
-	width = int(cropimg.get_width())
-	height = int(cropimg.get_height())
+        width = int(cropimg.get_width())
+        height = int(cropimg.get_height())
         #background.fill(pygame.Color("black"))
         backgroundPicture.blit(cropimg, ((x/2)-(width/2),(y/2)-(height/2)))
 	#background.blit(backgroundPicture, ((x/2)-(width/2),(y/2)-(height/2)))
