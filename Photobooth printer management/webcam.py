@@ -363,7 +363,7 @@ def ShowPicture(file, delay): #
     global backgroundPicture
     global ImageShowed
     background.fill(pygame.Color("black"))
-    x,y = screen.get_size()
+    x,y = screen.get_size()##no reratio needed, just resize
     backgroundPicture.fill((0, 0, 0)) #To put the finalimage in biggest mutiple ratio of 6:4
     img = pygame.image.load(file)
     width = int(img.get_width())
@@ -378,16 +378,18 @@ def ShowPicture(file, delay): #
         step = int(y/4)
     else:
         step = int(x/6)
-    right = (width/2)+(3*step)
-    left = (height/2)+(2*step)
+    top = (y/2)-(2*step)	
+    left = (x/2)-(3*step)
+    right = (x/2)+(3*step)
+    bottom = (y/2)+(2*step)
     #right = 6*step
     #bottom = 4*step
-    img = pygame.transform.scale(img, ((left+right)-(6*Finalimagereduction),(top+bottom)-(4*Finalimagereduction)))
+    img = pygame.transform.scale(img, ((left+right)-(6*Finalimagereduction),(top+bottom)-(4*Finalimagereduction)))#resize
     #img = pygame.transform.scale(img, screenPicture.get_size())  # Make the image full screen
     #backgroundPicture.set_alpha(200)
     width = left+right-(6*Finalimagereduction)
     height=top+bottom-(4*Finalimagereduction)
-    backgroundPicture.blit(img, ((x-width)/2,(y-height)/2))
+    backgroundPicture.blit(img, ((x-width)/2,(y-height)/2))#determines where its placed
     #backgroundPicture.blit(img, (0,0))
     screen.blit(backgroundPicture, (0, 0))
     pygame.display.flip()  # update the display
@@ -516,6 +518,10 @@ def CapturePicture():
             #bottom = 4*step
             right = (width/2)+(3*step)
             bottom = (height/2)+(2*step)
+            if int(x/6)*2>(y/2):
+                step = int(y/4)
+            else:
+                step = int(x/6)
         cropimg = img.subsurface((left,top,right,bottom))#puts it into correct ratio
         # Make the image full screen
 	#screenPicture.get_size()
