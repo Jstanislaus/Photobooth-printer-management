@@ -359,15 +359,15 @@ def ShowPicture(file, delay): #
     width = int(img.get_width())
     height = int(img.get_height())
     if int(width/6)*2>(height/2):
-	step = int(height/4)
+        step = int(height/4)
     else:
-	step = int(width/6)
+        step = int(width/6)
     left = (width/2)-(3*step)
     top = (height/2)-(2*step)	
     if int(x/6)*2>(y/2):
-	step = int(y/4)
+        step = int(y/4)
     else:
-	step = int(x/6)
+        step = int(x/6)
     right = 6*step
     bottom = 4*step
     img = pygame.transform.scale(img, ((left+right),(top+bottom)))
