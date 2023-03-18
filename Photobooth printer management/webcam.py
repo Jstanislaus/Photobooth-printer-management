@@ -614,9 +614,9 @@ def TakePictures():
 #code to scale the image for the template
 #############################
     if int(width/6)*2>(height/2):
-	step = int(height/4)
+        step = int(height/4)
     else:
-	step = int(width/6)
+        step = int(width/6)
     left = (width/2)-(3*step) # 3 steps to the left of centre
     top = (height/2)-(2*step)#two steps up from centre
     right = (width/2)+(3*step)#6*step
@@ -641,9 +641,9 @@ def TakePictures():
     #print(str(height))
     #print(type(image2))
     if int(width/6)*2>(height/2):
-	step = int(height/4)
+        step = int(height/4)
     else:
-	step = int(width/6)
+        step = int(width/6)
     left = (width/2)-(3*step)
     top = (height/2)-(2*step)
     right = 6*step
@@ -666,9 +666,9 @@ def TakePictures():
     image3 = Image.open(filename3)
     width,height = image3.size
     if int(width/6)*2>(height/2):
-	step = int(height/4)
+        step = int(height/4)
     else:
-	step = int(width/6)
+        step = int(width/6)
     left = (width/2)-(3*step)
     top = (height/2)-(2*step)
     right = 6*step
