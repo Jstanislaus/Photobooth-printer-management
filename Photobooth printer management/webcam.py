@@ -362,6 +362,7 @@ def ShowPicture(file, delay): #
     global screenPicture
     global backgroundPicture
     global ImageShowed
+    global Finalimagereduction
     background.fill(pygame.Color("black"))
     x,y = screen.get_size()##no reratio needed, just resize
     backgroundPicture.fill((0, 0, 0)) #To put the finalimage in biggest mutiple ratio of 6:4
@@ -494,7 +495,7 @@ def CapturePicture():
                     
         # grab image from Camera
         img = cam.get_image()
-        #img = pygame.transform.rotate(img, 90)
+        img = pygame.transform.rotate(img, 90)
         if count == 0:
             width = int(img.get_width())
             height = int(img.get_height())###To make the largest 'step' increments to produce the required ratio6:4
@@ -591,6 +592,7 @@ def TakePictures():
     global PhotosPerCart
     global TotalImageCount
     global QRData
+    global Finalimagereduction
 
     input(pygame.event.get())
     
