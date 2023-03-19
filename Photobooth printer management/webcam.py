@@ -511,10 +511,6 @@ def CapturePicture():
                 top= (height/2)-(3*step)
                 width = (4*step)
                 height = (6*step)
-                print(left)
-                print(top)
-                print(width)
-                print(height)
             elif portrait == False:
                 if int(width/6)>(height/4):#This only works if height or width fits in the surface
                     step = int(height/4)
@@ -529,11 +525,6 @@ def CapturePicture():
             cropimg1 = pygame.transform.rotate(img, 90)
         elif portrait == False:
             cropimg1 = img.subsurface((left,top,width,height))#puts it into correct ratio
-        print("DIMENSIONS")
-        print(left)
-        print(top)
-        print(width)
-        print(height)
         #img = img.subsurface((left,top,width,height))#it into correct ratio
         if count ==0:
             if int(x/6)*2>(y/2):
@@ -544,9 +535,11 @@ def CapturePicture():
             left2 = (x/2)-(3*step)
             right2 = (x/2)+(3*step)
             bottom2 = (y/2)+(2*step)
+            width2 = left2+right2-(6*Finalimagereduction)
+            height2 = top2+bottom2-(4*Finalimagereduction)
         # Make the image full screen
 	#screenPicture.get_size()
-        cropimg = pygame.transform.scale(cropimg1, ((left2+right2-(6*Finalimagereduction)),(top2+bottom2-(4*Finalimagereduction))))
+        cropimg = pygame.transform.scale(cropimg1, (width2,height2))
         cropimg = pygame.transform.flip(cropimg, 1,0) 
         if count ==0:
             width3 = int(cropimg.get_width())
@@ -562,17 +555,17 @@ def CapturePicture():
 
 
 
-        fontNumeral = pygame.font.Font(None, 800)
-        Numeraltext = fontNumeral.render(Numeral, 1, (227, 100, 200))#157
-        NumeralPosText = Numeraltext.get_rect()
-        NumeralPosText.centerx = background.get_rect().centerx 
-        NumeralPosText.centery = background.get_rect().centery * 1.3 #change multiplier so that the countdown is where you want it vertically
+        #fontNumeral = pygame.font.Font(None, 800)
+        if count ==0:
+            Numeraltext = fontNumeral.render(Numeral, 1, (227, 100, 200))#157
+            NumeralPosText = Numeraltext.get_rect()
+            NumeralPosText.centerx = background.get_rect().centerx 
+            NumeralPosText.centery = background.get_rect().centery * 1.3 #change multiplier so that the countdown is where you want it vertically
         #print(NumeralPosText.centery)
-
-        backgroundPicture.blit(Numeraltext, NumeralPosText)
-
-        backgroundPicture.blit(textMessage, textposMessage)
-
+        if Numeral != tempnumeral:
+            backgroundPicture.blit(Numeraltext, NumeralPosText)
+            backgroundPicture.blit(textMessage, textposMessage)
+        tempnumeral = Numeral
         #Render Background to Screen
         screen.blit(backgroundPicture, (0, 0))
         #cam.stop()
