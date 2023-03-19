@@ -390,10 +390,7 @@ def ShowPicture(file, delay,Message): #
         textposMessage = textMessage.get_rect()
         textposMessage.centerx = background.get_rect().centerx
         textposMessage.centery = background.get_rect().centery * 1.25
-        if(ImageShowed):
-            backgroundPicture.blit(textMessage, textposMessage)
-        else:
-            background.blit(textMessage, textposMessage)
+        backgroundPicture.blit(textMessage, textposMessage)
     screen.blit(backgroundPicture, (0, 0))
     pygame.display.flip()  # update the display
     ImageShowed = True
