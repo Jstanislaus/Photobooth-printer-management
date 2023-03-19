@@ -445,7 +445,7 @@ def CapturePicture():
     #time.sleep(1.5)
     CountDownPhoto = ""
     UpdateDisplay()
-    background.fill(pygame.Color("black"))
+    #background.fill(pygame.Color("black"))
     screen.blit(background, (0, 0))
     pygame.display.flip()
 #    camera.start_preview()
