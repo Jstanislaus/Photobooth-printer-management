@@ -402,6 +402,7 @@ def ShowPicture(file, delay,Message): #
         ImageShowed = True
         time.sleep(delay/2)
     else:
+        backgroundPicture.fill(pygame.Color("white"))
         backgroundPicture.blit(img, ((x-width)/2,(y-height)/2))#determines where its placed
         screen.blit(backgroundPicture, (0, 0))
         pygame.display.flip()
