@@ -395,12 +395,11 @@ def ShowPicture(file, delay,Message): #
         pygame.display.flip()  # update the display
         ImageShowed = True
         time.sleep(delay/2)
-        backgroundPicture.fill(pygame.Color("black"))
     else:
         screen.blit(backgroundPicture, (0, 0))
         pygame.display.flip()
+        pygame.display.update ()
         time.sleep(delay)
-        backgroundPicture.fill(pygame.Color("black"))
     ImageShowed = True
     #pygame.display.flip()
     
