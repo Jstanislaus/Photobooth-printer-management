@@ -365,6 +365,7 @@ def ShowPicture(file, delay,Message): #
     global backgroundPicture
     global ImageShowed
     global Finalimagereduction2
+    global Finalimagereduction
     background.fill(pygame.Color("black"))
     x,y = screen.get_size()##no reratio needed, just resize
     backgroundPicture.fill((0, 0, 0)) #To put the finalimage in biggest mutiple ratio of 6:4
