@@ -379,11 +379,11 @@ def ShowPicture(file, delay,Message): #
     width = left+right-(6*Finalimagereduction)
     height=top+bottom-(4*Finalimagereduction)
     img = pygame.transform.scale(img, (width,height))#resize
-    img = pygame.transform.flip(img, 1,0)
  # Make the image full screen, combine top and bottom into one?
-    backgroundPicture.blit(img, ((x-width)/2,(y-height)/2))#determines where its placed
     
     if Message == "Great shot!":
+        img = pygame.transform.flip(img, 1,0)
+        backgroundPicture.blit(img, ((x-width)/2,(y-height)/2))#determines where its placed
         time.sleep(delay/2)
         font = pygame.font.Font(None, 200)
         textMessage = font.render(Message, 1, (227, 100, 200))
@@ -396,6 +396,7 @@ def ShowPicture(file, delay,Message): #
         ImageShowed = True
         time.sleep(delay/2)
     else:
+        backgroundPicture.blit(img, ((x-width)/2,(y-height)/2))#determines where its placed
         screen.blit(backgroundPicture, (0, 0))
         pygame.display.flip()
         pygame.display.flip()
