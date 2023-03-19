@@ -476,8 +476,9 @@ def CapturePicture():
 
     print("Waiting for picture to be taken...")
                       
-
-    t_end = time.time() + 10
+    lentime = 10
+    t_end = time.time() + lentime
+    tempnumeral =lentime
     print(str(int(math.floor(t_end-time.time()))))
 
     Message =  "Photo No." + str(imagecounter) + " will be taken in..."
@@ -559,15 +560,15 @@ def CapturePicture():
         if count ==0:
             fontNumeral = pygame.font.Font(None, 800)
         Numeraltext = fontNumeral.render(Numeral, 1, (227, 100, 200))
-        if count == 0:
-            NumeralPosText = Numeraltext.get_rect()
-            NumeralPosText.centerx = background.get_rect().centerx 
-            NumeralPosText.centery = background.get_rect().centery * 1.3 #change multiplier so that the countdown is where you want it vertically
+        NumeralPosText = Numeraltext.get_rect()
+        NumeralPosText.centerx = background.get_rect().centerx 
+        NumeralPosText.centery = background.get_rect().centery * 1.3 #change multiplier so that the countdown is where you want it vertically
         #print(NumeralPosText.centery)
         backgroundPicture.blit(Numeraltext, NumeralPosText)
         backgroundPicture.blit(textMessage, textposMessage)
         #Render Background to Screen
         screen.blit(backgroundPicture, (0, 0))
+        tempnumeral = Numeral
         #cam.stop()
         count+=1
         pygame.display.update()
