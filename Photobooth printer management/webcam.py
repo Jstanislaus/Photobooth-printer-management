@@ -381,6 +381,7 @@ def ShowPicture(file, delay,Message): #
     width = left+right-(6*Finalimagereduction)
     height=top+bottom-(4*Finalimagereduction)
     img = pygame.transform.scale(img, (width,height))#resize
+    img = pygame.transform.flip(img, 1,0)
  # Make the image full screen, combine top and bottom into one?
     backgroundPicture.blit(img, ((x-width)/2,(y-height)/2))#determines where its placed
     #backgroundPicture.blit(img, (0,0))
