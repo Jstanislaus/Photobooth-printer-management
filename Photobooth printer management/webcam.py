@@ -503,10 +503,10 @@ def CapturePicture():
             height = int(img.get_height())###To make the largest 'step' increments to produce the required ratio6:4
             print("Width and height values are "+str(width)+str(height))
             if portrait == True:
-                if int(width/6)*2>(height/2):
-                    step = int(height/4)
+                if int(width/6)>(height/4):
+                    step = int(height/6)
                 else:
-                    step = int(width/6)
+                    step = int(width/4)
                 left = (width/2)-(2*step)
                 top= (height/2)-(3*step)
                 width = (4*step)
@@ -518,7 +518,7 @@ def CapturePicture():
                 img = img.subsurface((left,top,width,height))#it into correct ratio
                 cropimg1 = pygame.transform.rotate(img, 90)
             elif portrait == False:
-                if int(width/6)*2>(height/2):#This only works if height or width fits in the surface
+                if int(width/6)>(height/4):#This only works if height or width fits in the surface
                     step = int(height/4)
                 else:
                     step = int(width/6)
