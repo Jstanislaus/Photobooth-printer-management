@@ -441,8 +441,8 @@ def CapturePicture():
     Message = ""
     Message2 = ""
 
-    UpdateDisplay()
-    time.sleep(1.5)
+    #UpdateDisplay()
+    #time.sleep(1.5)
     CountDownPhoto = ""
     UpdateDisplay()
     background.fill(pygame.Color("black"))
