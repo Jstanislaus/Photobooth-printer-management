@@ -495,7 +495,7 @@ def CapturePicture():
                     
         # grab image from Camera
         img = cam.get_image()
-        img = pygame.transform.rotate(img, 90)
+        #img = pygame.transform.rotate(img, 90)
         if count == 0:
             width = int(img.get_width())
             height = int(img.get_height())###To make the largest 'step' increments to produce the required ratio6:4
@@ -508,7 +508,9 @@ def CapturePicture():
             top= (height/2)-(2*step)
             width = (6*step)
             height = (4*step)
-        cropimg1 = img.subsurface((left,top,width,height))#puts it into correct ratio
+        #cropimg1 = img.subsurface((left,top,width,height))#puts it into correct ratio
+        cropimg1 = img.subsurface((top,left,height,width))#puts it into correct ratio
+        img = pygame.transform.rotate(img, 90)
         if count ==0:
             if int(x/6)*2>(y/2):
                 step = int(y/4)
