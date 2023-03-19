@@ -4,7 +4,11 @@ Here you will find code for a photobooth made with a Raspberry pi under Pi OS , 
 
 Credit to this guy's instructables: https://www.instructables.com/id/Wedding-Event-Photobooth/
 
-Jstanislaus notes: Change Finalimagereduction to change the size of the camera livestream and Finalimagereduction2 to change the size of the FinalTemplate image displayed Added functionality to have the camer portrait and to change the rectangle selected for photo. Change portrait to True or False accordingly A bit more optimised New pi os has more printer drivers and supports driverless, make sure to RAW print to avoid load on pi
+Jstanislaus notes: 
+  Change Finalimagereduction to change the size of the camera livestream and Finalimagereduction2 to change the size of the FinalTemplate image displayed
+  Added functionality to have the camer portrait and to change the rectangle selected for photo. Change portrait to True or False accordingly 
+  A bit more optimised 
+  New pi os has more printer drivers and supports driverless, make sure to RAW print to avoid load on pi
 
 Requires for the code works:
 
