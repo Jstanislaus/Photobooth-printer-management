@@ -559,7 +559,7 @@ def CapturePicture():
         if count ==0:
             fontNumeral = pygame.font.Font(None, 800)
         Numeraltext = fontNumeral.render(Numeral, 1, (227, 100, 200))
-	if count == 0:
+        if count == 0:
             NumeralPosText = Numeraltext.get_rect()
             NumeralPosText.centerx = background.get_rect().centerx 
             NumeralPosText.centery = background.get_rect().centery * 1.3 #change multiplier so that the countdown is where you want it vertically
