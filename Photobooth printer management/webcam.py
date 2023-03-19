@@ -706,19 +706,11 @@ def TakePictures():
     bottom = 4*step
     image2 = image2.crop((left,top,right,bottom))
     width,height = image2.size
-    #print("Width and height:")
-    #print(str(width))
-    #print(str(height))
-    #print("Type for image 2 is ")
-    #rint(type(image2))
     wpercent = (basewidth / float(image2.size[0]))
     hsize = int((float(image2.size[1]) * float(wpercent)))
     print(hsize)
     print(str(image2.size[1]))
     image2 = image2.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
-    #img.save(filename)
-
-    #image3 = PIL.Image.open(filename3)   
     image3 = Image.open(filename3)
     width,height = image3.size
     if int(width/6)*2>(height/2):
@@ -731,14 +723,9 @@ def TakePictures():
     bottom = 4*step
     image3 = image3.crop((left,top,right,bottom))
     width,height = image3.size
-    #image3 = image3.crop(box),PIL.Image.ANTIALIAS
-    #print("Height is "+str(height)+" Width is "+str(width))
     wpercent = (basewidth / float(image3.size[0]))
     hsize = int((float(image3.size[1]) * float(wpercent)))
-    #print(type(image3))
     image3 = image3.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
-    print(type(image3))
-    #img.save(filename) .
     
 
     # Create the final filename
@@ -751,7 +738,6 @@ def TakePictures():
     QRDdata = "Please show this code to the photobooth person for a printout: " + Venueid + str(TotalImageCount)
     starttime = (datetime.datetime.now())
 
-    #QRDdata = "Here is some QRCodeTada!"
     QRFilename =  os.path.join(imagefolder, "QRCode.jpg") #Path of template image
     qr = qrcode.QRCode(
         version=1,
@@ -809,7 +795,6 @@ def TakePictures():
     Message = ""
     
     UpdateDisplay()
-#    time.sleep(1)
     Message3 = ""
     Message = "Press and hold button to print"
     UpdateDisplay()
@@ -853,7 +838,6 @@ def TakePictures():
                             # print the buffer file
                             printqueuelength = len(conn.getJobs())
 
-                            #time.sleep(5)
                             #Message = "Your photo is number "  + str(printqueuelength+1) #MAY NEED TO ADD BACK (REMOVED FOR HARDEN CHRISTMAS FAYRE 2022
                             #Message2 = " in the print queue" #Using Printer name  : " + printer_name #MAY NEED TO ADD BACK (REMOVED FOR HARDEN CHRISTMAS FAYRE 2022
                             UpdateDisplay()  
