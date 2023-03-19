@@ -509,7 +509,7 @@ def CapturePicture():
             width = (6*step)
             height = (4*step)
         #cropimg1 = img.subsurface((left,top,width,height))#puts it into correct ratio
-        img = img.subsurface((top,left,height,width))#puts it into correct ratio
+        img = img.subsurface((left,top,width,height))#it into correct ratio
         cropimg1 = pygame.transform.rotate(img, 90)
         if count ==0:
             if int(x/6)*2>(y/2):
