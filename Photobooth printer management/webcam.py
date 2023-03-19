@@ -574,8 +574,8 @@ def CapturePicture():
     Message2 =  ""
     Message3 =  ""
     Numeral = ""
-    UpdateDisplay()
     pygame.image.save(cropimg1, filename)
+    ShowPicture(filename, 2,Message)
     time.sleep(0.75)
                 
     UpdateDisplay()
@@ -584,7 +584,7 @@ def CapturePicture():
 
     print("Photo Capturing is done")
 
-    ShowPicture(filename, 2,Message) #don't need this function ?
+    #ShowPicture(filename, 2,Message) #don't need this function ?
  
     ImageShowed = False
     return filename
