@@ -376,16 +376,12 @@ def ShowPicture(file, delay,Message): #
     left = (x/2)-(3*step)
     right = (x/2)+(3*step)
     bottom = (y/2)+(2*step)
-    #right = 6*step
-    #bottom = 4*step
     width = left+right-(6*Finalimagereduction)
     height=top+bottom-(4*Finalimagereduction)
     img = pygame.transform.scale(img, (width,height))#resize
     img = pygame.transform.flip(img, 1,0)
  # Make the image full screen, combine top and bottom into one?
     backgroundPicture.blit(img, ((x-width)/2,(y-height)/2))#determines where its placed
-    #backgroundPicture.blit(img, (0,0))
-    #pygame.display.flip()  # update the display
     
     if Message == "Great shot!":
         time.sleep(delay/2)
@@ -586,7 +582,7 @@ def CapturePicture():
     Numeral = ""
     pygame.image.save(cropimg1, filename)
     ShowPicture(filename, 2,Message)
-    time.sleep(0.75)
+    #time.sleep(0.75)
                 
     UpdateDisplay()
     #time.sleep(0.75)
