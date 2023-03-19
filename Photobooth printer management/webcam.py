@@ -493,7 +493,6 @@ def CapturePicture():
     #screen = pygame.display.set_mode()
     x, y = screen.get_size()
     count =0
-    tempnumeral = -1
     while time.time() < t_end:
                     
         # grab image from Camera
@@ -564,9 +563,8 @@ def CapturePicture():
             NumeralPosText.centerx = background.get_rect().centerx 
             NumeralPosText.centery = background.get_rect().centery * 1.3 #change multiplier so that the countdown is where you want it vertically
         #print(NumeralPosText.centery)
-        if Numeral != tempnumeral:
-            backgroundPicture.blit(Numeraltext, NumeralPosText)
-            backgroundPicture.blit(textMessage, textposMessage)
+        backgroundPicture.blit(Numeraltext, NumeralPosText)
+        backgroundPicture.blit(textMessage, textposMessage)
         tempnumeral = Numeral
         #Render Background to Screen
         screen.blit(backgroundPicture, (0, 0))
