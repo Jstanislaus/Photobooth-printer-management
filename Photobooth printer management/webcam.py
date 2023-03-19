@@ -515,8 +515,6 @@ def CapturePicture():
                 print(top)
                 print(width)
                 print(height)
-                img = img.subsurface((left,top,width,height))#it into correct ratio
-                cropimg1 = pygame.transform.rotate(img, 90)
             elif portrait == False:
                 if int(width/6)>(height/4):#This only works if height or width fits in the surface
                     step = int(height/4)
@@ -526,7 +524,11 @@ def CapturePicture():
                 top= (height/2)-(2*step)
                 width = (6*step)
                 height = (4*step)
-                cropimg1 = img.subsurface((left,top,width,height))#puts it into correct ratio
+        if portrait == True:
+            img = img.subsurface((left,top,width,height))#it into correct ratio
+            cropimg1 = pygame.transform.rotate(img, 90)
+        elif portrait == False:
+            cropimg1 = img.subsurface((left,top,width,height))#puts it into correct ratio
         print("DIMENSIONS")
         print(left)
         print(top)
