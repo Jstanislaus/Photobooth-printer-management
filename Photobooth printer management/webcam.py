@@ -386,9 +386,6 @@ def ShowPicture(file, delay,Message): #
     backgroundPicture.blit(img, ((x-width)/2,(y-height)/2))#determines where its placed
     #backgroundPicture.blit(img, (0,0))
     #pygame.display.flip()  # update the display
-    screen.blit(backgroundPicture, (0, 0))
-    pygame.display.flip()
-    ImageShowed = True
     
     if Message == "Great shot!":
         time.sleep(delay/2)
@@ -404,8 +401,11 @@ def ShowPicture(file, delay,Message): #
         time.sleep(delay/2)
         backgroundPicture.fill(pygame.Color("black"))
     else:
+        screen.blit(backgroundPicture, (0, 0))
+        pygame.display.flip()
         time.sleep(delay)
         backgroundPicture.fill(pygame.Color("black"))
+    ImageShowed = True
     #pygame.display.flip()
     
 
