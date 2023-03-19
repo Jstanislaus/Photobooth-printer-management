@@ -288,7 +288,7 @@ def UpdateDisplay():
             print(BackgroundColor)
             background.fill(pygame.Color("black"))
 
-    if (Message != "")or(Message!="Great shot!"):   
+    if (Message != "")and(Message!="Great shot!"):   
             #print(Displaytext)
             font = pygame.font.Font(None, 100)
             textMessage = font.render(Message, 1, (227, 100, 200))
