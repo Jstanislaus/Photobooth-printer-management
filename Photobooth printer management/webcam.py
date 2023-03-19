@@ -491,14 +491,12 @@ def CapturePicture():
     textposMessage.centery = background.get_rect().centery*0.5
 
     print("Starting Liveview...")
-    #screen = pygame.display.set_mode()
     x, y = screen.get_size()
     count =0
     while time.time() < t_end:
                     
         # grab image from Camera
         img = cam.get_image()
-        #img = pygame.transform.rotate(img, 90)
         if count == 0:
             width = int(img.get_width())
             height = int(img.get_height())###To make the largest 'step' increments to produce the required ratio6:4
@@ -526,7 +524,6 @@ def CapturePicture():
             cropimg1 = pygame.transform.rotate(img, 90)
         elif portrait == False:
             cropimg1 = img.subsurface((left,top,width,height))#puts it into correct ratio
-        #img = img.subsurface((left,top,width,height))#it into correct ratio
         if count ==0:
             if int(x/6)*2>(y/2):
                 step = int(y/4)
@@ -539,31 +536,23 @@ def CapturePicture():
             width2 = left2+right2-(6*Finalimagereduction)
             height2 = top2+bottom2-(4*Finalimagereduction)
         # Make the image full screen
-	#screenPicture.get_size()
         cropimg = pygame.transform.scale(cropimg1, (width2,height2))
         cropimg = pygame.transform.flip(cropimg, 1,0) 
         if count ==0:
             width3 = int(cropimg.get_width())
             height3 = int(cropimg.get_height())
         #Render Image to Background
-        #background.fill(pygame.Color("black"))
         backgroundPicture.blit(cropimg, ((x/2)-(width3/2),(y/2)-(height3/2)))
-	#background.blit(backgroundPicture, ((x/2)-(width/2),(y/2)-(height/2)))
-	#backgroundPicture.blit(background,(0,0))
         #Render Countdown Text to Background
                        
         Numeral = str(int(math.floor(t_end-time.time()))+1)
 
-
-
-        #fontNumeral = pygame.font.Font(None, 800)
         if count ==0:
             fontNumeral = pygame.font.Font(None, 800)
         Numeraltext = fontNumeral.render(Numeral, 1, (227, 100, 200))
         NumeralPosText = Numeraltext.get_rect()
         NumeralPosText.centerx = background.get_rect().centerx 
         NumeralPosText.centery = background.get_rect().centery * 1.3 #change multiplier so that the countdown is where you want it vertically
-        #print(NumeralPosText.centery)
         backgroundPicture.blit(Numeraltext, NumeralPosText)
         backgroundPicture.blit(textMessage, textposMessage)
         #Render Background to Screen
@@ -588,7 +577,7 @@ def CapturePicture():
 
     print("Photo Capturing is done")
 
-#    ShowPicture(filename, 2) don't need this function ?
+    ShowPicture(filename, 2) don't need this function ?
  
     ImageShowed = False
     return filename
