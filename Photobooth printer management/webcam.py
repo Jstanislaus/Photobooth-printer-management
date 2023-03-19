@@ -385,8 +385,9 @@ def ShowPicture(file, delay,Message): #
  # Make the image full screen, combine top and bottom into one?
     backgroundPicture.blit(img, ((x-width)/2,(y-height)/2))#determines where its placed
     #backgroundPicture.blit(img, (0,0))
-    pygame.display.flip()  # update the display
+    #pygame.display.flip()  # update the display
     screen.blit(backgroundPicture, (0, 0))
+    pygame.display.flip()
     ImageShowed = True
     
     if Message == "Great shot!":
