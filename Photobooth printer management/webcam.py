@@ -398,7 +398,7 @@ def ShowPicture(file, delay,Message): #
     else:
         screen.blit(backgroundPicture, (0, 0))
         pygame.display.update ()
-        pygame.display.flip()
+        #pygame.display.flip()
         time.sleep(delay)
     ImageShowed = True
     #pygame.display.flip()
