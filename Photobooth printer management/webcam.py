@@ -577,7 +577,7 @@ def CapturePicture():
 
     print("Photo Capturing is done")
 
-    ShowPicture(filename, 2) don't need this function ?
+    ShowPicture(filename, 2) #don't need this function ?
  
     ImageShowed = False
     return filename
