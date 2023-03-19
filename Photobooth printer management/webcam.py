@@ -234,33 +234,33 @@ def InitCamera(i):
         Message2 = ""
         
 
-def DisplayText(fontSize, textToDisplay):
-    global Numeral
-    global Message
-    global Message2
-    global Message3
-    global screen
-    global background
-    global pygame
-    global ImageShowed
-    global screenPicture
-    global backgroundPicture
-    global CountDownPhoto
+#def DisplayText(fontSize, textToDisplay):
+#    global Numeral
+#    global Message
+#    global Message2
+#    global Message3
+#    global screen
+#    global background
+#    global pygame
+#    global ImageShowed
+#    global screenPicture
+#    global backgroundPicture
+#    global CountDownPhoto
 
-    if (BackgroundColor != ""):
-            #print(BackgroundColor)
-            background.fill(pygame.Color("black"))
-    if (textToDisplay != ""):
-            #print(displaytext)
-            font = pygame.font.Font(None, fontSize)
-            text = font.render(textToDisplay, 1, (227, 157, 200))
-            textpos = text.get_rect()
-            textpos.centerx = background.get_rect().centerx
-            textpos.centery = background.get_rect().centery
-            if(ImageShowed):
-                    backgroundPicture.blit(text, textpos)
-            else:
-                    background.blit(text, textpos)
+#    if (BackgroundColor != ""):
+#            #print(BackgroundColor)
+#            background.fill(pygame.Color("black"))
+#    if (textToDisplay != ""):
+#            #print(displaytext)
+#            font = pygame.font.Font(None, fontSize)
+#            text = font.render(textToDisplay, 1, (227, 157, 200))
+#            textpos = text.get_rect()
+#            textpos.centerx = background.get_rect().centerx
+#            textpos.centery = background.get_rect().centery
+#            if(ImageShowed):
+#                    backgroundPicture.blit(text, textpos)
+#            else:
+#                    background.blit(text, textpos)
 
 
 def UpdateDisplay():
@@ -385,7 +385,7 @@ def ShowPicture(file, delay,Message): #
     backgroundPicture.blit(img, ((x-width)/2,(y-height)/2))#determines where its placed
     #backgroundPicture.blit(img, (0,0))
     if Message == "Great shot!":
-        font = pygame.font.Font(None, 100)
+        font = pygame.font.Font(None, 200)
         textMessage = font.render(Message, 1, (227, 100, 200))
         textposMessage = textMessage.get_rect()
         textposMessage.centerx = background.get_rect().centerx
