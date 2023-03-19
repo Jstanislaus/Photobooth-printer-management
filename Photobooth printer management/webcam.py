@@ -389,7 +389,7 @@ def ShowPicture(file, delay,Message): #
     ImageShowed = True
     
     if Message == "Great shot!":
-	time.sleep(delay/2)
+        time.sleep(delay/2)
         font = pygame.font.Font(None, 200)
         textMessage = font.render(Message, 1, (227, 100, 200))
         textposMessage = textMessage.get_rect()
