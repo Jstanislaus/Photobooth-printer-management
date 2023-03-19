@@ -512,6 +512,11 @@ def CapturePicture():
     print("Starting Liveview...")
     x, y = screen.get_size()
     count =0
+############
+#IN PROGRESS###
+#############
+#    if portrait == True:
+ #       try get top value from toby, top = tobyvalue, if get a value, toby = true
     while time.time() < t_end:
                     
         # grab image from Camera
@@ -526,6 +531,7 @@ def CapturePicture():
                 else:
                     step = int(width/4)
                 left = (width/2)-(2*step)
+#                if Toby==True: skip
                 top= (height/2)-(3*step)
                 width = (4*step)
                 height = (6*step)
