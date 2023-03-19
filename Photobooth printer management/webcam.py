@@ -27,6 +27,7 @@ Message3 = ""
 BackgroundColor = ""
 CountDownPhoto = ""
 CountPhotoOnCart = "" 
+portrait = True
 Finalimagereduction = 5
 SmallMessage = ""  # SmallMessage is a lower banner message
 TotalImageCount = 0  # Counter for Display and to monitor paper usage
@@ -420,6 +421,7 @@ def CapturePicture():
     global CountDownPhoto
     global BackgroundColor
     global cam
+    global portrait
 
     BackgroundColor = ""
     Numeral = ""
@@ -500,22 +502,33 @@ def CapturePicture():
             width = int(img.get_width())
             height = int(img.get_height())###To make the largest 'step' increments to produce the required ratio6:4
             print("Width and height values are "+str(width)+str(height))
-            if int(width/6)*2>(height/2):#This only works if height or width fits in the surface
-                step = int(height/4)
-            else:
-                step = int(width/6)
-            left = (width/2)-(3*step)
-            top= (height/2)-(2*step)
-            width = (6*step)
-            height = (4*step)
-        #cropimg1 = img.subsurface((left,top,width,height))#puts it into correct ratio
+	    if portrait == True:
+                if int(width/6)*2>(height/2):
+                    step = int(height/4)
+                else:
+                    step = int(width/6)
+                left = (width/2)-(2*step)
+                top= (height/2)-(3*step)
+                width = (4*step)
+                height = (6*step)
+                cropimg1 = img.subsurface((left,top,width,height))#it into correct ratio
+                cropimg1 = pygame.transform.rotate(img, 90)
+            elif portrait == False:
+                if int(width/6)*2>(height/2):#This only works if height or width fits in the surface
+                    step = int(height/4)
+                else:
+                    step = int(width/6)
+                left = (width/2)-(3*step)
+                top= (height/2)-(2*step)
+                width = (6*step)
+                height = (4*step)
+                cropimg1 = img.subsurface((left,top,width,height))#puts it into correct ratio
         print("DIMENSIONS")
         print(left)
         print(top)
         print(width)
         print(height)
-        img = img.subsurface((left,top,width,height))#it into correct ratio
-        cropimg1 = pygame.transform.rotate(img, 90)
+        #img = img.subsurface((left,top,width,height))#it into correct ratio
         if count ==0:
             if int(x/6)*2>(y/2):
                 step = int(y/4)
