@@ -29,7 +29,7 @@ CountDownPhoto = ""
 CountPhotoOnCart = "" 
 portrait = True
 Finalimagereduction = 5
-Finalimagereduction2 = 100
+Finalimagereduction2 = 70
 SmallMessage = ""  # SmallMessage is a lower banner message
 TotalImageCount = 0  # Counter for Display and to monitor paper usage
 PhotosPerCart = 3000  # Selphy takes 16 sheets per tray
@@ -377,8 +377,12 @@ def ShowPicture(file, delay,Message): #
     left = (x/2)-(3*step)
     right = (x/2)+(3*step)
     bottom = (y/2)+(2*step)
-    width = left+right-(6*Finalimagereduction2)
-    height=top+bottom-(4*Finalimagereduction2)
+    if Message == "Great shot!":
+        width = left+right-(6*Finalimagereduction)
+        height = top+bottom-(4*Finalimagereduction)
+    else:
+        width = left+right-(6*Finalimagereduction2)
+        height=top+bottom-(4*Finalimagereduction2)
     img = pygame.transform.scale(img, (width,height))#resize
  # Make the image full screen, combine top and bottom into one?
     
