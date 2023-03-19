@@ -493,6 +493,7 @@ def CapturePicture():
     #screen = pygame.display.set_mode()
     x, y = screen.get_size()
     count =0
+    tempnumeral = -1
     while time.time() < t_end:
                     
         # grab image from Camera
