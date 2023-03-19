@@ -502,7 +502,7 @@ def CapturePicture():
             width = int(img.get_width())
             height = int(img.get_height())###To make the largest 'step' increments to produce the required ratio6:4
             print("Width and height values are "+str(width)+str(height))
-	    if portrait == True:
+            if portrait == True:
                 if int(width/6)*2>(height/2):
                     step = int(height/4)
                 else:
