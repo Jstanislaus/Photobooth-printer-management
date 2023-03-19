@@ -497,7 +497,7 @@ def CapturePicture():
     tempnumeral =lentime
     print(str(int(math.floor(t_end-time.time()))))
 
-    Message =  "Photo No." + str(imagecounter) + " will be taken in..."
+    Message =  "Photo No." + str(imagecounter) + " (of 3) will be taken in..."
 
     #print(Displaytext)
     font = pygame.font.Font(None, 100)
