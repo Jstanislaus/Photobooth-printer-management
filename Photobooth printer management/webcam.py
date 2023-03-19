@@ -582,9 +582,9 @@ def CapturePicture():
     Numeral = ""
     pygame.image.save(cropimg1, filename)
     ShowPicture(filename, 2,Message)
-    #time.sleep(0.75)
+    time.sleep(0.75)
                 
-    UpdateDisplay()
+    #UpdateDisplay()
     #time.sleep(0.75)
 
 
