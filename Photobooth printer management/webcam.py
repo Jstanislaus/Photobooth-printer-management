@@ -29,6 +29,7 @@ CountDownPhoto = ""
 CountPhotoOnCart = "" 
 portrait = True
 Finalimagereduction = 5
+Finalimagereduction2 = 100
 SmallMessage = ""  # SmallMessage is a lower banner message
 TotalImageCount = 0  # Counter for Display and to monitor paper usage
 PhotosPerCart = 3000  # Selphy takes 16 sheets per tray
@@ -363,7 +364,7 @@ def ShowPicture(file, delay,Message): #
     global screenPicture
     global backgroundPicture
     global ImageShowed
-    global Finalimagereduction
+    global Finalimagereduction2
     background.fill(pygame.Color("black"))
     x,y = screen.get_size()##no reratio needed, just resize
     backgroundPicture.fill((0, 0, 0)) #To put the finalimage in biggest mutiple ratio of 6:4
@@ -376,8 +377,8 @@ def ShowPicture(file, delay,Message): #
     left = (x/2)-(3*step)
     right = (x/2)+(3*step)
     bottom = (y/2)+(2*step)
-    width = left+right-(6*Finalimagereduction)
-    height=top+bottom-(4*Finalimagereduction)
+    width = left+right-(6*Finalimagereduction2)
+    height=top+bottom-(4*Finalimagereduction2)
     img = pygame.transform.scale(img, (width,height))#resize
  # Make the image full screen, combine top and bottom into one?
     
