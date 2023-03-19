@@ -557,6 +557,7 @@ def CapturePicture():
 
         #fontNumeral = pygame.font.Font(None, 800)
         if count ==0:
+            fontNumeral = pygame.font.Font(None, 800)
             Numeraltext = fontNumeral.render(Numeral, 1, (227, 100, 200))#157
             NumeralPosText = Numeraltext.get_rect()
             NumeralPosText.centerx = background.get_rect().centerx 
