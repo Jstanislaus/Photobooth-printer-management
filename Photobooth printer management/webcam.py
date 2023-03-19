@@ -288,7 +288,7 @@ def UpdateDisplay():
             print(BackgroundColor)
             background.fill(pygame.Color("black"))
 
-    if (Message != ""):
+    if (Message != ""):   
             #print(Displaytext)
             font = pygame.font.Font(None, 100)
             textMessage = font.render(Message, 1, (227, 100, 200))
@@ -358,7 +358,7 @@ def UpdateDisplay():
     pygame.display.flip()
     return
 
-def ShowPicture(file, delay): #
+def ShowPicture(file, delay,Message): #
     global pygame
     global screenPicture
     global backgroundPicture
@@ -385,6 +385,17 @@ def ShowPicture(file, delay): #
     backgroundPicture.blit(img, ((x-width)/2,(y-height)/2))#determines where its placed
     #backgroundPicture.blit(img, (0,0))
     screen.blit(backgroundPicture, (0, 0))
+    if Message == "Great shot!":
+        font = pygame.font.Font(None, 100)
+        textMessage2 = font.render(Message2, 1, (227, 100, 200))
+        textposMessage2 = textMessage2.get_rect()
+        textposMessage2.centerx = background.get_rect().centerx
+        textposMessage2.centery = background.get_rect().centery * 1.25
+        if(ImageShowed):
+            backgroundPicture.blit(textMessage2, textposMessage2)
+        else:
+            background.blit(textMessage2, textposMessage2)
+        
     pygame.display.flip()  # update the display
     ImageShowed = True
     time.sleep(delay)
@@ -577,7 +588,7 @@ def CapturePicture():
 
     print("Photo Capturing is done")
 
-    ShowPicture(filename, 2) #don't need this function ?
+    ShowPicture(filename, 2,Message) #don't need this function ?
  
     ImageShowed = False
     return filename
@@ -775,7 +786,7 @@ def TakePictures():
     # Save it to the SMB Share directory
     fimage = bgimage.convert("RGB")
     fimage.save(Final_Image_Name)
-    ShowPicture(Final_Image_Name,3)
+    ShowPicture(Final_Image_Name,3,Message)
 
     ImageShowed = False
     Message = ""
