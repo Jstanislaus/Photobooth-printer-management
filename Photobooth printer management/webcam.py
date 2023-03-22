@@ -27,7 +27,7 @@ Message3 = ""
 BackgroundColor = ""
 CountDownPhoto = ""
 CountPhotoOnCart = "" 
-portrait = True
+portrait = False
 Finalimagereduction = 5
 Finalimagereduction2 = 70
 SmallMessage = ""  # SmallMessage is a lower banner message
@@ -218,8 +218,6 @@ def InitCamera(i):
             CameraPresent = True
 	
             cam = pygame.camera.Camera("/dev/video0",(1200,800))#1200 800
-            print("CAMERA")
-            print(cam.get_controls())
             #cam.start()
         else:
             Message = "Camera NOT found:"
