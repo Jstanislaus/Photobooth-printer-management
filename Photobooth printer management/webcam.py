@@ -14,7 +14,7 @@ from pygame.locals import *
 from time import sleep
 from PIL import Image, ImageDraw
 import Tkinter as tk
-from Tkinter import *
+from tkinter import *
 
 import RPi.GPIO as GPIO, time, os, subprocess,shlex
 
