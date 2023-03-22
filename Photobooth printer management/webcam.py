@@ -181,11 +181,6 @@ def InitCamera(i):
             UpdateDisplay()
         pygame.camera.init()
         CameraModel = pygame.camera.list_cameras()
-	#if i == 0:
-	#    Message = 'Camera Check...'
-	#    UpdateDisplay()
-       # pygame.camera.init()
-       # CameraModel = pygame.camera.list_cameras()
         if CameraModel:
             cam = pygame.camera.Camera(CameraModel[0],(640,480))#640,480
             camLive= pygame.camera.Camera(CameraModel[0],(640,480))
@@ -205,10 +200,10 @@ def InitCamera(i):
         Message = ""
         Message2 = ""   
 
-#        gpout1=gpout.wait()
+        gpout1=gpout.wait()
 
         CameraModel = gpout.stdout.readlines()
-#        del CameraModel[0:2]
+        del CameraModel[0:2]
              
         if len(CameraModel):
             if i ==0:
