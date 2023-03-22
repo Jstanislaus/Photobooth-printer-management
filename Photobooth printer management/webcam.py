@@ -13,10 +13,22 @@ from threading import Thread
 from pygame.locals import *
 from time import sleep
 from PIL import Image, ImageDraw
+import Tkinter as tk
+from Tkinter import *
 
 import RPi.GPIO as GPIO, time, os, subprocess,shlex
 
- 
+root = tk.Tk()
+embed = tk.Frame(root, width = 500, height = 500) #creates embed frame for pygame window
+embed.grid(columnspan = (600), rowspan = 500) # Adds grid
+embed.pack(side = LEFT) #packs window to the left
+buttonwin = tk.Frame(root, width = 75, height = 500)
+buttonwin.pack(side = LEFT)
+#os.environ['SDL_WINDOWID'] = str(embed.winfo_id())
+#os.environ['SDL_VIDEODRIVER'] = 'windib'
+#screen.fill(pygame.Color(255,255,255))
+#pygame.display.init()
+pygame.display.update()
 # initialise global variables
 Venueid = "AG"
 VenueDescription = "2022 12 09 Harden Christmas Fayre"
@@ -57,6 +69,9 @@ print("pygame has been uninitialised...")
 #CHANGED TO MANUALLY INIT EACH MODULE AS "pygame.init()" INCLUDES UNWANTED MODULES THAT SPAM THE CMD
 pygame.camera.init()
 pygame.display.init()
+button1 = Button(buttonwin,text = 'Draw',  command=draw)
+button1.pack(side=LEFT)
+root.update()
 #pygame.event.init()
 pygame.font.init()
 #pygame.key.init()
@@ -71,6 +86,11 @@ infoObject = pygame.display.Info()
 print("pygame.display.Info() -- OK")
 print(infoObject)
 
+embed = tk.Frame(root, width = infoObject.current_w, infoObject.current_h) #creates embed frame for pygame window
+embed.grid(columnspan = (600), rowspan = 500) # Adds grid
+embed.pack(side = LEFT) #packs window to the left
+buttonwin = tk.Frame(root, width = 75, height = 500)
+buttonwin.pack(side = LEFT)
 screen = pygame.display.set_mode((infoObject.current_w,infoObject.current_h), pygame.FULLSCREEN)  # Full screen 
 print("# Full screen -- OK")
 background = pygame.Surface(screen.get_size())  # Create the background object
@@ -356,6 +376,7 @@ def UpdateDisplay():
     	screen.blit(background, (0, 0))
    
     pygame.display.flip()
+    root.update()
     return
 
 def ShowPicture(file, delay,Message): #
@@ -398,6 +419,7 @@ def ShowPicture(file, delay,Message): #
         backgroundPicture.blit(textMessage, textposMessage)
         screen.blit(backgroundPicture, (0, 0))
         pygame.display.flip()  # update the display
+        root.update()
         ImageShowed = True
         time.sleep(delay/2)
     else:
@@ -406,6 +428,7 @@ def ShowPicture(file, delay,Message): #
         screen.blit(backgroundPicture, (0, 0))
         pygame.display.flip()
         pygame.display.flip()
+        root.update()
         time.sleep(delay)
     ImageShowed = True
     #pygame.display.flip()
@@ -454,6 +477,7 @@ def CapturePicture():
     #background.fill(pygame.Color("black"))
     screen.blit(background, (0, 0))
     pygame.display.flip()
+    root.update()
 #    camera.start_preview()
 #    img = cam.get_image()
     BackgroundColor = "black"
@@ -588,6 +612,7 @@ def CapturePicture():
         #cam.stop()
         count+=1
         pygame.display.update()
+        root.update()
     print("THERE WERE "+str(count)+" FRAMES")
     Message = "Great shot!"
     print(Message)
