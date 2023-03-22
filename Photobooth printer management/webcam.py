@@ -195,7 +195,7 @@ def InitCamera(i):
 
 #        import shlex, subprocess
 #        gphoto2CmdLine = "gphoto2 --auto-detect"
-#        args = shlex.split(gphoto2CmdLine)
+        args = shlex.split(gphoto2CmdLine)
 #        print(args)
         gpout = subprocess.Popen(args,stdout=subprocess.PIPE, stdin=subprocess.PIPE)
         if i == 0:
