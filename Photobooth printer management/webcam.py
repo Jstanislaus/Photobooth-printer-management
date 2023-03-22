@@ -13,7 +13,7 @@ from threading import Thread
 from pygame.locals import *
 from time import sleep
 from PIL import Image, ImageDraw
-import Tkinter as tk
+import tkinter as tk
 from tkinter import *
 
 import RPi.GPIO as GPIO, time, os, subprocess,shlex
