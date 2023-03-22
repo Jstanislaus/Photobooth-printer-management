@@ -217,6 +217,8 @@ def InitCamera(i):
                 UpdateDisplay()
             CameraPresent = True
             cam = pygame.camera.Camera("/dev/video0",(1200,800))#1200 800
+            print("CAMERA")
+            print(cam.getcontrols())
             #cam.start()
         else:
             Message = "Camera NOT found:"
