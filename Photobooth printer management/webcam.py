@@ -206,7 +206,7 @@ def InitCamera(i):
 
        # gpout1=gpout.wait()
 
-        CameraModel = gpout.stdout.readlines()
+       # CameraModel = gpout.stdout.readlines()
        # del CameraModel[0:2]     
         if len(CameraModel):
             if i ==0:
