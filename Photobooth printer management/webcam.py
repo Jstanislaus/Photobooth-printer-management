@@ -190,13 +190,13 @@ def InitCamera(i):
 
 
 
-        import shlex, subprocess
-        gphoto2CmdLine = "gphoto2 --auto-detect"
-        args = shlex.split(gphoto2CmdLine)
-        print("ARGS")
-        print(args)
-        gpout = subprocess.Popen(args,stdout=subprocess.PIPE, stdin=subprocess.PIPE)
-        print(gpout)
+        #import shlex, subprocess
+        #gphoto2CmdLine = "gphoto2 --auto-detect"
+        #args = shlex.split(gphoto2CmdLine)
+       # print("ARGS")
+       # print(args)
+      #  gpout = subprocess.Popen(args,stdout=subprocess.PIPE, stdin=subprocess.PIPE)
+       # print(gpout)
         if i == 0:
             Message = "Waiting for camera response "
             print(Message)
@@ -204,15 +204,10 @@ def InitCamera(i):
         Message = ""
         Message2 = ""   
 
-        gpout1=gpout.wait()
+       # gpout1=gpout.wait()
 
         CameraModel = gpout.stdout.readlines()
-        print("CAMERA MODEL1")
-        print(CameraModel)
-        del CameraModel[0:2]
-        print("CAMERA MODEL2")
-        print(CameraModel)
-             
+       # del CameraModel[0:2]     
         if len(CameraModel):
             if i ==0:
                 Message = "Camera check is done found:"
