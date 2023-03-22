@@ -82,6 +82,7 @@ print(infoObject)
 print("INFO")
 print(infoObject.current_w)
 print(infoObject.current_h)
+print(root)
 embed = tk.Frame(root, infoObject.current_w, infoObject.current_h) #creates embed frame for pygame window
 embed.grid(columnspan = (600), rowspan = 500) # Adds grid
 embed.pack(side = LEFT) #packs window to the left
