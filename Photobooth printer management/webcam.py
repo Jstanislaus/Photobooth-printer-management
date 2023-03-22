@@ -23,7 +23,6 @@ root = tk.Tk()
 #os.environ['SDL_VIDEODRIVER'] = 'windib'
 #screen.fill(pygame.Color(255,255,255))
 #pygame.display.init()
-pygame.display.update()
 # initialise global variables
 Venueid = "AG"
 VenueDescription = "2022 12 09 Harden Christmas Fayre"
