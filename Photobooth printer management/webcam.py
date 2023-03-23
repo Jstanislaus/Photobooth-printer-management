@@ -540,9 +540,9 @@ def CapturePicture():
                 width = (6*step)
                 height = (4*step)
         if portrait == True:
-            #up,down = userinput(top)
+            up = CheckForEvent()
             #img = img.subsurface((left,top-up+down,width,height))#it into correct ratio
-            img = img.subsurface((left,top,width,height))#it into correct ratio
+            img = img.subsurface((left,top-up,width,height))#it into correct ratio
             cropimg1 = pygame.transform.rotate(img, 90)
         elif portrait == False:
             cropimg1 = img.subsurface((left,top,width,height))#puts it into correct ratio
@@ -902,7 +902,22 @@ def WaitForPrintingEvent():
 
     #GPIO.remove_event_detect(BUTTON_PIN)
 
-
+def CheckForEvent():
+    global pygame
+    pf = pifaceio.PiFace()
+    NotEvent = True
+    pf.read()
+    up =0
+    input_state = pf.read_pin(1) #False #windows10 GPIO.input(BUTTON_PIN)
+    if input_state == False: #was TRUE
+        NotEvent = False
+        up = 20
+        return up
+    else:
+        return up
+	
+	
+	
 def WaitForEvent():
     global pygame
     pf = pifaceio.PiFace()
