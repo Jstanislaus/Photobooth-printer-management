@@ -351,7 +351,6 @@ def UpdateDisplay():
     	screen.blit(background, (0, 0))
    
     pygame.display.flip()
-    root.update()
     return
 
 def ShowPicture(file, delay,Message): #
@@ -394,7 +393,6 @@ def ShowPicture(file, delay,Message): #
         backgroundPicture.blit(textMessage, textposMessage)
         screen.blit(backgroundPicture, (0, 0))
         pygame.display.flip()  # update the display
-        root.update()
         ImageShowed = True
         time.sleep(delay/2)
     else:
@@ -403,7 +401,6 @@ def ShowPicture(file, delay,Message): #
         screen.blit(backgroundPicture, (0, 0))
         pygame.display.flip()
         pygame.display.flip()
-        root.update()
         time.sleep(delay)
     ImageShowed = True
     #pygame.display.flip()
@@ -452,7 +449,6 @@ def CapturePicture():
     #background.fill(pygame.Color("black"))
     screen.blit(background, (0, 0))
     pygame.display.flip()
-    root.update()
 #    camera.start_preview()
 #    img = cam.get_image()
     BackgroundColor = "black"
@@ -587,7 +583,6 @@ def CapturePicture():
         #cam.stop()
         count+=1
         pygame.display.update()
-        root.update()
     print("THERE WERE "+str(count)+" FRAMES")
     Message = "Great shot!"
     print(Message)
