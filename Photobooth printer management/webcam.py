@@ -923,8 +923,6 @@ def CheckForEvent(up,checkhori,direction):
     elif input_statedown ==1 and (up-20)>(-checkhori/2):
         NotEvent = False
         up-=20
-    else:
-        up =0
   
     return up
 	
