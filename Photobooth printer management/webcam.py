@@ -542,7 +542,7 @@ def CapturePicture():
         if portrait == True:
             up = CheckForEvent()
             #img = img.subsurface((left,top-up+down,width,height))#it into correct ratio
-            img = img.subsurface((left,top-up,width,height))#it into correct ratio
+            img = img.subsurface((left-up,top,width,height))#it into correct ratio
             cropimg1 = pygame.transform.rotate(img, 90)
         elif portrait == False:
             cropimg1 = img.subsurface((left,top,width,height))#puts it into correct ratio
