@@ -903,7 +903,7 @@ def WaitForPrintingEvent():
 
     #GPIO.remove_event_detect(BUTTON_PIN)
 
-def CheckForEvent():
+def CheckForEvent(up):
     global pygame
     pf = pifaceio.PiFace()
     NotEvent = True
