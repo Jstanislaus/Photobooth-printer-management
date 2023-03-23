@@ -542,7 +542,10 @@ def CapturePicture():
                 width = (6*step)
                 height = (4*step)
         if portrait == True:
-            up = CheckForEvent(up,spacehori)
+            direction = "up"
+            up = CheckForEvent(up,spacehori,direction)
+            direction ="down"
+            down = CheckForEvent(up,spacehori,direction)
             #img = img.subsurface((left,top-up+down,width,height))#it into correct ratio
             img = img.subsurface((left+up,top,width,height))#it into correct ratio
             cropimg1 = pygame.transform.rotate(img, 90)
@@ -904,19 +907,24 @@ def WaitForPrintingEvent():
 
     #GPIO.remove_event_detect(BUTTON_PIN)
 
-def CheckForEvent(up,checkhori):
+def CheckForEvent(up,checkhori,direction):
     global pygame
     pf = pifacedigitalio.PiFaceDigital()
     NotEvent = True
     #pf.read()
     #input_state = pf.read_pin(1) #False #windows10 GPIO.input(BUTTON_PIN)
-    input_state = pf.input_pins[1].value
-    if input_state == False and (up+20)<(checkhori/2): #was TRUE
+    input_stateup = pf.input_switches[0].value
+    input_statedown = pf.input_switches[1].value
+    if input_stateup == 0 and (up+20)<(checkhori/2): #was TRUE
         NotEvent = False
         up += 20
-        return up
-    else:
-        return up
+        if input_statedown ==0 and (up-20)>(-checkhori/2):
+            up-=20
+    elif input_statedown ==0 and (up-20)>(-checkhori/2):
+        NotEvent = False
+        up-=20
+  
+    return up
 	
 	
 	
