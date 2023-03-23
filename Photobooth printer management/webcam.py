@@ -13,17 +13,9 @@ from threading import Thread
 from pygame.locals import *
 from time import sleep
 from PIL import Image, ImageDraw
-import tkinter as tk
-from tkinter import *
 
 import RPi.GPIO as GPIO, time, os, subprocess,shlex
 
-root = tk.Tk()
-#os.environ['SDL_WINDOWID'] = str(embed.winfo_id())
-#os.environ['SDL_VIDEODRIVER'] = 'windib'
-#screen.fill(pygame.Color(255,255,255))
-#pygame.display.init()
-# initialise global variables
 Venueid = "AG"
 VenueDescription = "2022 12 09 Harden Christmas Fayre"
 Numeral = ""  # Numeral is the number display
@@ -77,17 +69,6 @@ pygame.mouse.set_visible(False) #hide the mouse cursor
 print("#hide the mouse cursor -- OK")
 pygame.display.init()
 infoObject = pygame.display.Info()
-print("pygame.display.Info() -- OK")
-print(infoObject)
-print("INFO")
-print(infoObject.current_w)
-print(infoObject.current_h)
-print(root)
-embed = tk.Frame(root) #creates embed frame for pygame window
-embed.grid(columnspan = (600), rowspan = 500) # Adds grid
-embed.pack(side = LEFT) #packs window to the left
-buttonwin = tk.Frame(root, width = 75, height = 500)
-buttonwin.pack(side = LEFT)
 screen = pygame.display.set_mode((infoObject.current_w,infoObject.current_h), pygame.FULLSCREEN)  # Full screen 
 print("# Full screen -- OK")
 background = pygame.Surface(screen.get_size())  # Create the background object
