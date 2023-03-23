@@ -930,7 +930,7 @@ def WaitForEvent():
         input_state = pf.input_pins[1] #False #windows10 GPIO.input(BUTTON_PIN)
 
 
-        if input_state == False: #was TRUE
+        if input_state: #was TRUE
             print("NoEvent is True")
             print(input_state)
             NotEvent = False
