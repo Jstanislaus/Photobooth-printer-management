@@ -3,7 +3,7 @@ import time
 import os
 import PIL.Image
 import cups
-import pifaceio
+import pifacedigitalio
 import qrcode
 import datetime
 import pygame.camera
@@ -870,15 +870,15 @@ def WaitForPrintingEvent():
     global Message3
     global NotPrinting
     global pygame
-    pf = pifaceio.PiFace()
+    pf = pifacedigitalio.PiFaceDigital()
     countDown = 10
     #GPIO.add_event_detect(BUTTON_PIN, GPIO.RISING)
     #GPIO.add_event_callback(BUTTON_PIN, MyCallback)
     
     while NotPrinting == True and countDown > 0:
         
-        pf.read()
-        input_state = pf.read_pin(1) 
+        #pf.read()
+        input_state = pf.input_pins[1]
 #        print(input_state) # is True")
         if input_state == False: #was True
             print("input_state is True (button has been pressed for printing)")
@@ -906,10 +906,11 @@ def WaitForPrintingEvent():
 
 def CheckForEvent(up,checkhori):
     global pygame
-    pf = pifaceio.PiFace()
+    pf = pifacedigitalio.PiFaceDigital()
     NotEvent = True
-    pf.read()
-    input_state = pf.read_pin(1) #False #windows10 GPIO.input(BUTTON_PIN)
+    #pf.read()
+    #input_state = pf.read_pin(1) #False #windows10 GPIO.input(BUTTON_PIN)
+    input_state = pf.input_pins[1]
     if input_state == False and (up+20)<(checkhori/2): #was TRUE
         NotEvent = False
         up += 20
@@ -921,12 +922,12 @@ def CheckForEvent(up,checkhori):
 	
 def WaitForEvent():
     global pygame
-    pf = pifaceio.PiFace()
+    pf = pifacedigitalio.PiFaceDigital()
     NotEvent = True
    
     while NotEvent:
-        pf.read()
-        input_state = pf.read_pin(1) #False #windows10 GPIO.input(BUTTON_PIN)
+        #pf.read()
+        input_state = pf.input_pins[1] #False #windows10 GPIO.input(BUTTON_PIN)
 
 
         if input_state == False: #was TRUE
