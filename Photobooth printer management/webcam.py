@@ -913,8 +913,8 @@ def CheckForEvent(up,checkhori,direction):
     NotEvent = True
     #pf.read()
     #input_state = pf.read_pin(1) #False #windows10 GPIO.input(BUTTON_PIN)
-    input_stateup = pf.input_switches[0].value
-    input_statedown = pf.input_switches[1].value
+    input_stateup = pf.witches[0].value
+    input_statedown = pf.switches[1].value
     if input_stateup == 0 and (up+20)<(checkhori/2): #was TRUE
         NotEvent = False
         up += 20
