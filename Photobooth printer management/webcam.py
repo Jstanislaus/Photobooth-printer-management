@@ -512,6 +512,7 @@ def CapturePicture():
 #############
 #    if portrait == True:
  #       try get top value from toby, top = tobyvalue, if get a value, toby = true
+    up = 0
     while time.time() < t_end:
                     
         # grab image from Camera
@@ -540,7 +541,7 @@ def CapturePicture():
                 width = (6*step)
                 height = (4*step)
         if portrait == True:
-            up = CheckForEvent()
+            up = CheckForEvent(up)
             #img = img.subsurface((left,top-up+down,width,height))#it into correct ratio
             img = img.subsurface((left-up,top,width,height))#it into correct ratio
             cropimg1 = pygame.transform.rotate(img, 90)
@@ -907,11 +908,10 @@ def CheckForEvent():
     pf = pifaceio.PiFace()
     NotEvent = True
     pf.read()
-    up =0
     input_state = pf.read_pin(1) #False #windows10 GPIO.input(BUTTON_PIN)
     if input_state == False: #was TRUE
         NotEvent = False
-        up = 20
+        up += 20
         return up
     else:
         return up
