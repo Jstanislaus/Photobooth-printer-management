@@ -517,6 +517,7 @@ def CapturePicture():
                     
         # grab image from Camera
         img = cam.get_image()
+        print(count)
         if count == 0:
             width = int(img.get_width())
             height = int(img.get_height())###To make the largest 'step' increments to produce the required ratio6:4
