@@ -543,10 +543,10 @@ def CapturePicture():
                 width = (6*step)
                 height = (4*step)
         if portrait == True:
-            if count%2=0:
+            if count%2==0:
                 direction = "up"
                 up = CheckForEvent(up,spacehori,direction)
-            if count%2=1:
+            if count%2==1:
                 direction ="down"
                 down = CheckForEvent(up,spacehori,direction)
             #img = img.subsurface((left,top-up+down,width,height))#it into correct ratio
