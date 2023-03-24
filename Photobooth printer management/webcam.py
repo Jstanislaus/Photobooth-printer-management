@@ -920,12 +920,12 @@ def CheckForEvent(up,checkhori,direction):
     input_statedown = pf.input_pins[3].value
     if input_stateup == 1 and (up+20)<(checkhori/2): #was TRUE
         NotEvent = False
-        up += 10
+        up += 20
         if input_statedown ==1 and (up-20)>(-checkhori/2):
-            up-=10
+            up-=20
     elif input_statedown ==1 and (up-20)>(-checkhori/2):
         NotEvent = False
-        up-=10
+        up-=20
   
     return up
 	
