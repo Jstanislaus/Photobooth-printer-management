@@ -470,6 +470,13 @@ def CapturePicture():
                     
         # grab image from Camera
         #img = picam2.get_image()
+        stream = BytesIO()
+        picam2.capture(stream, format='png')
+        img = Image.open(stream)
+        mode = img.mode
+        size = img.size
+        data = img.tobytes()
+        img =pygame.image.fromstring(data,size,mode)
         img = picam2.get_image()
         print(count)
         if count == 0:
