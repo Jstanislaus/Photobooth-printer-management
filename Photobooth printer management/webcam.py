@@ -470,7 +470,7 @@ def CapturePicture():
                     
         # grab image from Camera
         #img = picam2.get_image()
-        img = picam2.capure_file()
+        img = picam2.capture_file()
         print(count)
         if count == 0:
             width = int(img.get_width())
