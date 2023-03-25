@@ -6,7 +6,7 @@ import cups
 import pifacedigitalio
 import qrcode
 import datetime
-from picamera
+import picamera
 from pygame.locals import *
 from io import BytesIO
 import math
