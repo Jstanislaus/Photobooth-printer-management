@@ -6,7 +6,7 @@ import cups
 import pifacedigitalio
 import qrcode
 import datetime
-import pygame.camera
+from picamera2 import PiCamera2
 from pygame.locals import *
 import math
 from threading import Thread
@@ -53,7 +53,7 @@ print("pygame has been uninitialised...")
 
 #pygame.init()
 #CHANGED TO MANUALLY INIT EACH MODULE AS "pygame.init()" INCLUDES UNWANTED MODULES THAT SPAM THE CMD
-pygame.camera.init()
+#pygame.camera.init()
 pygame.display.init()
 #pygame.event.init()
 pygame.font.init()
@@ -165,8 +165,7 @@ def InitCamera(i):
     global Message
     global Message2
     global CameraPresent
-    global cam
-    global camLive
+    global picam2
 
     CameraPresent = False
     while CameraPresent == False:
@@ -174,47 +173,10 @@ def InitCamera(i):
             Message = 'Camera Check...'
             #camLive= pygame.camera.Camera(CameraModel[0],(640,480))
             UpdateDisplay()
-        pygame.camera.init()
-        CameraModel = pygame.camera.list_cameras()
-        print("CAMERA MODEL")
-        print(CameraModel)
-        if CameraModel:
-            cam = pygame.camera.Camera(CameraModel[0],(1280,720))#640,480
-            camLive= pygame.camera.Camera(CameraModel[0],(1280,720))
-            print(CameraModel)
-
-
-
-        #import shlex, subprocess
-        #gphoto2CmdLine = "gphoto2 --auto-detect"
-        #args = shlex.split(gphoto2CmdLine)
-       # print("ARGS")
-       # print(args)
-      #  gpout = subprocess.Popen(args,stdout=subprocess.PIPE, stdin=subprocess.PIPE)
-       # print(gpout)
-        if i == 0:
-            Message = "Waiting for camera response "
-            print(Message)
-            UpdateDisplay()
-        Message = ""
-        Message2 = ""   
-
-       # gpout1=gpout.wait()
-
-       # CameraModel = gpout.stdout.readlines()
-       # del CameraModel[0:2]     
-        if len(CameraModel):
-            if i ==0:
-                Message = "Camera check is done found:"
-                Message2 = str(CameraModel[0])
-                print(Message)
-                print(Message2)
-                UpdateDisplay()
+        try:
+            picam2 = Picamera2()
             CameraPresent = True
-	
-            cam = pygame.camera.Camera("/dev/video0",(1200,800))#1200 800
-            #cam.start()
-        else:
+        except:
             Message = "Camera NOT found:"
             Message2 ="Check connection and press button"
             CameraPresent = False
@@ -222,11 +184,7 @@ def InitCamera(i):
             print(Message2)
             UpdateDisplay()
             time.sleep(1)
-            WaitForEvent()
-
-
-        Message = ""
-        Message2 = ""
+            WaitForEvent() 
         
 
 #def DisplayText(fontSize, textToDisplay):
@@ -434,7 +392,7 @@ def CapturePicture():
     global ImageShowed
     global CountDownPhoto
     global BackgroundColor
-    global cam
+    global picam2
     global portrait
 
     BackgroundColor = ""
@@ -449,15 +407,11 @@ def CapturePicture():
     #background.fill(pygame.Color("black"))
     screen.blit(background, (0, 0))
     pygame.display.flip()
-#    camera.start_preview()
-#    img = cam.get_image()
     BackgroundColor = "black"
 
 
     BackgroundColor = ""
     Numeral = ""
-   # Message = "Big Grins Now"
-
     UpdateDisplay()
 
     imagecounter = imagecounter + 1
@@ -479,7 +433,6 @@ def CapturePicture():
     print(Message + " " + Message2)
     UpdateDisplay()
 
-    #cam.start()
     time.sleep(1.5)
 
     #Message3 = "test text"
@@ -513,10 +466,12 @@ def CapturePicture():
 #    if portrait == True:
  #       try get top value from toby, top = tobyvalue, if get a value, toby = true
     up = 0
+    picam2.start()
     while time.time() < t_end:
                     
         # grab image from Camera
-        img = cam.get_image()
+        #img = picam2.get_image()
+        img = picam2.capure_file()
         print(count)
         if count == 0:
             width = int(img.get_width())
@@ -591,6 +546,7 @@ def CapturePicture():
         #cam.stop()
         count+=1
         pygame.display.update()
+    picam2.stop()
     print("THERE WERE "+str(count)+" FRAMES")
     Message = "Great shot!"
     print(Message)
@@ -977,9 +933,9 @@ def main(threadName, *args):
         WaitForEvent()
         time.sleep(1)
 
-        cam.start()
+        picam2.start()
         TakePictures()
-        cam.stop()
+        picam2.stop()
         #print("Success! Exiting..")
         #pygame.quit()
         i+=1
