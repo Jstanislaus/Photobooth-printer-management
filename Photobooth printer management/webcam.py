@@ -8,6 +8,7 @@ import qrcode
 import datetime
 from picamera2 import Picamera2
 from pygame.locals import *
+from io import BytesIO
 import math
 from threading import Thread
 from pygame.locals import *
