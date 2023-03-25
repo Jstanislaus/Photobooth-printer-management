@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+from picamera2 import Picamera2
 import time
 
 picam2 = Picamera2()
