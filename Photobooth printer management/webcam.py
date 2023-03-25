@@ -468,10 +468,10 @@ def CapturePicture():
     filename = os.path.join(imagefolder, 'images', Venueid + str(TotalImageCount) + "_" +  str(imagecounter)+"_"+str(ts) + '.jpg')
     print(filename)
 
-    gphoto2CmdLine = "gphoto2 --capture-image-and-download --filename " + filename
-    print(gphoto2CmdLine)
-    args = shlex.split(gphoto2CmdLine)
-    print(args)
+    #gphoto2CmdLine = "gphoto2 --capture-image-and-download --filename " + filename
+    #print(gphoto2CmdLine)
+    #args = shlex.split(gphoto2CmdLine)
+    #print(args)
 
 
     Message3 = ""
