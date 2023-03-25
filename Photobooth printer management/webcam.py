@@ -978,9 +978,9 @@ def main(threadName, *args):
         WaitForEvent()
         time.sleep(1)
 
-        cam.start()
+        #cam.start()
         TakePictures()
-        cam.stop()
+        #cam.stop()
         #print("Success! Exiting..")
         #pygame.quit()
         i+=1
