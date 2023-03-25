@@ -466,7 +466,6 @@ def CapturePicture():
 #    if portrait == True:
  #       try get top value from toby, top = tobyvalue, if get a value, toby = true
     up = 0
-    picam2.start()
     while time.time() < t_end:
                     
         # grab image from Camera
@@ -546,7 +545,6 @@ def CapturePicture():
         #cam.stop()
         count+=1
         pygame.display.update()
-    picam2.stop()
     print("THERE WERE "+str(count)+" FRAMES")
     Message = "Great shot!"
     print(Message)
