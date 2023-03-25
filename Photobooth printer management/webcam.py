@@ -186,13 +186,6 @@ def InitCamera(i):
 
 
 
-        #import shlex, subprocess
-        #gphoto2CmdLine = "gphoto2 --auto-detect"
-        #args = shlex.split(gphoto2CmdLine)
-       # print("ARGS")
-       # print(args)
-      #  gpout = subprocess.Popen(args,stdout=subprocess.PIPE, stdin=subprocess.PIPE)
-       # print(gpout)
         if i == 0:
             Message = "Waiting for camera response "
             print(Message)
