@@ -6,6 +6,7 @@ import numpy as np
 
 from picamera2 import Picamera2, Preview
 picam2 = Picamera2()
+print("Hi")
 picam2.configure(picam2.create_preview_configuration())
 print("Hi")
 picam2.start_preview(Preview.DRM)
