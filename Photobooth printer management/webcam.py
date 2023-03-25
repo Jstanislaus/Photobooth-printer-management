@@ -6,7 +6,7 @@ import cups
 import pifacedigitalio
 import qrcode
 import datetime
-from picamera2 import Picamera2
+from picamera
 from pygame.locals import *
 from io import BytesIO
 import math
@@ -166,7 +166,7 @@ def InitCamera(i):
     global Message
     global Message2
     global CameraPresent
-    global picam2
+    global picam
 
     CameraPresent = False
     while CameraPresent == False:
@@ -175,7 +175,6 @@ def InitCamera(i):
             #camLive= pygame.camera.Camera(CameraModel[0],(640,480))
             UpdateDisplay()
         try:
-            picam2 = Picamera2()
             CameraPresent = True
         except:
             Message = "Camera NOT found:"
@@ -393,7 +392,7 @@ def CapturePicture():
     global ImageShowed
     global CountDownPhoto
     global BackgroundColor
-    global picam2
+    global picam
     global portrait
 
     BackgroundColor = ""
@@ -461,6 +460,7 @@ def CapturePicture():
     print("Starting Liveview...")
     x, y = screen.get_size()
     count =0
+    rgb =bytearray(picam.resolution[0] * picam.resolution[1] * 3)
 ############
 #IN PROGRESS###
 #############
@@ -470,15 +470,17 @@ def CapturePicture():
     while time.time() < t_end:
                     
         # grab image from Camera
-        #img = picam2.get_image()
+        #img = picam.get_image()
         stream = BytesIO()
-        picam2.capture(stream, format='png')
-        img = Image.open(stream)
-        mode = img.mode
-        size = img.size
-        data = img.tobytes()
-        img =pygame.image.fromstring(data,size,mode)
-        img = picam2.get_image()
+        picam.capture(stream,use_video_port=True,format='rbg')
+        stream.seek(0)
+        stream.readinto(rgb)
+        stream.close()
+        img = pygame.image.frombuffer(rgb[0:
+          (camera.resolution[0] * camera.resolution[1] * 3)],
+           camera.resolution, 'RGB')
+        print(type(img))
+        img = picam.get_image()
         print(count)
         if count == 0:
             width = int(img.get_width())
@@ -939,9 +941,9 @@ def main(threadName, *args):
         WaitForEvent()
         time.sleep(1)
 
-        picam2.start()
+        picam.start()
         TakePictures()
-        picam2.stop()
+        picam.stop()
         #print("Success! Exiting..")
         #pygame.quit()
         i+=1
