@@ -18,7 +18,7 @@ for time_left in range(10, 0, -1):
     font = cv2.FONT_HERSHEY_SIMPLEX
     scale = 10
     thickness = 20
-    textsize = cv2.getTextSize(text, font, 1, 2)[0]
+    textsize = cv2.getTextSize(str(time_left), font, 1, 2)[0]
     textX = int(boundingboxcenter[0] - (textsize[0] / 2))
     textY = int(boundingboxcenter[1] + (textsize[1] / 2))
     overlay = np.zeros((1640, 1232, 4), dtype=np.uint8)
