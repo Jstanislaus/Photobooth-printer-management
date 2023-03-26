@@ -15,7 +15,7 @@ picam2.start()
 for time_left in range(10, 0, -1):
     colour = (0, 255, 0, 255)
     origin = (0, 0)
-    font = cv2.FONT_HERSHEY_SIMPLEX
+    font = cv2.FONT_HERSHEY_COMPLEX
     scale = 15
     thickness = 28
     textsize = cv2.getTextSize(str(time_left), font, scale, thickness)[0]
