@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import time
 
-from picamera2 import Picamera2
+from picamera2 import Picamera2, Preview
 
 WIDTH = 1920
 HEIGHT = 1200
