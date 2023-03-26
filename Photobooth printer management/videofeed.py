@@ -9,7 +9,7 @@ picam2 = Picamera2()
 config = picam2.create_preview_configuration({"size": (1640, 1093)})#{"size": (1280, 960)})
 picam2.configure(config)
 #1640, 1093
-picam2.start_preview(Preview.QTGL, x=0, y=0, width =1640, height =1093)
+picam2.start_preview(Preview.DRM, x=0, y=0, width =1640, height =1093)
 #previewDRM
 picam2.start()
 for time_left in range(10, 0, -1):
