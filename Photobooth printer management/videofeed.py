@@ -14,11 +14,11 @@ picam2.start_preview(Preview.QTGL, x=0, y=0, width=WIDTH, height=HEIGHT)
 picam2.start()
 for time_left in range(10, 0, -1):
     colour = (0, 255, 0, 255)
-    origin = (400, 600)
+    origin = (400, 640)
     font = cv2.FONT_HERSHEY_SIMPLEX
     scale = 10
     thickness = 20
-    overlay = np.zeros((1280, 1080, 4), dtype=np.uint8)
+    overlay = np.zeros((1640, 1232, 4), dtype=np.uint8)
     cv2.putText(overlay, str(time_left), origin, font, scale, colour, thickness,lineType = cv2.LINE_AA)
     picam2.set_overlay(overlay)
     time.sleep(1)
