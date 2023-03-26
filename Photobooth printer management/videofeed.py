@@ -28,9 +28,9 @@ picam2.start_preview(Preview.QTGL)
 config = picam2.create_preview_configuration(main={"size": (1280, 960)})
 picam2.configure(config)
 
-barcodes = []
+#barcodes = []
 #picam2.post_callback = draw_barcodes
 picam2.start()
-while True:
-    rgb = picam2.capture_array("main")
+#while True:
+#    rgb = picam2.capture_array("main")
     #barcodes = decode(rgb)
