@@ -25,7 +25,7 @@ thickness = 2
 
 picam2 = Picamera2()
 picam2.start_preview(Preview.QTGL)
-config = picam2.create_preview_configuration(main={"size": (120, 90)})
+config = picam2.create_preview_configuration(main={"size": (1280, 960)})
 picam2.configure(config)
 
 barcodes = []
