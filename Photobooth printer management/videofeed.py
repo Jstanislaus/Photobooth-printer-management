@@ -5,7 +5,7 @@ import time
 from picamera2 import Picamera2, Preview
 
 WIDTH = 1920
-HEIGHT = 1200
+HEIGHT = 1080
 
 picam2 = Picamera2()
 config = picam2.create_preview_configuration({"size": (WIDTH, HEIGHT)})
