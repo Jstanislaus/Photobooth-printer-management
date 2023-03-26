@@ -14,7 +14,7 @@ picam2.start_preview(Preview.QTGL, x=0, y=0, width=WIDTH, height=HEIGHT)
 picam2.start()
 for time_left in range(10, 0, -1):
     colour = (0, 255, 0, 255)
-    origin = (1920/2, 1080/2)
+    origin = (960, 540)
     font = cv2.FONT_HERSHEY_SIMPLEX
     scale = 10
     thickness = 20
