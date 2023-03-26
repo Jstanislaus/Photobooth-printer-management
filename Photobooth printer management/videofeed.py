@@ -19,7 +19,7 @@ for time_left in range(10, 0, -1):
     scale = 1
     thickness = 2
     overlay = np.zeros((1280, 1080, 4), dtype=np.uint8)
-    cv2.putText(overlay, str(time_left), origin, font, scale, colour, thickness)
+    cv2.putText(overlay, str(time_left), origin, font, scale, colour, thickness,lineType = cv2.LINE_AA)
     picam2.set_overlay(overlay)
     time.sleep(1)
 
