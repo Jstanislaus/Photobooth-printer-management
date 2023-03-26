@@ -6,10 +6,10 @@ WIDTH = 1920
 HEIGHT = 1080
 
 picam2 = Picamera2()
-config = picam2.create_preview_configuration({"size": (1640, 1093)})#{"size": (1280, 960)})
+config = picam2.create_preview_configuration({"size": (1200, 800)})#{"size": (1280, 960)})
 picam2.configure(config)
-
-picam2.start_preview(Preview.QTGL, x=0, y=0, width =1640, height =1093)
+#1640, 1093
+picam2.start_preview(Preview.QTGL, x=0, y=0, width =1200, height =800)
 #previewDRM
 picam2.start()
 for time_left in range(10, 0, -1):
@@ -23,7 +23,7 @@ for time_left in range(10, 0, -1):
     textY = int(820 + (textsize[1] / 2))
     #overlay = cv2.imread("1.png", cv2.IMREAD_UNCHANGED)
     #overlay = cv2.resize(overlay,dsize=(20, 50), interpolation=cv2.INTER_CUBIC)
-    overlay = np.zeros((1640, 1093, 4), dtype=np.uint8)
+    overlay = np.zeros((1200, 800, 4), dtype=np.uint8)
     cv2.putText(overlay, str(time_left), (textX, textY ), font, scale, colour, thickness,lineType = cv2.LINE_AA)
     picam2.set_overlay(overlay)
     time.sleep(1)
