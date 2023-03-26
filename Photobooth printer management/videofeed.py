@@ -9,12 +9,11 @@ HEIGHT = 1080
 
 picam2 = Picamera2()
 config = picam2.create_preview_configuration({"size": (WIDTH, HEIGHT)})
-print("test")
 picam2.configure(config)
 print("TEST")
 picam2.start_preview(Preview.DRM, x=0, y=0, width=WIDTH, height=HEIGHT)
 picam2.start()
-
+print("test")
 for time_left in range(10, 0, -1):
     colour = (0, 255, 0, 255)
     origin = (0, 30)
