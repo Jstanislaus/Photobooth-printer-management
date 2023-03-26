@@ -38,6 +38,6 @@ picam2.configure(config)
 #barcodes = []
 #picam2.post_callback = draw_barcodes
 picam2.start()
-while True:
-    rgb = picam2.capture_array("main")
+#while True:
+ #   rgb = picam2.capture_array("main")
     #barcodes = decode(rgb)
