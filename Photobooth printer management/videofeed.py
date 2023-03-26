@@ -16,8 +16,8 @@ for time_left in range(10, 0, -1):
     colour = (0, 255, 0, 255)
     origin = (0, 0)
     font = cv2.FONT_HERSHEY_SIMPLEX
-    scale = 10
-    thickness = 20
+    scale = 15
+    thickness = 28
     textsize = cv2.getTextSize(str(time_left), font, scale, thickness)[0]
     textX = int(616 - (textsize[0] / 2))
     textY = int(820 + (textsize[1] / 2))
