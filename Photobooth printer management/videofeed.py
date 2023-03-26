@@ -22,6 +22,7 @@ for time_left in range(10, 0, -1):
     textX = int(616 - (textsize[0] / 2))
     textY = int(820 + (textsize[1] / 2))
     overlay = cv2.imread("number1.png", cv2.IMREAD_UNCHANGED)
+    overlay = cv2.resize(overlay,dsize=(299, 299), interpolation=cv2.INTER_CUBIC)
     #overlay = np.zeros((1640, 1232, 4), dtype=np.uint8)
     #cv2.putText(overlay, str(time_left), (textX, textY ), font, scale, colour, thickness,lineType = cv2.LINE_AA)
     picam2.set_overlay(overlay)
