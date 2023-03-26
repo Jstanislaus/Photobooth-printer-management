@@ -13,7 +13,7 @@ picam2.start_preview(Preview.QTGL, x=0, y=0, width =1640, height =1232)
 #previewDRM
 picam2.start()
 for time_left in range(10, 0, -1):
-    colour = (227, 100, 200)
+    colour = (200, 100, 227)
     origin = (0, 0)
     font = cv2.FONT_HERSHEY_DUPLEX#PLAIN
     scale = 15
