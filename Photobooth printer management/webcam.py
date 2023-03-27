@@ -178,6 +178,7 @@ def InitCamera(i):
             
             UpdateDisplay()
         try:
+            picam2 = Picamera2()
             CameraPresent = True
         except:
             Message = "Camera NOT found:"
