@@ -29,6 +29,6 @@ for time_left in range(10, 0, -1):
     time.sleep(1)
 
 picam2.stop()
-while True:
-    pass
+#while True:
+#    pass
 
