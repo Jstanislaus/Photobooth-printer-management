@@ -57,7 +57,7 @@ print("pygame has been uninitialised...")
 #pygame.init()
 #CHANGED TO MANUALLY INIT EACH MODULE AS "pygame.init()" INCLUDES UNWANTED MODULES THAT SPAM THE CMD
 #pygame.camera.init()
-pygame.display.init()
+#pygame.display.init()
 #pygame.event.init()
 pygame.font.init()
 #pygame.key.init()
