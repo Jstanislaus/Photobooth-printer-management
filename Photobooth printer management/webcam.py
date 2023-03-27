@@ -6,7 +6,9 @@ import cups
 import pifacedigitalio
 import qrcode
 import datetime
-import picamera
+from picamera2 import Picamera2, Preview
+import cv2
+import numpy as np
 from pygame.locals import *
 from io import BytesIO
 import math
@@ -377,205 +379,33 @@ def show_image(image_path):
 	pygame.display.flip()
 
 def CapturePicture():
-    global Venueid
-    global TotalImageCount
-    global imagecounter
-    global imagefolder
-    global Numeral
-    global Message
-    global Message2
-    global Message3
-    global screen
-    global background
-    global screenPicture
-    global backgroundPicture
-    global pygame
-    global ImageShowed
-    global CountDownPhoto
-    global BackgroundColor
-    global picam
-    global portrait
+    WIDTH = 1920
+    HEIGHT = 1080
 
-    BackgroundColor = ""
-    Numeral = ""
-    Message = ""
-    Message2 = ""
+    picam2 = Picamera2()
+    config = picam2.create_preview_configuration({"size": (WIDTH, HEIGHT)})#{"size": (1280, 960)})
+    picam2.configure(config)
+#1640, 1093
+    picam2.start_preview(Preview.DRM, x=0, y=0, width =WIDTH, height =HEIGHT)
+#previewDRM
+    picam2.start()
+    for time_left in range(10, 0, -1):
+        colour = (227, 100, 200,255)#(227, 100, 200)
+        origin = (0, 0)
+        font = cv2.FONT_HERSHEY_DUPLEX#PLAIN
+        scale = 15
+        thickness = 28
+        textsize = cv2.getTextSize(str(time_left), font, scale, thickness)[0]
+        textX = int(616 - (textsize[0] / 2))
+        textY = int(820 + (textsize[1] / 2))
+    #overlay = cv2.imread("1.png", cv2.IMREAD_UNCHANGED)
+    #overlay = cv2.resize(overlay,dsize=(20, 50), interpolation=cv2.INTER_CUBIC)
+        overlay = np.zeros((1640, 1093, 4), dtype=np.uint8)
+        cv2.putText(overlay, str(time_left), (textX, textY ), font, scale, colour, thickness,lineType = cv2.LINE_AA)
+        picam2.set_overlay(overlay)
+        time.sleep(1)
 
-    #UpdateDisplay()
-    #time.sleep(1.5)
-    CountDownPhoto = ""
-    UpdateDisplay()
-    #background.fill(pygame.Color("black"))
-    screen.blit(background, (0, 0))
-    pygame.display.flip()
-    BackgroundColor = "black"
-
-
-    BackgroundColor = ""
-    Numeral = ""
-    UpdateDisplay()
-
-    imagecounter = imagecounter + 1
-    
-
-    ts = time.time()
-    filename = os.path.join(imagefolder, 'images', Venueid + str(TotalImageCount) + "_" +  str(imagecounter)+"_"+str(ts) + '.jpg')
-    print(filename)
-
-    gphoto2CmdLine = "gphoto2 --capture-image-and-download --filename " + filename
-    print(gphoto2CmdLine)
-    args = shlex.split(gphoto2CmdLine)
-    print(args)
-
-
-    Message3 = ""
-    Message = "Now lets see"
-    Message2 = "your best pose !!"
-    print(Message + " " + Message2)
-    UpdateDisplay()
-
-    time.sleep(1.5)
-
-    #Message3 = "test text"
-    #Message = ""
-    #Message2 = ""
-    UpdateDisplay()
-    #time.sleep(1)  
-
-    print("Waiting for picture to be taken...")
-                      
-    lentime = 10
-    t_end = time.time() + lentime
-    tempnumeral =lentime
-    print(str(int(math.floor(t_end-time.time()))))
-
-    Message =  "Photo No." + str(imagecounter) + " (/3) will be taken in..."
-
-    #print(Displaytext)
-    font = pygame.font.Font(None, 100)
-    textMessage = font.render(Message, 1, (227, 157, 200))
-    textposMessage = textMessage.get_rect()
-    textposMessage.centerx = background.get_rect().centerx
-    textposMessage.centery = background.get_rect().centery*0.5
-
-    print("Starting Liveview...")
-    x, y = screen.get_size()
-    count =0
-    rgb =bytearray(picam.resolution[0] * picam.resolution[1] * 3)
-############
-#IN PROGRESS###
-#############
-#    if portrait == True:
- #       try get top value from toby, top = tobyvalue, if get a value, toby = true
-    up = 0
-    while time.time() < t_end:
-                    
-        # grab image from Camera
-        #img = picam.get_image()
-        stream = BytesIO()
-        picam.capture(stream,use_video_port=True,format='rbg')
-        stream.seek(0)
-        stream.readinto(rgb)
-        stream.close()
-        img = pygame.image.frombuffer(rgb[0:
-          (camera.resolution[0] * camera.resolution[1] * 3)],
-           camera.resolution, 'RGB')
-        print(type(img))
-        img = picam.get_image()
-        print(count)
-        if count == 0:
-            width = int(img.get_width())
-            height = int(img.get_height())###To make the largest 'step' increments to produce the required ratio6:4
-            print("Width and height values are "+str(width)+str(height))
-            if portrait == True:
-                if int(width/6)>(height/4):
-                    step = int(height/6)
-                else:
-                    step = int(width/4)
-                left = (width/2)-(2*step)
-#                if Toby==True: skip
-                top= (height/2)-(3*step)
-                spacehori = width -(4*step)
-                width = (4*step)
-                height = (6*step)
-            elif portrait == False:
-                if int(width/6)>(height/4):#This only works if height or width fits in the surface
-                    step = int(height/4)
-                else:
-                    step = int(width/6)
-                left = (width/2)-(3*step)
-                top= (height/2)-(2*step)
-                width = (6*step)
-                height = (4*step)
-        if portrait == True:
-            if count%2==0:
-                direction = "up"
-                up = CheckForEvent(up,spacehori,direction)
-            if count%2==1:
-                direction ="down"
-                down = CheckForEvent(up,spacehori,direction)
-            #img = img.subsurface((left,top-up+down,width,height))#it into correct ratio
-            img = img.subsurface((left+up,top,width,height))#it into correct ratio
-            cropimg1 = pygame.transform.rotate(img, 90)
-        elif portrait == False:
-            cropimg1 = img.subsurface((left,top,width,height))#puts it into correct ratio
-        if count ==0:
-            if int(x/6)*2>(y/2):
-                step = int(y/4)
-            else:
-                step = int(x/6)
-            top2 = (y/2)-(2*step)	
-            left2 = (x/2)-(3*step)
-            right2 = (x/2)+(3*step)
-            bottom2 = (y/2)+(2*step)
-            width2 = left2+right2-(6*Finalimagereduction)
-            height2 = top2+bottom2-(4*Finalimagereduction)
-        # Make the image full screen
-        cropimg = pygame.transform.scale(cropimg1, (width2,height2))
-        cropimg = pygame.transform.flip(cropimg, 1,0) 
-        if count ==0:
-            width3 = int(cropimg.get_width())
-            height3 = int(cropimg.get_height())
-        #Render Image to Background
-        backgroundPicture.blit(cropimg, ((x/2)-(width3/2),(y/2)-(height3/2)))
-        #Render Countdown Text to Background
-                       
-        Numeral = str(int(math.floor(t_end-time.time()))+1)
-
-        if count ==0:
-            fontNumeral = pygame.font.Font(None, 800)
-        Numeraltext = fontNumeral.render(Numeral, 1, (227, 100, 200))
-        NumeralPosText = Numeraltext.get_rect()
-        NumeralPosText.centerx = background.get_rect().centerx 
-        NumeralPosText.centery = background.get_rect().centery * 1.3 #change multiplier so that the countdown is where you want it vertically
-        backgroundPicture.blit(Numeraltext, NumeralPosText)
-        backgroundPicture.blit(textMessage, textposMessage)
-        #Render Background to Screen
-        screen.blit(backgroundPicture, (0, 0))
-        tempnumeral = Numeral
-        #cam.stop()
-        count+=1
-        pygame.display.update()
-    print("THERE WERE "+str(count)+" FRAMES")
-    Message = "Great shot!"
-    print(Message)
-    Message2 =  ""
-    Message3 =  ""
-    Numeral = ""
-    pygame.image.save(cropimg1, filename)
-    ShowPicture(filename, 2,Message)
-    time.sleep(0.75)
-                
-    #UpdateDisplay()
-    #time.sleep(0.75)
-
-
-    print("Photo Capturing is done")
-
-    #ShowPicture(filename, 2,Message) #don't need this function ?
- 
-    ImageShowed = False
-    return filename
+picam2.stop()
 
 def TakePictures():
     global Venueid 
