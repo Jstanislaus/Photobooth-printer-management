@@ -370,7 +370,8 @@ def ShowPicture(file, delay,Message): #
     
 
 # display one image on screen
-def show_image(image_path):	
+def show_image(image_path):
+        print("Test1")
 	screen.fill(pygame.Color("white")) # clear the screen	
 	img = pygame.image.load(image_path) # load the image
 	img = img.convert()	
@@ -379,6 +380,7 @@ def show_image(image_path):
 	y = (infoObject.current_h / 2) - (img.get_height() / 2)
 	screen.blit(img,(x,y))
 	pygame.display.flip()
+        print("Test2")
 
 def CapturePicture():
     WIDTH = 1920
