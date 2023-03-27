@@ -372,14 +372,14 @@ def ShowPicture(file, delay,Message): #
 # display one image on screen
 def show_image(image_path):
         print("Test1")
-	screen.fill(pygame.Color("white")) # clear the screen	
-	img = pygame.image.load(image_path) # load the image
-	img = img.convert()	
-	set_demensions(img.get_width(), img.get_height()) # set pixel dimensions based on image	
-	x = (infoObject.current_w / 2) - (img.get_width() / 2)
-	y = (infoObject.current_h / 2) - (img.get_height() / 2)
-	screen.blit(img,(x,y))
-	pygame.display.flip()
+        screen.fill(pygame.Color("white")) # clear the screen	
+        img = pygame.image.load(image_path) # load the image
+        img = img.convert()	
+        set_demensions(img.get_width(), img.get_height()) # set pixel dimensions based on image	
+        x = (infoObject.current_w / 2) - (img.get_width() / 2)
+        y = (infoObject.current_h / 2) - (img.get_height() / 2)
+        screen.blit(img,(x,y))
+        pygame.display.flip()
         print("Test2")
 
 def CapturePicture():
