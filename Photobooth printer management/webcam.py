@@ -65,9 +65,9 @@ pygame.font.init()
 #pygame.transform.init()
 print("# Initialise pygame -- OK")
 
-pygame.mouse.set_visible(False) #hide the mouse cursor
+#pygame.mouse.set_visible(False) #hide the mouse cursor
 print("#hide the mouse cursor -- OK")
-pygame.display.init()
+#pygame.display.init()
 infoObject = pygame.display.Info()
 screen = pygame.display.set_mode((infoObject.current_w,infoObject.current_h), pygame.FULLSCREEN)  # Full screen 
 print("# Full screen -- OK")
