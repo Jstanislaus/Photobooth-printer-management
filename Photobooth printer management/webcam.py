@@ -407,7 +407,7 @@ def CapturePicture():
         picam2.set_overlay(overlay)
         time.sleep(1)
 
-picam2.stop()
+#picam2.stop()
 
 def TakePictures():
     global Venueid 
