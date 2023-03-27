@@ -18,8 +18,8 @@ from time import sleep
 from PIL import Image, ImageDraw
 
 import RPi.GPIO as GPIO, time, os, subprocess,shlex
-import os
-os.environ["SDL_VIDEODRIVER"] = "dummy"
+#import os
+#os.environ["SDL_VIDEODRIVER"] = "dummy"
 Venueid = "AG"
 VenueDescription = "2022 12 09 Harden Christmas Fayre"
 Numeral = ""  # Numeral is the number display
