@@ -35,7 +35,9 @@ imagecounter = 0
 imagefolder = "/home/pi/Photos/" +  Venueid + " " + VenueDescription  #os.path.realpath("../Photos")
 templatePath = os.path.join('Template', Venueid + " " + VenueDescription,"template.png") #Path of template image
 start_cameraPath = os.path.join('Template', Venueid + " " + VenueDescription,"start_camera.jpg") #Path of template image start_camera.jpg
-start_cameraPath2 =  os.path.join('Template', Venueid + " " + VenueDescription,"start_camera2.jpg")
+start_cameraPath2 =  os.path.join('Template', Venueid + " " + VenueDescription,"start_camera2.jpg")#
+start_cameraPathpart2 = os.path.join('Template', Venueid + " " + VenueDescription,"start_camerapart2.jpg")
+start_cameraPath2part2 =  os.path.join('Template', Venueid + " " + VenueDescription,"start_camera2part2.jpg")#
 ImageShowed = False
 NotPrinting = True
 BUTTON_PIN = 25
@@ -936,10 +938,14 @@ def WaitForEvent():
         i+=1
         #pf.read()
         input_state = pf.input_pins[1].value #False #windows10 GPIO.input(BUTTON_PIN)
-        if i%5 == 0:
+        if i%7 == 0:
             show_image(start_cameraPath)
-        if i %5 == 1:
+        if i%7 ==2:
+            show_image(start_cameraPathpart2)
+        if i %7 == 4:
             show_image(start_cameraPath2)
+        if i%7==6:
+            show_image(start_cameraPath2part2)
         if input_state==1: #was TRUE
             print("NoEvent is True")
             print(input_state)
