@@ -932,7 +932,7 @@ def WaitForEvent():
     NotEvent = True
     i = 0
     while NotEvent:
-	i+=1
+        i+=1
         #pf.read()
         input_state = pf.input_pins[1].value #False #windows10 GPIO.input(BUTTON_PIN)
         if i%100 = 0:
