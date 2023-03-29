@@ -35,6 +35,7 @@ imagecounter = 0
 imagefolder = "/home/pi/Photos/" +  Venueid + " " + VenueDescription  #os.path.realpath("../Photos")
 templatePath = os.path.join('Template', Venueid + " " + VenueDescription,"template.png") #Path of template image
 start_cameraPath = os.path.join('Template', Venueid + " " + VenueDescription,"start_camera.jpg") #Path of template image start_camera.jpg
+start_cameraPath2 =  os.path.join('Template', Venueid + " " + VenueDescription,"start_camera2.jpg")
 ImageShowed = False
 NotPrinting = True
 BUTTON_PIN = 25
