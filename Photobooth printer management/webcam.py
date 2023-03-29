@@ -935,9 +935,9 @@ def WaitForEvent():
         i+=1
         #pf.read()
         input_state = pf.input_pins[1].value #False #windows10 GPIO.input(BUTTON_PIN)
-        if i%100 = 0:
+        if i%100 == 0:
             show_image(start_cameraPath)
-        if i %100 = 1:
+        if i %100 == 1:
             show_image(start_cameraPath2)
         if input_state==1: #was TRUE
             print("NoEvent is True")
