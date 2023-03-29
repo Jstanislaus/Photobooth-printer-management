@@ -477,7 +477,7 @@ def CapturePicture():
     UpdateDisplay()
 
     #cam.start()
-    time.sleep(1.5)
+    time.sleep(2.7)
 
     #Message3 = "test text"
     #Message = ""
