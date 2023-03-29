@@ -470,7 +470,7 @@ def CapturePicture():
     #print(args)
 
 
-    Message3 = ""
+    Message3 = "(Move joystick to change camera height!)"
     Message = "Now lets see"
     Message2 = "your best pose !!"
     print(Message + " " + Message2)
