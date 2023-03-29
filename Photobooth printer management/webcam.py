@@ -978,7 +978,9 @@ def main(threadName, *args):
         #print("Success! Exiting..")
         #pygame.quit()
         i+=1
-
+        os.system("rsync -avz -e ssh pi@192.168.1.155:Slideshow/ Slideshow") 
+        time.sleep(0.2)
+        os.system("stanislaus")
 # launch the main thread
 Thread(target=main, args=('Main', 1)).start()
 
