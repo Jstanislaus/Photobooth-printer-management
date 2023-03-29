@@ -310,7 +310,7 @@ def UpdateDisplay():
             textMessage3 = font.render(Message3, 1, (227, 100, 200))
             textposMessage3 = textMessage3.get_rect()
             textposMessage3.centerx = background.get_rect().centerx
-            textposMessage3.centery = background.get_rect().centery * 0.5
+            textposMessage3.centery = background.get_rect().centery * 1.6
             if(ImageShowed):
                     backgroundPicture.blit(textMessage3, textposMessage3)
             else:
