@@ -976,7 +976,7 @@ def main(threadName, *args):
     InitFolder()
     print("InitFolder() -- OK ")
     i = 0
-    CmdLine = ["lpoptions", "-p", printer_name,"-o", "media=4x6"]     #/home/pi/Desktop/tempprint.jpg'
+    CmdLine = ["lpoptions", "-p", "Photobooth_RAW/6x4,"-o", "media=4x6"]     #/home/pi/Desktop/tempprint.jpg'
     print(CmdLine)
     gpout = subprocess.Popen(CmdLine)
     gpout1=gpout.wait()
