@@ -976,6 +976,10 @@ def main(threadName, *args):
     InitFolder()
     print("InitFolder() -- OK ")
     i = 0
+    CmdLine = ["lpoptions", "-p", printer_name,"-o", "media=4x6"]     #/home/pi/Desktop/tempprint.jpg'
+    print(CmdLine)
+    gpout = subprocess.Popen(CmdLine)
+    gpout1=gpout.wait()
     while True:
         InitCamera(i)
         show_image(start_cameraPath) #e.g'Template/2019 07 14 Redland Y6 Leavers/start_camera.jpg')
