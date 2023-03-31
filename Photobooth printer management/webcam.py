@@ -984,7 +984,7 @@ def main(threadName, *args):
         InitCamera(i)
         show_image(start_cameraPath) #e.g'Template/2019 07 14 Redland Y6 Leavers/start_camera.jpg')
         WaitForEvent()
-        time.sleep(1)
+        time.sleep(2)
 
         cam.start()
         TakePictures()
