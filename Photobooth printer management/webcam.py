@@ -32,7 +32,7 @@ SmallMessage = ""  # SmallMessage is a lower banner message
 TotalImageCount = 0  # Counter for Display and to monitor paper usage
 PhotosPerCart = 3000  # Selphy takes 16 sheets per tray
 imagecounter = 0
-imagefolder = "/home/pi/Photos/" +  Venueid + " " + VenueDescription  #os.path.realpath("../Photos")
+imagefolder = "/home/pi/Photobooth-printer-management/Photobooth_printer_management/Template/" +  Venueid + "_" + VenueDescription  #os.path.realpath("../Photos")
 templatePath = os.path.join('Template', Venueid + " " + VenueDescription,"template.png") #Path of template image
 start_cameraPath = os.path.join('Template', Venueid + " " + VenueDescription,"start_camera.jpg") #Path of template image start_camera.jpg
 start_cameraPath2 =  os.path.join('Template', Venueid + " " + VenueDescription,"start_camera2.jpg")#
@@ -461,7 +461,7 @@ def CapturePicture():
     
 
     ts = time.time()
-    filename = os.path.join(imagefolder, 'images', Venueid + str(TotalImageCount) + "_" +  str(imagecounter)+"_"+str(ts) + '.jpg')
+    filename = os.path.join(imagefolder, 'individual_images', Venueid + str(TotalImageCount) + "_" +  str(imagecounter)+"_"+str(ts) + '.jpg')
     print(filename)
 
     #gphoto2CmdLine = "gphoto2 --capture-image-and-download --filename " + filename
@@ -730,7 +730,7 @@ def TakePictures():
 
     # Create the final filename
     ts = time.time()
-    Final_Image_Name = os.path.join(os.path.realpath(imagefolder),"Final_" +  Venueid + str(TotalImageCount)+"_"+str(ts) + ".jpg")
+    Final_Image_Name = os.path.join(os.path.realpath(imagefolder),"Final_Templates","Final_" +  Venueid + str(TotalImageCount)+"_"+str(ts) + ".jpg")
     print(Final_Image_Name)
 
 
@@ -771,14 +771,14 @@ def TakePictures():
     #img.save(filename)
 
     
-    TotalImageCount = TotalImageCount + 1
-    f = open(os.path.join(os.path.realpath(imagefolder), 'TotalImageCount.txt'), 'w')
+    #TotalImageCount = TotalImageCount + 1
+    #f = open(os.path.join(os.path.realpath(imagefolder), 'TotalImageCount.txt'), 'w')
 
     #format(imagecounter, '05d')
-    f.write(str(format(TotalImageCount, '03d')))
-    f.close
-    f.flush()
-    print("TotalImageCount flushed")
+    #f.write(str(format(TotalImageCount, '03d')))
+    #f.close
+    #f.flush()
+    #print("TotalImageCount flushed")
 
     bgimage.paste(image1, (600, 0))  #1st image pasted top right   #bgimage.paste(image1, (625, 30))
     bgimage.paste(image2, (0, 400))  #2nd image pasted bottom left #bgimage.paste(image2, (625, 405))
