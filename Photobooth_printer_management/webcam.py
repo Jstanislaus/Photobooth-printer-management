@@ -350,6 +350,17 @@ def UpdateDisplay():
     pygame.display.flip()
     return
 
+def getcropdim(width,height):
+    if int(width/6)>(height/4):#This only works if height or width fits in the surface
+        step = int(height/4)
+    else:
+        step = int(width/6)
+    left = (width/2)-(3*step)
+    top= (height/2)-(2*step)
+    width = (6*step)
+    height = (4*step)
+    return left, top, width,height
+
 def ShowPicture(file, delay,Message): #
     global pygame
     global screenPicture
@@ -375,10 +386,10 @@ def ShowPicture(file, delay,Message): #
     else:
         width = left+right-(6*Finalimagereduction2)
         height=top+bottom-(4*Finalimagereduction2)
-    img = pygame.transform.scale(img, (width,height))#resize
  # Make the image full screen, combine top and bottom into one?
     
     if Message == "Great shot!":
+        img = pygame.transform.scale(img, (width,height))#resize
         img = pygame.transform.flip(img, 1,0)
         backgroundPicture.blit(img, ((x-width)/2,(y-height)/2))#determines where its placed
         time.sleep(delay/2)
@@ -393,6 +404,11 @@ def ShowPicture(file, delay,Message): #
         ImageShowed = True
         time.sleep(delay/2)
     else:
+        width2 = int(img.get_width())
+        height2 = int(img.get_height())   
+        left2, top2, width2,height2 = getcropdim(width2,height2)
+        img = img.subsurface((left2,top2,width2,height2))#puts it into correct ratio    
+        img = pygame.transform.scale(img, (width,height))#resize
         backgroundPicture.fill(pygame.Color("white"))
         backgroundPicture.blit(img, ((x-width)/2,(y-height)/2))#determines where its placed
         screen.blit(backgroundPicture, (0, 0))
