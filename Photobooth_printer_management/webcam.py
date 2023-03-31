@@ -470,7 +470,7 @@ def CapturePicture():
     #print(args)
 
 
-    Message3 = "(Move joystick to change camera height!)"
+    Message3 = ""
     Message = "Now lets see"
     Message2 = "your best pose !!"
     print(Message + " " + Message2)
@@ -492,7 +492,7 @@ def CapturePicture():
     tempnumeral =lentime
     print(str(int(math.floor(t_end-time.time()))))
 
-    Message =  "Photo No." + str(imagecounter) + " (/3) will be taken in..."
+    Message =  "Photo No." + str(imagecounter) + " (of 3) will be taken in..."
 
     #print(Displaytext)
     font = pygame.font.Font(None, 100)
