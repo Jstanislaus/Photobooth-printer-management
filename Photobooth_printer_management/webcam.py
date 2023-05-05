@@ -751,39 +751,39 @@ def TakePictures():
 
 
     #mailto:booth@stanislaus.co.uk?subject=Reprint%20Subject&body=please%20send%20another%20copy.
-    QRDdata = "Feel free to email me at: booth@stanislaus.co.uk with any enquiries"
-    starttime = (datetime.datetime.now())
+   # QRDdata = "Feel free to email me at: booth@stanislaus.co.uk with any enquiries"
+   # starttime = (datetime.datetime.now())
 
-    QRFilename =  os.path.join(imagefolder, "QRCode.jpg") #Path of template image
-    qr = qrcode.QRCode(
-        version=1,
-        error_correction=qrcode.constants.ERROR_CORRECT_L,
-        box_size=3,
-        border=1,
-    )
-    qr.add_data(QRDdata)
-    qr.make(fit=True)
+   # QRFilename =  os.path.join(imagefolder, "QRCode.jpg") #Path of template image
+   # qr = qrcode.QRCode(
+   #     version=1,
+   #     error_correction=qrcode.constants.ERROR_CORRECT_L,
+   #     box_size=3,
+   #     border=1,
+   # )
+  #  qr.add_data(QRDdata)
+  #  qr.make(fit=True)
 
-    img = qr.make_image(fill_color="black", back_color="white")
-    img.save(QRFilename)
+  #  img = qr.make_image(fill_color="black", back_color="white")
+   # img.save(QRFilename)
 
-    stoptime = (datetime.datetime.now())
+   # stoptime = (datetime.datetime.now())
 
-    print(stoptime-starttime)
-    print("QRcode Saved to ",QRFilename )
+   # print(stoptime-starttime)
+   # print("QRcode Saved to ",QRFilename )
     
         #QRCode = PIL.Image.open(QRCode)   
-    QRCode = Image.open(QRFilename)
-    wpercent = (basewidth / float(QRCode.size[0]))/5
-    print("QRCode.size[0] = " + str(QRCode.size[0]))
-    print("QRCode.size[1] = " + str(QRCode.size[1]))
-    print("wpercent = " + str(wpercent))
-    hsize = int((float(QRCode.size[1]) * float(wpercent)))
-    wsize = int((float(QRCode.size[0]) * float(wpercent)))
-    print("hsize = " + str(hsize))
-    print("wsize = " + str(wsize))
+   # QRCode = Image.open(QRFilename)
+   # wpercent = (basewidth / float(QRCode.size[0]))/5
+   # print("QRCode.size[0] = " + str(QRCode.size[0]))
+   # print("QRCode.size[1] = " + str(QRCode.size[1]))
+  #  print("wpercent = " + str(wpercent))
+   # hsize = int((float(QRCode.size[1]) * float(wpercent)))
+   # wsize = int((float(QRCode.size[0]) * float(wpercent)))
+   # print("hsize = " + str(hsize))
+  #  print("wsize = " + str(wsize))
     
-    QRCode = QRCode.resize((wsize, hsize), PIL.Image.ANTIALIAS)
+   # QRCode = QRCode.resize((wsize, hsize), PIL.Image.ANTIALIAS)
     #img.save(filename)
 
     
@@ -799,7 +799,7 @@ def TakePictures():
     bgimage.paste(image1, (600, 0))  #1st image pasted top right   #bgimage.paste(image1, (625, 30))
     bgimage.paste(image2, (0, 400))  #2nd image pasted bottom left #bgimage.paste(image2, (625, 405))
     bgimage.paste(image3, (600, 400)) #3rd image pasted bottom right    #bgimage.paste(image3, (55, 405))
-    bgimage.paste(QRCode, (480,280)) 
+    #bgimage.paste(QRCode, (480,280)) 
     print("TYPE IS")
     print(type(bgimage))
     # Save it to the SMB Share directory
