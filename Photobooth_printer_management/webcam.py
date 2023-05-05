@@ -16,8 +16,8 @@ from PIL import Image, ImageDraw
 
 import RPi.GPIO as GPIO, time, os, subprocess,shlex
 
-Venueid = "AH"
-VenueDescription = "2023_04_01_Phils_40th"
+Venueid = "AI"
+VenueDescription = "2023_05_06_KingsCoronationWhitefriars"
 Numeral = ""  # Numeral is the number display
 Message = ""  # Message is a fullscreen message
 Message2 = ""  # Message is a fullscreen message
@@ -32,7 +32,7 @@ SmallMessage = ""  # SmallMessage is a lower banner message
 TotalImageCount = 0  # Counter for Display and to monitor paper usage
 PhotosPerCart = 3000  # Selphy takes 16 sheets per tray
 imagecounter = 0
-imagefolder = "/home/pi/Photobooth-printer-management/Photobooth_printer_management/Template/" +  Venueid + "_" + VenueDescription  #os.path.realpath("../Photos")
+imagefolder = "/home/pi/Photobooth_Photos/" +  Venueid + "_" + VenueDescription  #os.path.realpath("../Photos")
 templatePath = os.path.join('Template', Venueid + "_" + VenueDescription,"template.png") #Path of template image
 start_cameraPath = os.path.join('Template', Venueid + "_" + VenueDescription,"start_camera.jpg") #Path of template image start_camera.jpg
 start_cameraPath2 =  os.path.join('Template', Venueid + "_" + VenueDescription,"start_camera2.jpg")#
@@ -477,7 +477,7 @@ def CapturePicture():
     
 
     ts = time.time()
-    filename = os.path.join(imagefolder, 'individual_images', Venueid + str(TotalImageCount) + "_" +  str(imagecounter)+"_"+str(ts) + '.jpg')
+    filename = os.path.join(imagefolder, 'Individual_Photos', Venueid + str(TotalImageCount) + "_" +  str(imagecounter)+"_"+str(ts) + '.jpg')
     print(filename)
 
     #gphoto2CmdLine = "gphoto2 --capture-image-and-download --filename " + filename
@@ -746,7 +746,7 @@ def TakePictures():
 
     # Create the final filename
     ts = time.time()
-    Final_Image_Name = os.path.join(os.path.realpath(imagefolder),"Final_Templates","Final_" +  Venueid + str(TotalImageCount)+"_"+str(ts) + ".jpg")
+    Final_Image_Name = os.path.join(os.path.realpath(imagefolder),"Final_Template_Photos","Final_" +  Venueid + str(TotalImageCount)+"_"+str(ts) + ".jpg")
     print(Final_Image_Name)
 
 
