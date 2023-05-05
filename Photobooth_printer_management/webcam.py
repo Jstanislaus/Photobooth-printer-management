@@ -611,7 +611,7 @@ def CapturePicture():
     Message2 =  ""
     Message3 =  ""
     Numeral = ""
-    filename= "/home/pi/Photobooth_Photos/AI_2023_05_06_KingsCoronationWhitefriars/Individual_Photos/test.jpg"
+    filename= "/home/pi/Photobooth_Photos/AI_2023_05_06_KingsCoronationWhitefriars/test.jpg"
     pygame.image.save(cropimg1,filename) 
     ShowPicture(filename, 2,Message)
     time.sleep(0.75)
