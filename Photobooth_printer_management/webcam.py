@@ -343,10 +343,9 @@ def UpdateDisplay():
                     background.blit(text, textpos)
     
     if(ImageShowed == True):
-    	screenPicture.blit(backgroundPicture, (0, 0))   	
+        screenPicture.blit(backgroundPicture, (0, 0))   	
     else:
-    	screen.blit(background, (0, 0))
-   
+        screen.blit(background, (0, 0))
     pygame.display.flip()
     return
 
@@ -834,7 +833,7 @@ def TakePictures():
                             #print(printer_name)
                             #printer_name = printers.keys()[2]
                             #print(printer_name)
-                            printer_name = "Photobooth_RAW/6x4" #"Photos_10cm_x_15cm_USB"
+                            printer_name = "Photobooth_RAW/6x4.Borderless" #"Photos_10cm_x_15cm_USB"
 
                             CmdLine = ["lp", "-d", printer_name, Final_Image_Name]     #/home/pi/Desktop/tempprint.jpg'
                             print(CmdLine)
@@ -993,7 +992,7 @@ def main(threadName, *args):
     InitFolder()
     print("InitFolder() -- OK ")
     i = 0
-    CmdLine = ["lpoptions", "-p", "Photobooth_RAW/6x4","-o", "media=4x6"]     #/home/pi/Desktop/tempprint.jpg'
+    CmdLine = ["lpoptions", "-p", "Photobooth_RAW/6x4.Borderless","-o", "media=4x6"]     #/home/pi/Desktop/tempprint.jpg'
     print(CmdLine)
     gpout = subprocess.Popen(CmdLine)
     gpout1=gpout.wait()
