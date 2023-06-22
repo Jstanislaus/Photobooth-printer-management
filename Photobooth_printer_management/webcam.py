@@ -833,7 +833,7 @@ def TakePictures():
                             #print(printer_name)
                             #printer_name = printers.keys()[2]
                             #print(printer_name)
-                            printer_name = "Photobooth_RAW/6x4.Borderless" #"Photos_10cm_x_15cm_USB"
+                            printer_name = "Photobooth/6x4.Borderless" #"Photos_10cm_x_15cm_USB"
 
                             CmdLine = ["lp", "-d", printer_name, Final_Image_Name]     #/home/pi/Desktop/tempprint.jpg'
                             print(CmdLine)
