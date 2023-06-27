@@ -9,8 +9,10 @@ from picamera2 import Picamera2, Preview
 
 picam2 = Picamera2()
 
-preview_config = picam2.create_preview_configuration({"size": (1920, 1080)})
-picam2.start_preview(Preview.QTGL, x=0, y=0, width=1920, height=1080)
+#preview_config = picam2.create_preview_configuration({"size": (1920, 1080)})
+#picam2.start_preview(Preview.QTGL, x=0, y=0, width=1920, height=1080)
+picam2.create_preview_configuration()
+picam2.start_preview(Preview.QTGL)
 picam2.start()
 
 for time_left in range(10, 0, -1):
