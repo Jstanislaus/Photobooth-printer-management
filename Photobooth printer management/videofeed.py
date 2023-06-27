@@ -23,12 +23,6 @@ scale = 1
 thickness = 2
 overlay = np.zeros((640, 480, 4), dtype=np.uint8)
 while time.time() < t_end:
-    colour = (0, 255, 0, 255)
-    origin = (0, 30)
-    font = cv2.FONT_HERSHEY_SIMPLEX
-    scale = 1
-    thickness = 2
-    overlay = np.zeros((640, 480, 4), dtype=np.uint8)
     Numeral = str(int(math.floor(t_end-time.time()))+1)
     cv2.putText(overlay, str(Numeral), origin, font, scale, colour, thickness)
     picam2.set_overlay(overlay)
