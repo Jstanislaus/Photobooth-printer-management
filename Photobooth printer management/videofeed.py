@@ -16,6 +16,12 @@ picam2.start_preview(Preview.QTGL, x=0, y=0, width=1920, height=1080)
 picam2.start()
 i=0
 t_end=time.time()+10
+colour = (0, 255, 0, 255)
+origin = (0, 30)
+font = cv2.FONT_HERSHEY_SIMPLEX
+scale = 1
+thickness = 2
+overlay = np.zeros((640, 480, 4), dtype=np.uint8)
 while time.time() < t_end:
     colour = (0, 255, 0, 255)
     origin = (0, 30)
