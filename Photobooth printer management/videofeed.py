@@ -15,7 +15,8 @@ picam2.start_preview(Preview.QTGL, x=0, y=0, width=1920, height=1080)
 #picam2.start_preview(Preview.QTGL)
 picam2.start()
 i=0
-for time_left in range(10, 0, -1):
+t_end=time.time()+10
+while time.time() < t_end:
     colour = (0, 255, 0, 255)
     origin = (0, 30)
     font = cv2.FONT_HERSHEY_SIMPLEX
@@ -25,7 +26,6 @@ for time_left in range(10, 0, -1):
     cv2.putText(overlay, str(time_left), origin, font, scale, colour, thickness)
     picam2.set_overlay(overlay)
     i+=1
-    time.sleep(1)
 
 picam2.stop()
 print(i)
