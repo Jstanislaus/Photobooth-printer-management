@@ -1,14 +1,9 @@
-import picamera
+from picamera2 import Picamera2, Preview
 import time
-import itertools
-
-s = "This message would be far too long to display normally..."
-
-camera = picamera.PiCamera()
-camera.resolution = (640, 480)
-camera.framerate = 24
-camera.start_preview()
-camera.annotate_text = ' ' * 31
-for c in itertools.cycle(s):
-    camera.annotate_text = camera.annotate_text[1:31] + c
-    time.sleep(0.1)
+picam2 = Picamera2()
+camera_config = picam2.create_preview_configuration()
+picam2.configure(camera_config)
+picam2.start_preview(Preview.QTGL)
+picam2.start()
+time.sleep(2)
+picam2.capture_file("test.jpg")
