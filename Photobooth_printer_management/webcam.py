@@ -16,8 +16,8 @@ from PIL import Image, ImageDraw
 
 import RPi.GPIO as GPIO, time, os, subprocess,shlex
 
-Venueid = "AJ"
-VenueDescription = "2023_06_23_Whitefriars_Tony"
+Venueid = "AK"
+VenueDescription = "2023_07_01_Faiths_50th"
 Numeral = ""  # Numeral is the number display
 Message = ""  # Message is a fullscreen message
 Message2 = ""  # Message is a fullscreen message
