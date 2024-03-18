@@ -15,7 +15,7 @@ from time import sleep
 from PIL import Image, ImageDraw
 
 import RPi.GPIO as GPIO, time, os, subprocess,shlex
-
+#TEST`8thMARCH`
 Venueid = "AK"
 VenueDescription = "2023_07_01_Faiths_50th"
 Numeral = ""  # Numeral is the number display
