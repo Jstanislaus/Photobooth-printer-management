@@ -1,0 +1,24 @@
+Edited and Created by Jacob Stanislaus on 19/03/24.
+###########
+This file is for configuring the Slideshow program
+###########
+Photobooth:
+###########
+Venue_id: AI_2023_05_06_KINGSCORONATIONWHITEFRIARS #e.g AI_2023_05_06_KingsCoronationWhitefriars
+portrait: False
+final_image_reduction: 5
+final_image_reduction2: 70
+photos_per_cart: 3000
+Button_pin: 25
+IMAGE_WIDTH: 550
+IMAGE_HEIGHT: 360
+
+##########
+Slideshow:
+##########
+Display full detailed output (VERBOSE): FALSE
+Time displaying each photo (seconds): 5
+Runtime: N/a
+Fixed dimensions: No
+Photobooth Pi Hostname: photobooth
+Name-code of event: AI_2023_05_06_KingsCoronationWhitefriars #e.g AI_2023_05_06_KingsCoronationWhitefriars

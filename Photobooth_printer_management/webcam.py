@@ -15,8 +15,8 @@ from time import sleep
 from PIL import Image, ImageDraw
 
 import RPi.GPIO as GPIO, time, os, subprocess,shlex
-Venueid = "AK"
-VenueDescription = "2023_07_01_Faiths_50th"
+Venue = "AI_2023_05_06_KINGSCORONATIONWHITEFRIARS"
+Venueid = Venue[0:2]
 Numeral = ""  # Numeral is the number display
 Message = ""  # Message is a fullscreen message
 Message2 = ""  # Message is a fullscreen message
@@ -31,12 +31,12 @@ SmallMessage = ""  # SmallMessage is a lower banner message
 TotalImageCount = 0  # Counter for Display and to monitor paper usage
 PhotosPerCart = 3000  # Selphy takes 16 sheets per tray
 imagecounter = 0
-imagefolder = "/home/pi/Photobooth_Photos/" +  Venueid + "_" + VenueDescription  #os.path.realpath("../Photos")
-templatePath = os.path.join('Template', Venueid + "_" + VenueDescription,"template.png") #Path of template image
-start_cameraPath = os.path.join('Template', Venueid + "_" + VenueDescription,"start_camera.jpg") #Path of template image start_camera.jpg
-start_cameraPath2 =  os.path.join('Template', Venueid + "_" + VenueDescription,"start_camera2.jpg")#
-start_cameraPathpart2 = os.path.join('Template', Venueid + "_" + VenueDescription,"start_camerapart2.jpg")
-start_cameraPath2part2 =  os.path.join('Template', Venueid + "_" + VenueDescription,"start_camera2part2.jpg")#
+imagefolder = f"/home/pi/Photobooth_Photos/{Venue}"  #os.path.realpath("../Photos")
+templatePath = os.path.join('Template', Venue,"template.png") #Path of template image
+start_cameraPath = os.path.join('Template', Venue,"start_camera.jpg") #Path of template image start_camera.jpg
+start_cameraPath2 =  os.path.join('Template', Venue,"start_camera2.jpg")#
+start_cameraPathpart2 = os.path.join('Template', Venue,"start_camerapart2.jpg")
+start_cameraPath2part2 =  os.path.join('Template', Venue,"start_camera2part2.jpg")#
 ImageShowed = False
 NotPrinting = True
 BUTTON_PIN = 25
