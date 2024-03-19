@@ -750,7 +750,7 @@ def TakePictures():
 
 
     #mailto:booth@stanislaus.co.uk?subject=Reprint%20Subject&body=please%20send%20another%20copy.
-    QRDdata = "Feel free to email me at: booth@stanislaus.co.uk with any enquiries"
+    QRDdata = f"Feel free to email me at: booth@stanislaus.co.uk with any enquiries \n Code {Venueid}{TotalImageCount}_{ts}"
     starttime = (datetime.datetime.now())
 
     QRFilename =  os.path.join(imagefolder, "QRCode.jpg") #Path of template image
