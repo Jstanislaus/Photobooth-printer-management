@@ -2,6 +2,7 @@ import pygame
 import time
 import os
 import PIL.Image
+import config
 import cups
 import pifacedigitalio
 import qrcode
@@ -15,7 +16,8 @@ from time import sleep
 from PIL import Image, ImageDraw
 
 import RPi.GPIO as GPIO, time, os, subprocess,shlex
-Venue = "AI_2023_05_06_KINGSCORONATIONWHITEFRIARS"
+Venue,portrait,img_red1,img_red2,photos_per_cart,button_pin,IMAGE_WIDTH,IMAGE_HEIGHT = config.config()
+#Venue = "AI_2023_05_06_KINGSCORONATIONWHITEFRIARS"
 Venueid = Venue[0:2]
 Numeral = ""  # Numeral is the number display
 Message = ""  # Message is a fullscreen message
@@ -24,12 +26,12 @@ Message3 = ""
 BackgroundColor = ""
 CountDownPhoto = ""
 CountPhotoOnCart = "" 
-portrait = False
-Finalimagereduction = 5
-Finalimagereduction2 = 70
+#portrait = False
+#Finalimagereduction = 5
+#Finalimagereduction2 = 70
 SmallMessage = ""  # SmallMessage is a lower banner message
 TotalImageCount = 0  # Counter for Display and to monitor paper usage
-PhotosPerCart = 3000  # Selphy takes 16 sheets per tray
+#PhotosPerCart = 3000  # Selphy takes 16 sheets per tray
 imagecounter = 0
 imagefolder = f"/home/pi/Photobooth_Photos/{Venue}"  #os.path.realpath("../Photos")
 templatePath = os.path.join('Template', Venue,"template.png") #Path of template image
@@ -39,11 +41,9 @@ start_cameraPathpart2 = os.path.join('Template', Venue,"start_camerapart2.jpg")
 start_cameraPath2part2 =  os.path.join('Template', Venue,"start_camera2part2.jpg")#
 ImageShowed = False
 NotPrinting = True
-BUTTON_PIN = 25
-#IMAGE_WIDTH = 558
-#IMAGE_HEIGHT = 374
-IMAGE_WIDTH = 550
-IMAGE_HEIGHT = 360 
+#BUTTON_PIN = 25
+#IMAGE_WIDTH = 550
+#IMAGE_HEIGHT = 360 
 QRData = "Blank QR Data"
 QRDdata = "Blank QR Data"
 # Load the background template
