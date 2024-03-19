@@ -40,6 +40,7 @@ start_cameraPath2 =  os.path.join('Template', Venue,"start_camera2.jpg")#
 start_cameraPathpart2 = os.path.join('Template', Venue,"start_camerapart2.jpg")
 start_cameraPath2part2 =  os.path.join('Template', Venue,"start_camera2part2.jpg")#
 ImageShowed = False
+VERBOSE = FALSE
 NotPrinting = True
 #BUTTON_PIN = 25
 #IMAGE_WIDTH = 550
@@ -51,29 +52,30 @@ bgimage = PIL.Image.open(templatePath)
 
 # initialise pygame
 pygame.quit() # Initialise pygame
-print("pygame has been uninitialised...")
+if VERBOSE:
+    print("pygame has been uninitialised...")
 
-#pygame.init()
-#CHANGED TO MANUALLY INIT EACH MODULE AS "pygame.init()" INCLUDES UNWANTED MODULES THAT SPAM THE CMD
+#CHANGED TO MANUALLY INIT (from pygame.init()) EACH MODULE AS "pygame.init()" INCLUDES UNWANTED MODULES THAT SPAM THE CMD
 pygame.camera.init()
 pygame.display.init()
-#pygame.event.init()
 pygame.font.init()
-#pygame.key.init()
-#pygame.time.init()
-#pygame.transform.init()
-print("# Initialise pygame -- OK")
+if VERBOSE:
+    print("# Initialise pygame -- OK")
 
 pygame.mouse.set_visible(False) #hide the mouse cursor
-print("#hide the mouse cursor -- OK")
+if VERBOSE:
+    print("#hide the mouse cursor -- OK")
 pygame.display.init()
 infoObject = pygame.display.Info()
 screen = pygame.display.set_mode((infoObject.current_w,infoObject.current_h), pygame.FULLSCREEN)  # Full screen 
-print("# Full screen -- OK")
+if VERBOSE:
+    print("# Full screen -- OK")
 background = pygame.Surface(screen.get_size())  # Create the background object
-print("# Create the background object -- OK")
+if VERBOSE:
+    print("# Create the background object -- OK")
 background = background.convert()  # Convert it to a background
-print("# Convert it to a background -- OK")
+if VERBOSE:
+    print("# Convert it to a background -- OK")
 
 screenPicture = pygame.display.set_mode((infoObject.current_w,infoObject.current_h), pygame.FULLSCREEN)  # Full screen
 backgroundPicture = pygame.Surface(screenPicture.get_size())  # Create the background object
@@ -83,7 +85,8 @@ transform_x = infoObject.current_w # how wide to scale the jpg when replaying
 transfrom_y = infoObject.current_h # how high to scale the jpg when replaying
 
 # A function to handle keyboard/mouse/device input events
-print("# A function to handle keyboard/mouse/device input events -- commented out OK")
+if VERBOSE:
+    print("# A function to handle keyboard/mouse/device input events -- commented out OK")
 def input(events):
     for event in events:  # Hit the ESC key to quit the slideshow.
         if (event.type == QUIT or
@@ -131,7 +134,8 @@ def InitFolder():
     Message = 'Folder Check...'
     UpdateDisplay()
     Message = ''
-    print(Message)
+    if VERBOSE:
+        print(Message)
     #check image folder existing, create if not exists
     if not os.path.isdir(os.path.realpath(imagefolder)):	
         os.makedirs(os.path.realpath(imagefolder))	
@@ -144,19 +148,23 @@ def InitFolder():
     TotalImageCountTxt = "imagefolder/TotalImageCount.txt"
   
     if os.path.isfile(os.path.join(os.path.realpath(imagefolder), 'TotalImageCount.txt')):
-        print("imagecounter File was found!")
+        if VERBOSE:
+            print("imagecounter File was found!")
          #imagecounter
         f = open(os.path.join(os.path.realpath(imagefolder), 'TotalImageCount.txt'), 'r')
 
         line = f.readline()
-        print ("TotalImageCount from file : %s" % (line))
+        if VERBOSE:
+            print ("TotalImageCount from file : %s" % (line))
         f.close
 
         TotalImageCount = int(line)
-        print ("Image Count from file  is :", TotalImageCount)
+        if VERBOSE:
+            print ("Image Count from file  is :", TotalImageCount)
     else:
-        print("imagecounter File was not found!")
-        print(os.path.join(os.path.realpath(imagefolder), 'TotalImageCount.txt'))
+        if VERBOSE:
+            print("imagecounter File was not found!")
+            print(os.path.join(os.path.realpath(imagefolder), 'TotalImageCount.txt'))
         f = open(os.path.join(os.path.realpath(imagefolder), 'TotalImageCount.txt'), 'w')
         f.write("0\r\n")
         f.close
@@ -178,19 +186,23 @@ def InitCamera(i):
             UpdateDisplay()
         pygame.camera.init()
         CameraModel = pygame.camera.list_cameras()
-        print("CAMERA MODEL")
-        print(CameraModel)
+        if VERBOSE:
+            print("CAMERA MODEL")
+            print(CameraModel)
         if CameraModel:
-            print("TTTest")
+            if VERBOSE:
+                print("TTTest")
             cam = pygame.camera.Camera(CameraModel[0],(1280,720))#640,480
             camLive= pygame.camera.Camera(CameraModel[0],(1280,720))
-            print(CameraModel)
+            if VERBOSE:
+                print(CameraModel)
 
 
 
         if i == 0:
             Message = "Waiting for camera response "
-            print(Message)
+            if VERBOSE:
+                print(Message)
             UpdateDisplay()
         Message = ""
         Message2 = ""   
@@ -203,8 +215,9 @@ def InitCamera(i):
             if i ==0:
                 Message = "Camera check is done found:"
                 Message2 = str(CameraModel[0])
-                print(Message)
-                print(Message2)
+                if VERBOSE:
+                    print(Message)
+                    print(Message2)
                 UpdateDisplay()
             CameraPresent = True
 	
@@ -214,8 +227,9 @@ def InitCamera(i):
             Message = "Camera NOT found:"
             Message2 ="Check connection and press button"
             CameraPresent = False
-            print(Message)
-            print(Message2)
+            if VERBOSE:
+                print(Message)
+                print(Message2)
             UpdateDisplay()
             time.sleep(1)
             WaitForEvent()
@@ -257,6 +271,7 @@ def InitCamera(i):
 def UpdateDisplay():
     # init global variables from main thread
     global Numeral
+    global VERBOSE
     global Message
     global Message2
     global Message3
@@ -280,7 +295,6 @@ def UpdateDisplay():
             background.fill(pygame.Color("black"))
 
     if (Message != "")and(Message!="Great shot!"):   
-            #print(Displaytext)
             font = pygame.font.Font(None, 100)
             textMessage = font.render(Message, 1, (227, 100, 200))
             textposMessage = textMessage.get_rect()
@@ -292,7 +306,6 @@ def UpdateDisplay():
                     background.blit(textMessage, textposMessage)
 
     if (Message2 != ""):
-            #print(Displaytext)
             font = pygame.font.Font(None, 100)
             textMessage2 = font.render(Message2, 1, (227, 100, 200))
             textposMessage2 = textMessage2.get_rect()
@@ -304,7 +317,6 @@ def UpdateDisplay():
                     background.blit(textMessage2, textposMessage2)
 
     if (Message3 != ""):
-            #print(Displaytext)
             font = pygame.font.Font(None, 100)
             textMessage3 = font.render(Message3, 1, (227, 100, 200))
             textposMessage3 = textMessage3.get_rect()
@@ -317,7 +329,6 @@ def UpdateDisplay():
 	
 
     if (Numeral != ""):
-            #print(displaytext)
             font = pygame.font.Font(None, 800)
             text1 = font.render(Numeral, 1, (227, 100, 200))#157
             textposx = text1.get_rect()
@@ -453,21 +464,15 @@ def CapturePicture():
     Message = ""
     Message2 = ""
 
-    #UpdateDisplay()
-    #time.sleep(1.5)
     CountDownPhoto = ""
     UpdateDisplay()
-    #background.fill(pygame.Color("black"))
     screen.blit(background, (0, 0))
     pygame.display.flip()
-#    camera.start_preview()
-#    img = cam.get_image()
     BackgroundColor = "black"
 
 
     BackgroundColor = ""
     Numeral = ""
-   # Message = "Big Grins Now"
 
     UpdateDisplay()
 
@@ -490,32 +495,27 @@ def CapturePicture():
     print(Message + " " + Message2)
     UpdateDisplay()
 
-    #cam.start()
     time.sleep(2.7)
 
-    #Message3 = "test text"
-    #Message = ""
-    #Message2 = ""
     UpdateDisplay()
-    #time.sleep(1)  
-
-    print("Waiting for picture to be taken...")
+    if VERBOSE:
+        print("Waiting for picture to be taken...")
                       
     lentime = 10
     t_end = time.time() + lentime
     tempnumeral =lentime
-    print(str(int(math.floor(t_end-time.time()))))
+    if VERBOSE:
+        print(str(int(math.floor(t_end-time.time()))))
 
     Message =  "Photo No." + str(imagecounter) + " (of 3) will be taken in..."
 
-    #print(Displaytext)
     font = pygame.font.Font(None, 100)
     textMessage = font.render(Message, 1, (227, 157, 200))
     textposMessage = textMessage.get_rect()
     textposMessage.centerx = background.get_rect().centerx
     textposMessage.centery = background.get_rect().centery*0.5
-
-    print("Starting Liveview...")
+    if VERBOSE:
+        print("Starting Liveview...")
     x, y = screen.get_size()
     count =0
 ############
@@ -528,12 +528,13 @@ def CapturePicture():
                     
         # grab image from Camera
         img = cam.get_image()
-        print(type(img))
-        #print(count)
+        if VERBOSE:
+            print(type(img))
         if count == 0:
             width = int(img.get_width())
             height = int(img.get_height())###To make the largest 'step' increments to produce the required ratio6:4
-            print("Width and height values are "+str(width)+str(height))
+            if VERBOSE:
+                print("Width and height values are "+str(width)+str(height))
             if portrait == True:
                 if int(width/6)>(height/4):
                     step = int(height/6)
@@ -603,9 +604,11 @@ def CapturePicture():
         #cam.stop()
         count+=1
         pygame.display.update()
-    print("THERE WERE "+str(count)+" FRAMES")
+    if VERBOSE:
+        print("THERE WERE "+str(count)+" FRAMES")
     Message = "Great shot!"
-    print(Message)
+    if VERBOSE:
+        print(Message)
     Message2 =  ""
     Message3 =  ""
     Numeral = ""
@@ -614,11 +617,9 @@ def CapturePicture():
     ShowPicture(filename, 2,Message)
     time.sleep(0.75)
                 
-    #UpdateDisplay()
-    #time.sleep(0.75)
 
-
-    print("Photo Capturing is done")
+    if VERBOSE:
+        print("Photo Capturing is done")
 
     #ShowPicture(filename, 2,Message) #don't need this function ?
  
@@ -696,21 +697,17 @@ def TakePictures():
     width,height = image1.size
 	#now height and width in ratio
     #image1 = image1.crop(box),PIL.Image.ANTIALIAS
-    #print("Height is "+str(height)+" Width is "+str(width))
     wpercent = (basewidth / float(image1.size[0]))
     hsize = int((float(image1.size[1]) * float(wpercent)))
     #print(type(image1))
     image1 = image1.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
-    print(type(image1))
+    if VERBOSE:
+        print(type(image1))
     #img.save(filename)
 
     #image2 = PIL.Image.open(filename2)
     image2 = Image.open(filename2)
-    #print(str(image2.size[0]))
     width,height = image2.size
-    #print(str(width))
-    #print(str(height))
-    #print(type(image2))
     if int(width/6)*2>(height/2):
         step = int(height/4)
     else:
@@ -723,8 +720,9 @@ def TakePictures():
     width,height = image2.size
     wpercent = (basewidth / float(image2.size[0]))
     hsize = int((float(image2.size[1]) * float(wpercent)))
-    print(hsize)
-    print(str(image2.size[1]))
+    if VERBOSE:
+        print(hsize)
+        print(str(image2.size[1]))
     image2 = image2.resize((basewidth, hsize), PIL.Image.ANTIALIAS)
     image3 = Image.open(filename3)
     width,height = image3.size
@@ -746,7 +744,8 @@ def TakePictures():
     # Create the final filename
     ts = time.time()
     Final_Image_Name = os.path.join(os.path.realpath(imagefolder),"Final_Templated_Photos","Final_" +  Venueid + str(TotalImageCount)+"_" + ".jpg")
-    print(Final_Image_Name)
+    if VERBOSE:
+        print(Final_Image_Name)
 
 
     #mailto:booth@stanislaus.co.uk?subject=Reprint%20Subject&body=please%20send%20another%20copy.
@@ -769,13 +768,15 @@ def TakePictures():
     #QRCode = PIL.Image.open(QRCode)   
     QRCode = Image.open(QRFilename)
     wpercent = (basewidth / float(QRCode.size[0]))/5
-    print("QRCode.size[0] = " + str(QRCode.size[0]))
-    print("QRCode.size[1] = " + str(QRCode.size[1]))
-    print("wpercent = " + str(wpercent))
+    if VERBOSE:
+        print("QRCode.size[0] = " + str(QRCode.size[0]))
+        print("QRCode.size[1] = " + str(QRCode.size[1]))
+        print("wpercent = " + str(wpercent))
     hsize = int((float(QRCode.size[1]) * float(wpercent)))
     wsize = int((float(QRCode.size[0]) * float(wpercent)))
-    print("hsize = " + str(hsize))
-    print("wsize = " + str(wsize))
+    if VERBOSE:
+        print("hsize = " + str(hsize))
+        print("wsize = " + str(wsize))
 
     QRCode = QRCode.resize((wsize, hsize), PIL.Image.ANTIALIAS)
     img.save(QRFilename)
@@ -788,14 +789,16 @@ def TakePictures():
     f.write(str(format(TotalImageCount, '03d')))
     f.close
     f.flush()
-    print("TotalImageCount flushed")
+    if VERBOSE:
+        print("TotalImageCount flushed")
 
     bgimage.paste(image1, (600, 0))  #1st image pasted top right   #bgimage.paste(image1, (625, 30))
     bgimage.paste(image2, (0, 400))  #2nd image pasted bottom left #bgimage.paste(image2, (625, 405))
     bgimage.paste(image3, (600, 400)) #3rd image pasted bottom right    #bgimage.paste(image3, (55, 405))
     bgimage.paste(QRCode, (480,280)) 
-    print("TYPE IS")
-    print(type(bgimage))
+    if VERBOSE:
+        print("TYPE IS")
+        print(type(bgimage))
     # Save it to the SMB Share directory
     fimage = bgimage.convert("RGB")
     fimage.save(Final_Image_Name)
@@ -812,7 +815,8 @@ def TakePictures():
     WaitForPrintingEvent()
     Numeral = ""
     Message = ""
-    print(NotPrinting)
+    if VERBOSE:
+        print(NotPrinting)
     if NotPrinting == False:
             if (TotalImageCount <= PhotosPerCart):
                     if os.path.isfile(Final_Image_Name):
@@ -838,11 +842,13 @@ def TakePictures():
                             gpout = subprocess.Popen(CmdLine)
 
                             gpout1=gpout.wait()
-                            print(gpout1)
-                            print("Printing is done")
+                            if VERBOSE:
+                                print(gpout1)
+                                print("Printing is done")
 
                             Message = "Let's print that masterpiece!"  #Using Printer name  : " + printer_name
-                            print(Message)
+                            if VERBOSE:
+                                print(Message)
                             UpdateDisplay()
                             time.sleep(1)
                             # print the buffer file
@@ -893,10 +899,10 @@ def WaitForPrintingEvent():
         
         #pf.read()
         input_state = pf.input_pins[1].value
-#        print(input_state) # is True")
         if input_state == 1: #was True
-            print("input_state is True (button has been pressed for printing)")
-            print(input_state)
+            if VERBOSE:
+                print("input_state is True (button has been pressed for printing)")
+                print(input_state)
             NotPrinting = False
 #            pygame.quit()
             return
@@ -984,7 +990,8 @@ def WaitForEvent():
 def main(threadName, *args):
  #   print("main(threadName, *args) --Starting Mainthread ")
     InitFolder()
-    print("InitFolder() -- OK ")
+    if VERBOSE:
+        print("InitFolder() -- OK ")
     i = 0
     CmdLine = ["lpoptions", "-p", "Photobooth_RAW/6x4.Borderless","-o", "media=4x6.Borderless"]     #/home/pi/Desktop/tempprint.jpg'
     print(CmdLine)
