@@ -334,7 +334,8 @@ def UpdateDisplay():
             textposx = text1.get_rect()
             textposx.centerx = background.get_rect().centerx 
             textposx.centery = background.get_rect().centery * 1.5 
-            print(textposx.centery)
+            if VERBOSE:
+                print(textposx.centery)
             if(ImageShowed):
                    backgroundPicture.blit(text1, textposx)
             else:

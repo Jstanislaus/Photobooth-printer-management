@@ -12,7 +12,7 @@ photos_per_cart: 3000
 Button_pin: 25
 IMAGE_WIDTH: 550
 IMAGE_HEIGHT: 360
-
+VERBOSE: False
 ##########
 Slideshow:
 ##########
