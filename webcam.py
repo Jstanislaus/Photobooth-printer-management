@@ -40,7 +40,6 @@ start_cameraPath2 =  os.path.join('Template', Venue,"start_camera2.jpg")#
 start_cameraPathpart2 = os.path.join('Template', Venue,"start_camerapart2.jpg")
 start_cameraPath2part2 =  os.path.join('Template', Venue,"start_camera2part2.jpg")#
 ImageShowed = False
-VERBOSE = False
 NotPrinting = True
 #BUTTON_PIN = 25
 #IMAGE_WIDTH = 550
