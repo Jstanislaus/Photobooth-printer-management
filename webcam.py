@@ -745,12 +745,12 @@ def TakePictures():
 
     # Create the final filename
     ts = time.time()
-    Final_Image_Name = os.path.join(os.path.realpath(imagefolder),"Final_Templated_Photos","Final_" +  Venueid + str(TotalImageCount)+"_"+str(ts) + ".jpg")
+    Final_Image_Name = os.path.join(os.path.realpath(imagefolder),"Final_Templated_Photos","Final_" +  Venueid + str(TotalImageCount)+"_" + ".jpg")
     print(Final_Image_Name)
 
 
     #mailto:booth@stanislaus.co.uk?subject=Reprint%20Subject&body=please%20send%20another%20copy.
-    QRDdata = f"Feel free to email me at: booth@stanislaus.co.uk with any enquiries \n Code {Venueid}{TotalImageCount}_{ts}"
+    QRDdata = f"Feel free to email me at: booth@stanislaus.co.uk with any enquiries \n Code {Venueid}{TotalImageCount}"
     starttime = (datetime.datetime.now())
 
     QRFilename =  os.path.join(imagefolder, "QRCode.jpg") #Path of template image
