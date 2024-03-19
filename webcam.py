@@ -766,11 +766,6 @@ def TakePictures():
     img = qr.make_image(fill_color="black", back_color="white")
     img.save(QRFilename)
 
-    stoptime = (datetime.datetime.now())
-
-    print(stoptime-starttime)
-    print("QRcode Saved to ",QRFilename )
-
     QRCode = PIL.Image.open(QRCode)   
     QRCode = Image.open(QRFilename)
     wpercent = (basewidth / float(QRCode.size[0]))/5
@@ -783,7 +778,7 @@ def TakePictures():
     print("wsize = " + str(wsize))
 
     QRCode = QRCode.resize((wsize, hsize), PIL.Image.ANTIALIAS)
-    img.save(filename)
+    img.save(QRFilename)
 
 
     TotalImageCount = TotalImageCount + 1
