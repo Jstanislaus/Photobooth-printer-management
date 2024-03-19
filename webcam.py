@@ -16,7 +16,7 @@ from time import sleep
 from PIL import Image, ImageDraw
 
 import RPi.GPIO as GPIO, time, os, subprocess,shlex
-Venue,portrait,Finalimagereduction,Finalimagereduction2,photos_per_cart,button_pin,IMAGE_WIDTH,IMAGE_HEIGHT = config.config()
+Venue,portrait,Finalimagereduction,Finalimagereduction2,photos_per_cart,button_pin,IMAGE_WIDTH,IMAGE_HEIGHT,VERBOSE = config.config()
 #Venue = "AI_2023_05_06_KINGSCORONATIONWHITEFRIARS"
 Venueid = Venue[0:2]
 Numeral = ""  # Numeral is the number display
