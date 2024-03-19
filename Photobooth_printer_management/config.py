@@ -9,4 +9,4 @@ def config():
     button_pin = config_array[11].split(' ')[-1].lower().strip("\n")
     img_w = config_array[12].split(' ')[-1].lower().strip("\n")
     img_h = config_array[13].split(' ')[-1].lower().strip("\n")
-    return Venue,portrait,img_red1,img_red2,photos_per_cart,button_pin,img_w,img_h
+    return Venue,portrait,int(img_red1),int(img_red2),photos_per_cart,button_pin,img_w,img_h
