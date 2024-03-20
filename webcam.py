@@ -747,6 +747,7 @@ def TakePictures():
     # Create the final filename
     ts = time.time()
     create_folder(imagefolder+"/Final_Templated_Photos")
+    print(imagefolder+"/Final_Templated_Photos")
     Final_Image_Name = os.path.join(os.path.realpath(imagefolder),"Final_Templated_Photos","Final_" +  Venueid + str(TotalImageCount)+"_" + ".jpg")
     if VERBOSE:
         print(Final_Image_Name)
