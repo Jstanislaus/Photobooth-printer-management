@@ -276,6 +276,7 @@ def UpdateDisplay():
     global VERBOSE
     global Message
     global Message2
+    global photos_per_cart
     global Message3
     global screen
     global background
