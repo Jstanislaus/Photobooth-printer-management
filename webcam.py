@@ -35,10 +35,10 @@ TotalImageCount = 0  # Counter for Display and to monitor paper usage
 imagecounter = 0
 imagefolder = f"/home/pi/Photobooth_Photos/{Venue}"  #os.path.realpath("../Photos")
 templatePath = os.path.join('Template', Venue,"template.png") #Path of template image
-start_cameraPath = os.path.join('Template', Venue,"start_camerap1.jpg") #Path of template image start_camera.jpg
+start_cameraPath1 = os.path.join('Template', Venue,"start_camerap1.jpg") #Path of template image start_camera.jpg
 start_cameraPath2 =  os.path.join('Template', Venue,"start_camerap2.jpg")#
-start_cameraPathpart2 = os.path.join('Template', Venue,"start_camerap3.jpg")
-start_cameraPath2part2 =  os.path.join('Template', Venue,"start_camerap4.jpg")#
+start_cameraPath3 = os.path.join('Template', Venue,"start_camerap3.jpg")
+start_cameraPath4 =  os.path.join('Template', Venue,"start_camerap4.jpg")#
 ImageShowed = False
 NotPrinting = True
 #BUTTON_PIN = 25
@@ -955,13 +955,13 @@ def WaitForEvent():
         #pf.read()
         input_state = pf.input_pins[1].value #False #windows10 GPIO.input(BUTTON_PIN)
         if i%7 == 0:
-            show_image(start_cameraPath)
+            show_image(start_cameraPath1)
         if i%7 ==2:
-            show_image(start_cameraPathpart2)
-        if i %7 == 4:
             show_image(start_cameraPath2)
+        if i %7 == 4:
+            show_image(start_cameraPath3)
         if i%7==6:
-            show_image(start_cameraPath2part2)
+            show_image(start_cameraPath4)
         if input_state==1: #was TRUE
             print("NoEvent is True")
             print(input_state)
