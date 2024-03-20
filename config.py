@@ -12,4 +12,4 @@ def config():
     VERBOSE = config_array[14].split(' ')[-1].lower().strip("\n")
     portrait = portrait == "True"
     VERBOSE = VERBOSE == "True"
-    return Venue,portrait,int(img_red1),int(img_red2),photos_per_cart,button_pin,img_w,img_h,VERBOSE
+    return Venue,portrait,int(img_red1),int(img_red2),int(photos_per_cart),button_pin,img_w,img_h,VERBOSE
