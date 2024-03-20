@@ -26,3 +26,4 @@ Name-code of event: AI_2023_05_06_KingsCoronationWhitefriars #e.g AI_2023_05_06_
 To setup the program to run on startup, use these two links to produce a .desktop file in startup which references a .sh file which executes webcam.py:
     https://www.makeuseof.com/how-to-run-a-raspberry-pi-program-script-at-startup/#:~:text=Run%20GUI%20Programs%20on%20Startup%20With%20Autostart
     https://www.andrewcbancroft.com/blog/musings/make-bash-script-executable/
+
