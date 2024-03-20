@@ -93,7 +93,7 @@ def input(events):
             pygame.quit()
 
 def create_folder(path):
-    newpath = 'C:\Program Files\arbitrary' 
+    newpath = path 
     if not os.path.exists(newpath):
         os.makedirs(newpath)
 # set variables to properly display the image on screen at right ratio
