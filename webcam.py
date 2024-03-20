@@ -999,7 +999,7 @@ def main(threadName, *args):
     gpout1=gpout.wait()
     while True:
         InitCamera(i)
-        show_image(start_cameraPath) #e.g'Template/2019 07 14 Redland Y6 Leavers/start_camera.jpg')
+        show_image(start_cameraPath1) #e.g'Template/2019 07 14 Redland Y6 Leavers/start_camera.jpg')
         WaitForEvent()
         time.sleep(2)
 
