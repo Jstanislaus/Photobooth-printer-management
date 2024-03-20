@@ -4,7 +4,7 @@ This file is for configuring the Slideshow program
 ###########
 Photobooth:
 ###########
-Venue_id: AJ_2024_20_03_HARDENCHARITYWEEK #e.g-AI_2023_05_06_KingsCoronationWhitefriars
+Venue_id: AL_2024_20_03_HARDENCHARITYWEEK #e.g-AI_2023_05_06_KingsCoronationWhitefriars
 portrait: False
 final_image_reduction: 5
 final_image_reduction2: 70
