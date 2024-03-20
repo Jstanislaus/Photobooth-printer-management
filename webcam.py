@@ -927,7 +927,7 @@ def WaitForPrintingEvent():
         Numeral = str(countDown)
         UpdateDisplay()        
         countDown = countDown - 1
-        time.sleep(0.5)
+        time.sleep(0.7)
 
     #GPIO.remove_event_detect(BUTTON_PIN)
 
