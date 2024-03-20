@@ -616,6 +616,7 @@ def CapturePicture():
     Message3 =  ""
     Numeral = ""
     #filename= "/home/pi/Photobooth_Photos/AI_2023_05_06_KingsCoronationWhitefriars/test.jpg"
+    create_folder(imagefolder+"/Individual_Photos")
     pygame.image.save(cropimg1,filename) 
     ShowPicture(filename, 2,Message)
     time.sleep(0.75)
